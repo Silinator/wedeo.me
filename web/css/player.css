@@ -1,0 +1,78 @@
+.wedeo-player {
+  display: flex;
+  width: 640px;
+  height: 360px;
+  margin: auto;
+  margin-top: 15%;
+}
+
+.wedeo-player .vjs-control {
+  height: 30px;
+}
+
+.wedeo-player .vjs-control-bar {
+  display: flex;
+  height: 45px;
+  align-items: center;
+  background: none;
+  background: linear-gradient( 0deg, var(--bg-blackA60), var(--bg-blackA15) );
+  box-shadow: 0px -45px 30px var(--bg-blackA15);
+}
+
+.wedeo-player .vjs-progress-control {
+  position: absolute;
+  height: 7px;
+  width: 100%;
+  top: -2px;
+  right: 0;
+  left: 0;
+  bottom: 45px;
+}
+
+.wedeo-player .vjs-progress-control:hover .vjs-progress-holder {
+  height: 7px;
+}
+
+.wedeo-player .vjs-play-progress,
+.wedeo-player .vjs-volume-level {
+  background: var(--main);
+  background: linear-gradient( 60deg, var(--cyan500) 30%, var(--main) 70%);
+}
+
+.wedeo-player .vjs-load-progress,
+.wedeo-player .vjs-load-progress div {
+  background: var(--silverA60);
+}
+
+.wedeo-player .vjs-slider,
+.wedeo-player .vjs-progress-holder{
+  background: var(--grayA60);
+}
+
+.wedeo-player .vjs-volume-panel {
+  transition: width 0.5s;
+}
+
+.wedeo-player .vjs-volume-panel .vjs-volume-control.vjs-volume-horizontal {
+  transition: visibility 1s,opacity 1s,height 1s 1s,width 0.5s,left 1s 1s,top 1s 1s;
+}
+
+
+.wedeo-player .vjs-play-progress:before,
+.wedeo-player .vjs-volume-level:before,
+.wedeo-player .vjs-progress-control:hover .vjs-play-progress .vjs-time-tooltip {
+  display: none;
+}
+
+.wedeo-player .vjs-time-control {
+  display: flex;
+}
+
+.wedeo-player .vjs-remaining-time {
+  display: none;
+}
+
+.wedeo-player .vjs-custom-control-spacer {
+  display: flex;
+  margin-left: auto;  /* moves everything after this element to the right site */
+}
