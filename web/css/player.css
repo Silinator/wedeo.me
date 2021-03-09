@@ -1,36 +1,42 @@
 .wedeo-player {
   display: flex;
-  width: 640px;
-  height: 360px;
-  margin: auto;
-  margin-top: 15%;
+  width: 100%;
+  height: 0px;
+  padding-top: 56.25%;
+}
 }
 
 .wedeo-player .vjs-control {
   height: 30px;
+  width: 50px;
 }
 
 .wedeo-player .vjs-control-bar {
   display: flex;
-  height: 45px;
+  height: 50px;
   align-items: center;
   background: none;
   background: linear-gradient( 0deg, var(--bg-blackA60), var(--bg-blackA15) );
-  box-shadow: 0px -45px 30px var(--bg-blackA15);
+  box-shadow: 0px -50px 30px var(--bg-blackA15);
 }
 
 .wedeo-player .vjs-progress-control {
   position: absolute;
   height: 7px;
   width: 100%;
-  top: -2px;
+  top: -12px;
   right: 0;
   left: 0;
-  bottom: 45px;
+  bottom: 50px;
+  padding: 10px 0;
 }
 
 .wedeo-player .vjs-progress-control:hover .vjs-progress-holder {
   height: 7px;
+}
+
+.wedeo-player .vjs-play-progress {
+  transition: width 0.07s cubic-bezier(0.48, 0.48, 0.48, 0.48);
 }
 
 .wedeo-player .vjs-play-progress,
@@ -45,7 +51,7 @@
 }
 
 .wedeo-player .vjs-slider,
-.wedeo-player .vjs-progress-holder{
+.wedeo-player .vjs-progress-holder {
   background: var(--grayA60);
 }
 
@@ -54,9 +60,18 @@
 }
 
 .wedeo-player .vjs-volume-panel .vjs-volume-control.vjs-volume-horizontal {
-  transition: visibility 1s,opacity 1s,height 1s 1s,width 0.5s,left 1s 1s,top 1s 1s;
+  transition: visibility 1s, opacity 1s, height 1s 1s, width 0.5s, left 1s 1s, top 1s 1s;
 }
 
+.wedeo-player .vjs-volume-bar.vjs-slider-horizontal,
+.wedeo-player .vjs-slider-horizontal .vjs-volume-level {
+  height: 4px;
+}
+
+.wedeo-player .vjs-button>.vjs-icon-placeholder:before {
+  font-size: 30px;
+  line-height: 35px;
+}
 
 .wedeo-player .vjs-play-progress:before,
 .wedeo-player .vjs-volume-level:before,
@@ -66,6 +81,9 @@
 
 .wedeo-player .vjs-time-control {
   display: flex;
+  font-size: 15px;
+  line-height: 33px;
+  width: unset;
 }
 
 .wedeo-player .vjs-remaining-time {
