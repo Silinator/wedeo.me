@@ -39,15 +39,18 @@
   transition: width 0.07s cubic-bezier(0.48, 0.48, 0.48, 0.48);
 }
 
-.wedeo-player .vjs-play-progress,
-.wedeo-player .vjs-volume-level {
+.wedeo-player .vjs-play-progress {
   background: var(--main);
   background: linear-gradient( 60deg, var(--cyan500) 30%, var(--main) 70%);
 }
 
+.wedeo-player .vjs-volume-level {
+  background: var(--white);
+}
+
 .wedeo-player .vjs-load-progress,
 .wedeo-player .vjs-load-progress div {
-  background: var(--silverA60);
+  background: var(--silver);
 }
 
 .wedeo-player .vjs-slider,
@@ -73,10 +76,24 @@
   line-height: 35px;
 }
 
-.wedeo-player .vjs-play-progress:before,
 .wedeo-player .vjs-volume-level:before,
 .wedeo-player .vjs-progress-control:hover .vjs-play-progress .vjs-time-tooltip {
   display: none;
+}
+
+.wedeo-player .vjs-play-progress:before {
+  font-size: 0;
+  top: 2px;
+  right: -2px;
+  transition: font-size 0.2s, top 0.2s, right 0.2s;
+  color: var(--main);
+}
+
+.wedeo-player .vjs-progress-control:hover .vjs-play-progress:before {
+  display: block;
+  font-size: 17px;
+  right: -9px;
+  top: -5px;
 }
 
 .wedeo-player .vjs-time-control {
