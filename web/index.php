@@ -10,14 +10,8 @@
   </head>
   <body>
     <div class="videoContainer">
-      <video
-        id="wedeo-player"
-        class="wedeo-player video-js"
-        controls
-        poster="https://www.we-teve.com/images/thumb/large_img/ZL7CM0Rd.jpg"
-      >
-        <source src="https://www.we-teve.com/videos/JnhdhWTGOaCFMzPPAca0JkDyW/1080p.mp4" type="video/mp4" />
-      </video>
+      <video id="wedeo-player" class="wedeo-player video-js" controls></video>
     </div>
+    <button onClick="ChangeSource()">KLICK</button>
   </body>
 </html>
