@@ -1,7 +1,7 @@
 .wedeo-bg-player {
   display: flex;
   width: 100vw;
-  height: 80vh;
+  height: 85vh;
   overflow: hidden;
 }
 
@@ -9,7 +9,7 @@
   position: absolute;
   top: 0px;
   left: 0px;
-  height: 80vh;
+  height: 85vh;
   width: 100vw;
   background: linear-gradient( 0deg, var(--bg-blackA15) 20%, transparent 50% );
   z-index: 2;
