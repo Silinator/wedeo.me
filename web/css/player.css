@@ -1,3 +1,9 @@
+.videoContainer {
+  width: 1320px;
+  margin: auto;
+  margin-top: 30px;
+}
+
 .wedeo-player {
   display: flex;
   width: 100%;

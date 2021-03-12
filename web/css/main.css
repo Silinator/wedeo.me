@@ -47,8 +47,3 @@ body {
   font-family: 'Open Sans', sans-serif;
   background-color: var( --bg-black );
 }
-
-.videoContainer {
-  width: 58.33333333%;
-  margin: auto;
-}
