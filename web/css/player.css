@@ -10,14 +10,42 @@
   height: 0px;
   padding-top: 56.25%;
 }
-}
 
 .wedeo-player .vjs-control {
   height: 30px;
   width: 50px;
 }
 
-.wedeo-player .vjs-control-bar {
+.wedeo-player .vjs-big-play-button {
+  top: 50%;
+  left: 50%;
+  height: 100px;
+  width: 180px;
+  margin-top: -50px;
+  margin-left: -90px;
+  border-radius: 0px;
+  border: 3px solid var(--white);
+  background-color: var(--bg-blackA60);
+}
+
+.wedeo-player .vjs-big-play-button:focus,
+.wedeo-player:hover .vjs-big-play-button {
+  background-color: transparent;
+}
+
+.wedeo-player .vjs-big-play-button .vjs-icon-placeholder::before {
+  content: "";
+  background-image: url(../img/icons/play.svg);
+  background-repeat: no-repeat;
+  height: 67px;
+  width: 54px;
+  left: 50%;
+  margin-left: -23px;
+  top: 50%;
+  margin-top: -33px;
+}
+
+.wedeo-player.vjs-has-started .vjs-control-bar {
   display: flex;
   height: 50px;
   align-items: center;
@@ -47,7 +75,16 @@
 
 .wedeo-player .vjs-play-progress {
   background: var(--main);
-  background: linear-gradient( 60deg, var(--cyan500) 30%, var(--main) 70%);
+  background: linear-gradient( 135deg, var(--cyan500), var(--main) );
+}
+
+
+.mobile .wedeo-player .vjs-volume-control {
+  display: none;
+}
+
+.mobile .wedeo-player .vjs-volume-panel.vjs-volume-panel-horizontal.vjs-hover {
+  width: 50px;
 }
 
 .wedeo-player .vjs-volume-level {
