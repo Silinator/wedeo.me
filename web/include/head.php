@@ -23,4 +23,5 @@
 <?php /* own */ ?>
 <link href="css/main.css" rel="stylesheet">
 <link href="css/player.css" rel="stylesheet">
-<script defer src="js/player.js"></script>
+<link href="css/backgroundPlayer.css" rel="stylesheet">
+<script src="js/player.js"></script>
