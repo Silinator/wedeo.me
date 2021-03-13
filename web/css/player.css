@@ -65,7 +65,8 @@
   padding: 10px 0;
 }
 
-.wedeo-player .vjs-progress-control:hover .vjs-progress-holder {
+.wedeo-player .vjs-progress-control:hover .vjs-progress-holder,
+.wedeo-player .vjs-progress-control:active .vjs-progress-holder {
   height: 7px;
 }
 
@@ -132,7 +133,8 @@
   color: var(--main);
 }
 
-.wedeo-player .vjs-progress-control:hover .vjs-play-progress:before {
+.wedeo-player .vjs-progress-control:hover .vjs-play-progress:before,
+.wedeo-player .vjs-progress-control:active .vjs-play-progress:before {
   display: block;
   font-size: 17px;
   right: -9px;
