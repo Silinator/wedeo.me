@@ -12,7 +12,7 @@
     <!-- <div class="videoContainer"> -->
     <div class="videoContainer-bg">
       <!-- <video id="wedeo-player" class="wedeo-player video-js" controls></video> -->
-      <video id="wedeo-player" class="wedeo-bg-player video-js" controls loop></video>
+      <video id="wedeo-player" class="wedeo-bg-player video-js" controls></video>
     </div>
     <button onClick="wedeoPlayer.changeSource( '240p.mp4' )">240p</button>
     <button onClick="wedeoPlayer.changeSource( '480p.mp4' )">480p</button>

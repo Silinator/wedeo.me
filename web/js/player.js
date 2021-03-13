@@ -62,7 +62,10 @@ class wedeoPlayerClass {
       self.Player.muted(!self.Player.muted());
     });
 
-    setTimeout(function () { self.Player.volume(  0.5 ); }, 0);
+    setTimeout(function () {
+      self.Player.loop(true);
+      self.Player.volume(0.5);
+    }, 0);
   }
 
   addHotkeys() {
