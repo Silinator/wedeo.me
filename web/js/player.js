@@ -229,6 +229,7 @@ class wedeoPlayerClass {
 
   openPlayerSettingsMenu( key = false ) {
     this.playerSettingsMenuOpen = true;
+    this.Player.cache_.inactivityTimeout = 0;
     $('.vjs-settings-menu').css('display', 'flex');
     $('.vjs-setting').attr('tabindex',0);
 
@@ -239,6 +240,7 @@ class wedeoPlayerClass {
 
   closePlayerSettingsMenu() {
     this.playerSettingsMenuOpen = false;
+    this.Player.cache_.inactivityTimeout = 1000;
     this.closeDropdowns();
     $('.vjs-settings-menu').hide();
 
