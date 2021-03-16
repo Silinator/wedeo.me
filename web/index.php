@@ -9,22 +9,22 @@
     <?php require_once("include/head.php"); ?>
   </head>
   <body>
-    <!-- <div class="videoContainer"> -->
-    <div class="videoContainer-bg">
-      <!-- <video id="wedeo-player" class="wedeo-player video-js" controls></video> -->
-      <video id="wedeo-player" class="wedeo-bg-player video-js" controls></video>
+    <div class="videoContainer">
+    <!-- <div class="videoContainer-bg"> -->
+      <video id="wedeo-player" class="wedeo-player video-js" controls></video>
+      <!-- <video id="wedeo-player" class="wedeo-bg-player video-js" controls></video> -->
     </div>
-    <button onClick="wedeoPlayer.changeSource( '240p.mp4' )">240p</button>
-    <button onClick="wedeoPlayer.changeSource( '480p.mp4' )">480p</button>
-    <button onClick="wedeoPlayer.changeSource( '1080p.mp4' )">1080p</button>
-    <button onClick="wedeoPlayer.changeSource( 'audio.mp3' )">Audio</button>
-    <br/>
-    <button onClick="wedeoPlayer.changePlayback( 2 )">KLICK2</button>
 
     <script type="text/javascript">
-      var defaultResult = "1080p.mp4";
-      var wedeoPlayer = new wedeoPlayerClass( 'wedeo-player', defaultResult );
-      wedeoPlayer.setVideo( "ZL7CM0Rd", "JnhdhWTGOaCFMzPPAca0JkDyW" );
+      const availableSources = [ "audio", "240p", "480p", "1080p" ];
+      const options = {
+        defaultResolution: "1080p",
+        playbackRate: 1,
+        fullscreenUi: "auto"
+      };
+
+      var wedeoPlayer = new wedeoPlayerClass( 'wedeo-player', options );
+      wedeoPlayer.setVideo( "ZL7CM0Rd", "JnhdhWTGOaCFMzPPAca0JkDyW", availableSources );
     </script>
   </body>
 </html>

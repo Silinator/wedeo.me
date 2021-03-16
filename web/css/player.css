@@ -11,6 +11,10 @@
   padding-top: 56.25%;
 }
 
+.wedeo-player video[poster] {
+  object-fit: cover;
+}
+
 .wedeo-player .vjs-control {
   height: 30px;
   width: 50px;
@@ -33,7 +37,7 @@
   background-color: transparent;
 }
 
-.wedeo-player .vjs-big-play-button .vjs-icon-placeholder::before {
+.wedeo-player .vjs-big-play-button .vjs-icon-placeholder:before {
   content: "";
   background-image: url(../img/icons/play.svg);
   background-repeat: no-repeat;
@@ -58,7 +62,7 @@
   position: absolute;
   height: 7px;
   width: 100%;
-  top: -12px;
+  top: -10px;
   right: 0;
   left: 0;
   bottom: 50px;
@@ -95,6 +99,7 @@
 .wedeo-player .vjs-load-progress,
 .wedeo-player .vjs-load-progress div {
   background: var(--silver);
+  transition: width 0.1s cubic-bezier(0.48, 0.48, 0.48, 0.48);
 }
 
 .wedeo-player .vjs-slider,
@@ -107,6 +112,7 @@
 }
 
 .wedeo-player .vjs-volume-panel .vjs-volume-control.vjs-volume-horizontal {
+  margin-top: 2px;
   transition: visibility 1s, opacity 1s, height 1s 1s, width 0.5s, left 1s 1s, top 1s 1s;
 }
 
@@ -115,9 +121,18 @@
   height: 4px;
 }
 
-.wedeo-player .vjs-button>.vjs-icon-placeholder:before {
+.vjs-custom-control-spacer .vjs-control {
+  margin-right: 5px;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.wedeo-player .vjs-button>.vjs-icon-placeholder:before,
+.wedeo-player .vjs-button .material-icons {
   font-size: 30px;
   line-height: 35px;
+  cursor: pointer;
 }
 
 .wedeo-player .vjs-volume-level:before,
@@ -143,9 +158,17 @@
 
 .wedeo-player .vjs-time-control {
   display: flex;
+  align-items: center;
   font-size: 15px;
   line-height: 33px;
+  margin-top: 5px;
   width: unset;
+}
+
+.wedeo-player .vjs-time-divider {
+  width: 1px;
+  padding: 0px;
+  min-width: 1px;
 }
 
 .wedeo-player .vjs-remaining-time {
@@ -155,4 +178,96 @@
 .wedeo-player .vjs-custom-control-spacer {
   display: flex;
   margin-left: auto;  /* moves everything after this element to the right site */
+}
+
+
+/* player settings */
+.wedeo-player .vjs-settings-menu {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  right: 10px;
+  bottom: calc( 50px + 15px );
+  width: 250px;
+  font-size: 16px;
+  background: var(--bg-blackA60);
+}
+
+.wedeo-player .vjs-setting {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px 3px 10px;
+  cursor: pointer;
+}
+
+.wedeo-player .vjs-setting:not(:last-child),
+.wedeo-player .vjs-settings-dropdown-option:not(:last-child) {
+  margin-bottom: 5px;
+}
+
+.wedeo-player .vjs-setting:hover,
+.wedeo-player .vjs-setting:focus,
+.wedeo-player .vjs-settings-dropdown-title-container:focus {
+  background-color: var(--whiteA15);
+}
+
+.wedeo-player .vjs-setting-value-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.wedeo-player .vjs-settings-dropdown {
+  display: none;
+  width: 200px;
+  flex-direction: column;
+  position: absolute;
+  right: 10px;
+  font-size: 16px;
+  bottom: calc( 50px + 15px );
+  background: var(--bg-blackA60);
+}
+
+.wedeo-player .vjs-settings-dropdown-title-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 5px 10px 5px 5px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid var(--white);
+  cursor: pointer;
+}
+
+.wedeo-player .vjs-settings-dropdown-title-container .material-icons {
+  margin-left: -5px;
+}
+
+.wedeo-player .vjs-settings-dropdown-options {
+  display: none;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.wedeo-player .vjs-settings-dropdown-option {
+  padding: 5px 10px 5px 25px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.wedeo-player .vjs-settings-dropdown-option:hover,
+.wedeo-player .vjs-settings-dropdown-option:focus {
+  background-color: var(--whiteA15);
+}
+
+.wedeo-player .vjs-settings-dropdown-option.active {
+  position: relative;
+  font-weight: bold;
+}
+
+.wedeo-player .vjs-settings-dropdown-option.active:before {
+  content: "•";
+  position: absolute;
+  font-weight: bold;
+  left: 10px;
 }
