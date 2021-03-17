@@ -1,0 +1,17 @@
+{
+  "name": "wedeo.me",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "jquery": "^3.6.0",
+    "video.js": "^7.11.4",
+    "videojs-hotkeys": "^0.2.27"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Silvan Fux",
+  "license": "ISC"
+}
