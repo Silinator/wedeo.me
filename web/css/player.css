@@ -1,4 +1,5 @@
-.videoContainer {
+videoContainer {
+  display: block;
   width: 1320px;
   margin: auto;
   margin-top: 30px;
