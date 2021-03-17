@@ -63,8 +63,8 @@ class wedeoPlayerClass {
 
   createBackgroundPlayer() {
     const self = this;
-    $("#" + this.playerId).append( "<div class='backgrpund-player-mute-btn'></div>" );
-    $("#" + this.playerId + " .backgrpund-player-mute-btn").click( function() {
+    $("#" + this.playerId).append( "<div class='background-player-mute-btn'></div>" );
+    $("#" + this.playerId + " .background-player-mute-btn").click( function() {
       self.Player.muted(!self.Player.muted());
     });
 
