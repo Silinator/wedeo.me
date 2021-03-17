@@ -78,6 +78,10 @@
   transition: width 0.07s cubic-bezier(0.48, 0.48, 0.48, 0.48);
 }
 
+.wedeo-player .vjs-progress-control:active .vjs-play-progress {
+  transition: width 0s cubic-bezier(0.48, 0.48, 0.48, 0.48);
+}
+
 .wedeo-player .vjs-play-progress {
   background: var(--main);
   background: linear-gradient( 135deg, var(--cyan500), var(--main) );
@@ -291,7 +295,8 @@
   z-index: 1;
 }
 
-.wedeo-player .vjs-progress-control:hover .vjs-small-video-preview {
+.wedeo-player .vjs-progress-control:hover .vjs-small-video-preview,
+.wedeo-player .vjs-progress-control:active .vjs-small-video-preview {
   display: block;
 }
 
@@ -310,6 +315,7 @@
   z-index: 2;
 }
 
-.wedeo-player .vjs-progress-control:hover .vjs-small-time-preview {
+.wedeo-player .vjs-progress-control:hover .vjs-small-time-preview,
+.wedeo-player .vjs-progress-control:active .vjs-small-time-preview {
   display: flex;
 }

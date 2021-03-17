@@ -216,57 +216,70 @@ class wedeoPlayerClass {
     $('.vjs-progress-control').append("<div class='vjs-small-video-preview'></div>");
     $('.vjs-progress-control').append("<div class='vjs-small-time-preview'></div>");
 
+    this.Player.on( 'seeking', function() {
+      if( !$('.vjs-progress-control').is(":hover") ) {
+        const maxWidth = $('.vjs-progress-control').width();
+        const hoverTime = Math.floor( self.Player.currentTime() );
+        const hoverPosFromLeft = Math.floor( maxWidth * (hoverTime / self.Player.duration()) );
+        self.updatePlayerVideoPreview( hoverTime, hoverPosFromLeft, maxWidth );
+      }
+    });
+
     $('.vjs-progress-control').mousemove( function(e) {
       const offset = $(this).offset();
       const hoverPosFromLeft = e.pageX - offset.left;
       const maxWidth = $('.vjs-progress-control').width();
       const maxTime = self.Player.duration();
       const hoverTime = Math.floor( maxTime / ( maxWidth / hoverPosFromLeft ) );
-      const hoverImgTime = hoverTime + 4; // the preview is off by about 4s. idk why...
-
-      //set img posi
-      const imgSize = $('.vjs-small-video-preview').width();
-      const halfImgSize = imgSize / 2;
-      let newImgPos = hoverPosFromLeft - halfImgSize;
-        if( newImgPos < 0 ){ newImgPos = 0; }
-        if( newImgPos + imgSize > maxWidth ){ newImgPos = maxWidth - imgSize; }
-
-      $('.vjs-small-video-preview').css('left', newImgPos);
-
-      //set time posi
-      const timeSize = $('.vjs-small-time-preview').width() + 8;
-      const halfTimeSize = timeSize / 2;
-      let newTimePos = hoverPosFromLeft - halfTimeSize;
-        const videoPadding = halfImgSize - halfTimeSize;
-        if( newTimePos < videoPadding ){ newTimePos = videoPadding; }
-        if( newTimePos + timeSize > maxWidth - videoPadding ){ newTimePos = maxWidth - timeSize - videoPadding; }
-
-      const displayTime = self.secondsToHms(hoverTime);
-      $('.vjs-small-time-preview').html(displayTime);
-      $('.vjs-small-time-preview').css('left', newTimePos);
-
-      const getSingleImg = Math.floor( hoverImgTime / 5 / 20 );
-      const getImgPreview = getSingleImg + 1;
-      const getImg = Math.floor( hoverImgTime / 5 - getSingleImg * 20 );
-
-      let imgPos;
-      switch( getImg ) {
-        case 1: imgPos = '-80em 0px'; break;     case 2: imgPos = '-96em 0px'; break;     case 3: imgPos = '-112em 0px'; break;    case 4: imgPos = '-128em 0px'; break;    case 5: imgPos = '-144em 0px'; break;
-        case 6: imgPos = '-80em -9em'; break;    case 7: imgPos = '-96em -9em'; break;    case 8: imgPos = '-112em -9em'; break;   case 9: imgPos = '-128em -9em'; break;   case 10: imgPos = '-144em -9em'; break;
-        case 11: imgPos = '-80em -18em'; break;  case 12: imgPos = '-96em -18em'; break;  case 13: imgPos = '-112em -18em'; break; case 14: imgPos = '-128em -18em'; break; case 15: imgPos = '-144em -18em'; break;
-        case 16: imgPos = '-80em -27em'; break;  case 17: imgPos = '-96em -27em'; break;  case 18: imgPos = '-112em -27em'; break; case 19: imgPos = '-128em -27em'; break; case 20: imgPos = '-144em -27em'; break;
-        default: imgPos = '-80em 0px';
-      }
-
-      if( getImgPreview ) {
-        $('.vjs-small-video-preview').css( 'background-image', 'url(' + self.URLbase + 'images/thumb/preview/' + self.vuid + '/pre' + getImgPreview + '.jpg)' );
-        $('.vjs-small-video-preview').css( 'background-position', imgPos );
-      }
+      self.updatePlayerVideoPreview( hoverTime, hoverPosFromLeft, maxWidth );
     });
   }
 
+  updatePlayerVideoPreview( hoverTime, hoverPosFromLeft, maxWidth ) {
+    const hoverImgTime = hoverTime + 4; // the preview is off by about 4s. idk why...
+
+    //set img posi
+    const imgSize = $('.vjs-small-video-preview').width();
+    const halfImgSize = imgSize / 2;
+    let newImgPos = hoverPosFromLeft - halfImgSize;
+      if( newImgPos < 0 ){ newImgPos = 0; }
+      if( newImgPos + imgSize > maxWidth ){ newImgPos = maxWidth - imgSize; }
+
+    $('.vjs-small-video-preview').css('left', newImgPos);
+
+    //set time posi
+    const timeSize = $('.vjs-small-time-preview').width() + 8;
+    const halfTimeSize = timeSize / 2;
+    let newTimePos = hoverPosFromLeft - halfTimeSize;
+      const videoPadding = halfImgSize - halfTimeSize;
+      if( newTimePos < videoPadding ){ newTimePos = videoPadding; }
+      if( newTimePos + timeSize > maxWidth - videoPadding ){ newTimePos = maxWidth - timeSize - videoPadding; }
+
+    const displayTime = this.secondsToHms(hoverTime);
+    $('.vjs-small-time-preview').html(displayTime);
+    $('.vjs-small-time-preview').css('left', newTimePos);
+
+    const getSingleImg = Math.floor( hoverImgTime / 5 / 20 );
+    const getImgPreview = getSingleImg + 1;
+    const getImg = Math.floor( hoverImgTime / 5 - getSingleImg * 20 );
+
+    let imgPos;
+    switch( getImg ) {
+      case 1: imgPos = '-80em 0px'; break;     case 2: imgPos = '-96em 0px'; break;     case 3: imgPos = '-112em 0px'; break;    case 4: imgPos = '-128em 0px'; break;    case 5: imgPos = '-144em 0px'; break;
+      case 6: imgPos = '-80em -9em'; break;    case 7: imgPos = '-96em -9em'; break;    case 8: imgPos = '-112em -9em'; break;   case 9: imgPos = '-128em -9em'; break;   case 10: imgPos = '-144em -9em'; break;
+      case 11: imgPos = '-80em -18em'; break;  case 12: imgPos = '-96em -18em'; break;  case 13: imgPos = '-112em -18em'; break; case 14: imgPos = '-128em -18em'; break; case 15: imgPos = '-144em -18em'; break;
+      case 16: imgPos = '-80em -27em'; break;  case 17: imgPos = '-96em -27em'; break;  case 18: imgPos = '-112em -27em'; break; case 19: imgPos = '-128em -27em'; break; case 20: imgPos = '-144em -27em'; break;
+      default: imgPos = '-80em 0px';
+    }
+
+    if( getImgPreview ) {
+      $('.vjs-small-video-preview').css( 'background-image', 'url(' + this.URLbase + 'images/thumb/preview/' + this.vuid + '/pre' + getImgPreview + '.jpg)' );
+      $('.vjs-small-video-preview').css( 'background-position', imgPos );
+    }
+  }
+
   secondsToHms( d ) {
-    if( d ) {
+    if( d || d >= 0 ) {
       d = Number(d);
       const h = Math.floor(d / 3600);
       const m = Math.floor(d % 3600 / 60);
