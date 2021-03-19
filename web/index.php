@@ -16,15 +16,23 @@
     </wedeoContainer>
 
     <script type="text/javascript">
-      const availableSources = [ "audio", "240p", "480p", "1080p" ];
       const options = {
         defaultResolution: "1080p",
         playbackRate: 1,
         fullscreenUi: "auto"
       };
 
+      const meta = {
+        uuid: "G4bGS4TQajeo",
+        vuid: "ZL7CM0Rd",
+        datavuid: "JnhdhWTGOaCFMzPPAca0JkDyW",
+        availableSources: [ "audio", "240p", "480p", "1080p" ],
+        title: "Minecraft Server overview",
+        rating: [ 2, 0 ]
+      }
+
       var wedeoPlayer = new wedeoPlayerClass( 'wedeo-player', options );
-      wedeoPlayer.setVideo( "ZL7CM0Rd", "JnhdhWTGOaCFMzPPAca0JkDyW", availableSources );
+      wedeoPlayer.setVideo(meta);
     </script>
   </body>
 </html>
