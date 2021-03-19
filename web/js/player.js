@@ -313,9 +313,9 @@ class wedeoPlayerClass {
 
   genDropDownOptions( array, active ) {
     let options = "";
-    for( var i = 0; i < array.length; i++ ) {
-      var opt = array[i];
-      var activeOption = ( active == opt ? "active" : "" );
+    for( let i = 0; i < array.length; i++ ) {
+      const opt = array[i];
+      const activeOption = ( active == opt ? "active" : "" );
 
       options += "<div class='vjs-settings-dropdown-option " + activeOption + "' value='" + opt + "' >" + opt + "</div>";
     }
@@ -336,7 +336,7 @@ class wedeoPlayerClass {
     $('.vjs-setting').attr('tabindex',0);
 
     $(document).unbind( 'mouseup').bind( 'mouseup', function( e ) {
-        var container = $(".vjs-settings-menu, .vjs-settings-button, .vjs-settings-dropdown");
+        const container = $(".vjs-settings-menu, .vjs-settings-button, .vjs-settings-dropdown");
 
         if( !container.is(e.target) && container.has(e.target).length === 0 ) {
           self.closePlayerSettingsMenu();
