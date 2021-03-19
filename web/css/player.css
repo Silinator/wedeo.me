@@ -20,7 +20,6 @@ wedeoContainer {
 .wedeo-player .vjs-header {
   display: flex;
   position: absolute;
-  height: 80px;
   width: 100%;
   padding: 20px 15px;
   top: 0;
