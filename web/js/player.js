@@ -221,7 +221,35 @@ class wedeoPlayerClass {
   }
 
   addPlayerSidebar() {
-    $('.vjs-control-bar').before("<div class='vjs-sidebar'><div class='vjs-sidebar-content'></div></div>");
+    $('.vjs-control-bar').before(
+      "<div class='vjs-sidebar'>" +
+        "<div class='vjs-sidebar-content'>" +
+          "<div class='vjs-rating'>" +
+            "<div class='vjs-rating-vote vjs-button vjs-rating-upvote'>" +
+              "<span class='material-icons'>thumb_up_off_alt</span>" +
+            "</div>" +
+            "<div class='vjs-rating-percent'></div>" +
+            "<div class='vjs-rating-vote vjs-button vjs-rating-downvote'>" +
+              "<span class='material-icons'>thumb_down_off_alt</span>" +
+            "</div>" +
+          "</div>" +
+          "<div class='vjs-share-buttons'>" +
+            "<div class='vjs-share-button vjs-button vjs-add-playlist'>" +
+              "<span class='material-icons'>playlist_add</span>" +
+            "</div>" +
+            "<div class='vjs-share-button vjs-button vjs-recommend'>" +
+              "<span class='weicon-lightbulb'></span>" +
+            "</div>" +
+            "<div class='vjs-share-button vjs-button vjs-share'>" +
+              "<span class='weicon-share'></span>" +
+            "</div>" +
+            "<div class='vjs-share-button vjs-button vjs-download'>" +
+              "<span class='weicon-file_download'></span>" +
+            "</div>" +
+          "</div>" +
+        "</div>" +
+      "</div>"
+    );
   }
 
   addPlayerHeader() {
@@ -443,6 +471,7 @@ class wedeoPlayerClass {
     this.Player.playbackRate(this.playbackRate);
     this.updatePlayerSettingsMenu();
     this.updatePlayerTitle();
+    this.updatePlayerRating();
   }
 
   updatePlayerSettingsMenu() {
@@ -469,6 +498,10 @@ class wedeoPlayerClass {
 
   updatePlayerTitle() {
     $('.vjs-header-title').html(this.meta.title);
+  }
+
+  updatePlayerRating() {
+    $('.vjs-rating-percent').html( this.meta.rating[0] == 0 ? "0%" : Math.floor( this.meta.rating[0] / ( this.meta.rating[0] + this.meta.rating[1] ) * 100 ) + "%" );
   }
 
   changeSource( resolution ) {
