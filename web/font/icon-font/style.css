@@ -1,0 +1,36 @@
+@font-face {
+  font-family: 'wedeome';
+  src:  url('fonts/wedeome.eot?h6d5ya');
+  src:  url('fonts/wedeome.eot?h6d5ya#iefix') format('embedded-opentype'),
+    url('fonts/wedeome.ttf?h6d5ya') format('truetype'),
+    url('fonts/wedeome.woff?h6d5ya') format('woff'),
+    url('fonts/wedeome.svg?h6d5ya#wedeome') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="weicon-"], [class*=" weicon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'wedeome' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.weicon-file_download:before {
+  content: "\e902";
+}
+.weicon-share:before {
+  content: "\e901";
+}
+.weicon-lightbulb:before {
+  content: "\e900";
+}
