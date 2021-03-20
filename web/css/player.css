@@ -14,7 +14,7 @@ wedeoContainer {
 }
 
 .wedeo-player video[poster] {
-  object-fit: cover;
+  object-fit: fill;
 }
 
 .wedeo-player .vjs-header {
