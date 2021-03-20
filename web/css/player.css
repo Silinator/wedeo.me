@@ -17,6 +17,21 @@ wedeoContainer {
   object-fit: fill;
 }
 
+.wedeo-player .vjs-loading-spinner {
+  border: 6px solid var(--bg-blackA60);
+}
+
+.wedeo-player .vjs-loading-spinner:after {
+  content: none;
+}
+
+.wedeo-player.vjs-seeking .vjs-loading-spinner:before,
+.wedeo-player.vjs-waiting .vjs-loading-spinner:before {
+  border-top-color: var(--white);
+  -webkit-animation: vjs-spinner-spin 1.1s cubic-bezier(.6,.2,0,.8) infinite;
+  animation: vjs-spinner-spin 1.1s cubic-bezier(.6,.2,0,.8) infinite;
+}
+
 .wedeo-player .vjs-header {
   display: flex;
   position: absolute;
