@@ -270,13 +270,30 @@ class wedeoPlayerClass {
       }
     });
 
-    $('.vjs-progress-control').mousemove( function(e) {
+    $('.vjs-progress-control').bind( 'mousemove',  function(e) {
       const offset = $(this).offset();
       const hoverPosFromLeft = e.pageX - offset.left;
       const maxWidth = $('.vjs-progress-control').width();
       const maxTime = self.Player.duration();
       const hoverTime = Math.floor( maxTime / ( maxWidth / hoverPosFromLeft ) );
       self.updatePlayerVideoPreview( hoverTime, hoverPosFromLeft, maxWidth );
+    });
+
+    $('.vjs-progress-control').bind( 'touchmove',  function(e) {
+      $('.vjs-small-video-preview').show();
+      $('.vjs-small-time-preview').css('display', 'flex');
+      const touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+      const offset = $(this).offset();
+      const hoverPosFromLeft = touch.pageX - offset.left;
+      const maxWidth = $('.vjs-progress-control').width();
+      const maxTime = self.Player.duration();
+      const hoverTime = Math.floor( maxTime / ( maxWidth / hoverPosFromLeft ) );
+      self.updatePlayerVideoPreview( hoverTime, hoverPosFromLeft, maxWidth );
+    });
+
+    $('.vjs-progress-control').bind( 'touchend',  function() {
+      $('.vjs-small-video-preview').hide();
+      $('.vjs-small-time-preview').hide();
     });
   }
 
