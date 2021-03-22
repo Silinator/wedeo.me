@@ -32,3 +32,4 @@
 <link href="css/player.css" rel="stylesheet">
 <link href="css/backgroundPlayer.css" rel="stylesheet">
 <script src="js/player.js"></script>
+<script src="js/main.js"></script>
