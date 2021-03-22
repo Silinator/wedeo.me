@@ -5,12 +5,10 @@
 <!DOCTYPE html>
 <html lang="de" dir="ltr">
   <head>
-    <base href="/wedeo.me/web/">
     <?php require_once("include/head.php"); ?>
   </head>
   <body>
     <wedeoContainer>
-    <!-- <div class="videoContainer-bg"> -->
       <video id="wedeo-player" class="wedeo-player video-js" controls></video>
       <!-- <video id="wedeo-player" class="wedeo-bg-player video-js" controls></video> -->
     </wedeoContainer>

@@ -4,6 +4,10 @@
   echo "<title> " . $htmlTitle . " </title>";
 ?>
 
+<base href="/wedeo.me/web/">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=0.7, user-scalable=0">
+
 <?php /* fonts */ ?>
 <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.gstatic.com">
