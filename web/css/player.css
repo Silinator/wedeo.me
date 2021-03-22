@@ -5,6 +5,13 @@ wedeoContainer {
   margin-top: 30px;
 }
 
+.touch wedeoContainer {
+  display: block;
+  width: 100%;
+  margin: 0;
+  margin-top: 30px;
+}
+
 .wedeo-player {
   display: flex;
   width: 100%;
