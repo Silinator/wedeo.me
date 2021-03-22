@@ -33,6 +33,7 @@ class wedeoPlayerClass {
     this.fullscreenUi = options.fullscreenUi;
     this.availablePlaybackRates = [ 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2];
     this.availableFullscreenOptions = [ "auto", "on", "off"];
+    this.inactivityTimeout = 2000;
 
     this.createPlayer();
   }
@@ -42,7 +43,7 @@ class wedeoPlayerClass {
 
     this.Player = videojs( this.playerId, {
       preload: true,
-      inactivityTimeout: 1000,
+      inactivityTimeout: self.inactivityTimeout,
       autoplay: "any"
     });
 
