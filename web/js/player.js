@@ -477,6 +477,7 @@ class wedeoPlayerClass {
 
 
   setVideo( meta ) {
+    const self = this;
     this.meta = meta;
 
     this.media = {
