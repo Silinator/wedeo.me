@@ -23,12 +23,15 @@
       };
 
       const meta = {
-        uuid: "G4bGS4TQajeo",
         vuid: "ZL7CM0Rd",
         datavuid: "JnhdhWTGOaCFMzPPAca0JkDyW",
         availableSources: [ "audio", "240p", "480p", "1080p" ],
         title: "Minecraft Server overview",
-        rating: [ 2, 0 ]
+        rating: [ 2, 0 ],
+        user: {
+          uuid: "G4bGS4TQajeo",
+          name: "Silinator",
+        }
       }
 
       var wedeoPlayer = new wedeoPlayerClass( 'wedeo-player', options );

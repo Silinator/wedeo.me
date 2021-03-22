@@ -489,7 +489,29 @@ class wedeoPlayerClass {
     this.updatePlayerSettingsMenu();
     this.updatePlayerTitle();
     this.updatePlayerRating();
+
+    if('mediaSession' in navigator) {
+      navigator.mediaSession.metadata = new MediaMetadata({
+        title: this.meta.title,
+        artist: this.meta.user.name,
+        artwork: [
+          { src: this.URLbase + '/images/thumb/small_img/' + this.meta.vuid + '.jpg', sizes: '320x180', type: 'image/png' }
+        ]
+      });
+
+      navigator.mediaSession.setActionHandler('play', function() { self.play(); });
+      navigator.mediaSession.setActionHandler('pause', function() { self.pause(); });
+      navigator.mediaSession.setActionHandler('seekbackward', function() { self.seekbackward(); });
+      navigator.mediaSession.setActionHandler('seekforward', function() { self.seekforward(); });
+      navigator.mediaSession.setActionHandler('previoustrack', function() {});
+      navigator.mediaSession.setActionHandler('nexttrack', function() {});
+    }
   }
+
+  play(){ this.Player.play(); }
+  pause(){ this.Player.pause(); }
+  seekbackward(){ this.Player.currentTime( this.Player.currentTime() - 10 ); }
+  seekforward(){ this.Player.currentTime( this.Player.currentTime() + 10 ); }
 
   updatePlayerSettingsMenu() {
     const self = this;
