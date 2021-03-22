@@ -63,6 +63,8 @@ class wedeoPlayerClass {
     this.addPlayerVideoPreview();
     this.addPlayerHeader();
     this.addPlayerSidebar();
+    this.addBigPlayerButtons();
+    this.addPlayerTouchControls();
 
     this.Player.on('mouseout', function() {
       if( !self.playerSettingsMenuOpen ) { this.addClass('vjs-user-inactive'); }
@@ -255,6 +257,53 @@ class wedeoPlayerClass {
 
   addPlayerHeader() {
     $('.vjs-control-bar').before("<div class='vjs-header'><div class='vjs-header-title'></div></div>");
+  }
+
+  addBigPlayerButtons() {
+    const self = this;
+
+    $('.vjs-control-bar').before(
+      "<div class='vjs-big-buttons'>" +
+        "<div class='vjs-big-button vjs-big-button-rewind-video'>" +
+          "<span class='material-icons'>fast_rewind</span>" +
+        "</div>" +
+        "<div class='vjs-big-button vjs-big-button-core vjs-big-button-previous-video'>" +
+        "<span class='material-icons'> skip_previous </span>" +
+        "</div>" +
+        "<div class='vjs-big-button vjs-big-button-core vjs-big-button-state-video vjs-big-button-pause-video'>" +
+          "<span class='material-icons'>pause</span>" +
+        "</div>" +
+        "<div class='vjs-big-button vjs-big-button-core vjs-big-button-next-video'>" +
+        "<span class='material-icons'>skip_next</span>" +
+        "</div>" +
+        "<div class='vjs-big-button vjs-big-button-forward-video'>" +
+          "<span class='material-icons'>fast_forward</span>" +
+        "</div>" +
+      "</div>"
+    );
+
+    this.Player.on( 'pause', function() {
+      $('.vjs-big-button-state-video').removeClass('vjs-big-button-pause-video');
+      $('.vjs-big-button-state-video').addClass('vjs-big-button-play-video');
+      $('.vjs-big-button-state-video .material-icons').html('play_arrow');
+    });
+
+    this.Player.on( 'play', function() {
+      $('.vjs-big-button-state-video').removeClass('vjs-big-button-play-video');
+      $('.vjs-big-button-state-video').addClass('vjs-big-button-pause-video');
+      $('.vjs-big-button-state-video .material-icons').html('pause');
+    });
+  }
+
+  addPlayerTouchControls() {
+    if( window.matchMedia("(pointer: coarse)").matches ) {
+      const self = this;
+
+      $('.vjs-big-button-state-video').bind( 'touchend', function() {
+        if( $(this).hasClass('vjs-big-button-pause-video') ) { self.pause(); }
+        if( $(this).hasClass('vjs-big-button-play-video') ) { self.play(); }
+      });
+    }
   }
 
   addPlayerVideoPreview() {

@@ -393,6 +393,43 @@ wedeoContainer {
   left: 10px;
 }
 
+/* video Big Buttons */
+.wedeo-player .vjs-big-buttons {
+  display: flex;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  gap: 5%;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+}
+
+.wedeo-player .vjs-big-button {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.touch .wedeo-player.vjs-has-started .vjs-big-button-core {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0.5s, opacity 0.5s;
+}
+
+.touch .wedeo-player.vjs-open-menu .vjs-big-button-core {
+  opacity: 0;
+}
+
+.wedeo-player .vjs-big-button .material-icons {
+  font-size: 80px;
+  pointer-events: all;
+}
+
+.wedeo-player .vjs-big-button-state-video .material-icons {
+  font-size: 100px;
+}
 
 /* video preview */
 .wedeo-player .vjs-small-video-preview {
