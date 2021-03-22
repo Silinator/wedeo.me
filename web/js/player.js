@@ -320,7 +320,7 @@ class wedeoPlayerClass {
       }
     });
 
-    $('.vjs-progress-control').bind( 'mousemove',  function(e) {
+    $('.vjs-progress-control').bind( 'mousemove', function(e) {
       const offset = $(this).offset();
       const hoverPosFromLeft = e.pageX - offset.left;
       const maxWidth = $('.vjs-progress-control').width();
@@ -329,7 +329,7 @@ class wedeoPlayerClass {
       self.updatePlayerVideoPreview( hoverTime, hoverPosFromLeft, maxWidth );
     });
 
-    $('.vjs-progress-control').bind( 'touchmove',  function(e) {
+    $('.vjs-progress-control').bind( 'touchmove', function(e) {
       $('.vjs-small-video-preview').show();
       $('.vjs-small-time-preview').css('display', 'flex');
       const touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
@@ -341,7 +341,7 @@ class wedeoPlayerClass {
       self.updatePlayerVideoPreview( hoverTime, hoverPosFromLeft, maxWidth );
     });
 
-    $('.vjs-progress-control').bind( 'touchend',  function() {
+    $('.vjs-progress-control').bind( 'touchend', function() {
       $('.vjs-small-video-preview').hide();
       $('.vjs-small-time-preview').hide();
     });
@@ -430,7 +430,7 @@ class wedeoPlayerClass {
     $('.vjs-settings-menu').css('display', 'flex');
     $('.vjs-setting').attr('tabindex',0);
 
-    $(document).unbind( 'mouseup').bind( 'mouseup', function( e ) {
+    $(document).unbind('mouseup touchend').bind( 'mouseup touchend', function( e ) {
         const container = $(".vjs-settings-menu, .vjs-settings-button, .vjs-settings-dropdown");
 
         if( !container.is(e.target) && container.has(e.target).length === 0 ) {

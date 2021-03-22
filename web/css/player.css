@@ -109,6 +109,11 @@ wedeoContainer {
   pointer-events: all;
 }
 
+.touch .wedeo-player .vjs-header,
+.touch .wedeo-player .vjs-sidebar {
+  display: none;
+}
+
 .wedeo-player .vjs-control {
   height: 30px;
   width: 50px;
@@ -153,6 +158,7 @@ wedeoContainer {
 
 .wedeo-player.vjs-has-started.vjs-user-inactive.vjs-playing:not(.vjs-open-menu) .vjs-header,
 .wedeo-player.vjs-has-started.vjs-user-inactive.vjs-playing:not(.vjs-open-menu) .vjs-sidebar,
+.wedeo-player.vjs-has-started.vjs-user-inactive.vjs-playing:not(.vjs-open-menu) .vjs-big-button-core,
 .wedeo-player.vjs-has-started.vjs-user-inactive.vjs-playing:not(.vjs-open-menu) .vjs-control-bar {
   visibility: visible;
   opacity: 0;
@@ -341,6 +347,7 @@ wedeoContainer {
 .wedeo-player .vjs-settings-dropdown {
   display: none;
   width: 200px;
+  max-height: calc(100% - 105px);
   flex-direction: column;
   position: absolute;
   right: 10px;
@@ -366,7 +373,7 @@ wedeoContainer {
 .wedeo-player .vjs-settings-dropdown-options {
   display: none;
   flex-direction: column;
-  justify-content: flex-end;
+  overflow: auto;
 }
 
 .wedeo-player .vjs-settings-dropdown-option {
