@@ -20,7 +20,7 @@ wedeoContainer {
   padding-top: 56.25%;
 }
 
-.wedeo-player video[poster] {
+.wedeo-player:not(.vjs-fullscreen) video[poster] {
   object-fit: fill;
 }
 
