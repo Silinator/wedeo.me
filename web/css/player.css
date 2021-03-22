@@ -47,7 +47,7 @@ wedeoContainer {
 }
 
 .wedeo-player .vjs-header {
-  display: flex;
+  display: none;
   position: absolute;
   width: 100%;
   padding: 20px 15px;
@@ -62,7 +62,7 @@ wedeoContainer {
 }
 
 .wedeo-player .vjs-sidebar {
-  display: flex;
+  display: none;
   position: absolute;
   height: 100%;
   width: 100px;
@@ -70,6 +70,11 @@ wedeoContainer {
   right: 0;
   background: linear-gradient( 90deg, transparent, var(--bg-blackA60) );
   pointer-events: none;
+}
+
+.wedeo-player.vjs-has-started .vjs-header,
+.wedeo-player.vjs-has-started .vjs-sidebar {
+  display: flex;
 }
 
 .wedeo-player .vjs-sidebar-content {
