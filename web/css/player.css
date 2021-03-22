@@ -47,7 +47,6 @@ wedeoContainer {
 }
 
 .wedeo-player .vjs-header {
-  display: none;
   position: absolute;
   width: 100%;
   padding: 20px 15px;
@@ -72,7 +71,6 @@ wedeoContainer {
   pointer-events: none;
 }
 
-.wedeo-player.vjs-has-started .vjs-header,
 .wedeo-player.vjs-has-started .vjs-sidebar {
   display: flex;
 }
