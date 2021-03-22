@@ -25,7 +25,14 @@ wedeoContainer {
 }
 
 .wedeo-player .vjs-loading-spinner {
-  border: 6px solid var(--bg-blackA60);
+  border: 8px solid var(--bg-blackA60);
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+}
+
+.vjs-loading-spinner:after, .vjs-loading-spinner:before {
+  margin: -8px;
 }
 
 .wedeo-player .vjs-loading-spinner:after {
