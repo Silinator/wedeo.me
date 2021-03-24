@@ -472,9 +472,10 @@ wedeoContainer {
   position: absolute;
   top: -30px;
   font-size: 30px;
+  padding: 5px 6px;
   text-align: center;
   width: 100%;
-  text-shadow: 0 0 30px var(--bg-blackA60);
+  background: var(--bg-blackA15);
 }
 
 .vjs-big-skip-buttons {
