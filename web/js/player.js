@@ -122,27 +122,27 @@ class wedeoPlayerClass {
   addPlayerMenus() {
     const self = this;
 
-    $(".vjs-custom-control-spacer").html(
+    $('#'+this.playerId+" .vjs-custom-control-spacer").html(
       "<div class='vjs-control vjs-button vjs-settings-button' tabindex='0'><span class='material-icons'>settings</span></div>" +
       "<div class='vjs-control vjs-button vjs-size-button' tabindex='0'><span class='material-icons'>aspect_ratio</span></div>" /* crop_16_9 */
     );
 
-    $(".vjs-settings-button").click( function() { self.togglePlayerSettingsMenu(); });
+    $('#'+this.playerId+" .vjs-settings-button").click( function() { self.togglePlayerSettingsMenu(); });
 
-    $(".vjs-settings-button").keyup( function( event ) {
+    $('#'+this.playerId+" .vjs-settings-button").keyup( function( event ) {
       if( event.which == 32 || event.which == 13 ) { self.togglePlayerSettingsMenu(true); }
       if( event.which == 27 ) { self.closePlayerSettingsMenu(); }
     });
 
 
-    $(".vjs-size-button").click( function() { self.togglePlayerSize(); });
+    $('#'+this.playerId+" .vjs-size-button").click( function() { self.togglePlayerSize(); });
 
-    $(".vjs-size-button").keyup( function( event ) {
+    $('#'+this.playerId+" .vjs-size-button").keyup( function( event ) {
       if( event.which == 32 || event.which == 13 ) { self.togglePlayerSize(); }
       if( event.which == 27 ) { self.closePlayerSettingsMenu(); }
     });
 
-    $(".vjs-control-bar").after(
+    $('#'+this.playerId+" .vjs-control-bar").after(
       "<div class='vjs-settings-menu'>" +
         "<div class='vjs-setting vjs-speed-settings'>" +
           "<div class='vjs-setting-title'>Geschwindigkeit</div>" +
@@ -178,54 +178,54 @@ class wedeoPlayerClass {
     );
 
     /* speed */
-    $('.vjs-speed-settings-dropdown').html( this.genDropDownOptions( this.availablePlaybackRates, this.playbackRate ) );
+    $('#'+this.playerId+' .vjs-speed-settings-dropdown').html( this.genDropDownOptions( this.availablePlaybackRates, this.playbackRate ) );
 
-    $(".vjs-speed-settings").click( function() { self.openPlayerSpeedSettings(); });
+    $('#'+this.playerId+" .vjs-speed-settings").click( function() { self.openPlayerSpeedSettings(); });
 
-    $(".vjs-speed-settings").keyup( function( event ) {
+    $('#'+this.playerId+" .vjs-speed-settings").keyup( function( event ) {
       if( event.which == 32 || event.which == 13 ) { self.openPlayerSpeedSettings(true); }
       if( event.which == 27 ) { self.closePlayerSettingsMenu(); }
     });
 
-    $(".vjs-speed-settings-dropdown .vjs-settings-dropdown-option").click( function() {
+    $('#'+this.playerId+" .vjs-speed-settings-dropdown .vjs-settings-dropdown-option").click( function() {
       self.changePlaybackRate( $(this).attr("value") );
     });
 
-    $(".vjs-speed-settings-dropdown .vjs-settings-dropdown-option").keyup( function( event ) {
+    $('#'+this.playerId+" .vjs-speed-settings-dropdown .vjs-settings-dropdown-option").keyup( function( event ) {
       if( event.which == 32 || event.which == 13 ) { self.changePlaybackRate( $(this).attr("value") ); }
       if( event.which == 27 ) { self.closePlayerSettingsMenu(); }
     });
 
     /* fullscreen Ui */
-    $('.vjs-fullscreen-settings-dropdown').html( this.genDropDownOptions( this.availableFullscreenOptions, this.fullscreenUi ) );
+    $('#'+this.playerId+" .vjs-fullscreen-settings-dropdown").html( this.genDropDownOptions( this.availableFullscreenOptions, this.fullscreenUi ) );
 
-    $(".vjs-fullscreen-settings").click( function() { self.openPlayerFullscreenSettings(); });
+    $('#'+this.playerId+" .vjs-fullscreen-settings").click( function() { self.openPlayerFullscreenSettings(); });
 
-    $(".vjs-fullscreen-settings").keyup( function( event ) {
+    $('#'+this.playerId+" .vjs-fullscreen-settings").keyup( function( event ) {
       if( event.which == 32 || event.which == 13 ) { self.openPlayerFullscreenSettings(true); }
       if( event.which == 27 ) { self.closePlayerSettingsMenu(); }
     });
 
-    $(".vjs-fullscreen-settings-dropdown .vjs-settings-dropdown-option").click( function() {
+    $('#'+this.playerId+" .vjs-fullscreen-settings-dropdown .vjs-settings-dropdown-option").click( function() {
       self.changefullscreenUi( $(this).attr("value") );
     });
 
-    $(".vjs-fullscreen-settings-dropdown .vjs-settings-dropdown-option").keyup( function( event ) {
+    $('#'+this.playerId+" .vjs-fullscreen-settings-dropdown .vjs-settings-dropdown-option").keyup( function( event ) {
       if( event.which == 32 || event.which == 13 ) { self.changefullscreenUi( $(this).attr("value") ); }
       if( event.which == 27 ) { self.closePlayerSettingsMenu(); }
     });
 
 
-    $(".vjs-settings-dropdown-title-container").click( function() { self.closeDropdowns(); });
+    $('#'+this.playerId+" .vjs-settings-dropdown-title-container").click( function() { self.closeDropdowns(); });
 
-    $(".vjs-settings-dropdown-title-container").keyup( function( event ) {
+    $('#'+this.playerId+" .vjs-settings-dropdown-title-container").keyup( function( event ) {
       if( event.which == 32 || event.which == 13 ) { self.closeDropdowns(true); }
       if( event.which == 27 ) { self.closePlayerSettingsMenu(); }
     });
   }
 
   addPlayerSidebar() {
-    $('.vjs-control-bar').before(
+    $('#'+this.playerId+' .vjs-control-bar').before(
       "<div class='vjs-sidebar'>" +
         "<div class='vjs-sidebar-content'>" +
           "<div class='vjs-rating'>" +
@@ -257,13 +257,13 @@ class wedeoPlayerClass {
   }
 
   addPlayerHeader() {
-    $('.vjs-control-bar').before("<div class='vjs-header'><div class='vjs-header-title'></div></div>");
+    $('#'+this.playerId+' .vjs-control-bar').before("<div class='vjs-header'><div class='vjs-header-title'></div></div>");
   }
 
   addBigPlayerButtons() {
     const self = this;
 
-    $('.vjs-control-bar').before(
+    $('#'+this.playerId+' .vjs-control-bar').before(
       "<div class='vjs-big-buttons'>" +
         "<div class='vjs-big-button vjs-big-button-rewind-video' data-time='0'>" +
           "<span class='material-icons'>fast_rewind</span>" +
@@ -304,14 +304,14 @@ class wedeoPlayerClass {
       let rewindTime = 0;
       let forwardTime = 0;
 
-      $('.vjs-control-bar').before(
+      $('#'+this.playerId+' .vjs-control-bar').before(
         "<div class='vjs-big-skip-buttons'>" +
           "<div class='vjs-big-skip-button vjs-big-skip-button-rewind'></div>" +
           "<div class='vjs-big-skip-button vjs-big-skip-button-forward'></div>" +
         "</div>"
       );
 
-      $('.vjs-big-button-state-video').bind( 'touchend', function() {
+      $('#'+this.playerId+' .vjs-big-button-state-video').bind( 'touchend', function() {
         if( $(this).hasClass('vjs-big-button-pause-video') ) { self.pause(); }
         if( $(this).hasClass('vjs-big-button-play-video') ) { self.play(); }
       });
@@ -361,42 +361,42 @@ class wedeoPlayerClass {
 
   addPlayerVideoPreview() {
     const self = this;
-    $('.vjs-progress-control').append("<div class='vjs-small-video-preview'></div>");
-    $('.vjs-progress-control').append("<div class='vjs-small-time-preview'></div>");
+    $('#'+this.playerId+' .vjs-progress-control').append("<div class='vjs-small-video-preview'></div>");
+    $('#'+this.playerId+' .vjs-progress-control').append("<div class='vjs-small-time-preview'></div>");
 
     this.Player.on( 'seeking', function() {
-      if( !$('.vjs-progress-control').is(":hover") ) {
-        const maxWidth = $('.vjs-progress-control').width();
+      if( !$('#'+self.playerId+' .vjs-progress-control').is(":hover") ) {
+        const maxWidth = $('#'+self.playerId+' .vjs-progress-control').width();
         const hoverTime = Math.floor( self.Player.currentTime() );
         const hoverPosFromLeft = Math.floor( maxWidth * (hoverTime / self.Player.duration()) );
         self.updatePlayerVideoPreview( hoverTime, hoverPosFromLeft, maxWidth );
       }
     });
 
-    $('.vjs-progress-control').bind( 'mousemove', function(e) {
+    $('#'+this.playerId+' .vjs-progress-control').bind( 'mousemove', function(e) {
       const offset = $(this).offset();
       const hoverPosFromLeft = e.pageX - offset.left;
-      const maxWidth = $('.vjs-progress-control').width();
+      const maxWidth = $('#'+self.playerId+' .vjs-progress-control').width();
       const maxTime = self.Player.duration();
       const hoverTime = Math.floor( maxTime / ( maxWidth / hoverPosFromLeft ) );
       self.updatePlayerVideoPreview( hoverTime, hoverPosFromLeft, maxWidth );
     });
 
-    $('.vjs-progress-control').bind( 'touchmove', function(e) {
-      $('.vjs-small-video-preview').show();
-      $('.vjs-small-time-preview').css('display', 'flex');
+    $('#'+this.playerId+' .vjs-progress-control').bind( 'touchmove', function(e) {
+      $('#'+self.playerId+' .vjs-small-video-preview').show();
+      $('#'+self.playerId+' .vjs-small-time-preview').css('display', 'flex');
       const touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
       const offset = $(this).offset();
       const hoverPosFromLeft = touch.pageX - offset.left;
-      const maxWidth = $('.vjs-progress-control').width();
+      const maxWidth = $('#'+self.playerId+' .vjs-progress-control').width();
       const maxTime = self.Player.duration();
       const hoverTime = Math.floor( maxTime / ( maxWidth / hoverPosFromLeft ) );
       self.updatePlayerVideoPreview( hoverTime, hoverPosFromLeft, maxWidth );
     });
 
-    $('.vjs-progress-control').bind( 'touchend', function() {
-      $('.vjs-small-video-preview').hide();
-      $('.vjs-small-time-preview').hide();
+    $('#'+this.playerId+' .vjs-progress-control').bind( 'touchend', function() {
+      $('#'+self.playerId+' .vjs-small-video-preview').hide();
+      $('#'+self.playerId+' .vjs-small-time-preview').hide();
     });
   }
 
@@ -404,16 +404,16 @@ class wedeoPlayerClass {
     const hoverImgTime = hoverTime + 4; // the preview is off by about 4s. idk why...
 
     //set img posi
-    const imgSize = $('.vjs-small-video-preview').width();
+    const imgSize = $('#'+this.playerId+' .vjs-small-video-preview').width();
     const halfImgSize = imgSize / 2;
     let newImgPos = hoverPosFromLeft - halfImgSize;
       if( newImgPos < 0 ){ newImgPos = 0; }
       if( newImgPos + imgSize > maxWidth ){ newImgPos = maxWidth - imgSize; }
 
-    $('.vjs-small-video-preview').css('left', newImgPos);
+    $('#'+this.playerId+' .vjs-small-video-preview').css('left', newImgPos);
 
     //set time posi
-    const timeSize = $('.vjs-small-time-preview').width() + 8;
+    const timeSize = $('#'+this.playerId+' .vjs-small-time-preview').width() + 8;
     const halfTimeSize = timeSize / 2;
     let newTimePos = hoverPosFromLeft - halfTimeSize;
       const videoPadding = halfImgSize - halfTimeSize;
@@ -421,8 +421,8 @@ class wedeoPlayerClass {
       if( newTimePos + timeSize > maxWidth - videoPadding ){ newTimePos = maxWidth - timeSize - videoPadding; }
 
     const displayTime = this.secondsToHms(hoverTime);
-    $('.vjs-small-time-preview').html(displayTime);
-    $('.vjs-small-time-preview').css('left', newTimePos);
+    $('#'+this.playerId+' .vjs-small-time-preview').html(displayTime);
+    $('#'+this.playerId+' .vjs-small-time-preview').css('left', newTimePos);
 
     const getSingleImg = Math.floor( hoverImgTime / 5 / 20 );
     const getImgPreview = getSingleImg + 1;
@@ -438,8 +438,8 @@ class wedeoPlayerClass {
     }
 
     if( getImgPreview ) {
-      $('.vjs-small-video-preview').css( 'background-image', 'url(' + this.URLbase + 'images/thumb/preview/' + this.meta.vuid + '/pre' + getImgPreview + '.jpg)' );
-      $('.vjs-small-video-preview').css( 'background-position', imgPos );
+      $('#'+this.playerId+' .vjs-small-video-preview').css( 'background-image', 'url(' + this.URLbase + 'images/thumb/preview/' + this.meta.vuid + '/pre' + getImgPreview + '.jpg)' );
+      $('#'+this.playerId+' .vjs-small-video-preview').css( 'background-position', imgPos );
     }
   }
 
@@ -480,8 +480,8 @@ class wedeoPlayerClass {
     const self = this;
     this.playerSettingsMenuOpen = true;
     $('#'+this.playerId).addClass('vjs-open-menu');
-    $('.vjs-settings-menu').css('display', 'flex');
-    $('.vjs-setting').attr('tabindex',0);
+    $('#'+this.playerId+' .vjs-settings-menu').css('display', 'flex');
+    $('#'+this.playerId+' .vjs-setting').attr('tabindex', 0);
 
     $(document).unbind('mouseup touchend').bind( 'mouseup touchend', function( e ) {
         const container = $(".vjs-settings-menu, .vjs-settings-button, .vjs-settings-dropdown");
@@ -500,74 +500,74 @@ class wedeoPlayerClass {
     this.playerSettingsMenuOpen = false;
     $('#'+this.playerId).removeClass('vjs-open-menu');
     this.closeDropdowns();
-    $('.vjs-settings-menu').hide();
+    $('#'+this.playerId+' .vjs-settings-menu').hide();
 
-    $('.vjs-setting').attr('tabindex','');
+    $('#'+this.playerId+' .vjs-setting').attr('tabindex','');
     $('#'+this.playerId).focus();
     $(document).unbind( 'mouseup');
   }
 
   openPlayerSpeedSettings( key = false ) {
     this.PlayerSpeedSettingsOpen = true;
-    $('.vjs-settings-menu').hide();
-    $('.vjs-settings-dropdown-title').html( $('.vjs-speed-settings .vjs-setting-title').html() );
-    $('.vjs-settings-dropdown').css('display', 'flex');
-    $('.vjs-speed-settings-dropdown').css('display', 'flex');
+    $('#'+this.playerId+' .vjs-settings-menu').hide();
+    $('#'+this.playerId+' .vjs-settings-dropdown-title').html( $('#'+this.playerId+' .vjs-speed-settings .vjs-setting-title').html() );
+    $('#'+this.playerId+' .vjs-settings-dropdown').css('display', 'flex');
+    $('#'+this.playerId+' .vjs-speed-settings-dropdown').css('display', 'flex');
 
     this.selectDropdownMenu(key);
   }
 
   openPlayerResolutionSettings( key = false ) {
     this.PlayerResolutionSettingsOpen = true;
-    $('.vjs-settings-menu').hide();
-    $('.vjs-settings-dropdown-title').html( $('.vjs-resolution-settings .vjs-setting-title').html() );
-    $('.vjs-settings-dropdown').css('display', 'flex');
-    $('.vjs-resolution-settings-dropdown').css('display', 'flex');
+    $('#'+this.playerId+' .vjs-settings-menu').hide();
+    $('#'+this.playerId+' .vjs-settings-dropdown-title').html( $('#'+this.playerId+' .vjs-resolution-settings .vjs-setting-title').html() );
+    $('#'+this.playerId+' .vjs-settings-dropdown').css('display', 'flex');
+    $('#'+this.playerId+' .vjs-resolution-settings-dropdown').css('display', 'flex');
 
     this.selectDropdownMenu(key);
   }
 
   openPlayerFullscreenSettings( key = false ) {
     this.closePlayerFullscreenSettingsOpen = true;
-    $('.vjs-settings-menu').hide();
-    $('.vjs-settings-dropdown-title').html( $('.vjs-fullscreen-settings .vjs-setting-title').html() );
-    $('.vjs-settings-dropdown').css('display', 'flex');
-    $('.vjs-fullscreen-settings-dropdown').css('display', 'flex');
+    $('#'+this.playerId+' .vjs-settings-menu').hide();
+    $('#'+this.playerId+' .vjs-settings-dropdown-title').html( $('#'+this.playerId+' .vjs-fullscreen-settings .vjs-setting-title').html() );
+    $('#'+this.playerId+' .vjs-settings-dropdown').css('display', 'flex');
+    $('#'+this.playerId+' .vjs-fullscreen-settings-dropdown').css('display', 'flex');
 
     this.selectDropdownMenu(key);
   }
 
   selectDropdownMenu( key ) {
-    $('.vjs-settings-dropdown-title-container').attr('tabindex',0);
-    $('.vjs-settings-dropdown-option').attr('tabindex',0);
+    $('#'+this.playerId+' .vjs-settings-dropdown-title-container').attr('tabindex',0);
+    $('#'+this.playerId+' .vjs-settings-dropdown-option').attr('tabindex',0);
 
     if( key ) {
-      if( this.PlayerSpeedSettingsOpen ) { $('.vjs-speed-settings-dropdown .vjs-settings-dropdown-option:first').focus(); }
-      if( this.PlayerResolutionSettingsOpen ) { $('.vjs-resolution-settings-dropdown .vjs-settings-dropdown-option:first').focus(); }
-      if( this.closePlayerFullscreenSettingsOpen ) { $('.vjs-fullscreen-settings-dropdown .vjs-settings-dropdown-option:first').focus(); }
+      if( this.PlayerSpeedSettingsOpen ) { $('#'+this.playerId+ '.vjs-speed-settings-dropdown .vjs-settings-dropdown-option:first').focus(); }
+      if( this.PlayerResolutionSettingsOpen ) { $('#'+this.playerId+ '.vjs-resolution-settings-dropdown .vjs-settings-dropdown-option:first').focus(); }
+      if( this.closePlayerFullscreenSettingsOpen ) { $('#'+this.playerId+ '.vjs-fullscreen-settings-dropdown .vjs-settings-dropdown-option:first').focus(); }
     }
   }
 
   closePlayerSpeedSettings( key ) {
     this.PlayerSpeedSettingsOpen = false;
-    if( key ){ $('.vjs-speed-settings').focus(); }
+    if( key ){ $('#'+this.playerId+' .vjs-speed-settings').focus(); }
   }
   closePlayerResolutionSettings( key ) {
     this.PlayerResolutionSettingsOpen = false;
-    if( key ){ $('.vjs-resolution-settings').focus(); }
+    if( key ){ $('#'+this.playerId+' .vjs-resolution-settings').focus(); }
   }
   closePlayerFullscreenSettings( key ) {
     this.closePlayerFullscreenSettingsOpen = false;
-    if( key ){ $('.vjs-fullscreen-settings').focus(); }
+    if( key ){ $('#'+this.playerId+' .vjs-fullscreen-settings').focus(); }
   }
 
   closeDropdowns( key = false ) {
-    $('.vjs-settings-dropdown').hide();
-    $('.vjs-settings-dropdown-options').hide();
-    $('.vjs-settings-menu').css('display', 'flex');
+    $('#'+this.playerId+' .vjs-settings-dropdown').hide();
+    $('#'+this.playerId+' .vjs-settings-dropdown-options').hide();
+    $('#'+this.playerId+' .vjs-settings-menu').css('display', 'flex');
 
-    $('.vjs-settings-dropdown-title-container').attr('tabindex','');
-    $('.vjs-settings-dropdown-option').attr('tabindex','');
+    $('#'+this.playerId+' .vjs-settings-dropdown-title-container').attr('tabindex','');
+    $('#'+this.playerId+' .vjs-settings-dropdown-option').attr('tabindex','');
 
     if( this.PlayerSpeedSettingsOpen ) { this.closePlayerSpeedSettings(key); }
     if( this.PlayerResolutionSettingsOpen ) { this.closePlayerResolutionSettings(key); }
@@ -619,32 +619,32 @@ class wedeoPlayerClass {
 
   updatePlayerSettingsMenu() {
     const self = this;
-    $('.vjs-resolution-settings .vjs-setting-value').html( this.defaultRes );
-    $('.vjs-resolution-settings-dropdown').html( this.genDropDownOptions( this.meta.availableSources.reverse(), this.defaultRes ) );
+    $('#'+this.playerId+' .vjs-resolution-settings .vjs-setting-value').html( this.defaultRes );
+    $('#'+this.playerId+' .vjs-resolution-settings-dropdown').html( this.genDropDownOptions( this.meta.availableSources.reverse(), this.defaultRes ) );
 
-    $(".vjs-resolution-settings").unbind('click').bind( 'click', function() { self.openPlayerResolutionSettings(); });
+    $('#'+this.playerId+" .vjs-resolution-settings").unbind('click').bind( 'click', function() { self.openPlayerResolutionSettings(); });
 
-    $(".vjs-resolution-settings").keyup( function( event ) {
+    $('#'+this.playerId+" .vjs-resolution-settings").keyup( function( event ) {
       if( event.which == 32 || event.which == 13 ) { self.openPlayerResolutionSettings(true); }
       if( event.which == 27 ) { self.closePlayerSettingsMenu(); }
     });
 
-    $(".vjs-resolution-settings-dropdown .vjs-settings-dropdown-option").unbind('click').bind( 'click', function() {
+    $('#'+this.playerId+" .vjs-resolution-settings-dropdown .vjs-settings-dropdown-option").unbind('click').bind( 'click', function() {
       self.changeSource( $(this).attr("value") );
     });
 
-    $(".vjs-resolution-settings-dropdown .vjs-settings-dropdown-option").keyup( function( event ) {
+    $('#'+this.playerId+" .vjs-resolution-settings-dropdown .vjs-settings-dropdown-option").keyup( function( event ) {
       if( event.which == 32 || event.which == 13 ) { self.changeSource( $(this).attr("value") ); }
       if( event.which == 27 ) { self.closePlayerSettingsMenu(); }
     });
   }
 
   updatePlayerTitle() {
-    $('.vjs-header-title').html(this.meta.title);
+    $('#'+this.playerId+' .vjs-header-title').html(this.meta.title);
   }
 
   updatePlayerRating() {
-    $('.vjs-rating-percent').html( this.meta.rating[0] == 0 ? "0%" : Math.floor( this.meta.rating[0] / ( this.meta.rating[0] + this.meta.rating[1] ) * 100 ) + "%" );
+    $('#'+this.playerId+' .vjs-rating-percent').html( this.meta.rating[0] == 0 ? "0%" : Math.floor( this.meta.rating[0] / ( this.meta.rating[0] + this.meta.rating[1] ) * 100 ) + "%" );
   }
 
   changeSource( resolution ) {
@@ -680,9 +680,9 @@ class wedeoPlayerClass {
         });
       }
 
-      $('.vjs-resolution-settings .vjs-setting-value').html(resolution);
-      $('.vjs-resolution-settings-dropdown .vjs-settings-dropdown-option').removeClass('active');
-      $('.vjs-resolution-settings-dropdown .vjs-settings-dropdown-option[value="' + resolution + '"]').addClass('active');
+      $('#'+this.playerId+' .vjs-resolution-settings .vjs-setting-value').html(resolution);
+      $('#'+this.playerId+' .vjs-resolution-settings-dropdown .vjs-settings-dropdown-option').removeClass('active');
+      $('#'+this.playerId+' .vjs-resolution-settings-dropdown .vjs-settings-dropdown-option[value="' + resolution + '"]').addClass('active');
     }
 
     this.closePlayerSettingsMenu();
@@ -693,9 +693,9 @@ class wedeoPlayerClass {
       this.playbackRate = playbackRate;
       this.Player.playbackRate(this.playbackRate);
 
-      $('.vjs-speed-settings .vjs-setting-value').html(playbackRate);
-      $('.vjs-speed-settings-dropdown .vjs-settings-dropdown-option').removeClass('active');
-      $('.vjs-speed-settings-dropdown .vjs-settings-dropdown-option[value="' + playbackRate + '"]').addClass('active');
+      $('#'+this.playerId+' .vjs-speed-settings .vjs-setting-value').html(playbackRate);
+      $('#'+this.playerId+' .vjs-speed-settings-dropdown .vjs-settings-dropdown-option').removeClass('active');
+      $('#'+this.playerId+' .vjs-speed-settings-dropdown .vjs-settings-dropdown-option[value="' + playbackRate + '"]').addClass('active');
     }
 
     this.closePlayerSettingsMenu();
@@ -705,9 +705,9 @@ class wedeoPlayerClass {
     if( this.fullscreenUi != fullscreenUi ) {
       this.fullscreenUi = fullscreenUi;
 
-      $('.vjs-fullscreen-settings .vjs-setting-value').html(fullscreenUi);
-      $('.vjs-fullscreen-settings-dropdown .vjs-settings-dropdown-option').removeClass('active');
-      $('.vjs-fullscreen-settings-dropdown .vjs-settings-dropdown-option[value="' + fullscreenUi + '"]').addClass('active');
+      $('#'+this.playerId+' .vjs-fullscreen-settings .vjs-setting-value').html(fullscreenUi);
+      $('#'+this.playerId+' .vjs-fullscreen-settings-dropdown .vjs-settings-dropdown-option').removeClass('active');
+      $('#'+this.playerId+' .vjs-fullscreen-settings-dropdown .vjs-settings-dropdown-option[value="' + fullscreenUi + '"]').addClass('active');
     }
 
     this.closePlayerSettingsMenu();
