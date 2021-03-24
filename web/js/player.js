@@ -284,15 +284,15 @@ class wedeoPlayerClass {
     );
 
     this.Player.on( 'pause', function() {
-      $('.vjs-big-button-state-video').removeClass('vjs-big-button-pause-video');
-      $('.vjs-big-button-state-video').addClass('vjs-big-button-play-video');
-      $('.vjs-big-button-state-video .material-icons').html('play_arrow');
+      $('#'+self.playerId+' .vjs-big-button-state-video').removeClass('vjs-big-button-pause-video');
+      $('#'+self.playerId+' .vjs-big-button-state-video').addClass('vjs-big-button-play-video');
+      $('#'+self.playerId+' .vjs-big-button-state-video .material-icons').html('play_arrow');
     });
 
     this.Player.on( 'play', function() {
-      $('.vjs-big-button-state-video').removeClass('vjs-big-button-play-video');
-      $('.vjs-big-button-state-video').addClass('vjs-big-button-pause-video');
-      $('.vjs-big-button-state-video .material-icons').html('pause');
+      $('#'+self.playerId+' .vjs-big-button-state-video').removeClass('vjs-big-button-play-video');
+      $('#'+self.playerId+' .vjs-big-button-state-video').addClass('vjs-big-button-pause-video');
+      $('#'+self.playerId+' .vjs-big-button-state-video .material-icons').html('pause');
     });
   }
 
