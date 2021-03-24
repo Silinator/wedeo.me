@@ -423,11 +423,17 @@ wedeoContainer {
   height: 100%;
   width: 100%;
   pointer-events: none;
+  z-index: 1;
 }
 
 .wedeo-player .vjs-big-button {
-  visibility: hidden;
+  position: relative;
+  text-shadow: 0 0 30px var(--bg-blackA60);
   opacity: 0;
+}
+
+.touch .wedeo-player .vjs-big-button {
+  visibility: visible;
 }
 
 .touch .wedeo-player.vjs-has-started .vjs-big-button-core {
@@ -440,13 +446,51 @@ wedeoContainer {
   opacity: 0;
 }
 
+.touch .wedeo-player .vjs-big-button-core .material-icons {
+  pointer-events: all;
+}
+
 .wedeo-player .vjs-big-button .material-icons {
   font-size: 80px;
-  pointer-events: all;
 }
 
 .wedeo-player .vjs-big-button-state-video .material-icons {
   font-size: 100px;
+}
+
+.vjs-big-button-rewind-video {
+  margin-right: -130px;
+}
+
+.vjs-big-button-forward-video {
+  margin-left: -130px;
+}
+
+.vjs-big-button-rewind-video:before,
+.vjs-big-button-forward-video:before {
+  content: attr(data-time);
+  position: absolute;
+  top: -30px;
+  font-size: 30px;
+  text-align: center;
+  width: 100%;
+  text-shadow: 0 0 30px var(--bg-blackA60);
+}
+
+.vjs-big-skip-buttons {
+  display: flex;
+  position: absolute;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.vjs-big-skip-button {
+  height: 100%;
+  width: 45%;
 }
 
 /* video preview */

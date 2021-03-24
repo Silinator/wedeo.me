@@ -34,6 +34,7 @@ class wedeoPlayerClass {
     this.availablePlaybackRates = [ 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2];
     this.availableFullscreenOptions = [ "auto", "on", "off"];
     this.inactivityTimeout = 2000;
+    this.seekTime = 10;
 
     this.createPlayer();
   }
@@ -264,7 +265,7 @@ class wedeoPlayerClass {
 
     $('.vjs-control-bar').before(
       "<div class='vjs-big-buttons'>" +
-        "<div class='vjs-big-button vjs-big-button-rewind-video'>" +
+        "<div class='vjs-big-button vjs-big-button-rewind-video' data-time='0'>" +
           "<span class='material-icons'>fast_rewind</span>" +
         "</div>" +
         "<div class='vjs-big-button vjs-big-button-core vjs-big-button-previous-video'>" +
@@ -276,7 +277,7 @@ class wedeoPlayerClass {
         "<div class='vjs-big-button vjs-big-button-core vjs-big-button-next-video'>" +
         "<span class='material-icons'>skip_next</span>" +
         "</div>" +
-        "<div class='vjs-big-button vjs-big-button-forward-video'>" +
+        "<div class='vjs-big-button vjs-big-button-forward-video' data-time='0'>" +
           "<span class='material-icons'>fast_forward</span>" +
         "</div>" +
       "</div>"
@@ -298,11 +299,63 @@ class wedeoPlayerClass {
   addPlayerTouchControls() {
     if( window.matchMedia("(pointer: coarse)").matches ) {
       const self = this;
+      let tappedRewind = false;
+      let tappedForward = false;
+      let rewindTime = 0;
+      let forwardTime = 0;
+
+      $('.vjs-control-bar').before(
+        "<div class='vjs-big-skip-buttons'>" +
+          "<div class='vjs-big-skip-button vjs-big-skip-button-rewind'></div>" +
+          "<div class='vjs-big-skip-button vjs-big-skip-button-forward'></div>" +
+        "</div>"
+      );
 
       $('.vjs-big-button-state-video').bind( 'touchend', function() {
         if( $(this).hasClass('vjs-big-button-pause-video') ) { self.pause(); }
         if( $(this).hasClass('vjs-big-button-play-video') ) { self.play(); }
       });
+
+      $('#'+this.playerId + ' .vjs-big-skip-button-rewind').on( 'touchstart', function(e) {
+          if( !tappedRewind ) {
+            tappedRewind = setTimeout( function() { resetTouchSeeking(); }, 300 );
+          } else {
+            clearTimeout( tappedRewind );
+            tappedRewind = setTimeout( function() { resetTouchSeeking(); }, 300 );
+
+            rewindTime = rewindTime + self.seekTime;
+            $('#'+self.playerId+' .vjs-big-button').css('opacity', 0);
+            $('#'+self.playerId+' .vjs-big-button-rewind-video').attr('data-time', "- " + rewindTime);
+            $('#'+self.playerId+' .vjs-big-button-rewind-video').css('opacity', 1);
+            self.seekBackward();
+          }
+      });
+
+      $('#'+this.playerId + ' .vjs-big-skip-button-forward').on( 'touchstart', function(e) {
+          if( !tappedForward ) {
+            tappedForward = setTimeout( function() { resetTouchSeeking(); }, 300 );
+          } else {
+            clearTimeout( tappedForward );
+            tappedForward = setTimeout( function() { resetTouchSeeking(); }, 300 );
+
+            forwardTime = forwardTime + self.seekTime;
+            $('#'+self.playerId+' .vjs-big-button').css('opacity', 0);
+            $('#'+self.playerId+' .vjs-big-button-forward-video').attr('data-time', "+ " + forwardTime);
+            $('#'+self.playerId+' .vjs-big-button-forward-video').css('opacity', 1);
+
+            self.seekForward();
+          }
+      });
+
+      function resetTouchSeeking() {
+        tappedRewind = null;
+        tappedForward = null;
+        rewindTime = 0;
+        forwardTime = 0;
+        $('#'+self.playerId+' .vjs-big-button').attr('style', '');
+        $('#'+self.playerId+' .vjs-big-button-rewind-video').attr('data-time', "0");
+        $('#'+self.playerId+' .vjs-big-button-forward-video').attr('data-time', "0");
+      }
     }
   }
 
@@ -552,8 +605,8 @@ class wedeoPlayerClass {
 
       navigator.mediaSession.setActionHandler('play', function() { self.play(); });
       navigator.mediaSession.setActionHandler('pause', function() { self.pause(); });
-      navigator.mediaSession.setActionHandler('seekbackward', function() { self.seekbackward(); });
-      navigator.mediaSession.setActionHandler('seekforward', function() { self.seekforward(); });
+      navigator.mediaSession.setActionHandler('seekbackward', function() { self.seekBackward(); });
+      navigator.mediaSession.setActionHandler('seekforward', function() { self.seekForward(); });
       navigator.mediaSession.setActionHandler('previoustrack', function() {});
       navigator.mediaSession.setActionHandler('nexttrack', function() {});
     }
@@ -561,8 +614,8 @@ class wedeoPlayerClass {
 
   play(){ this.Player.play(); }
   pause(){ this.Player.pause(); }
-  seekbackward(){ this.Player.currentTime( this.Player.currentTime() - 10 ); }
-  seekforward(){ this.Player.currentTime( this.Player.currentTime() + 10 ); }
+  seekBackward(){ this.Player.currentTime( this.Player.currentTime() - this.seekTime ); }
+  seekForward(){ this.Player.currentTime( this.Player.currentTime() + this.seekTime ); }
 
   updatePlayerSettingsMenu() {
     const self = this;
