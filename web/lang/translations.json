@@ -1,0 +1,54 @@
+{
+ "VIDEO_QUALITY-TITLE": {
+   "de": "Qualität",
+   "en": "Quality"
+ },
+ "VIDEO_PLAYBACK_SPEED-TITLE": {
+   "de": "Geschwindigkeit",
+   "en": "Playback speed"
+ },
+ "VIDEO_FULLSCREEN_UI-TITLE": {
+   "de": "Vollbild UI",
+   "en": "Fullscreen UI"
+ },
+ "VIDEO_FULLSCREEN_UI_AUTO": {
+   "de": "Automatisch",
+   "en": "Automatic"
+ },
+ "VIDEO_FULLSCREEN_UI_ON": {
+   "de": "An",
+   "en": "On"
+ },
+ "VIDEO_FULLSCREEN_UI_OFF": {
+   "de": "Aus",
+   "en": "Off"
+ },
+ "VIDEO_LIKE": {
+   "de": "Gefällt mir",
+   "en": "I like it"
+ },
+ "VIDEO_UNLIKE": {
+   "de": "Gefällt mir nicht mehr",
+   "en": "I don't like it anymore"
+ },
+ "VIDEO_DISLIKE": {
+   "de": "Gefällt mir nicht",
+   "en": "I don't like it"
+ },
+ "VIDEO_ADD_PLAYLIST": {
+   "de": "Zu Playlist hinzufügen",
+   "en": "Add to playlist"
+ },
+ "VIDEO_RECOMMEND": {
+   "de": "Empfehlen",
+   "en": "Recommend"
+ },
+ "VIDEO_SHARE": {
+   "de": "Teilen",
+   "en": "Share"
+ },
+ "VIDEO_DOWNLOAD": {
+   "de": "Herunterladen",
+   "en": "Download"
+ }
+}

@@ -20,16 +20,17 @@
 <?php /* jQuery */ ?>
 <script src="node_modules/jquery/dist/jquery.min.js"></script>
 
+<?php /* own */ ?>
+<link href="css/main.css" rel="stylesheet">
+<script src="js/main.js"></script>
+
+<?php /* language */ ?>
+<script src="lang/lang.js"></script>
 
 <?php /* wedeo player */ ?>
 <link href="node_modules/video.js/dist/video-js.min.css" rel="stylesheet">
 <script src="node_modules/video.js/dist/video.min.js"></script>
 <script src="node_modules/videojs-hotkeys/videojs.hotkeys.min.js"></script>
-
-
-<?php /* own */ ?>
-<link href="css/main.css" rel="stylesheet">
 <link href="css/player.css" rel="stylesheet">
 <link href="css/backgroundPlayer.css" rel="stylesheet">
 <script src="js/player.js"></script>
-<script src="js/main.js"></script>
