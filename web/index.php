@@ -32,8 +32,10 @@
         }
       }
 
-      var wedeoPlayer = new wedeoPlayerClass( 'wedeo-player', options );
-      wedeoPlayer.setVideo(meta);
+      $( document ).ready( function() {
+        var wedeoPlayer = new wedeoPlayerClass( 'wedeo-player', options );
+        wedeoPlayer.setVideo(meta);
+      });
     </script>
   </body>
 </html>

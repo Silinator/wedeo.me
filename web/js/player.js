@@ -32,7 +32,7 @@ class wedeoPlayerClass {
     this.playbackRate = options.playbackRate;
     this.fullscreenUi = options.fullscreenUi;
     this.availablePlaybackRates = [ 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2];
-    this.availableFullscreenOptions = [ "auto", "on", "off"];
+    this.availableFullscreenOptions = [ t('VIDEO_FULLSCREEN_UI_AUTO'), t('VIDEO_FULLSCREEN_UI_ON'), t('VIDEO_FULLSCREEN_UI_OFF')];
     this.inactivityTimeout = 2000;
     this.seekTime = 10;
 
@@ -145,30 +145,30 @@ class wedeoPlayerClass {
     $('#'+this.playerId+" .vjs-control-bar").after(
       "<div class='vjs-settings-menu'>" +
         "<div class='vjs-setting vjs-speed-settings'>" +
-          "<div class='vjs-setting-title'>Geschwindigkeit</div>" +
+          "<div class='vjs-setting-title'>" + t('VIDEO_PLAYBACK_SPEED-TITLE') + "</div>" +
           "<div class='vjs-setting-value-container'>" +
             "<div class='vjs-setting-value'>" + this.playbackRate + "</div>" +
-            "<span class='material-icons'> keyboard_arrow_right </span>" +
+            "<span class='material-icons'>keyboard_arrow_right</span>" +
           "</div>" +
         "</div>" +
         "<div class='vjs-setting vjs-resolution-settings'>" +
-          "<div class='vjs-setting-title'>Qualität</div>" +
+          "<div class='vjs-setting-title'>" + t('VIDEO_QUALITY-TITLE') + "</div>" +
           "<div class='vjs-setting-value-container'>" +
             "<div class='vjs-setting-value'></div>" +
-            "<span class='material-icons'> keyboard_arrow_right </span>" +
+            "<span class='material-icons'>keyboard_arrow_right</span>" +
           "</div>" +
         "</div>" +
         "<div class='vjs-setting vjs-fullscreen-settings'>" +
-          "<div class='vjs-setting-title'>Vollbild UI</div>" +
+          "<div class='vjs-setting-title'>" + t('VIDEO_FULLSCREEN_UI-TITLE') + "</div>" +
           "<div class='vjs-setting-value-container'>" +
-            "<div class='vjs-setting-value'>Auto</div>" +
-            "<span class='material-icons'> keyboard_arrow_right </span>" +
+            "<div class='vjs-setting-value'>" + t('VIDEO_FULLSCREEN_UI_AUTO') + "</div>" +
+            "<span class='material-icons'>keyboard_arrow_right</span>" +
           "</div>" +
         "</div>" +
       "</div>" +
       "<div class='vjs-settings-dropdown'>" +
         "<div class='vjs-settings-dropdown-title-container'>" +
-          "<span class='material-icons'> keyboard_arrow_left </span>" +
+          "<span class='material-icons'>keyboard_arrow_left</span>" +
           "<div class='vjs-settings-dropdown-title'></div>" +
         "</div>" +
         "<div class='vjs-speed-settings-dropdown vjs-settings-dropdown-options'></div>" +
@@ -229,25 +229,25 @@ class wedeoPlayerClass {
       "<div class='vjs-sidebar'>" +
         "<div class='vjs-sidebar-content'>" +
           "<div class='vjs-rating'>" +
-            "<div class='vjs-rating-vote vjs-button vjs-rating-upvote'>" +
+            "<div class='vjs-rating-vote vjs-button vjs-rating-upvote' data-title=''>" +
               "<span class='material-icons'>thumb_up_off_alt</span>" +
             "</div>" +
             "<div class='vjs-rating-percent'></div>" +
-            "<div class='vjs-rating-vote vjs-button vjs-rating-downvote'>" +
+            "<div class='vjs-rating-vote vjs-button vjs-rating-downvote' data-title=''>" +
               "<span class='material-icons'>thumb_down_off_alt</span>" +
             "</div>" +
           "</div>" +
           "<div class='vjs-share-buttons'>" +
-            "<div class='vjs-share-button vjs-button vjs-add-playlist'>" +
+            "<div class='vjs-share-button vjs-button vjs-add-playlist' data-title='" + t('VIDEO_ADD_PLAYLIST') + "'>" +
               "<span class='material-icons'>playlist_add</span>" +
             "</div>" +
-            "<div class='vjs-share-button vjs-button vjs-recommend'>" +
+            "<div class='vjs-share-button vjs-button vjs-recommend' data-title='" + t('VIDEO_RECOMMEND') + "'>" +
               "<span class='weicon-lightbulb'></span>" +
             "</div>" +
-            "<div class='vjs-share-button vjs-button vjs-share'>" +
+            "<div class='vjs-share-button vjs-button vjs-share' data-title='" + t('VIDEO_SHARE') + "'>" +
               "<span class='weicon-share'></span>" +
             "</div>" +
-            "<div class='vjs-share-button vjs-button vjs-download'>" +
+            "<div class='vjs-share-button vjs-button vjs-download' data-title='" + t('VIDEO_DOWNLOAD') + "'>" +
               "<span class='weicon-file_download'></span>" +
             "</div>" +
           "</div>" +
@@ -269,7 +269,7 @@ class wedeoPlayerClass {
           "<span class='material-icons'>fast_rewind</span>" +
         "</div>" +
         "<div class='vjs-big-button vjs-big-button-core vjs-big-button-previous-video'>" +
-        "<span class='material-icons'> skip_previous </span>" +
+        "<span class='material-icons'>skip_previous</span>" +
         "</div>" +
         "<div class='vjs-big-button vjs-big-button-core vjs-big-button-state-video vjs-big-button-pause-video'>" +
           "<span class='material-icons'>pause</span>" +
@@ -644,6 +644,9 @@ class wedeoPlayerClass {
   }
 
   updatePlayerRating() {
+    $('#'+this.playerId+' .vjs-rating-upvote').attr( 'data-title', t('VIDEO_LIKE') + " (" + n(this.meta.rating[0]) + ")" );
+    $('#'+this.playerId+' .vjs-rating-downvote').attr( 'data-title', t('VIDEO_DISLIKE') + " (" + n(this.meta.rating[1]) + ")" );
+
     $('#'+this.playerId+' .vjs-rating-percent').html( this.meta.rating[0] == 0 ? "0%" : Math.floor( this.meta.rating[0] / ( this.meta.rating[0] + this.meta.rating[1] ) * 100 ) + "%" );
   }
 

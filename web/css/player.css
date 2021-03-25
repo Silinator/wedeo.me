@@ -105,6 +105,7 @@ wedeoContainer {
 .wedeo-player .vjs-rating-percent {
   margin-top: 10px;
   margin-bottom: 10px;
+  margin-left: 2px;
 }
 
 .wedeo-player .vjs-share-buttons {
@@ -115,9 +116,24 @@ wedeoContainer {
   margin-top: 15px;
 }
 
-.wedeo-player .vjs-rating-vote,
-.wedeo-player .vjs-share-button {
+.wedeo-player .vjs-sidebar-content .vjs-button {
+  position: relative;
   pointer-events: all;
+}
+
+.wedeo-player .vjs-sidebar-content .vjs-button:hover:before,
+.wedeo-player .vjs-sidebar-content .vjs-button:focus:before {
+  content: attr(data-title);
+  display: flex;
+  white-space: nowrap;
+  position: absolute;
+  top: 1px;
+  right: 40px;
+  font-size: 16px;
+  padding: 8px 7px 7px 7px;
+  text-align: right;
+  background-color: var(--bg-blackA60);
+  text-shadow: none;
 }
 
 .touch .wedeo-player .vjs-header,
