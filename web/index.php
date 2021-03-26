@@ -37,8 +37,10 @@
         nextVideo: "ppcistma"
       }
 
-      $( document ).ready( function() {
-        var wedeoPlayer = new wedeoPlayerClass( 'wedeo-player', options );
+      $(document).ready( function() {
+        docReady();
+
+        wedeoPlayer = new wedeoPlayerClass( 'wedeo-player', options );
         wedeoPlayer.setVideo(meta);
         //wedeoPlayer.setTime( 42 );
       });
