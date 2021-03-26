@@ -53,7 +53,7 @@ function loadVideoPage( url ) {
     nextPageIsLoading = false;
 
     data = {};
-    data.htmlTitle = "";
+    data.htmlTitle = "Aranoid Vortex - Other side [NSM Release] | wedeo.me";
     data.meta = {
       vuid: "pTRtfE39",
       datavuid: "q20Gc2ypR1BdXrtUZ5i1a7hpQ",
