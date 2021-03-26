@@ -609,8 +609,8 @@ class wedeoPlayerClass {
       navigator.mediaSession.setActionHandler('pause', function() { self.pause(); });
       navigator.mediaSession.setActionHandler('seekbackward', function() { self.seekBackward(); });
       navigator.mediaSession.setActionHandler('seekforward', function() { self.seekForward(); });
-      navigator.mediaSession.setActionHandler('previoustrack', function() {});
-      navigator.mediaSession.setActionHandler('nexttrack', function() {});
+      navigator.mediaSession.setActionHandler('previoustrack', function() { self.previousVideo(); });
+      navigator.mediaSession.setActionHandler('nexttrack', function() { self.nextVideo(); });
     }
   }
 
@@ -618,6 +618,9 @@ class wedeoPlayerClass {
   pause(){ this.Player.pause(); }
   seekBackward(){ this.Player.currentTime( this.Player.currentTime() - this.seekTime ); }
   seekForward(){ this.Player.currentTime( this.Player.currentTime() + this.seekTime ); }
+  previousVideo(){}
+  nextVideo(){}
+
   setTime( time ){ this.Player.currentTime( time ); }
 
   updatePlayerSettingsMenu() {
