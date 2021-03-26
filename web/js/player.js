@@ -601,7 +601,7 @@ class wedeoPlayerClass {
         title: this.meta.title,
         artist: this.meta.user.name,
         artwork: [
-          { src: this.URLbase + '/images/thumb/small_img/' + this.meta.vuid + '.jpg', sizes: '320x180', type: 'image/png' }
+          { src: this.URLbase + 'images/thumb/small_img/' + this.meta.vuid + '.jpg', sizes: '320x180', type: 'image/png' }
         ]
       });
 
