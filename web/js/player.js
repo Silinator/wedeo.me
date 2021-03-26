@@ -618,6 +618,7 @@ class wedeoPlayerClass {
   pause(){ this.Player.pause(); }
   seekBackward(){ this.Player.currentTime( this.Player.currentTime() - this.seekTime ); }
   seekForward(){ this.Player.currentTime( this.Player.currentTime() + this.seekTime ); }
+  setTime( time ){ this.Player.currentTime( time ); }
 
   updatePlayerSettingsMenu() {
     const self = this;
