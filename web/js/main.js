@@ -77,7 +77,9 @@ function loadVideoPage( url ) {
 function loadPage( url ) {
   $.post( url, { 'json': true, 'html': true, 'from': from }, function(data) {
     nextPageIsLoading = false;
-    $('.mainContainer').html(data.html);
+    data = {};
+    //$('.mainContainer').html(data.html);
+    data.htmlTitle = "Back | wedeo.me";
     document.title = data.htmlTitle;
   });
 }
