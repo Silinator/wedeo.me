@@ -582,14 +582,16 @@ class wedeoPlayerClass {
   setVideo( meta ) {
     const self = this;
     this.meta = meta;
+    const poster = this.URLbase + 'images/thumb/large_img/' + this.meta.vuid + '.jpg';
+    const fileType = ( this.defaultRes == "audio" ? ".mp3" : ".mp4" );
 
-    this.media = {
-      poster: this.URLbase + '/images/thumb/large_img/' + this.meta.vuid + '.jpg',
-      src: this.URLbase + '/videos/' + this.meta.datavuid + '/' + this.defaultRes + ".mp4"
-    };
+    this.media = {src: this.URLbase + 'videos/' + this.meta.datavuid + '/' + this.defaultRes + fileType};
 
-    this.Player.loadMedia(this.media);
-    this.Player.playbackRate(this.playbackRate);
+    this.Player.loadMedia(this.media, function() {
+      self.Player.poster(poster);
+      self.Player.playbackRate(self.playbackRate);
+    });
+
     this.updatePlayerSettingsMenu();
     this.updatePlayerTitle();
     this.updatePlayerRating();
