@@ -31,7 +31,10 @@
         user: {
           uuid: "G4bGS4TQajeo",
           name: "Silinator",
-        }
+        },
+        playlistId: "H3yS4FJ6691c",
+        previousVideo: "mg7SY3On",
+        nextVideo: "ppcistma"
       }
 
       $( document ).ready( function() {
