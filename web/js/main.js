@@ -1,4 +1,4 @@
-let wedeoPlayer;
+let wedeoPlayer = false;
 let nextPageIsLoading = false;
 
 function docReady() {
@@ -7,8 +7,8 @@ function docReady() {
   }
 
   window.onpopstate = function() {
-    var url = location.search;
-    goToPage(url);
+    var url = document.location.pathname + document.location.search;
+    goToPage(url, true);
   }
 
   activateSamePageLinks();
@@ -31,14 +31,13 @@ function activateSamePageLinks() {
   });
 }
 
-function goToPage( url ) {
-  window.history.pushState( {page: true}, null, document.location ); //adds current page as previous page
-  window.history.replaceState('page2', 'wedeo.me', url); //changes browser url
+function goToPage( url, fromNavigation = false ) {
+  if( !fromNavigation ) { window.history.pushState( {page: true}, null, document.location ); } //adds current page as previous page
+  window.history.replaceState('currentPage', 'wedeo.me', url); //changes browser url
 
   //add page loading progress
 
-  //if( url.startsWith("/watch/") && wedeoPlayer ) {
-  if( url.startsWith("") && wedeoPlayer ) {
+  if( ( url.startsWith("watchPage") || url.startsWith( new URL(document.baseURI).pathname + "watchPage") ) && wedeoPlayer ) {
     loadVideoPage(url);
   } else if( wedeoPlayer ) {
     moveIntoMiniplayer();
@@ -75,7 +74,7 @@ function loadVideoPage( url ) {
 }
 
 function loadPage( url ) {
-  $.post( url, { 'json': true, 'html': true, 'from': from }, function(data) {
+  $.post( url, { 'json': true, 'html': true, 'from': document.location.toString() }, function(d) {
     nextPageIsLoading = false;
     data = {};
     //$('.mainContainer').html(data.html);
