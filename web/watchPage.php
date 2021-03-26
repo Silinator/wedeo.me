@@ -1,5 +1,5 @@
 <?php
-  $htmlTitle = "Player Test";
+  $htmlTitle = "Minecraft Server overview | wedeo.me";
 ?>
 
 <!DOCTYPE html>
@@ -10,10 +10,9 @@
   <body>
     <wedeoContainer>
       <video id="wedeo-player" class="wedeo-player video-js" controls></video>
-      <!-- <video id="wedeo-player" class="wedeo-bg-player video-js" controls></video> -->
     </wedeoContainer>
 
-    <a href="">Next Video</a>
+    <a href="watchPage.php?v=pTRtfE39">Next Video</a>
 
     <script type="text/javascript">
       const options = {
