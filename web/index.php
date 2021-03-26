@@ -13,6 +13,8 @@
       <!-- <video id="wedeo-player" class="wedeo-bg-player video-js" controls></video> -->
     </wedeoContainer>
 
+    <a href="">Next Video</a>
+
     <script type="text/javascript">
       const options = {
         defaultResolution: "1080p",
