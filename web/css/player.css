@@ -32,7 +32,8 @@ wedeoContainer {
   border-radius: 50px;
 }
 
-.vjs-loading-spinner:after, .vjs-loading-spinner:before {
+.wedeo-player .vjs-loading-spinner:after,
+.wedeo-player .vjs-loading-spinner:before {
   margin: -8px;
 }
 
