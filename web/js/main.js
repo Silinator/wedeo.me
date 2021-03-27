@@ -1,4 +1,5 @@
 let wedeoPlayer = false;
+let wedeoBgPlayer = false;
 let nextPageIsLoading = false;
 
 function docReady() {
@@ -6,14 +7,16 @@ function docReady() {
     $(document.body).addClass('touch');
   }
 
+  activateSamePageNavigation();
+  activateSamePageLinks();
+}
+
+function activateSamePageNavigation() {
   window.onpopstate = function() {
     var url = document.location.pathname + document.location.search;
     goToPage(url, true);
   }
-
-  activateSamePageLinks();
 }
-
 
 function activateSamePageLinks() {
   $('a').unbind("click").click( function(e) {
@@ -48,38 +51,32 @@ function goToPage( url, fromNavigation = false ) {
 }
 
 function loadVideoPage( url ) {
-  $.post( url, { 'json': true, 'html': true, 'from': document.location.toString() }, function(d) {
+  console.log( 'loadVideoPage' );
+  $.post( url, { 'json': true, 'html': false, 'from': document.location.toString() }, function(data) {
     nextPageIsLoading = false;
 
-    data = {};
-    data.htmlTitle = "Aranoid Vortex - Other side [NSM Release] | wedeo.me";
-    data.meta = {
-      vuid: "pTRtfE39",
-      datavuid: "q20Gc2ypR1BdXrtUZ5i1a7hpQ",
-      availableSources: [ "audio", "240p", "480p", "1080p", "2160p" ],
-      title: "Aranoid Vortex - Other side [NSM Release]",
-      rating: [ 5, 0 ],
-      user: {
-        uuid: "G4bGS4TQajeo",
-        name: "Silinator",
-      },
-      playlistId: "H3yS4FJ6691c",
-      previousVideo: "mg7SY3On",
-      nextVideo: "ppcistma"
-    };
-
-    wedeoPlayer.setVideo(data.meta);
     document.title = data.htmlTitle;
+    wedeoPlayer.setVideo(data.videoMeta);
+
+    activateSamePageNavigation();
+    activateSamePageLinks();
   });
 }
 
 function loadPage( url ) {
-  $.post( url, { 'json': true, 'html': true, 'from': document.location.toString() }, function(d) {
+  console.log( 'loadPage' );
+  if( wedeoBgPlayer ) { videojs(wedeoBgPlayer.playerId).dispose(); wedeoBgPlayer = false; }
+  if( wedeoPlayer ) { videojs(wedeoPlayer.playerId).dispose();  wedeoPlayer = false; } //remove for miniplayer
+
+  $.post( url, { 'json': true, 'html': true, 'from': document.location.toString() }, function(data) {
     nextPageIsLoading = false;
-    data = {};
-    //$('.mainContainer').html(data.html);
-    data.htmlTitle = "Back | wedeo.me";
+
     document.title = data.htmlTitle;
+    $('mainContainer').html(data.html);
+
+    activateSamePageNavigation();
+    activateSamePageLinks();
+    pageScripts();
   });
 }
 
