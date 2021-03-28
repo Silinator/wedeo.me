@@ -28,7 +28,7 @@ class wedeoPlayerClass {
   constructor( playerId ) {
     this.URLbase      = "https://www.we-teve.com/";
     this.playerId     = playerId;
-    this.defaultRes   = "1080p";
+    this.selectedRes   = "audio";
     this.playbackRate = 1;
     this.fullscreenUi = "auto";
     this.availablePlaybackRates = [ 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2];
@@ -634,14 +634,42 @@ class wedeoPlayerClass {
     console.log( "toggle size" );
   }
 
+  getVideoSource() {
+    let selectedRes = this.selectedRes != "audio" ? this.selectedRes.slice(0, -1) : "audio";
+    const availableSources = this.meta.availableSources.map( source => {
+      return source != "audio" ? source.slice(0, -1) : ""
+    }).filter( source => {
+      return source != "";
+    }).reverse();
+
+    if( selectedRes != "audio" ) {
+      if( !availableSources.includes( selectedRes ) ) {
+        let nextSmaller = "";
+        for( let i = 0; i < availableSources.length; i++ ) {
+          if( parseInt(selectedRes) > parseInt(availableSources[i]) ) {
+            nextSmaller = availableSources[i];
+            break;
+          }
+        }
+
+        if( nextSmaller == "" ) { nextSmaller = availableSources[ availableSources.length - 1 ]; }
+        selectedRes = nextSmaller + "p";
+      } else {
+        selectedRes = selectedRes + "p";
+      }
+    }
+
+    this.selectedRes = selectedRes;
+    const fileType = ( this.selectedRes == "audio" ? ".mp3" : ".mp4" );
+    return this.URLbase + 'videos/' + this.meta.datavuid + '/' + this.selectedRes + fileType;
+  }
 
   setVideo( meta ) {
     const self = this;
     this.meta = meta;
     const poster = this.URLbase + 'images/thumb/large_img/' + this.meta.vuid + '.jpg';
-    const fileType = ( this.defaultRes == "audio" ? ".mp3" : ".mp4" );
 
-    this.media = {src: this.URLbase + 'videos/' + this.meta.datavuid + '/' + this.defaultRes + fileType};
+    this.media = {src: this.getVideoSource()};
 
     this.Player.loadMedia(this.media, function() {
       self.Player.poster(poster);
@@ -698,8 +726,8 @@ class wedeoPlayerClass {
 
   updatePlayerSettingsMenu() {
     const self = this;
-    $('#'+this.playerId+' .vjs-resolution-settings .vjs-setting-value').html( this.defaultRes );
-    $('#'+this.playerId+' .vjs-resolution-settings-dropdown').html( this.genDropDownOptions( this.meta.availableSources.reverse(), this.defaultRes ) );
+    $('#'+this.playerId+' .vjs-resolution-settings .vjs-setting-value').html( this.selectedRes );
+    $('#'+this.playerId+' .vjs-resolution-settings-dropdown').html( this.genDropDownOptions( this.meta.availableSources.reverse(), this.selectedRes ) );
 
     $('#'+this.playerId+" .vjs-resolution-settings").unbind('click').bind( 'click', function() { self.openPlayerResolutionSettings(); });
 
@@ -732,17 +760,17 @@ class wedeoPlayerClass {
   changeSource( resolution ) {
     const self = this;
 
-    if( this.defaultRes != resolution ) {
-      this.defaultRes = resolution;
+    if( this.selectedRes != resolution ) {
+      this.selectedRes = resolution;
       const currentTime = this.Player.currentTime();
       const videoIsPlaused = this.Player.paused();
       const isVideoMuted = this.Player.muted();
-      const fileType = ( this.defaultRes == "audio" ? ".mp3" : ".mp4" );
+      const fileType = ( this.selectedRes == "audio" ? ".mp3" : ".mp4" );
 
       this.Player.muted(true);
       this.Player.pause();
 
-      this.Player.src( this.URLbase + '/videos/' + this.meta.datavuid  + '/' + this.defaultRes + fileType );
+      this.Player.src( this.URLbase + '/videos/' + this.meta.datavuid  + '/' + this.selectedRes + fileType );
 
       this.Player.currentTime(currentTime);
       this.Player.play();
