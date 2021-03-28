@@ -26,8 +26,8 @@
           "name" => "Silinator",
         ],
         "playlistId" => "H3yS4FJ6691c",
-        "previousVideo" => "mg7SY3On",
-        "nextVideo" => "ppcistma"
+        "previousVideo" => "",
+        "nextVideo" => "uq7t73s7"
       ]
     ];
   } elseif( $_GET['v'] == "uq7t73s7" ) {
@@ -45,8 +45,8 @@
           "name" => "Silinator",
         ],
         "playlistId" => "H3yS4FJ6691c",
-        "previousVideo" => "mg7SY3On",
-        "nextVideo" => "ppcistma"
+        "previousVideo" => "",
+        "nextVideo" => "pTRtfE39"
       ]
     ];
   }

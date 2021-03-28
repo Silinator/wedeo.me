@@ -269,13 +269,13 @@ class wedeoPlayerClass {
           "<span class='material-icons'>fast_rewind</span>" +
         "</div>" +
         "<div class='vjs-big-button vjs-big-button-core vjs-big-button-previous-video'>" +
-        "<span class='material-icons'>skip_previous</span>" +
+          "<span class='material-icons'>skip_previous</span>" +
         "</div>" +
         "<div class='vjs-big-button vjs-big-button-core vjs-big-button-state-video vjs-big-button-pause-video'>" +
           "<span class='material-icons'>pause</span>" +
         "</div>" +
         "<div class='vjs-big-button vjs-big-button-core vjs-big-button-next-video'>" +
-        "<span class='material-icons'>skip_next</span>" +
+          "<span class='material-icons'>skip_next</span>" +
         "</div>" +
         "<div class='vjs-big-button vjs-big-button-forward-video' data-time='0'>" +
           "<span class='material-icons'>fast_forward</span>" +
@@ -294,6 +294,20 @@ class wedeoPlayerClass {
       $('#'+self.playerId+' .vjs-big-button-state-video').addClass('vjs-big-button-pause-video');
       $('#'+self.playerId+' .vjs-big-button-state-video .material-icons').html('pause');
     });
+  }
+
+  updateBigPlayerButtons() {
+    if( this.meta.previousVideo != "" ) {
+      $('#'+this.playerId+' .vjs-big-button-previous-video').css('visibility', 'visible');
+    } else {
+      $('#'+this.playerId+' .vjs-big-button-previous-video').css('visibility', 'hidden');
+    }
+
+    if( this.meta.nextVideo != "" ) {
+      $('#'+this.playerId+' .vjs-big-button-next-video').css('visibility', 'visible');
+    } else {
+      $('#'+this.playerId+' .vjs-big-button-next-video').css('visibility', 'hidden');
+    }
   }
 
   addPlayerTouchControls() {
@@ -352,7 +366,9 @@ class wedeoPlayerClass {
         tappedForward = null;
         rewindTime = 0;
         forwardTime = 0;
-        $('#'+self.playerId+' .vjs-big-button').attr('style', '');
+
+        $('#'+self.playerId+' .vjs-big-button').css('opacity', 0);
+        $('#'+self.playerId+' .vjs-big-button-core').css('opacity', "");
         $('#'+self.playerId+' .vjs-big-button-rewind-video').attr('data-time', "0");
         $('#'+self.playerId+' .vjs-big-button-forward-video').attr('data-time', "0");
       }
@@ -592,6 +608,7 @@ class wedeoPlayerClass {
       self.Player.playbackRate(self.playbackRate);
     });
 
+    this.updateBigPlayerButtons();
     this.updatePlayerSettingsMenu();
     this.updatePlayerTitle();
     this.updatePlayerRating();
