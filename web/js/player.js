@@ -28,7 +28,7 @@ class wedeoPlayerClass {
   constructor( playerId ) {
     this.URLbase      = "https://www.we-teve.com/";
     this.playerId     = playerId;
-    this.selectedRes  = "audio";
+    this.selectedRes  = "1080p";
     this.playbackRate = 1;
     this.fullscreenUi = "auto";
     this.availablePlaybackRates = [ 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2];
