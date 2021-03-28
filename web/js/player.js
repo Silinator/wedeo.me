@@ -64,6 +64,7 @@ class wedeoPlayerClass {
     this.addPlayerVideoPreview();
     this.addPlayerHeader();
     this.addPlayerSidebar();
+    this.addSkipButtons();
     this.addBigPlayerButtons();
     this.addPlayerTouchControls();
 
@@ -110,6 +111,22 @@ class wedeoPlayerClass {
             },
             handler: function() {
               self.togglePlayerSize();
+            }
+          },
+          skipPreviousKey: {
+            key: function(event) {
+              return ( event.shiftKey && event.which === 80 ); //shift + p
+            },
+            handler: function() {
+              self.previousVideo();
+            }
+          },
+          skipNextKey: {
+            key: function(event) {
+              return ( event.shiftKey && event.which === 78 ); //shift + n
+            },
+            handler: function() {
+              self.nextVideo();
             }
           }
         }
@@ -296,17 +313,40 @@ class wedeoPlayerClass {
     });
   }
 
-  updateBigPlayerButtons() {
+  addSkipButtons() {
+    const self = this;
+
+    $('#'+this.playerId+' .vjs-play-control').before(
+      "<button class='vjs-previous-control vjs-control vjs-button'>" +
+        "<span class='material-icons'>skip_previous</span>" +
+      "</button>"
+    );
+
+    $('#'+this.playerId+' .vjs-play-control').after(
+      "<button class='vjs-next-control vjs-control vjs-button'>" +
+        "<span class='material-icons'>skip_next</span>" +
+      "</button>"
+    );
+
+    $("#" + this.playerId + " .vjs-previous-control").click( function() { self.previousVideo(); });
+    $("#" + this.playerId + " .vjs-next-control").click( function() { self.nextVideo(); });
+  }
+
+  updateSkipButtons() {
     if( this.meta.previousVideo != "" ) {
       $('#'+this.playerId+' .vjs-big-button-previous-video').css('visibility', 'visible');
+      $('#'+this.playerId+' .vjs-previous-control').show();
     } else {
       $('#'+this.playerId+' .vjs-big-button-previous-video').css('visibility', 'hidden');
+      $('#'+this.playerId+' .vjs-previous-control').hide();
     }
 
     if( this.meta.nextVideo != "" ) {
       $('#'+this.playerId+' .vjs-big-button-next-video').css('visibility', 'visible');
+      $('#'+this.playerId+' .vjs-next-control').show();
     } else {
       $('#'+this.playerId+' .vjs-big-button-next-video').css('visibility', 'hidden');
+      $('#'+this.playerId+' .vjs-next-control').hide();
     }
   }
 
@@ -608,7 +648,7 @@ class wedeoPlayerClass {
       self.Player.playbackRate(self.playbackRate);
     });
 
-    this.updateBigPlayerButtons();
+    this.updateSkipButtons();
     this.updatePlayerSettingsMenu();
     this.updatePlayerTitle();
     this.updatePlayerRating();
@@ -643,10 +683,16 @@ class wedeoPlayerClass {
 
   play(){ this.Player.play(); }
   pause(){ this.Player.pause(); }
-  seekBackward(){ this.Player.currentTime( this.Player.currentTime() - this.seekTime ); }
-  seekForward(){ this.Player.currentTime( this.Player.currentTime() + this.seekTime ); }
-  previousVideo(){ goToPage('watchPage.php?v=' + this.meta.previousVideo + ( this.meta.playlistId != "" ? '&pl=' + this.meta.playlistId : "" ) ); }
-  nextVideo(){ goToPage('watchPage.php?v=' + this.meta.nextVideo + ( this.meta.playlistId != "" ? '&pl=' + this.meta.playlistId : "" ) ); }
+  seekBackward(){ this.setTime( this.Player.currentTime() - this.seekTime ); }
+  seekForward(){ this.setTime( this.Player.currentTime() + this.seekTime ); }
+  nextVideo(){ if( this.meta.nextVideo != "" ){ goToPage('watchPage.php?v=' + this.meta.nextVideo + ( this.meta.playlistId != "" ? '&pl=' + this.meta.playlistId : "" ) ); } }
+  previousVideo() {
+    if( this.Player.currentTime() <= 5 ) {
+      this.setTime( 0 );
+    } else if( this.meta.previousVideo != "" ) {
+      goToPage('watchPage.php?v=' + this.meta.previousVideo + ( this.meta.playlistId != "" ? '&pl=' + this.meta.playlistId : "" ) );
+    }
+  }
 
   setTime( time ){ this.Player.currentTime( time ); }
 
