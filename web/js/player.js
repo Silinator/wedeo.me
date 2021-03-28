@@ -28,7 +28,7 @@ class wedeoPlayerClass {
   constructor( playerId ) {
     this.URLbase      = "https://www.we-teve.com/";
     this.playerId     = playerId;
-    this.selectedRes   = "audio";
+    this.selectedRes  = "audio";
     this.playbackRate = 1;
     this.fullscreenUi = "auto";
     this.availablePlaybackRates = [ 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2];
@@ -81,6 +81,8 @@ class wedeoPlayerClass {
     $("#" + this.playerId + " .background-player-mute-btn").click( function() {
       self.Player.muted(!self.Player.muted());
     });
+
+    if( this.selectedRes == "audio" ) { this.selectedRes = "480p"; }
 
     setTimeout(function () {
       self.Player.loop(true);
