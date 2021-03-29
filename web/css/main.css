@@ -70,12 +70,11 @@ headerCenter,
 headerRigth {
   display: flex;
   align-items: center;
-  padding: 15px;
 }
 
-headerCenter {
-  width: calc( 70% - 600px );
-  background-color: green;
+headerLeft,
+headerRigth {
+  padding: 15px;
 }
 
 headerRigth {
@@ -98,4 +97,45 @@ headerRigth {
 .headerLogo img {
   margin-top: 5px;
   height: 35px;
+}
+
+headerCenter {
+  position: relative;
+  width: calc(70% - 600px);
+}
+
+.headerSearchInput {
+  width: 100%;
+  font-size: 20px;
+  color: var(--white);
+  padding: 5px 30px 5px 0;
+  border: none;
+  border-bottom: 1px solid var(--silver);
+  background-color: transparent;
+}
+
+.headerSearchInput:focus {
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.headerSearchInput::placeholder {
+  color: var(--silver);
+}
+
+.headerSearchInput:focus::placeholder {
+  color: var(--light-gray);
+}
+
+.mainSearchButton {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  color: var(--silver);
+  right: 0px;
+  height: 36px;
+  cursor: pointer;
+}
+
+.headerSearchInput:focus + .mainSearchButton {
+  color: var(--light-gray);
 }

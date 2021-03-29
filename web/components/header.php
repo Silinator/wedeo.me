@@ -10,6 +10,10 @@
   </headerLeft>
 
   <headerCenter>
+    <input class="headerSearchInput" placeholder="Suchen"/>
+    <div class="mainSearchButton">
+      <span class="material-icons">search</span>
+    </div>
   </headerCenter>
 
   <headerRigth>
