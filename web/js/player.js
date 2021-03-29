@@ -73,6 +73,8 @@ class wedeoPlayerClass {
     });
 
     this.Player.on('mouseover', function() { this.removeClass('vjs-user-inactive'); });
+
+    this.Player.on('ended', function() { self.videoEnded(); });
   }
 
   createBackgroundPlayer() {
@@ -367,7 +369,10 @@ class wedeoPlayerClass {
         "</div>"
       );
 
-      $('#'+this.playerId+' .vjs-big-button-state-video').bind( 'touchend', function() {
+      $("#" + this.playerId + " .vjs-big-button-previous-video").bind( 'touchstart', function() { self.previousVideo(); });
+      $("#" + this.playerId + " .vjs-big-button-next-video").bind( 'touchstart', function() { self.nextVideo(); });
+
+      $('#'+this.playerId+' .vjs-big-button-state-video').bind( 'touchstart', function() {
         if( $(this).hasClass('vjs-big-button-pause-video') ) { self.pause(); }
         if( $(this).hasClass('vjs-big-button-play-video') ) { self.play(); }
       });
@@ -711,21 +716,6 @@ class wedeoPlayerClass {
     }
   }
 
-  play(){ this.Player.play(); }
-  pause(){ this.Player.pause(); }
-  seekBackward(){ this.setTime( this.Player.currentTime() - this.seekTime ); }
-  seekForward(){ this.setTime( this.Player.currentTime() + this.seekTime ); }
-  nextVideo(){ if( this.meta.nextVideo != "" ){ goToPage('watchPage.php?v=' + this.meta.nextVideo + ( this.meta.playlistId != "" ? '&pl=' + this.meta.playlistId : "" ) ); } }
-  previousVideo() {
-    if( this.Player.currentTime() <= 5 ) {
-      this.setTime( 0 );
-    } else if( this.meta.previousVideo != "" ) {
-      goToPage('watchPage.php?v=' + this.meta.previousVideo + ( this.meta.playlistId != "" ? '&pl=' + this.meta.playlistId : "" ) );
-    }
-  }
-
-  setTime( time ){ this.Player.currentTime( time ); }
-
   updatePlayerSettingsMenu() {
     const self = this;
     $('#'+this.playerId+' .vjs-resolution-settings .vjs-setting-value').html( this.selectedRes );
@@ -823,5 +813,25 @@ class wedeoPlayerClass {
     }
 
     this.closePlayerSettingsMenu();
+  }
+
+  play(){ this.Player.play(); }
+  pause(){ this.Player.pause(); }
+  seekBackward(){ this.setTime( this.Player.currentTime() - this.seekTime ); }
+  seekForward(){ this.setTime( this.Player.currentTime() + this.seekTime ); }
+  nextVideo(){ if( this.meta.nextVideo != "" ){ goToPage('watchPage.php?v=' + this.meta.nextVideo + ( this.meta.playlistId != "" ? '&pl=' + this.meta.playlistId : "" ) ); } }
+  previousVideo() {
+    if( this.Player.currentTime() <= 5 ) {
+      this.setTime( 0 );
+    } else if( this.meta.previousVideo != "" ) {
+      goToPage('watchPage.php?v=' + this.meta.previousVideo + ( this.meta.playlistId != "" ? '&pl=' + this.meta.playlistId : "" ) );
+    }
+  }
+
+  setTime( time ){ this.Player.currentTime( time ); }
+
+  videoEnded() {
+    //add checks for e.g. still typing etc.
+    this.nextVideo();
   }
 }
