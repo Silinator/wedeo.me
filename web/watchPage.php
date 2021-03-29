@@ -62,6 +62,7 @@ if( !$asJson ) {
       <script>
         let videoMeta;
       </script>
+      <?php require_once("components/header.php"); ?>
       <mainContainer>
 <?php
 }
