@@ -62,7 +62,6 @@ body {
   border-width: 2px;
   border-image-source: linear-gradient( 135deg, var(--cyan500), var(--main) );
   background: linear-gradient( 135deg, var(--cyan500), var(--main) );
-  transition: background 0.3s ease-in-out;
 }
 
 .bigBtn:hover,
