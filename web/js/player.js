@@ -30,7 +30,7 @@ class wedeoPlayerClass {
     this.playerId     = playerId;
     this.selectedRes  = "1080p";
     this.playbackRate = 1;
-    this.fullscreenUi = "auto";
+    this.fullscreenUi = t('VIDEO_FULLSCREEN_UI_AUTO');
     this.availablePlaybackRates = [ 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2];
     this.availableFullscreenOptions = [ t('VIDEO_FULLSCREEN_UI_AUTO'), t('VIDEO_FULLSCREEN_UI_ON'), t('VIDEO_FULLSCREEN_UI_OFF')];
     this.inactivityTimeout = 2000;
