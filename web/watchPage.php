@@ -20,10 +20,13 @@
         "datavuid" => "q20Gc2ypR1BdXrtUZ5i1a7hpQ",
         "availableSources" => [ "audio", "240p", "480p", "1080p", "2160p" ],
         "title" => "Aranoid Vortex - Other side [NSM Release]",
-        "rating" => [ 4, 0 ],
+        "description" => "No Strike Music Songs with Hearts And Some More All Copyright Free and Free To use<br/><br/>Join Our TS3 and get youtuber Rank ore NSM Buddy:<br/>NoStrikeMusic.nitrado.net",
+        "lang" => "ENG",
+        "commentsCount" => 0,
+        "rating" => [ 5, 0 ],
         "user" => (object)[
-          "uuid" => "G4bGS4TQajeo",
-          "name" => "Silinator",
+          "uuid" => "HmSFgY0X3DYX",
+          "name" => "nsmRecords",
         ],
         "playlistId" => "H3yS4FJ6691c",
         "previousVideo" => "",
@@ -39,14 +42,38 @@
         "datavuid" => "QsFksSHmeNOW5BgjTCyZUtTfK",
         "availableSources" => [ "audio", "240p", "480p", "1080p", "2160p" ],
         "title" => "Floatinurboat - Limbo (feat. ELLIØT) [NSM Release]",
+        "description" => "No one can get a copyright claim if you use our songs , Because this song is free to use for your youtube videos...",
         "rating" => [ 2, 0 ],
+        "lang" => "ENG",
+        "commentsCount" => 0,
         "user" => (object)[
-          "uuid" => "G4bGS4TQajeo",
-          "name" => "Silinator",
+          "uuid" => "HmSFgY0X3DYX",
+          "name" => "nsmRecords",
         ],
         "playlistId" => "H3yS4FJ6691c",
         "previousVideo" => "pTRtfE39",
         "nextVideo" => "pTRtfE39"
+      ]
+    ];
+  } elseif( $_GET['v'] == "ZL7CM0Rd" ) {
+    $json = (object)[
+      "htmlTitle" => $htmlTitle,
+      "videoMeta" => (object)[
+        "vuid" => "ZL7CM0Rd",
+        "datavuid" => "JnhdhWTGOaCFMzPPAca0JkDyW",
+        "availableSources" => [ "audio", "240p", "480p", "1080p" ],
+        "title" => "Minecraft Server overview",
+        "description" => "Musik: Mount Olympus - Approaching Nirvana <br/>https://www.youtube.com/watch?v=fe2s-7IYg-0",
+        "commentsCount" => 4,
+        "rating" => [ 2, 0 ],
+        "lang" => "ENG",
+        "user" => (object)[
+          "uuid" => "G4bGS4TQajeo",
+          "name" => "Silinator",
+        ],
+        "playlistId" => "",
+        "previousVideo" => "",
+        "nextVideo" => ""
       ]
     ];
   }

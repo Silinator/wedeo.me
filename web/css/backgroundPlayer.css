@@ -110,3 +110,77 @@
 .wedeo-bg-player .vjs-picture-in-picture-control {
   display: none;
 }
+
+/* video preview text */
+.wedeo-bg-player .mainVideoPreview {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  padding: 20px;
+  width: calc( 50% - 40px );
+  bottom: 65px;
+  right: 0;
+  background-color: var(--bg-blackA60);
+  pointer-events: all;
+  z-index: 3;
+}
+
+.wedeo-bg-player .mainVideoPreviewTitle {
+  font-size: 32px;
+  max-width: 100%;
+  color: var(--white);
+  text-decoration: underline;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.wedeo-bg-player .mainVideoPreviewDescription {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 24px;
+  color: var(--silver);
+  max-height: 65px;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.wedeo-bg-player .mainVideoPreviewMeta {
+  display: flex;
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.wedeo-bg-player .mainVideoPreviewUser {
+  display: flex;
+  text-decoration: none;
+  color: var(--white);
+}
+
+.wedeo-bg-player .mainVideoPreviewUserImg {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+.wedeo-bg-player .mainVideoPreviewRating,
+.wedeo-bg-player .mainVideoPreviewComments {
+  display: flex;
+  align-items: center;
+}
+
+.wedeo-bg-player .mainVideoPreviewRatingText,
+.wedeo-bg-player .mainVideoPreviewCommentsText {
+  margin-right: 5px;
+}
+
+.wedeo-bg-player .mainVideoPreviewMetaSpacing {
+  font-weight: 300;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.wedeo-bg-player .mainVideoPreview .bigBtn {
+  align-self: flex-end;
+}

@@ -50,5 +50,9 @@
  "VIDEO_DOWNLOAD": {
    "de": "Herunterladen",
    "en": "Download"
+ },
+ "WATCH_NOW": {
+   "de": "Jetzt ansehen",
+   "en": "Watch now"
  }
 }
