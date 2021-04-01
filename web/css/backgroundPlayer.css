@@ -1,6 +1,7 @@
 .wedeo-bg-player {
   display: flex;
   width: 100vw;
+  max-width:100%;
   height: 85vh;
   color: var(--white);
   overflow: hidden;
@@ -99,9 +100,17 @@
 
 .wedeo-bg-player .vjs-time-control {
   display: flex;
+  align-items: center;
   font-size: 15px;
   line-height: 33px;
+  margin-top: 5px;
   width: unset;
+}
+
+.wedeo-bg-player .vjs-time-divider {
+  width: 1px;
+  padding: 0px;
+  min-width: 1px;
 }
 
 .wedeo-bg-player .vjs-remaining-time,
@@ -127,6 +136,8 @@
 
 .wedeo-bg-player .mainVideoPreviewTitle {
   font-size: 32px;
+  line-height: 32px;
+  font-weight: 500;
   max-width: 100%;
   color: var(--white);
   text-decoration: underline;
@@ -139,11 +150,11 @@
   margin-top: 10px;
   margin-bottom: 10px;
   font-size: 24px;
+  line-height: 27px;
   color: var(--silver);
-  max-height: 65px;
+  max-height: 55px;
   width: 100%;
   overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .wedeo-bg-player .mainVideoPreviewMeta {

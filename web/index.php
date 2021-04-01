@@ -12,13 +12,12 @@
   }
 
   $json = (object)[
-    "htmlTitle" => $htmlTitle,
     "videoMeta" => (object)[
       "vuid" => "ZL7CM0Rd",
       "datavuid" => "JnhdhWTGOaCFMzPPAca0JkDyW",
       "availableSources" => [ "audio", "240p", "480p", "1080p" ],
       "title" => "Minecraft Server overview",
-      "description" => "Musik: Mount Olympus - Approaching Nirvana <br/>https://www.youtube.com/watch?v=fe2s-7IYg-0",
+      "description" => "Musik: Mount Olympus - Approaching Nirvana <br/>https://www.youtube.com/watch?v=fe2s-7IYg-0 <br/>https://www.youtube.com/watch?v=fe2s-7IYg-0",
       "commentsCount" => 4,
       "rating" => [ 2, 0 ],
       "lang" => "ENG",
@@ -55,7 +54,8 @@ if( $withHtml || !$apiRequest ) {
 ?>
     <video id="wedeo-bg-player" class="wedeo-bg-player video-js" controls></video>
 
-    <a href="watchPage.php?v=uq7t73s7">Video Link</a>
+    <!-- <a href="watchPage.php?v=uq7t73s7">Video Link</a> -->
+    <div id="allVideos" class="allVideosContainer"></div>
 
     <script type="text/javascript">
       videoMeta = JSON.parse('<?=json_encode($json->videoMeta)?>');
@@ -65,7 +65,14 @@ if( $withHtml || !$apiRequest ) {
 
         wedeoBgPlayer = new wedeoPlayerClass( 'wedeo-bg-player' );
         wedeoBgPlayer.setVideo(videoMeta);
-        //wedeoPlayer.setTime( 42 );
+
+        const app = new Vue({
+          el: '#allVideos',
+          store,
+          template: `
+            <allVideos></allVideos>
+          `
+        });
       }
     </script>
 <?php

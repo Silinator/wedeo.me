@@ -528,7 +528,7 @@ class wedeoPlayerClass {
       if( newTimePos < videoPadding ){ newTimePos = videoPadding; }
       if( newTimePos + timeSize > maxWidth - videoPadding ){ newTimePos = maxWidth - timeSize - videoPadding; }
 
-    const displayTime = this.secondsToHms(hoverTime);
+    const displayTime = secondsToHms(hoverTime);
     $('#'+this.playerId+' .vjs-small-time-preview').html(displayTime);
     $('#'+this.playerId+' .vjs-small-time-preview').css('left', newTimePos);
 
@@ -550,22 +550,6 @@ class wedeoPlayerClass {
       $('#'+this.playerId+' .vjs-small-video-preview').css( 'background-position', imgPos );
     }
   }
-
-  secondsToHms( d ) {
-    if( d || d >= 0 ) {
-      d = Number(d);
-      const h = Math.floor(d / 3600);
-      const m = Math.floor(d % 3600 / 60);
-      const s = Math.floor(d % 3600 % 60);
-
-      const hDisplay = h > 0 ? h + ":" : "";
-      const mDisplay = m >= 0 ? ( h > 0 && m < 10 ? "0" + m + ":" : m + ":" ) : "0:";
-      const sDisplay = s < 10 ? "0" + s : s;
-      return hDisplay + mDisplay + sDisplay;
-    } else {
-      return "0:00";
-    }
-}
 
   genDropDownOptions( array, active ) {
     let options = "";
@@ -744,21 +728,23 @@ class wedeoPlayerClass {
         ]
       });
 
-      navigator.mediaSession.setActionHandler('play', function() { self.play(); });
-      navigator.mediaSession.setActionHandler('pause', function() { self.pause(); });
-      navigator.mediaSession.setActionHandler('seekbackward', function() { self.seekBackward(); });
-      navigator.mediaSession.setActionHandler('seekforward', function() { self.seekForward(); });
+      if( this.playerType == "default" ) {
+        navigator.mediaSession.setActionHandler('play', function() { self.play(); });
+        navigator.mediaSession.setActionHandler('pause', function() { self.pause(); });
+        navigator.mediaSession.setActionHandler('seekbackward', function() { self.seekBackward(); });
+        navigator.mediaSession.setActionHandler('seekforward', function() { self.seekForward(); });
 
-      if( this.meta.previousVideo != "" ) {
-        navigator.mediaSession.setActionHandler('previoustrack', function() { self.previousVideo(); });
-      } else {
-        navigator.mediaSession.setActionHandler('previoustrack', null );
-      }
+        if( this.meta.previousVideo != "" ) {
+          navigator.mediaSession.setActionHandler('previoustrack', function() { self.previousVideo(); });
+        } else {
+          navigator.mediaSession.setActionHandler('previoustrack', null );
+        }
 
-      if( this.meta.nextVideo != "" ) {
-        navigator.mediaSession.setActionHandler('nexttrack', function() { self.nextVideo(); });
-      } else {
-        navigator.mediaSession.setActionHandler('nexttrack', null );
+        if( this.meta.nextVideo != "" ) {
+          navigator.mediaSession.setActionHandler('nexttrack', function() { self.nextVideo(); });
+        } else {
+          navigator.mediaSession.setActionHandler('nexttrack', null );
+        }
       }
     }
   }
@@ -868,7 +854,7 @@ class wedeoPlayerClass {
   seekForward(){ this.setTime( this.Player.currentTime() + this.seekTime ); }
   nextVideo(){ if( this.meta.nextVideo != "" ){ goToPage('watchPage.php?v=' + this.meta.nextVideo + ( this.meta.playlistId != "" ? '&pl=' + this.meta.playlistId : "" ) ); } }
   previousVideo() {
-    if( this.Player.currentTime() <= 5 ) {
+    if( this.Player.currentTime() > 5 ) {
       this.setTime( 0 );
     } else if( this.meta.previousVideo != "" ) {
       goToPage('watchPage.php?v=' + this.meta.previousVideo + ( this.meta.playlistId != "" ? '&pl=' + this.meta.playlistId : "" ) );

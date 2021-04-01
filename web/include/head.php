@@ -24,6 +24,15 @@
 <link href="css/main.css" rel="stylesheet">
 <script src="js/main.js"></script>
 
+<?php /* vue core */ ?>
+<script src="node_modules/vue/dist/vue.min.js"></script>
+<script src="node_modules/vuex/dist/vuex.min.js"></script>
+
+<?php /* vue components */ ?>
+<script src="js/vue/store.js"></script>
+<script src="js/vue/components/allVideos.js"></script>
+<script src="js/vue/components/thumb.js"></script>
+
 <?php /* language */ ?>
 <script src="lang/lang.js"></script>
 

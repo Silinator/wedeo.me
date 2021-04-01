@@ -83,3 +83,19 @@ function loadPage( url ) {
 function moveIntoMiniplayer() {
 
 }
+
+function secondsToHms( d ) {
+  if( d || d >= 0 ) {
+    d = Number(d);
+    const h = Math.floor(d / 3600);
+    const m = Math.floor(d % 3600 / 60);
+    const s = Math.floor(d % 3600 % 60);
+
+    const hDisplay = h > 0 ? h + ":" : "";
+    const mDisplay = m >= 0 ? ( h > 0 && m < 10 ? "0" + m + ":" : m + ":" ) : "0:";
+    const sDisplay = s < 10 ? "0" + s : s;
+    return hDisplay + mDisplay + sDisplay;
+  } else {
+    return "0:00";
+  }
+}
