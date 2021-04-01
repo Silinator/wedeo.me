@@ -7,7 +7,7 @@ Vue.component( 'thumb', {
     }
 	},
   template: `
-    <a :href="videoUrl" :id="thumbId"  :class="thumbClass" :data-vuid="videoData.vuid" @mouseover="startThumbDiashow" @mouseleave="stopThumbDiashow">
+    <a :href="videoUrl" :id="thumbId"  :class="thumbClass" :data-vuid="videoData.vuid" @mouseenter="startThumbDiashow" @mouseleave="stopThumbDiashow">
       <img :src="thumbUrl"/>
       <div class="thumbHoverInfo"></div>
       <div class="thumbInfo">
