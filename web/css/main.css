@@ -133,41 +133,38 @@ headerCenter {
 .headerSearchInput {
   width: 100%;
   font-size: 20px;
-  color: var(--white);
   padding: 5px 30px 5px 0;
   border: none;
-  border-bottom: 1px solid var(--silver);
-  background-color: transparent;
-}
-
-.headerSearchInput:focus {
+  opacity: 0.5;
   border-bottom: 1px solid var(--light-gray);
-}
-
-.headerSearchInput::placeholder {
-  color: var(--silver);
-}
-
-.headerSearchInput:focus::placeholder {
-  color: var(--light-gray);
+  background-color: transparent;
 }
 
 .mainSearchButton {
   display: flex;
   align-items: center;
   position: absolute;
-  color: var(--silver);
+  color: var(--light-gray);
   right: 0px;
   height: 36px;
   cursor: pointer;
 }
 
+.headerSearchInput,
+.headerSearchInput + .mainSearchButton {
+  opacity: 0.5;
+}
+
+.headerSearchInput:focus,
 .headerSearchInput:focus + .mainSearchButton {
+  opacity: 1;
+}
+
+.headerSearchInput::placeholder {
   color: var(--light-gray);
 }
 
-
-/* loading page all videos */
+/* landing page all videos */
 .allVideosContainer {
   width: calc( 100% - 600px );
   max-width: 1320px;
