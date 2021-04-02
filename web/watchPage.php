@@ -142,10 +142,10 @@ if( !$asJson ) {
 ?>
     </mainContainer>
     <script type="text/javascript">
-      $(document).ready( function() {
-        docReady();
+      function docReady() {
+        htmlLoaded();
         pageScripts();
-      });
+      }
     </script>
   </body>
 </html>

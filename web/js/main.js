@@ -2,7 +2,7 @@ let wedeoPlayer = false;
 let wedeoBgPlayer = false;
 let nextPageIsLoading = false;
 
-function docReady() {
+function htmlLoaded() {
   if( window.matchMedia("(pointer: coarse)").matches ) {
     $(document.body).addClass('touch');
   }

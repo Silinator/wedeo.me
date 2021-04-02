@@ -6,8 +6,12 @@ const selLang = {
 const selNumFor = new Intl.NumberFormat(selLang.numFor);
 
 let translations = "";
-$.getJSON( "lang/translations.json", function (data) {
-  translations = data;
+
+$(document).ready( function() {
+  $.getJSON( "lang/translations.json", function (data) {
+    translations = data;
+    docReady();
+  });
 });
 
 function t(id) {
