@@ -12,6 +12,13 @@ Vue.component( 'allVideos', {
 			</div>
     </div>
   `,
+	watch: {
+		videos: function() {
+			this.$nextTick(() => {
+				activateSamePageLinks();
+			});
+		}
+	},
   computed: {
 		videos: function() {
 			return this.$store.state.videos;
@@ -21,6 +28,6 @@ Vue.component( 'allVideos', {
     this.$store.dispatch('fetchVideos');
   },
   mounted() {
-
+		activateSamePageLinks();
   }
 });

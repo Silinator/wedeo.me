@@ -127,6 +127,8 @@ class wedeoPlayerClass {
         "<a href='' class='bigBtn'>" + t("WATCH_NOW") + "</a>" +
       "</div>"
     );
+
+    activateSamePageLinks();
   }
 
   updateVideoInfo() {
