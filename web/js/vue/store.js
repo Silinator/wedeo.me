@@ -17,7 +17,7 @@ const store = new Vuex.Store({
       state.videosLoadedIndex = value;
     },
     setAllVideosLoaded( state, value ) {
-      state.setAllVideosLoaded = value;
+      state.allVideosLoaded = value;
     },
     addVideos( state, videos ) {
       state.videos = state.videos.concat(videos);
