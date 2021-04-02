@@ -81,7 +81,6 @@ class wedeoPlayerClass {
 
     this.Player.on('volumechange', function() { self.volume = self.Player.volume(); });
     this.Player.on('mouseover', function() { this.removeClass('vjs-user-inactive'); });
-
     this.Player.on('ended', function() { self.videoEnded(); });
   }
 
@@ -114,12 +113,12 @@ class wedeoPlayerClass {
           "</a>" +
           "<span class='mainVideoPreviewMetaSpacing'> • </span>" +
           "<div class='mainVideoPreviewLang'></div>" +
-          "<span class='mainVideoPreviewMetaSpacing'> • </span>" +
+          "<span class='mainVideoPreviewMetaSpacing'></span>" +
           "<div class='mainVideoPreviewRating'>" +
             "<div class='mainVideoPreviewRatingText'></div>" +
             "<span class='material-icons'>thumb_up_off_alt</span>" +
           "</div>" +
-          "<span class='mainVideoPreviewMetaSpacing'> • </span>" +
+          "<span class='mainVideoPreviewMetaSpacing'></span>" +
           "<div class='mainVideoPreviewComments'>" +
             "<div class='mainVideoPreviewCommentsText'></div>" +
             "<span class='material-icons'>chat_bubble_outline</span>" +
