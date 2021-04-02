@@ -4,7 +4,7 @@
   const SeekBar = videojs.getComponent('SeekBar');
 
   Player.prototype.resetVolumeBar_ = function resetVolumeBar_() {
-    // Overwrites default behavior of setting valume to 100% 
+    // Overwrites default behavior of setting valume to 100%
     this.trigger('volumereset');
   }
 
@@ -715,11 +715,14 @@ class wedeoPlayerClass {
     const poster = this.URLbase + 'images/thumb/large_img/' + this.meta.vuid + '.jpg';
 
     this.media = {src: this.getVideoSource()};
+    $('#'+this.playerId+' .vjs-load-progress').css( 'width', '0%' );
+    $('#'+this.playerId+' .vjs-load-progress div').css( 'width', '0%' );
 
     this.Player.loadMedia(this.media, function() {
       self.Player.poster(poster);
       self.Player.playbackRate(self.playbackRate);
       self.Player.volume(self.volume);
+
     });
 
     this.updateSkipButtons();

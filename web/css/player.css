@@ -213,7 +213,7 @@ wedeoContainer {
   height: 7px;
 }
 
-.wedeo-player .vjs-play-progress {
+.wedeo-player:not(.vjs-waiting) .vjs-play-progress {
   transition: width 0.3s cubic-bezier(0.48, 0.48, 0.48, 0.48);
 }
 
