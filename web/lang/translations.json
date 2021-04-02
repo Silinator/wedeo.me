@@ -54,5 +54,9 @@
  "WATCH_NOW": {
    "de": "Jetzt ansehen",
    "en": "Watch now"
+ },
+ "ALL_VIDEOS": {
+   "de": "Alle Videos",
+   "en": "All videos"
  }
 }
