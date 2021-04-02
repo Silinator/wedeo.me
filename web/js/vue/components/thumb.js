@@ -3,13 +3,16 @@ Vue.component( 'thumb', {
 	data: function() {
 		return {
       thumbPreviewUrl: null,
-      thumbDiashow: null
+			thumbImgNumber: 1,
+      thumbDiashow: null,
+			thumbHoverInfoTransitionHidden: false,
+			thumbHoverInfoWidth: 0
     }
 	},
   template: `
     <a :href="videoUrl" :id="thumbId"  :class="thumbClass" :data-vuid="videoData.vuid" @mouseenter="startThumbDiashow" @mouseleave="stopThumbDiashow">
       <img :src="thumbUrl"/>
-      <div class="thumbHoverInfo"></div>
+      <div :class="'thumbHoverInfo ' + thumbHoverInfoClass" :style="thumbHoverInfoWidthStyle"></div>
       <div class="thumbInfo">
         <div class="thumbMetaInfo">
           <span class="thumbLanguage">{{videoData.lang.toUpperCase()}}</span>
@@ -39,6 +42,12 @@ Vue.component( 'thumb', {
     thumbClass: function() {
       return "thumbHolder " + this.videoData.color;
     },
+		thumbHoverInfoClass: function() {
+			return this.thumbHoverInfoTransitionHidden === true ? "thumbHoverInfoLeave" : "";
+		},
+		thumbHoverInfoWidthStyle: function() {
+			return "width:" + this.thumbHoverInfoWidth + "%;";
+		},
     thumbId: function() {
       return "thumb" + this.videoData.vuid;
     },
@@ -55,30 +64,30 @@ Vue.component( 'thumb', {
   methods: {
     startThumbDiashow(){
       const self = this;
-    	img = 1;
+    	this.thumbImgNumber = 1;
 
-    	$("#"+this.thumbId).find(".thumbHoverInfo").show();
-    	this.updateThumbDiashow(img);
+    	this.thumbHoverInfoTransitionHidden = false;
+    	this.updateThumbDiashow();
 
-    	this.thumbDiashow = setInterval(function(){
-      	if(img===20){ img=0; }
-        img++;
+    	this.thumbDiashow = setInterval( function() {
+      	if( self.thumbImgNumber === 20 ){ self.thumbImgNumber = 0; }
+        self.thumbImgNumber++;
 
-    		self.updateThumbDiashow(img);
-      }, 600);
+    		self.updateThumbDiashow();
+      }, 450);
     },
-    updateThumbDiashow( img ){
-    	$("#"+this.thumbId).find(".thumbHoverInfo").css("width", 100/20*img + "%" );
-      this.thumbPreviewUrl = this.URLbase + "images/thumb/preview/" + this.videoData.vuid + "/"+img+".jpg";
+    updateThumbDiashow() {
+    	this.thumbHoverInfoWidth = 100 / 20 * this.thumbImgNumber;
+      this.thumbPreviewUrl = this.URLbase + "images/thumb/preview/" + this.videoData.vuid + "/" + this.thumbImgNumber + ".jpg";
     },
     stopThumbDiashow(){
       const self = this
-    	$("#"+this.thumbId).find(".thumbHoverInfo").css("width", "0%" );
-      $("#"+this.thumbId).find(".thumbHoverInfo").hide();
+			this.thumbHoverInfoTransitionHidden = true;
+			this.thumbHoverInfoWidth = 0;
       this.thumbPreviewUrl = null;
 
-    	if(this.thumbDiashow!==null){
-      	clearInterval(self.thumbDiashow);
+    	if(this.thumbDiashow !== null) {
+      	clearInterval(this.thumbDiashow);
       }
     }
   },

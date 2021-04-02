@@ -232,7 +232,6 @@ headerCenter {
   border-image-source: linear-gradient(60deg, var(--orange500) 30%, var(--orange900) 70%);
 }
 
-
 .thumbHolder.purple:after {
   border-image-source: linear-gradient(60deg, var(--purple500) 30%, var(--purple900) 70%);
 }
@@ -243,9 +242,13 @@ headerCenter {
   bottom: 0px;
   width: 0%;
   height: 3px;
-  transition: width 0.6s cubic-bezier(0.48, 0.48, 0.48, 0.48);
+  transition: width 0.45s cubic-bezier(0.48, 0.48, 0.48, 0.48);
   background: var(--white);
   box-shadow: 0px -3px 10px var(--main-gray);
+}
+
+.thumbHoverInfoLeave {
+  transition: width 0s;
 }
 
 .thumbInfo {
