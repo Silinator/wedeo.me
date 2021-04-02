@@ -12,6 +12,7 @@
   }
 
   $json = (object)[
+    "htmlTitle" => $htmlTitle,
     "videoMeta" => (object)[
       "vuid" => "ZL7CM0Rd",
       "datavuid" => "JnhdhWTGOaCFMzPPAca0JkDyW",

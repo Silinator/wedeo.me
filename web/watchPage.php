@@ -14,6 +14,7 @@
   if( $_GET['v'] == "pTRtfE39" ) {
     $htmlTitle = "Aranoid Vortex - Other side [NSM Release] | wedeo.me";
     $json = (object)[
+      "htmlTitle" => $htmlTitle,
       "videoMeta" => (object)[
         "vuid" => "pTRtfE39",
         "datavuid" => "q20Gc2ypR1BdXrtUZ5i1a7hpQ",
@@ -35,6 +36,7 @@
   } elseif( $_GET['v'] == "uq7t73s7" ) {
     $htmlTitle = "Floatinurboat - Limbo (feat. ELLIØT) [NSM Release] | wedeo.me";
     $json = (object)[
+      "htmlTitle" => $htmlTitle,
       "videoMeta" => (object)[
         "vuid" => "uq7t73s7",
         "datavuid" => "QsFksSHmeNOW5BgjTCyZUtTfK",
@@ -54,7 +56,9 @@
       ]
     ];
   } elseif( $_GET['v'] == "ZL7CM0Rd" ) {
+    $htmlTitle = "Minecraft Server overview | wedeo.me";
     $json = (object)[
+      "htmlTitle" => $htmlTitle,
       "videoMeta" => (object)[
         "vuid" => "ZL7CM0Rd",
         "datavuid" => "JnhdhWTGOaCFMzPPAca0JkDyW",
@@ -74,7 +78,9 @@
       ]
     ];
   } elseif( $_GET['v'] == "49lUrQcO" ) {
+    $htmlTitle = "9MK2- Knaxi [NSM Release] | wedeo.me";
     $json = (object)[
+      "htmlTitle" => $htmlTitle,
       "videoMeta" => (object)[
         "vuid" => "49lUrQcO",
         "datavuid" => "HkgdCtAmwkmMbwK7OlISfR89R",
