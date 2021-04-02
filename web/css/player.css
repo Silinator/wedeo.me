@@ -214,7 +214,7 @@ wedeoContainer {
 }
 
 .wedeo-player .vjs-play-progress {
-  transition: width 0.07s cubic-bezier(0.48, 0.48, 0.48, 0.48);
+  transition: width 0.3s cubic-bezier(0.48, 0.48, 0.48, 0.48);
 }
 
 .wedeo-player .vjs-progress-control:active .vjs-play-progress {
@@ -242,7 +242,7 @@ wedeoContainer {
 .wedeo-player .vjs-load-progress,
 .wedeo-player .vjs-load-progress div {
   background: var(--silver);
-  transition: width 0.1s cubic-bezier(0.48, 0.48, 0.48, 0.48);
+  transition: width 0.5s cubic-bezier(0.48, 0.48, 0.48, 0.48);
 }
 
 .wedeo-player .vjs-slider,
