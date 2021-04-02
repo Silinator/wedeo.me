@@ -239,8 +239,8 @@ wedeoContainer {
   background: var(--white);
 }
 
-.wedeo-player .vjs-load-progress,
-.wedeo-player .vjs-load-progress div {
+.wedeo-player:not(.vjs-waiting) .vjs-load-progress,
+.wedeo-player:not(.vjs-waiting) .vjs-load-progress div {
   background: var(--silver);
   transition: width 0.5s cubic-bezier(0.48, 0.48, 0.48, 0.48);
 }
