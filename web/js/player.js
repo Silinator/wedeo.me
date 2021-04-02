@@ -1,6 +1,12 @@
 /* makes seeking smooth */
 {
-  const SeekBar = videojs.getComponent('SeekBar')
+  const Player = videojs.getComponent('Player');
+  const SeekBar = videojs.getComponent('SeekBar');
+
+  Player.prototype.resetVolumeBar_ = function resetVolumeBar_() {
+    // Overwrites default behavior of setting valume to 100% 
+    this.trigger('volumereset');
+  }
 
   SeekBar.prototype.getPercent = function getPercent() {
     // Allows for smooth scrubbing, when player can't keep up.
@@ -29,6 +35,7 @@ class wedeoPlayerClass {
     this.URLbase      = "https://www.we-teve.com/";
     this.playerId     = playerId;
     this.selectedRes  = "1080p";
+    this.volume       = 0.8;
     this.playbackRate = 1;
     this.fullscreenUi = t('VIDEO_FULLSCREEN_UI_AUTO');
     this.availablePlaybackRates = [ 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2];
@@ -72,6 +79,7 @@ class wedeoPlayerClass {
       if( !self.playerSettingsMenuOpen ) { this.addClass('vjs-user-inactive'); }
     });
 
+    this.Player.on('volumechange', function() { self.volume = self.Player.volume(); });
     this.Player.on('mouseover', function() { this.removeClass('vjs-user-inactive'); });
 
     this.Player.on('ended', function() { self.videoEnded(); });
@@ -710,6 +718,7 @@ class wedeoPlayerClass {
     this.Player.loadMedia(this.media, function() {
       self.Player.poster(poster);
       self.Player.playbackRate(self.playbackRate);
+      self.Player.volume(self.volume);
     });
 
     this.updateSkipButtons();
