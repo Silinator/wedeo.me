@@ -6,6 +6,7 @@
 }
 
 :root {
+  --black: #000000;
   --bg-black: #111111;
   --bg-blackA15: #11111126;
   --bg-blackA60: #11111199;
@@ -88,7 +89,14 @@ header {
   width: 100%;
   height: 60px;
   background: linear-gradient( 0deg, transparent, var(--bg-blackA60) );
+  border-color: var(--black);
+  transition: background 0.3s ease-in-out, border 0.3s cubic-bezier(1,-0.01, 1,-1.34);
   z-index: 999999;
+}
+
+header.solid {
+  background: var(--bg-gray);
+  border-bottom: 1px solid var(--black);
 }
 
 headerLeft,

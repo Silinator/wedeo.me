@@ -67,6 +67,14 @@ if( $withHtml || !$apiRequest ) {
         wedeoBgPlayer = new wedeoPlayerClass( 'wedeo-bg-player' );
         wedeoBgPlayer.setVideo(videoMeta);
 
+        $(document).scroll(function() {
+          if( $(document).scrollTop() > 50 ) {
+            $("header").addClass('solid');
+          }else{
+            $("header").removeClass('solid');
+          }
+        });
+
         const app = new Vue({
           el: '#allVideos',
           store,
