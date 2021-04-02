@@ -101,31 +101,29 @@ header.solid {
 
 headerLeft,
 headerCenter,
-headerRigth {
+headerRight {
   display: flex;
   align-items: center;
 }
 
 headerLeft,
-headerRigth {
+headerRight {
   padding: 15px;
-}
-
-headerRigth {
-  width: 270px;
-  background-color: blue;
 }
 
 .headerButton {
   display: flex;
   align-items: center;
   color: var(--white);
-  margin-right: 15px;
   cursor: pointer;
 }
 
+.headerButton:not(:last-child) {
+  margin-right: 15px;
+}
+
 .headerButton .material-icons {
-  font-size: 36px;
+  font-size: 34px;
 }
 
 .headerLogo img {
@@ -144,15 +142,20 @@ headerCenter {
   padding: 5px 30px 5px 0;
   border: none;
   opacity: 0.5;
-  border-bottom: 1px solid var(--light-gray);
+  color: var(--white);
+  border-bottom: 1px solid var(--white);
   background-color: transparent;
+}
+
+.headerSearchInput::placeholder {
+  color: var(--light-gray);
 }
 
 .mainSearchButton {
   display: flex;
   align-items: center;
   position: absolute;
-  color: var(--light-gray);
+  color: var(--white);
   right: 0px;
   height: 36px;
   cursor: pointer;
@@ -168,8 +171,19 @@ headerCenter {
   opacity: 1;
 }
 
-.headerSearchInput::placeholder {
-  color: var(--light-gray);
+.uploadButton .material-icons,
+.bookmarkButton .material-icons,
+.friendsButton .material-icons {
+  font-size: 32px;
+}
+
+.notificationsButton .material-icons {
+  font-size: 30px;
+}
+
+.userButton img {
+  height: 34px;
+  width: 34px;
 }
 
 /* landing page all videos */

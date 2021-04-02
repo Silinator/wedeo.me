@@ -16,6 +16,24 @@
     </div>
   </headerCenter>
 
-  <headerRigth>
-  </headerRigth>
+  <headerRight>
+    <div class="headerButton uploadButton">
+      <span class="material-icons">upload</span>
+    </div>
+    <div class="headerButton bookmarkButton">
+      <span class="material-icons">bookmark_border</span>
+    </div>
+    <div class="headerButton notificationsButton">
+      <span class="material-icons">notifications_none</span>
+    </div>
+    <div class="headerButton friendsButton">
+      <span class="material-icons">people_outline</span>
+    </div>
+    <div class="headerButton levelButton">
+      <span class="material-icons">border_outer</span>
+    </div>
+    <div class="headerButton userButton">
+      <img src="img/icons/avatar.png"/>
+    </div>
+  </headerRight>
 </header>
