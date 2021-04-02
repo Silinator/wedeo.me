@@ -55,7 +55,7 @@ if( $withHtml || !$apiRequest ) {
     <video id="wedeo-bg-player" class="wedeo-bg-player video-js" controls></video>
 
     <!-- <a href="watchPage.php?v=uq7t73s7">Video Link</a> -->
-    <div id="allVideos" class="allVideosContainer"></div>
+    <div id="allVideos"></div>
 
     <script type="text/javascript">
       videoMeta = JSON.parse('<?=json_encode($json->videoMeta)?>');

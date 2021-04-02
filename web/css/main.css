@@ -169,12 +169,22 @@ headerCenter {
 
 /* loading page all videos */
 .allVideosContainer {
-  display: flex;
-  justify-content: space-between;
   width: calc( 100% - 600px );
   max-width: 1320px;
   margin: auto;
+}
+
+.allVideosContainer h1 {
+  width: 100%;
+  font-weight: normal;
+  font-size: 32px;
   margin-top: 30px;
+}
+
+.allVideosList {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
   margin-bottom: 100px;
 }
 
