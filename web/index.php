@@ -1,4 +1,6 @@
 <?php
+  require_once( __DIR__ . '/include/start.php' );
+
   $htmlTitle = "Willkommen | wedeo.me";
 
   if( isset( $_POST['json'], $_POST['html'] ) ) {
