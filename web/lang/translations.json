@@ -58,5 +58,33 @@
  "ALL_VIDEOS": {
    "de": "Alle Videos",
    "en": "All videos"
+ },
+ "HEADER_SEARCH": {
+   "de": "Suchen",
+   "en": "Search"
+ },
+ "NAVI_CHANNEL": {
+   "de": "Mein Kanal",
+   "en": "My channel"
+ },
+ "NAVI_SUBSCRIBERS": {
+   "de": "Meine Abos",
+   "en": "My subs"
+ },
+ "NAVI_RECOMMENDED": {
+   "de": "Empfohlene Videos",
+   "en": "Recommended videos"
+ },
+ "NAVI_VIDEOS": {
+   "de": "Meine Videos",
+   "en": "My videos"
+ },
+ "NAVI_OPTIONS": {
+   "de": "Einstellungen",
+   "en": "Options"
+ },
+ "NAVI_LOGOUT": {
+   "de": "Abmelden",
+   "en": "Log out"
  }
 }

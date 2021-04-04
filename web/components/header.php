@@ -4,13 +4,13 @@
       <span class="material-icons">menu</span>
     </div>
 
-    <a href="" class="headerLogo">
+    <a href="/wedeo.me/web/" class="headerLogo noSel">
       <img src="img/icons/logo.svg"/>
     </a>
   </headerLeft>
 
   <headerCenter>
-    <input class="headerSearchInput" placeholder="Suchen"/>
+    <input class="headerSearchInput" placeholder="<?=$l->t('HEADER_SEARCH')?>"/>
     <div class="mainSearchButton">
       <span class="material-icons">search</span>
     </div>
@@ -36,4 +36,72 @@
       <img src="img/icons/avatar.png"/>
     </div>
   </headerRight>
+
+  <sideNavi>
+    <headerLeft>
+      <div class="headerButton toggleLeftNaviButton">
+        <span class="material-icons">menu</span>
+      </div>
+
+      <a href="/wedeo.me/web/" class="headerLogo">
+        <img src="img/icons/logo.svg"/>
+      </a>
+    </headerLeft>
+
+    <a href="" class="naviButton">
+      <span class="material-icons">home</span> <!--weicon-home-->
+      <?=$l->t('NAVI_CHANNEL')?>
+    </a>
+    <a href="" class="naviButton">
+      <span class="material-icons">star</span> <!--star-->
+      <?=$l->t('NAVI_SUBSCRIBERS')?>
+    </a>
+    <a href="" class="naviButton">
+      <span class="material-icons">lightbulb</span> <!--weicon-lightbulb-->
+      <?=$l->t('NAVI_RECOMMENDED')?>
+    </a>
+    <a href="" class="naviButton">
+    <span class="material-icons">movie</span> <!--weicon-videos-->
+      <?=$l->t('NAVI_VIDEOS')?>
+    </a>
+    <a href="" class="naviButton">
+      <span class="material-icons">settings</span>
+      <?=$l->t('NAVI_OPTIONS')?>
+    </a>
+    <a href="" class="naviButton">
+      <span class="material-icons">logout</span>
+      <?=$l->t('NAVI_LOGOUT')?>
+    </a>
+  </sideNavi>
+  <sideNaviBg></sideNaviBg>
+
+  <script type="text/javascript">
+    $('.toggleLeftNaviButton').click( function() {
+      if( $('sideNavi').hasClass('open') ) {
+        closeNavi();
+      } else {
+        openNavi();
+      }
+    });
+
+    $('sideNaviBg').click( function() {
+      closeNavi();
+    });
+
+    function openNavi() {
+      const self = this;
+
+      $('sideNavi, sideNaviBg').addClass('open');
+      $('mainContainer, header').addClass('blur');
+      $('body').addClass('of-hidden');
+    }
+
+    function closeNavi() {
+      $('sideNavi, sideNaviBg').removeClass('open');
+      $('mainContainer, header').removeClass('blur');
+      $('body').removeClass('of-hidden');
+    }
+
+  </script>
+
 </header>
