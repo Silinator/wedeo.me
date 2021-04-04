@@ -1,0 +1,225 @@
+{
+  "metadata": {
+    "name": "wedeo/font",
+    "lastOpened": 0,
+    "created": 1617492710669
+  },
+  "iconSets": [
+    {
+      "icons": [
+        {
+          "id": 5,
+          "paths": [
+            "M245.76 426.667h607.573v341.333h-682.667v-491.947zM938.667 170.667h-170.667l85.333 170.667h-128l-85.333-170.667h-85.333l85.333 170.667h-128l-85.333-170.667h-85.333l85.333 170.667h-128l-85.333-170.667h-42.667c-46.933 0-85.333 38.4-85.333 85.333v512c0 46.933 38.4 85.333 85.333 85.333h682.667c46.933 0 85.333-38.4 85.333-85.333v-597.333z"
+          ],
+          "attrs": [
+            {}
+          ],
+          "isMulticolor": false,
+          "isMulticolor2": false,
+          "grid": 0,
+          "tags": [
+            "movie_creation_black_24dp"
+          ]
+        },
+        {
+          "id": 4,
+          "paths": [
+            "M512 116.736l442.368 338.33-48.66 63.638-71.985-54.776v377.801h-643.445v-377.801l-71.985 55.179-48.66-64.041 442.368-338.33zM552.215 761.174h201.077v-358.47l-241.291-184.47-241.291 184.47v358.47h201.077v-161.11h80.429v161.11z"
+          ],
+          "attrs": [
+            {}
+          ],
+          "isMulticolor": false,
+          "isMulticolor2": false,
+          "grid": 0,
+          "tags": [
+            "cottage_black_24dp 1"
+          ]
+        },
+        {
+          "paths": [
+            "M768 640v128h-512v-128h-85.333v128c0 46.933 38.4 85.333 85.333 85.333h512c46.933 0 85.333-38.4 85.333-85.333v-128h-85.333zM725.333 469.333l-60.16-60.16-110.507 110.080v-348.587h-85.333v348.587l-110.507-110.080-60.16 60.16 213.333 213.333 213.333-213.333z"
+          ],
+          "attrs": [
+            {}
+          ],
+          "isMulticolor": false,
+          "isMulticolor2": false,
+          "grid": 0,
+          "tags": [
+            "file_download-black-24dp"
+          ],
+          "id": 1
+        },
+        {
+          "paths": [
+            "M768 686.080c-32.427 0-61.44 12.8-83.627 32.853l-304.213-177.067c2.133-9.813 3.84-19.627 3.84-29.867s-1.707-20.053-3.84-29.867l300.8-175.36c23.040 21.333 53.333 34.56 87.040 34.56 70.827 0 128-57.173 128-128s-57.173-128-128-128-128 57.173-128 128c0 10.24 1.707 20.053 3.84 29.867l-300.8 175.36c-23.040-21.333-53.333-34.56-87.040-34.56-70.827 0-128 57.173-128 128s57.173 128 128 128c33.707 0 64-13.227 87.040-34.56l303.787 177.493c-2.133 8.96-3.413 18.347-3.413 27.733 0 68.693 55.893 124.587 124.587 124.587s124.587-55.893 124.587-124.587c0-68.693-55.893-124.587-124.587-124.587zM768 170.667c23.467 0 42.667 19.2 42.667 42.667s-19.2 42.667-42.667 42.667-42.667-19.2-42.667-42.667 19.2-42.667 42.667-42.667zM256 554.667c-23.467 0-42.667-19.2-42.667-42.667s19.2-42.667 42.667-42.667 42.667 19.2 42.667 42.667-19.2 42.667-42.667 42.667zM768 854.187c-23.467 0-42.667-19.2-42.667-42.667s19.2-42.667 42.667-42.667 42.667 19.2 42.667 42.667-19.2 42.667-42.667 42.667z"
+          ],
+          "attrs": [
+            {}
+          ],
+          "isMulticolor": false,
+          "isMulticolor2": false,
+          "grid": 0,
+          "tags": [
+            "share-24px"
+          ],
+          "id": 2
+        },
+        {
+          "paths": [
+            "M384 896c0 23.467 19.2 42.667 42.667 42.667h170.667c23.467 0 42.667-19.2 42.667-42.667v-42.667h-256v42.667zM512 85.333c-164.693 0-298.667 133.973-298.667 298.667 0 101.547 50.773 190.72 128 244.907v96.427c0 23.467 19.2 42.667 42.667 42.667h256c23.467 0 42.667-19.2 42.667-42.667v-96.427c77.227-54.187 128-143.36 128-244.907 0-164.693-133.973-298.667-298.667-298.667zM633.6 558.933l-36.267 25.6v98.133h-170.667v-98.133l-36.267-25.6c-57.6-40.107-91.733-105.387-91.733-174.933 0-117.76 95.573-213.333 213.333-213.333s213.333 95.573 213.333 213.333c0 69.547-34.133 134.827-91.733 174.933z"
+          ],
+          "attrs": [
+            {}
+          ],
+          "isMulticolor": false,
+          "isMulticolor2": false,
+          "grid": 0,
+          "tags": [
+            "lightbulb-24px"
+          ],
+          "id": 3
+        }
+      ],
+      "height": 1024,
+      "metadata": {
+        "name": "wedeome",
+        "importSize": {
+          "width": 24,
+          "height": 24
+        }
+      },
+      "preferences": {
+        "showGlyphs": true,
+        "showQuickUse": true,
+        "showQuickUse2": true,
+        "showSVGs": true,
+        "fontPref": {
+          "prefix": "weicon-",
+          "metadata": {
+            "fontFamily": "wedeome",
+            "majorVersion": 1,
+            "minorVersion": 0
+          },
+          "metrics": {
+            "emSize": 1024,
+            "baseline": 6.25,
+            "whitespace": 50
+          },
+          "embed": false,
+          "ie7": false,
+          "noie8": false,
+          "includeMetadata": false,
+          "showSelector": true,
+          "selector": "",
+          "classSelector": ".icon",
+          "showMetrics": false,
+          "showMetadata": false,
+          "showVersion": false
+        },
+        "imagePref": {
+          "prefix": "icon-",
+          "png": true,
+          "useClassSelector": true,
+          "color": 0,
+          "bgColor": 16777215,
+          "classSelector": ".icon"
+        },
+        "historySize": 50,
+        "showCodes": true,
+        "gridSize": 16,
+        "showLiga": false
+      },
+      "selection": [
+        {
+          "order": 21,
+          "id": 4,
+          "name": "videos",
+          "prevSize": 32,
+          "code": 59651,
+          "tempChar": ""
+        },
+        {
+          "order": 20,
+          "id": 3,
+          "name": "home",
+          "prevSize": 32,
+          "code": 59652,
+          "tempChar": ""
+        },
+        {
+          "order": 10,
+          "id": 2,
+          "name": "file_download",
+          "prevSize": 32,
+          "code": 59650,
+          "tempChar": ""
+        },
+        {
+          "order": 11,
+          "id": 1,
+          "name": "share",
+          "prevSize": 32,
+          "code": 59649,
+          "tempChar": ""
+        },
+        {
+          "order": 12,
+          "id": 0,
+          "name": "lightbulb",
+          "prevSize": 32,
+          "code": 59648,
+          "tempChar": ""
+        }
+      ],
+      "prevSize": 32,
+      "id": 1,
+      "invisible": false,
+      "colorThemes": []
+    }
+  ],
+  "preferences": {
+    "showGlyphs": true,
+    "showQuickUse": true,
+    "showQuickUse2": true,
+    "showSVGs": true,
+    "fontPref": {
+      "prefix": "weicon-",
+      "metadata": {
+        "fontFamily": "wedeome",
+        "majorVersion": 1,
+        "minorVersion": 0
+      },
+      "metrics": {
+        "emSize": 1024,
+        "baseline": 6.25,
+        "whitespace": 50
+      },
+      "embed": false,
+      "ie7": false,
+      "noie8": false,
+      "includeMetadata": false,
+      "showSelector": true,
+      "selector": "",
+      "classSelector": ".icon",
+      "showMetrics": false,
+      "showMetadata": false,
+      "showVersion": false
+    },
+    "imagePref": {
+      "prefix": "icon-",
+      "png": true,
+      "useClassSelector": true,
+      "color": 0,
+      "bgColor": 16777215,
+      "classSelector": ".icon"
+    },
+    "historySize": 50,
+    "showCodes": true,
+    "gridSize": 16,
+    "showLiga": false
+  },
+  "uid": -1
+}
