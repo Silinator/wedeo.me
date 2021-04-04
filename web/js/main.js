@@ -28,9 +28,9 @@ function activateSamePageLinks() {
 
       const url = $(this).attr('href');
       goToPage(url);
-    }
 
-    return false;
+      return false;
+    }
   });
 }
 
