@@ -1,0 +1,24 @@
+.bigBtn {
+  display: inline-flex;
+  padding: 10px 25px;
+  font-size: 24px;
+  color: var(--white);
+  text-decoration: none;
+  border: 2px solid;
+  border-image-slice: 1;
+  border-width: 2px;
+  border-image-source: linear-gradient( 135deg, var(--cyan500), var(--main) );
+  background: linear-gradient( 135deg, var(--cyan500), var(--main) );
+}
+
+.bigBtn:hover,
+.bigBtn:focus,
+.bigBtn:focus,
+.bigBtn:active {
+  background: linear-gradient( 135deg, var(--cyan500), var(--main) ) !important;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent;
+  cursor: pointer;
+}
