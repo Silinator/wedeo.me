@@ -37,6 +37,7 @@ function activateSamePageLinks() {
 function goToPage( url, fromNavigation = false ) {
   if( !fromNavigation ) { window.history.pushState( {page: true}, null, document.location ); } //adds current page as previous page
   window.history.replaceState('currentPage', 'wedeo.me', url); //changes browser url
+  closeNavi();
 
   //add page loading progress
 
