@@ -4,8 +4,8 @@
   $htmlTitle = "Willkommen | wedeo.me";
 
   if( isset( $_POST['json'], $_POST['html'] ) ) {
-    $asJson = $_POST['json'] == true;
-    $withHtml = $_POST['html'] == true;
+    $asJson = $_POST['json'] == "true";
+    $withHtml = $_POST['html'] == "true";
     $apiRequest = true;
   } else {
     $asJson = false;
