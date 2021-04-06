@@ -126,21 +126,34 @@ if( $withHtml || !$apiRequest ) {
     ob_start();
   }
 ?>
-    <wedeoContainer>
-      <video id="wedeo-player" class="wedeo-player video-js" controls></video>
-    </wedeoContainer>
+    <mainWedeoContainer>
+      <wedeoContainer>
+        <video id="wedeo-player" class="wedeo-player video-js" controls></video>
+      </wedeoContainer>
 
-    <a href="watchPage.php?v=pTRtfE39">Next Video</a>
+      <wedeoSideContainer></wedeoSideContainer>
+    </mainWedeoContainer>
 
     <script type="text/javascript">
       videoMeta = JSON.parse('<?=json_encode($json->videoMeta)?>');
 
       function pageScripts() {
-        console.log( 'ready' );
-
         wedeoPlayer = new wedeoPlayerClass( 'wedeo-player' );
+        wedeoPlayer.addSizeButton();
         wedeoPlayer.setVideo(videoMeta);
         //wedeoPlayer.setTime( 42 );
+
+        resizeWedeo();
+        $( window ).resize(function() { resizeWedeo(); });
+      }
+
+      function resizeWedeo() {
+        const max = $( window ).width() - 320 - 30 - 20;
+        let width = $('wedeoSideContainer').height() / 9 * 16;
+
+        if( width > max ) { width = max; }
+
+        $('wedeoContainer').width( width );
       }
     </script>
 <?php
