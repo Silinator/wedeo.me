@@ -158,10 +158,12 @@ class wedeoPlayerClass {
         volumeStep: 0.1,
         seekStep: 5,
         enableModifiersForNumbers: false,
+        captureDocumentHotkeys: true,
+        documentHotkeysFocusElementFilter: e => e.tagName.toLowerCase() === 'body',
         customKeys: {
           settingsMenuKey: {
             key: function(event) {
-              return ( event.which === 83 || event.which === 79 ); //u
+              return (  event.shiftKey && event.which === 83 ||  event.shiftKey && event.which === 79 ); //shift + s / shift + o
             },
             handler: function() {
               self.togglePlayerSettingsMenu(true);
@@ -169,7 +171,7 @@ class wedeoPlayerClass {
           },
           playerSizeKey: {
             key: function(event) {
-              return (event.which === 84); //t
+              return ( event.shiftKey && event.which === 84 ); //shift + t
             },
             handler: function() {
               self.togglePlayerSize();
