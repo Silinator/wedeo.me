@@ -35,6 +35,7 @@ class wedeoPlayerClass {
     this.URLbase      = "https://www.we-teve.com/";
     this.playerId     = playerId;
     this.selectedRes  = "1080p";
+    this.muted        = null;
     this.volume       = 0.8;
     this.playbackRate = 1;
     this.fullscreenUi = t('VIDEO_FULLSCREEN_UI_AUTO');
@@ -79,9 +80,12 @@ class wedeoPlayerClass {
       if( !self.playerSettingsMenuOpen ) { this.addClass('vjs-user-inactive'); }
     });
 
-    this.Player.on('volumechange', function() { self.volume = self.Player.volume(); });
     this.Player.on('mouseover', function() { this.removeClass('vjs-user-inactive'); });
     this.Player.on('ended', function() { self.videoEnded(); });
+    this.Player.on('volumechange', function() {
+      self.volume = self.Player.volume();
+      self.muted = self.Player.muted();
+    });
   }
 
   createBackgroundPlayer() {
@@ -747,7 +751,7 @@ class wedeoPlayerClass {
     this.Player.loadMedia(this.media, function() {
       self.Player.poster(poster);
       self.Player.playbackRate(self.playbackRate);
-      self.Player.volume(self.volume);
+      if(self.muted === true) { self.Player.muted(true); }
     });
 
     this.updateSkipButtons();
