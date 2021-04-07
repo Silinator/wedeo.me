@@ -207,6 +207,8 @@ class wedeoPlayerClass {
       "<div class='vjs-control vjs-button vjs-settings-button' tabindex='0'><span class='material-icons'>settings</span></div>"
     );
 
+    $('#'+this.playerId+' .vjs-spacer').before( "<div class='vjs-bottom-title'></div>" );
+
     $('#'+this.playerId+" .vjs-settings-button").click( function() { self.togglePlayerSettingsMenu(); });
 
     $('#'+this.playerId+" .vjs-settings-button").keyup( function( event ) {
@@ -701,11 +703,13 @@ class wedeoPlayerClass {
         $('#'+this.playerId+' .vjs-size-button .material-icons').html('aspect_ratio');
         wedeoContainer.removeClass('large');
         $('#'+this.playerId+' .vjs-background').hide();
+        $('#'+this.playerId+' .vjs-bottom-title').hide();
         resizeWedeo();
       } else {
         $('#'+this.playerId+' .vjs-size-button .material-icons').html('crop_16_9');
         wedeoContainer.addClass('large');
         $('#'+this.playerId+' .vjs-background').show();
+        $('#'+this.playerId+' .vjs-bottom-title').show();
       }
     }
   }
@@ -817,6 +821,7 @@ class wedeoPlayerClass {
 
   updatePlayerTitle() {
     $('#'+this.playerId+' .vjs-header-title').html(this.meta.title);
+    $('#'+this.playerId+' .vjs-bottom-title').html(this.meta.title).attr('title', this.meta.title);
   }
 
   updatePlayerRating() {

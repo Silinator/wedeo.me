@@ -88,6 +88,10 @@ mainWedeoContainer.large .wedeo-player .vjs-header {
   display: none;
 }
 
+mainWedeoContainer.large .wedeo-player.vjs-fullscreen .vjs-header {
+  display: flex;
+}
+
 .wedeo-player .vjs-header-title {
   font-size: 30px;
   pointer-events: all;
@@ -363,9 +367,34 @@ mainWedeoContainer.large .wedeo-player .vjs-header {
   display: none;
 }
 
+.wedeo-player .vjs-bottom-title {
+  display: none;
+  max-width: 100%;
+  font-size: 15px;
+  line-height: 33px;
+  margin-top: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-left: auto; /* moves everything before this element to the right site */
+  margin-right: auto; /* moves everything after this element to the left site */
+}
+
+mainWedeoContainer.large .wedeo-player.vjs-fullscreen .vjs-bottom-title {
+  display: none !important;
+}
+
 .wedeo-player .vjs-custom-control-spacer {
   display: flex;
-  margin-left: auto; /* moves everything after this element to the right site */
+  margin-left: auto; /* moves everything before this element to the right site */
+}
+
+mainWedeoContainer.large .wedeo-player .vjs-custom-control-spacer {
+  margin-left: unset;
+}
+
+mainWedeoContainer.large .wedeo-player.vjs-fullscreen .vjs-custom-control-spacer {
+  margin-left: auto; /* moves everything before this element to the right site */
 }
 
 
