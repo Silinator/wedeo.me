@@ -62,7 +62,7 @@ Vue.component( 'thumb', {
     }
   },
   methods: {
-    startThumbDiashow(){
+    startThumbDiashow() {
       const self = this;
     	this.thumbImgNumber = 1;
 
@@ -80,7 +80,7 @@ Vue.component( 'thumb', {
     	this.thumbHoverInfoWidth = 100 / 20 * this.thumbImgNumber;
       this.thumbPreviewUrl = this.URLbase + "images/thumb/preview/" + this.videoData.vuid + "/" + this.thumbImgNumber + ".jpg";
     },
-    stopThumbDiashow(){
+    stopThumbDiashow() {
       const self = this
 			this.thumbHoverInfoTransitionHidden = true;
 			this.thumbHoverInfoWidth = 0;
