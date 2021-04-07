@@ -306,9 +306,7 @@ class wedeoPlayerClass {
       "<div class='vjs-control vjs-button vjs-size-button' tabindex='0'><span class='material-icons'>aspect_ratio</span></div>"
     );
 
-    $('#'+this.playerId).append(
-      "<div class='vjs-background'></div>"
-    );
+    $('#'+this.playerId).append( "<div class='vjs-background'></div>" );
 
     $('#'+this.playerId+" .vjs-size-button").click( function() { self.togglePlayerSize(); });
 
