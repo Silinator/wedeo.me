@@ -621,8 +621,7 @@ class wedeoPlayerClass {
     $('#'+this.playerId+' .vjs-settings-menu').hide();
 
     $('#'+this.playerId+' .vjs-setting').attr('tabindex','');
-    $('#'+this.playerId).focus();
-    $(document).unbind( 'mouseup, touchend');
+    $(document).unbind('mouseup touchend');
   }
 
   openPlayerSpeedSettings( key = false ) {
