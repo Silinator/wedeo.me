@@ -90,8 +90,5 @@ Vue.component( 'thumb', {
       	clearInterval(this.thumbDiashow);
       }
     }
-  },
-  created() {
-    console.log( this.videoData );
   }
 });

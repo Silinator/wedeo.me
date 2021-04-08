@@ -701,7 +701,7 @@ class wedeoPlayerClass {
         wedeoContainer.removeClass('large');
         $('#'+this.playerId+' .vjs-background').hide();
         $('#'+this.playerId+' .vjs-bottom-title').hide();
-        resizeWedeo();
+        this.resizeWedeo();
       } else {
         $('#'+this.playerId+' .vjs-size-button .material-icons').html('crop_16_9');
         wedeoContainer.addClass('large');
@@ -709,6 +709,15 @@ class wedeoPlayerClass {
         $('#'+this.playerId+' .vjs-bottom-title').show();
       }
     }
+  }
+
+  resizeWedeo() {
+    const max = $( window ).width() - 320 - 30 - 20;
+    let width = $('.wedeoSideContainer').height() / 9 * 16;
+
+    if( width > max ) { width = max; }
+
+    $('wedeoContainer').width( width );
   }
 
   getVideoSource() {

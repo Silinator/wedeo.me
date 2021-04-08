@@ -143,13 +143,24 @@ if( $withHtml || !$apiRequest ) {
         wedeoPlayer.setVideo(videoMeta);
         //wedeoPlayer.setTime( 42 );
 
-        resizeWedeo();
-        $( window ).resize(function() { resizeWedeo(); });
+        $( window ).resize(function() { wedeoPlayer.resizeWedeo(); });
+
+        const mainapp = new Vue({
+          el: 'wedeoSideContainer',
+          store,
+          data: {
+            Player: wedeoPlayer,
+            videoData: videoMeta
+          },
+          template: `
+            <wedeoSideContainer :Player='Player' :videoData='videoData'></wedeoSideContainer>
+          `
+        });
       }
 
       function resizeWedeo() {
         const max = $( window ).width() - 320 - 30 - 20;
-        let width = $('wedeoSideContainer').height() / 9 * 16;
+        let width = $('.wedeoSideContainer').height() / 9 * 16;
 
         if( width > max ) { width = max; }
 
