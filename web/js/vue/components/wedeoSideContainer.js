@@ -24,7 +24,7 @@ Vue.component( 'wedeoSideContainer', {
       this.activeTab = tab;
     },
     headerBtnClass( tab ) {
-      return "wedeoSideContainerHeaderBtn " + ( tab == this.activeTab ? "active" : "" );
+      return "wedeoSideContainerHeaderBtn noSel " + ( tab == this.activeTab ? "active" : "" );
     }
   },
   mounted() {
