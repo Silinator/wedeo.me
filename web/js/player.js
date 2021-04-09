@@ -67,6 +67,7 @@ class wedeoPlayerClass {
 
   createDefaultPlayer() {
     const self = this;
+    this.hotkeyTimeout = false;
     this.addHotkeys();
     this.addSettingsMenus();
     this.addPlayerVideoPreview();
@@ -161,12 +162,72 @@ class wedeoPlayerClass {
         captureDocumentHotkeys: true,
         documentHotkeysFocusElementFilter: e => e.tagName.toLowerCase() === 'body',
         customKeys: {
+          muteKey: {
+            key: function(event) {
+              return ( event.which === 77 || event.shiftKey && event.which === 77 ); //m / shift + m
+            },
+            handler: function( player, options, event ) {
+              if( !self.hotkeyTimeout ) {
+                self.setHotkeyTimeout();
+                if( options.enableMute ) {
+                  player.muted(!player.muted());
+                }
+              }
+            }
+          },
+          volumeUpKey: {
+            key: function(event) {
+              return ( event.which === 38 || event.shiftKey && event.which === 38 ); //up / shift + up
+            },
+            handler: function( player, options, event ) {
+              if( !self.hotkeyTimeout ) {
+                self.setHotkeyTimeout();
+                player.volume(player.volume() + options.volumeStep);
+              }
+            }
+          },
+          volumeDownKey: {
+            key: function(event) {
+              return ( event.which === 40 || event.shiftKey && event.which === 40 ); //down / shift + down
+            },
+            handler: function( player, options, event ) {
+              if( !self.hotkeyTimeout ) {
+                self.setHotkeyTimeout();
+                player.volume(player.volume() - options.volumeStep);
+              }
+            }
+          },
+          forwardKey: {
+            key: function(event) {
+              return ( event.which === 39 || event.shiftKey && event.which === 39 ); //right / shift + right
+            },
+            handler: function( player, options, event ) {
+              if( !self.hotkeyTimeout ) {
+                self.setHotkeyTimeout();
+                player.currentTime(player.currentTime() + options.seekStep);
+              }
+            }
+          },
+          rewindKey: {
+            key: function(event) {
+              return ( event.which === 37 || event.shiftKey && event.which === 37 ); //left / shift + left
+            },
+            handler: function( player, options, event ) {
+              if( !self.hotkeyTimeout ) {
+                self.setHotkeyTimeout();
+                player.currentTime(player.currentTime() - options.seekStep);
+              }
+            }
+          },
           settingsMenuKey: {
             key: function(event) {
-              return (  event.shiftKey && event.which === 83 ||  event.shiftKey && event.which === 79 ); //shift + s / shift + o
+              return ( event.shiftKey && event.which === 83 || event.shiftKey && event.which === 79 ); //shift + s / shift + o
             },
             handler: function() {
-              self.togglePlayerSettingsMenu(true);
+              if( !self.hotkeyTimeout ) {
+                self.setHotkeyTimeout();
+                self.togglePlayerSettingsMenu(true);
+              }
             }
           },
           playerSizeKey: {
@@ -174,7 +235,10 @@ class wedeoPlayerClass {
               return ( event.shiftKey && event.which === 84 ); //shift + t
             },
             handler: function() {
-              self.togglePlayerSize();
+              if( !self.hotkeyTimeout ) {
+                self.setHotkeyTimeout();
+                self.togglePlayerSize();
+              }
             }
           },
           skipPreviousKey: {
@@ -182,7 +246,10 @@ class wedeoPlayerClass {
               return ( event.shiftKey && event.which === 80 ); //shift + p
             },
             handler: function() {
-              self.previousVideo();
+              if( !self.hotkeyTimeout ) {
+                self.setHotkeyTimeout();
+                self.previousVideo();
+              }
             }
           },
           skipNextKey: {
@@ -190,14 +257,24 @@ class wedeoPlayerClass {
               return ( event.shiftKey && event.which === 78 ); //shift + n
             },
             handler: function() {
-              self.nextVideo();
+              if( !self.hotkeyTimeout ) {
+                self.setHotkeyTimeout();
+                self.nextVideo();
+              }
             }
           }
         }
       });
     });
+  }
 
-    $('#'+this.playerId).focus();
+  setHotkeyTimeout() {
+    const self = this;
+    this.hotkeyTimeout = true;
+
+    setTimeout( function() {
+      self.hotkeyTimeout = false;
+    }, 1);
   }
 
   addSettingsMenus() {
