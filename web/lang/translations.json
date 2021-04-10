@@ -86,5 +86,17 @@
  "NAVI_LOGOUT": {
    "de": "Abmelden",
    "en": "Log out"
+ },
+ "SUBSCRIBE": {
+   "de": "Abonnieren",
+   "en": "Subscribe"
+ },
+ "SUBSCRIBED": {
+   "de": "Abonniert",
+   "en": "Subscribed"
+ },
+ "PUBLISHED_ON": {
+   "de": "Veröffentlicht am $n von",
+   "en": "Published on $n from"
  }
 }

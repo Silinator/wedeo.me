@@ -58,6 +58,7 @@ function loadVideoPage( url ) {
 
     document.title = data.htmlTitle;
     wedeoPlayer.setVideo(data.videoMeta);
+    store.commit( 'setCurrentVideoInfo', data.videoMeta );
 
     activateSamePageNavigation();
     activateSamePageLinks();

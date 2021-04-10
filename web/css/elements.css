@@ -1,3 +1,23 @@
+.smallBtn {
+  display: inline-flex;
+  padding: 3px 8px 3px 6px;;
+  font-size: 16px;
+  line-height: 21px;
+  color: var(--white);
+  text-decoration: none;
+  border: 1px solid;
+  border-image-slice: 1;
+  border-width: 1px;
+  border-image-source: linear-gradient( 135deg, var(--cyan500), var(--main) );
+  background: linear-gradient( 135deg, var(--cyan500), var(--main) );
+}
+
+.smallBtn .material-icons {
+  font-size: 16px;
+  line-height: 21px;
+  margin-right: 3px;
+}
+
 .bigBtn {
   display: inline-flex;
   padding: 10px 25px;
@@ -11,6 +31,10 @@
   background: linear-gradient( 135deg, var(--cyan500), var(--main) );
 }
 
+.smallBtn:hover,
+.smallBtn:focus,
+.smallBtn:focus,
+.smallBtn:active,
 .bigBtn:hover,
 .bigBtn:focus,
 .bigBtn:focus,

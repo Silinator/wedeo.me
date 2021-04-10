@@ -14,8 +14,9 @@ $(document).ready( function() {
   });
 });
 
-function t(id) {
-  return translations[id][selLang.lang];
+function t(id, n = null) {
+  str = translations[id][selLang.lang];
+  return str = str.replace( /\$n/g, n );
 }
 
 function n(num) {

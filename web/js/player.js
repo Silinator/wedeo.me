@@ -840,6 +840,7 @@ class wedeoPlayerClass {
     this.Player.loadMedia(this.media, function() {
       self.Player.poster(poster);
       self.Player.playbackRate(self.playbackRate);
+      self.Player.volume(self.volume);
       if(self.muted === true) { self.Player.muted(true); }
     });
 

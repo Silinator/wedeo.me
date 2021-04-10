@@ -20,6 +20,7 @@
       "videoMeta" => (object)[
         "vuid" => "pTRtfE39",
         "datavuid" => "q20Gc2ypR1BdXrtUZ5i1a7hpQ",
+        "publishDate" => 1540418400,
         "availableSources" => [ "audio", "240p", "480p", "1080p", "2160p" ],
         "title" => "Aranoid Vortex - Other side [NSM Release]",
         "description" => "No Strike Music Songs with Hearts And Some More All Copyright Free and Free To use<br/><br/>Join Our TS3 and get youtuber Rank ore NSM Buddy:<br/>NoStrikeMusic.nitrado.net",
@@ -29,6 +30,7 @@
         "user" => (object)[
           "uuid" => "HmSFgY0X3DYX",
           "name" => "nsmRecords",
+          "subed" => false,
         ],
         "playlistId" => "H3yS4FJ6691c",
         "previousVideo" => "",
@@ -42,6 +44,7 @@
       "videoMeta" => (object)[
         "vuid" => "uq7t73s7",
         "datavuid" => "QsFksSHmeNOW5BgjTCyZUtTfK",
+        "publishDate" => 1536962400,
         "availableSources" => [ "audio", "240p", "480p", "1080p", "2160p" ],
         "title" => "Floatinurboat - Limbo (feat. ELLIØT) [NSM Release]",
         "description" => "No one can get a copyright claim if you use our songs , Because this song is free to use for your youtube videos...",
@@ -51,6 +54,7 @@
         "user" => (object)[
           "uuid" => "HmSFgY0X3DYX",
           "name" => "nsmRecords",
+          "subed" => false,
         ],
         "playlistId" => "H3yS4FJ6691c",
         "previousVideo" => "pTRtfE39",
@@ -64,6 +68,7 @@
       "videoMeta" => (object)[
         "vuid" => "ZL7CM0Rd",
         "datavuid" => "JnhdhWTGOaCFMzPPAca0JkDyW",
+        "publishDate" => 1612047600,
         "availableSources" => [ "audio", "240p", "480p", "1080p" ],
         "title" => "Minecraft Server overview",
         "description" => "Musik: Mount Olympus - Approaching Nirvana <br/>https://www.youtube.com/watch?v=fe2s-7IYg-0",
@@ -73,10 +78,11 @@
         "user" => (object)[
           "uuid" => "G4bGS4TQajeo",
           "name" => "Silinator",
+          "subed" => true,
         ],
         "playlistId" => "",
         "previousVideo" => "",
-        "nextVideo" => ""
+        "nextVideo" => "pTRtfE39"
       ]
     ];
   } elseif( $_GET['v'] == "49lUrQcO" ) {
@@ -86,6 +92,7 @@
       "videoMeta" => (object)[
         "vuid" => "49lUrQcO",
         "datavuid" => "HkgdCtAmwkmMbwK7OlISfR89R",
+        "publishDate" => 1520553600,
         "availableSources" => [ "audio", "240p", "360p", "480p", "720p", "1080p" ],
         "duration" => 212,
         "title" => "9MK2- Knaxi [NSM Release]",
@@ -97,6 +104,7 @@
         "user" => (object)[
           "uuid" => "HmSFgY0X3DYX",
           "name" => "nsmRecords",
+          "subed" => false,
         ],
         "playlistId" => "",
         "previousVideo" => "",
@@ -117,6 +125,10 @@ if( !$asJson ) {
         let videoMeta;
       </script>
       <?php require_once("components/header.php"); ?>
+      <script src="js/vue/components/wedeoSideContainer.js"></script>
+      <script src="js/vue/components/wedeoSideComments.js"></script>
+      <script src="js/vue/components/wedeoSideInfo.js"></script>
+      <script src="js/vue/components/wedeoSideMoreVideos.js"></script>
       <mainContainer>
 <?php
 }
@@ -145,15 +157,14 @@ if( $withHtml || !$apiRequest ) {
 
         $( window ).resize(function() { wedeoPlayer.resizeWedeo(); });
 
+        store.commit( 'setWedeoPlayer', wedeoPlayer );
+        store.commit( 'setCurrentVideoInfo', videoMeta );
+
         const mainapp = new Vue({
           el: 'wedeoSideContainer',
           store,
-          data: {
-            Player: wedeoPlayer,
-            videoData: videoMeta
-          },
           template: `
-            <wedeoSideContainer :Player='Player' :videoData='videoData'></wedeoSideContainer>
+            <wedeoSideContainer></wedeoSideContainer>
           `
         });
       }

@@ -1,5 +1,4 @@
 Vue.component( 'wedeoSideContainer', {
-	props: [ 'Player', 'videoData' ],
   data: function() {
     return {
       activeTab: "comments",
@@ -12,22 +11,35 @@ Vue.component( 'wedeoSideContainer', {
         <div :class='headerBtnClass("info")' v-on:click='changeActiveTab("info")'><span class='weicon-info'></span></div>
         <div :class='headerBtnClass("moreVideos")' v-on:click='changeActiveTab("moreVideos")'><span class="material-icons">theaters</span></div>
       </div>
+			<div class='wedeoSideContainerHeaderLine' :style="linePosition"></div>
+			<div class='wedeoSideContent'>
+				<wedeoSideComments v-show='activeTab === "comments"'/>
+				<wedeoSideInfo v-show='activeTab === "info"'/>
+				<wedeoSideMoreVideos v-show='activeTab === "moreVideos"'/>
+			</div>
     </div>
   `,
   computed: {
-    URLbase() {
-      return this.$store.state.URLbase;
-    }
+		wedeoPlayer() {
+			return this.$store.state.wedeoPlayer;
+		},
+		linePosition() {
+			switch (this.activeTab) {
+				case 'comments': 		return "left: 0"; 	break;
+				case 'info': 				return "left: 33%";	break;
+				case 'moreVideos':	return "left: 66%"; break;
+			}
+		}
   },
   methods: {
     changeActiveTab( tab ) {
       this.activeTab = tab;
     },
     headerBtnClass( tab ) {
-      return "wedeoSideContainerHeaderBtn noSel " + ( tab == this.activeTab ? "active" : "" );
+      return "wedeoSideContainerHeaderBtn noSel " + ( tab === this.activeTab ? "active" : "" );
     }
   },
   mounted() {
-    this.Player.resizeWedeo();
+    this.wedeoPlayer.resizeWedeo();
   }
 });

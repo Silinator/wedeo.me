@@ -54,7 +54,7 @@
 <script src="js/vue/store.js"></script>
 <script src="js/vue/components/allVideos.js"></script>
 <script src="js/vue/components/thumb.js"></script>
-<script src="js/vue/components/wedeoSideContainer.js"></script>
+<script src="js/vue/components/userPreview.js"></script>
 
 <?php /* language */ ?>
 <script src="lang/lang.js"></script>
