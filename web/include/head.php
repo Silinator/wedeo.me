@@ -38,6 +38,9 @@
 <?php /* jQuery */ ?>
 <script src="node_modules/jquery/dist/jquery.min.js"></script>
 
+<?php /* moment */ ?>
+<script src="node_modules/moment/min/moment.min.js"></script>
+
 <?php /* own */ ?>
 <link href="css/main.css" rel="stylesheet">
 <link href="css/elements.css" rel="stylesheet">
