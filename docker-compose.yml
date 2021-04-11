@@ -1,30 +1,30 @@
 version: '3'
 
 networks:
-    nginx-php-mysql:
+  nginx-php-mysql:
 
 services:
-    app:
-        build:
-            context: .
-            dockerfile: Dockerfile
-        image: wedeome
-        container_name: app
-        restart: unless-stopped
-        volumes:
-            - ./:/var/www/wedeome
-            
-    webserver:
-        build:
-            context: .
-            dockerfile: Dockerfile_Nginx
-        image: nginx
-        container_name: webserver
-        restart: unless-stopped
-        ports:
-            - "8080:80"
-        volumes:
-            - ./:/var/www/wedeome
-            - ./config/nginx/:/etc/nginx/conf.d/
-        depends_on:
-            - app
+  app:
+    build:
+      context: .
+        dockerfile: Dockerfile
+      image: wedeome
+      container_name: app
+      restart: unless-stopped
+      volumes:
+        - ./:/var/www/wedeome
+
+  webserver:
+    build:
+      context: .
+        dockerfile: Dockerfile_Nginx
+      image: nginx
+      container_name: webserver
+      restart: unless-stopped
+      ports:
+        - "8080:80"
+      volumes:
+        - ./:/var/www/wedeome
+        - ./config/nginx/:/etc/nginx/conf.d/
+      depends_on:
+        - app
