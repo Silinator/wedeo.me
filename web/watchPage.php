@@ -125,10 +125,6 @@ if( !$asJson ) {
         let videoMeta;
       </script>
       <?php require_once("components/header.php"); ?>
-      <script src="js/vue/components/wedeoSideContainer.js"></script>
-      <script src="js/vue/components/wedeoSideComments.js"></script>
-      <script src="js/vue/components/wedeoSideInfo.js"></script>
-      <script src="js/vue/components/wedeoSideMoreVideos.js"></script>
       <mainContainer>
 <?php
 }
@@ -138,6 +134,11 @@ if( $withHtml || !$apiRequest ) {
     ob_start();
   }
 ?>
+    <script src="js/vue/components/wedeoSideContainer.js"></script>
+    <script src="js/vue/components/wedeoSideComments.js"></script>
+    <script src="js/vue/components/wedeoSideInfo.js"></script>
+    <script src="js/vue/components/wedeoSideMoreVideos.js"></script>
+
     <mainWedeoContainer>
       <wedeoContainer>
         <video id="wedeo-player" class="wedeo-player video-js" controls></video>
