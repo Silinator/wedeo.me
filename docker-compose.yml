@@ -1,8 +1,5 @@
 version: '3'
 
-networks:
-  nginx-php-mysql:
-
 services:
   app:
     build:
@@ -28,3 +25,34 @@ services:
       - ./config/nginx/:/etc/nginx/conf.d/
     depends_on:
       - app
+
+  db:
+    image: mysql:8.0.23
+    container_name: db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: wedeome
+      MYSQL_USER: wedeome
+      MYSQL_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - dbdata:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    restart: always
+    depends_on:
+      - db
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: root
+    ports:
+      - "8081:80"
+
+volumes:
+  dbdata:
+    driver: local
