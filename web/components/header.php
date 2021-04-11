@@ -4,7 +4,7 @@
       <span class="material-icons">menu</span>
     </div>
 
-    <a href="/wedeo.me/web/" class="headerLogo noSel">
+    <a href="/" class="headerLogo noSel">
       <img src="img/icons/logo.svg"/>
     </a>
   </headerLeft>
