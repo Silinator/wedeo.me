@@ -41,7 +41,7 @@ function goToPage( url, fromNavigation = false ) {
 
   //add page loading progress
 
-  if( ( url.startsWith("watchPage") || url.startsWith( new URL(document.baseURI).pathname + "watchPage") ) && wedeoPlayer ) {
+  if( ( url.startsWith("watch") || url.startsWith("w") || url.startsWith( new URL(document.baseURI).pathname + "watch/") || url.startsWith( new URL(document.baseURI).pathname + "w/") ) && wedeoPlayer ) {
     loadVideoPage(url);
   } else if( wedeoPlayer ) {
     moveIntoMiniplayer();

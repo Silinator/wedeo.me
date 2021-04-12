@@ -2,7 +2,7 @@ Vue.component( 'userPreview', {
   props: ['userInfo'],
   template: `
     <div class='userPreviewContainer'>
-      <a href='userUrl'>
+      <a :href='userUrl'>
         <img :src='userImg'/>
       </a>
       <div class='userPreviewContent'>
@@ -19,7 +19,7 @@ Vue.component( 'userPreview', {
       return this.URLbase + "images/avatar/small/" + this.userInfo.uuid + ".jpg";
     },
     userUrl() {
-      return this.URLbase + "userPage.php?u=" + this.userInfo.uuid;
+      return "/user/" + this.userInfo.name;
     },
     subText() {
       return ( this.userInfo.subed ? '<span class="material-icons">done</span> ' + t('SUBSCRIBED') : t('SUBSCRIBE') );

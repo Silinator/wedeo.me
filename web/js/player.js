@@ -137,8 +137,8 @@ class wedeoPlayerClass {
   }
 
   updateVideoInfo() {
-    const videoUrl = "watchPage.php?v=" + this.meta.vuid;
-    const userUrl = "userPage.php?u=" + this.meta.user.uuid;
+    const videoUrl = "watch/" + this.meta.vuid;
+    const userUrl = "user/" + this.meta.user.name;
 
     $("#" + this.playerId+ ' .mainVideoPreviewTitle').attr( 'href', videoUrl ).html( this.meta.title ).attr( 'title', this.meta.title );
     $("#" + this.playerId+ ' .mainVideoPreviewDescription').html( this.meta.description );
@@ -985,12 +985,12 @@ class wedeoPlayerClass {
   pause(){ this.Player.pause(); }
   seekBackward(){ this.setTime( this.Player.currentTime() - this.seekTime ); }
   seekForward(){ this.setTime( this.Player.currentTime() + this.seekTime ); }
-  nextVideo(){ if( this.meta.nextVideo != "" ){ goToPage('watchPage.php?v=' + this.meta.nextVideo + ( this.meta.playlistId != "" ? '&pl=' + this.meta.playlistId : "" ) ); } }
+  nextVideo(){ if( this.meta.nextVideo != "" ){ goToPage('watch/' + this.meta.nextVideo + ( this.meta.playlistId != "" ? '&pl=' + this.meta.playlistId : "" ) ); } }
   previousVideo() {
     if( this.Player.currentTime() > 5 ) {
       this.setTime( 0 );
     } else if( this.meta.previousVideo != "" ) {
-      goToPage('watchPage.php?v=' + this.meta.previousVideo + ( this.meta.playlistId != "" ? '&pl=' + this.meta.playlistId : "" ) );
+      goToPage('watch/' + this.meta.previousVideo + ( this.meta.playlistId != "" ? '&pl=' + this.meta.playlistId : "" ) );
     }
   }
 

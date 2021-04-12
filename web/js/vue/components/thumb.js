@@ -37,7 +37,7 @@ Vue.component( 'thumb', {
   	},
 		videoUrl: function() {
       //TODO: add playlist
-			return "watchPage.php?v=" + this.videoData.vuid;
+			return "watch/" + this.videoData.vuid;
   	},
     thumbClass: function() {
       return "thumbHolder " + this.videoData.color;
