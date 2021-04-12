@@ -486,3 +486,7 @@ mainWedeoContainer.large .wedeoSideContainer {
   height: 50px;
   width: 50px;
 }
+/* description */
+.wedeoSideInfoDescription {
+  word-break: break-word;
+}
