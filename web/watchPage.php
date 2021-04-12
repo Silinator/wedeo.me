@@ -14,6 +14,10 @@
   }
 
   $videoData = getVideo( $vuid );
+  $videoData->playlistId = "";
+  $videoData->previousVideo = "";
+  $videoData->nextVideo = "";
+
   $htmlTitle = $videoData->title . " | wedeo.me";
   $json = (object)[
     "htmlTitle" => $htmlTitle,
