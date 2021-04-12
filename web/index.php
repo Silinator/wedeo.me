@@ -15,7 +15,7 @@
 
   $json = (object)[
     "htmlTitle" => $htmlTitle,
-    "videoMeta" => (object)[
+    "videoData" => (object)[
       "vuid" => "ZL7CM0Rd",
       "datavuid" => "JnhdhWTGOaCFMzPPAca0JkDyW",
       "availableSources" => [ "audio", "240p", "480p", "1080p" ],
@@ -43,7 +43,7 @@ if( !$asJson ) {
     </head>
     <body>
       <script>
-        let videoMeta;
+        let videoData;
       </script>
       <?php require_once("components/header.php"); ?>
       <mainContainer>
@@ -61,13 +61,13 @@ if( $withHtml || !$apiRequest ) {
     <div id="allVideos"></div>
 
     <script type="text/javascript">
-      videoMeta = JSON.parse('<?=json_encode($json->videoMeta)?>');
+      videoData = JSON.parse('<?=json_encode($json->videoData)?>');
 
       function pageScripts() {
         console.log( 'ready' );
 
         wedeoBgPlayer = new wedeoPlayerClass( 'wedeo-bg-player' );
-        wedeoBgPlayer.setVideo(videoMeta);
+        wedeoBgPlayer.setVideo(videoData);
 
         $(document).scroll(function() {
           if( $(document).scrollTop() > 50 ) {

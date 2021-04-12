@@ -15,7 +15,7 @@ Vue.component( 'thumb', {
       <div :class="'thumbHoverInfo ' + thumbHoverInfoClass" :style="thumbHoverInfoWidthStyle"></div>
       <div class="thumbInfo">
         <div class="thumbMetaInfo">
-          <span class="thumbLanguage">{{videoData.lang.toUpperCase()}}</span>
+          <span class="thumbLanguage">{{videoData.language.toUpperCase()}}</span>
           <span class="thumbRating">
             {{rating}}
             <span class="material-icons">thumb_up_off_alt</span>
