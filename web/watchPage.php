@@ -18,6 +18,10 @@
   $videoData->previousVideo = "";
   $videoData->nextVideo = "";
 
+  if( isset($_GET['t']) && intval($_GET['t']) ) {
+    $videoData->startAt = intval($_GET['t']);
+  }
+
   $htmlTitle = $videoData->title . " | wedeo.me";
   $json = (object)[
     "htmlTitle" => $htmlTitle,

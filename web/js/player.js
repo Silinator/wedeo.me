@@ -842,6 +842,7 @@ class wedeoPlayerClass {
       self.Player.playbackRate(self.playbackRate);
       self.Player.volume(self.volume);
       if(self.muted === true) { self.Player.muted(true); }
+      if(self.meta.hasOwnProperty("startAt")) { self.setTime(self.meta.startAt); }
     });
 
     this.updateSkipButtons();
