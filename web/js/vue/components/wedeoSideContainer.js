@@ -7,12 +7,14 @@ Vue.component( 'wedeoSideContainer', {
   template: `
     <div class='wedeoSideContainer'>
       <div class='wedeoSideContainerHeader'>
+        <div v-if="inPlaylist" :class='headerBtnClass("playlist")' v-on:click='changeActiveTab("playlist")'><span class="material-icons">view_list</span></div>
         <div :class='headerBtnClass("comments")' v-on:click='changeActiveTab("comments")'><span class="material-icons">chat_bubble_outline</span></div>
         <div :class='headerBtnClass("info")' v-on:click='changeActiveTab("info")'><span class='weicon-info'></span></div>
         <div :class='headerBtnClass("moreVideos")' v-on:click='changeActiveTab("moreVideos")'><span class="material-icons">theaters</span></div>
       </div>
-			<div class='wedeoSideContainerHeaderLine' :style="linePosition"></div>
+			<div :class="lineClass" :style="linePosition"></div>
 			<div class='wedeoSideContent'>
+				<wedeoSidePlaylist v-show='activeTab === "playlist"'/>
 				<wedeoSideComments v-show='activeTab === "comments"'/>
 				<wedeoSideInfo v-show='activeTab === "info"'/>
 				<wedeoSideMoreVideos v-show='activeTab === "moreVideos"'/>
@@ -23,12 +25,30 @@ Vue.component( 'wedeoSideContainer', {
 		wedeoPlayer() {
 			return this.$store.state.wedeoPlayer;
 		},
+    videoInfo() {
+      return this.$store.state.currentVideoInfo;
+    },
+    inPlaylist() {
+      return this.videoInfo.hasOwnProperty('playlistId') && this.videoInfo.playlistId !== "";
+    },
+    lineClass() {
+      return "wedeoSideContainerHeaderLine " + ( this.inPlaylist ? " widthPlaylist" : "" );
+    },
 		linePosition() {
-			switch (this.activeTab) {
-				case 'comments': 		return "left: 0"; 	break;
-				case 'info': 				return "left: 33%";	break;
-				case 'moreVideos':	return "left: 66%"; break;
-			}
+      if( this.inPlaylist ) {
+  			switch (this.activeTab) {
+          case 'playlist': 		return "left: 0"; 	break;
+          case 'comments': 		return "left: 25%"; break;
+          case 'info': 				return "left: 50%";	break;
+          case 'moreVideos':	return "left: 75%"; break;
+  			}
+      } else {
+        switch (this.activeTab) {
+          case 'comments': 		return "left: 0"; 	break;
+  				case 'info': 				return "left: 33%";	break;
+  				case 'moreVideos':	return "left: 66%"; break;
+        }
+      }
 		}
   },
   methods: {

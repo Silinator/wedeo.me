@@ -14,10 +14,18 @@
   }
 
   $videoData = getVideo( $vuid );
-  $videoData->playlistId = "";
-  $videoData->previousVideo = "";
-  $videoData->nextVideo = "";
 
+  /* playlistdata */
+  if( isset($_GET['pl']) ) {
+    //if playlist exist
+      $videoData->playlistId = dbEsc($_GET['pl']);
+
+    //get prev and next video
+      $videoData->previousVideo = "";
+      $videoData->nextVideo = "";
+  }
+
+  /* start at */
   if( isset($_GET['t']) && intval($_GET['t']) ) {
     $videoData->startAt = intval($_GET['t']);
   }
@@ -50,6 +58,7 @@ if( $withHtml || !$apiRequest ) {
   }
 ?>
     <script src="js/vue/components/wedeoSideContainer.js"></script>
+    <script src="js/vue/components/wedeoSidePlaylist.js"></script>
     <script src="js/vue/components/wedeoSideComments.js"></script>
     <script src="js/vue/components/wedeoSideInfo.js"></script>
     <script src="js/vue/components/wedeoSideMoreVideos.js"></script>

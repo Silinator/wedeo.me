@@ -464,6 +464,10 @@ mainWedeoContainer.large .wedeoSideContainer {
   transition: 0.2s ease-in-out;
 }
 
+.wedeoSideContainerHeaderLine.widthPlaylist {
+  width: calc( 100% / 4 );
+}
+
 .wedeoSideContainerHeaderBtn .material-icons,
 .wedeoSideContainerHeaderBtn .weicon-info {
   color: var(--white);
