@@ -31,15 +31,5 @@ Vue.component( 'wedeoSideInfo', {
 		description() {
 			return this.videoInfo.description;
 		}
-  },
-  methods: {
-    changeActiveTab( tab ) {
-      this.activeTab = tab;
-    },
-    headerBtnClass( tab ) {
-      return "wedeoSideContainerHeaderBtn noSel " + ( tab == this.activeTab ? "active" : "" );
-    }
-  },
-  mounted() {
   }
 });
