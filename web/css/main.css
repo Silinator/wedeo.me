@@ -404,6 +404,7 @@ mainWedeoContainer.large {
   display: flex;
   flex-direction: column;
   position: relative;
+  min-width: 0;
   max-width: 500px;
   flex-basis: 0;
   flex-grow: 1;
@@ -458,7 +459,8 @@ mainWedeoContainer.large .wedeoSideContainer {
 
 .wedeoSideContent {
   padding: 15px 10px 15px 0px;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .wedeoSideInfo h2 {
@@ -521,4 +523,13 @@ mainWedeoContainer.large .wedeoSideContainer {
 
 .wedeoSideShortInfoTitle {
   color: var(--silver);
+}
+
+
+/* more videos */
+.wedeoSideMoreVideosCatContainer {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 5px;
 }
