@@ -53,6 +53,27 @@ body {
   color: var(--white);
 }
 
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--bg-gray) var(--bg-black);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-gray);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--main-gray);
+}
+
 .material-icons {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
