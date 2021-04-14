@@ -1,5 +1,28 @@
+/* simple btns */
+.outlineBtn {
+  display: inline-block;
+  padding: 3px 8px 3px 8px;
+  font-size: 16px;
+  line-height: 21px;
+  color: var(--white);
+  border: 1px solid var(--white);
+  background: transparent;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.3s ease-in-out, background 0.3s ease-in-out;
+}
+
+.outlineBtn.active,
+.outlineBtn:focus,
+.outlineBtn:hover {
+  color: var(--bg-gray);
+  background: var(--white);
+  cursor: pointer;
+}
+
+/* color btns */
 .smallBtn {
-  padding: 3px 8px 3px 6px;;
+  padding: 3px 8px 3px 6px;
   font-size: 16px;
   line-height: 21px;
   border: 1px solid;
@@ -29,6 +52,14 @@
   color: var(--white);
   border-image-source: linear-gradient( 135deg, var(--cyan500), var(--main) );
   background: linear-gradient( 135deg, var(--cyan500), var(--main) );
+}
+
+.btn,
+.smallBtn,
+.bigBtn,
+.outlineBtn,
+.material-icons,
+.noSel {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
