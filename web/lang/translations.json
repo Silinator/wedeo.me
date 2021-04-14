@@ -98,5 +98,61 @@
  "PUBLISHED_ON": {
    "de": "Veröffentlicht am $n von",
    "en": "Published on $n from"
+ },
+ "CAT_MAIN": {
+   "de": "Kategorie",
+   "en": "Category"
+ },
+ "CAT_ENT": {
+   "de": "Unterhaltung",
+   "en": "Entertainment"
+ },
+ "CAT_COM": {
+   "de": "Komödie",
+   "en": "Comedy"
+ },
+ "CAT_MOV": {
+   "de": "Film",
+   "en": "Movie"
+ },
+ "CAT_MUS": {
+   "de": "Musik",
+   "en": "Music"
+ },
+ "CAT_GAM": {
+   "de": "Spiel",
+   "en": "Games"
+ },
+ "CAT_EAT": {
+   "de": "Nahrung",
+   "en": "Food"
+ },
+ "CAT_SPO": {
+   "de": "Sport",
+   "en": "Sports"
+ },
+ "CAT_VLO": {
+   "de": "Vlog",
+   "en": "Vlog"
+ },
+ "LANG_MAIN": {
+   "de": "Sprache",
+   "en": "Language"
+ },
+ "LANG_INT": {
+   "de": "International",
+   "en": "International"
+ },
+ "LANG_ENG": {
+   "de": "Englisch",
+   "en": "English"
+ },
+ "LANG_GER": {
+   "de": "Deutsch",
+   "en": "German"
+ },
+ "LANG_FRE": {
+   "de": "Französisch",
+   "en": "French"
  }
 }
