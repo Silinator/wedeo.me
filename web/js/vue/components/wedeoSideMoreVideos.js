@@ -2,7 +2,11 @@ Vue.component( 'wedeoSideMoreVideos', {
 	props: [ 'Player', 'videoData' ],
   data: function() {
     return {
-      activeTab: "comments",
+      catFilter	: "",
+      langFilter: "",
+      userFilter: "",
+      tagFilter	: "",
+      textFilter: ""
     }
   },
   template: `
@@ -12,6 +16,12 @@ Vue.component( 'wedeoSideMoreVideos', {
 				<div v-on:click="applyLangFilter(videoInfo.language)" class='outlineBtn' :title="videoLanguageFull">{{videoLanguageFull}}</div>
 				<div v-on:click="applyUserFilter(videoInfo.user.name)" class='outlineBtn' :title="videoInfo.user.name">{{videoInfo.user.name}}</div>
 				<div v-on:click="apllyTagFilter(tag)" v-for="tag in tags" class='outlineBtn' :title="tag">{{tag}}</div>
+			</div>
+			<div class='wedeoSideMoreVideosSearchContainer'>
+				<input class='wedeoSideMoreVideosSearchInput' :placeholder="t('MORE_VIDEOS_SEARCH')"/>
+				<div class='wedeoSideMoreVideosSearchBtn'>
+					<span class="material-icons">search</span>
+				</div>
 			</div>
     </div>
   `,
@@ -41,6 +51,9 @@ Vue.component( 'wedeoSideMoreVideos', {
 			//stuff
 		},
 		applyTagFilter(tag) {
+			//stuff
+		},
+		applyTextFilter(tag) {
 			//stuff
 		}
   },
