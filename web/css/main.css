@@ -527,6 +527,33 @@ mainWedeoContainer.large .wedeoSideContainer {
 
 
 /* more videos */
+.wedeoSideMoreVideosSearchContainer {
+  position: relative;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.wedeoSideMoreVideosSearchInput {
+  width: calc(100% - 27px);
+  font-size: 16px;
+  padding: 5px 27px 5px 0;
+  border: none;
+  color: var(--white);
+  border-bottom: 1px solid var(--white);
+  background-color: transparent;
+}
+
+.wedeoSideMoreVideosSearchBtn {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  color: var(--white);
+  top: 0px;
+  right: 0px;
+  height: 26px;
+  cursor: pointer;
+}
+
 .wedeoSideMoreVideosCatContainer {
   display: flex;
   justify-content: flex-start;

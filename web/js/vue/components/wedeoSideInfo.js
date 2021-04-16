@@ -1,9 +1,4 @@
 Vue.component( 'wedeoSideInfo', {
-  data: function() {
-    return {
-      activeTab: "comments",
-    }
-  },
   template: `
     <div class='wedeoSideInfo'>
 			<h2>{{t('PUBLISHED_ON', this.uploadDate)}}</h2>
