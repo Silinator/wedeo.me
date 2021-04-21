@@ -7,10 +7,10 @@ Vue.component( 'wedeoSideContainer', {
   template: `
     <div class='wedeoSideContainer'>
       <div class='wedeoSideContainerHeader'>
-        <div v-if="inPlaylist" :class='headerBtnClass("playlist")' v-on:click='changeActiveTab("playlist")'><span class="material-icons">view_list</span></div>
-        <div :class='headerBtnClass("comments")' v-on:click='changeActiveTab("comments")'><span class="material-icons">chat_bubble_outline</span></div>
-        <div :class='headerBtnClass("info")' v-on:click='changeActiveTab("info")'><span class='weicon-info'></span></div>
-        <div :class='headerBtnClass("moreVideos")' v-on:click='changeActiveTab("moreVideos")'><span class="material-icons">theaters</span></div>
+        <div v-if="inPlaylist" :class='headerBtnClass("playlist")'@click='changeActiveTab("playlist")'><span class="material-icons">view_list</span></div>
+        <div :class='headerBtnClass("comments")' @click='changeActiveTab("comments")'><span class="material-icons">chat_bubble_outline</span></div>
+        <div :class='headerBtnClass("info")' @click='changeActiveTab("info")'><span class='weicon-info'></span></div>
+        <div :class='headerBtnClass("moreVideos")' @click='changeActiveTab("moreVideos")'><span class="material-icons">theaters</span></div>
       </div>
 			<div :class="lineClass" :style="linePosition"></div>
 			<div class='wedeoSideContent'>

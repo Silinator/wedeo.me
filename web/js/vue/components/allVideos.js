@@ -25,7 +25,7 @@ Vue.component( 'allVideos', {
   	}
   },
   created() {
-    this.$store.dispatch('fetchMainVideos');
+    this.$store.dispatch('fetchVideos');
   },
   mounted() {
 		activateSamePageLinks();

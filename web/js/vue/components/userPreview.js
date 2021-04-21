@@ -7,7 +7,7 @@ Vue.component( 'userPreview', {
       </a>
       <div class='userPreviewContent'>
         <a :href='userUrl' class='userName'>{{userInfo.name}}</a>
-        <div class='smallBtn subBtn' v-on:click='subscribe' v-html='subText'></div>
+        <div class='smallBtn subBtn' @click='subscribe' v-html='subText'></div>
       </div>
     </div>
   `,

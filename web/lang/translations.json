@@ -103,6 +103,14 @@
    "de": "Nach weiteren Videos suchen",
    "en": "Search more videos"
  },
+ "MORE_VIDEOS": {
+   "de": "Weiteren Videos",
+   "en": "More videos"
+ },
+ "LOAD_MORE_VIDEOS": {
+   "de": "Weiteren Videos laden",
+   "en": "Load more videos"
+ },
  "CAT_MAIN": {
    "de": "Kategorie",
    "en": "Category"

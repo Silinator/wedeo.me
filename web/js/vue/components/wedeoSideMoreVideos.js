@@ -1,33 +1,37 @@
 Vue.component( 'wedeoSideMoreVideos', {
 	props: [ 'Player', 'videoData' ],
-  data: function() {
-    return {
-      catFilter	: "",
-      langFilter: "",
-      userFilter: "",
-      tagFilter	: "",
-      textFilter: ""
-    }
-  },
   template: `
     <div class='wedeoSideMoreVideos'>
 			<div class='wedeoSideMoreVideosCatContainer'>
-				<div v-on:click="applyCatFilter(videoInfo.category)" class='outlineBtn' :title="videoCategoryFull">{{videoCategoryFull}}</div>
-				<div v-on:click="applyLangFilter(videoInfo.language)" class='outlineBtn' :title="videoLanguageFull">{{videoLanguageFull}}</div>
-				<div v-on:click="applyUserFilter(videoInfo.user.name)" class='outlineBtn' :title="videoInfo.user.name">{{videoInfo.user.name}}</div>
-				<div v-on:click="apllyTagFilter(tag)" v-for="tag in tags" class='outlineBtn' :title="tag">{{tag}}</div>
+				<div @click="applyCatFilter(videoInfo.category)" class='outlineBtn' :title="videoCategoryFull">{{videoCategoryFull}}</div>
+				<div @click="applyLangFilter(videoInfo.language)" class='outlineBtn' :title="videoLanguageFull">{{videoLanguageFull}}</div>
+				<div @click="applyUserFilter(videoInfo.user.name)" class='outlineBtn' :title="videoInfo.user.name">{{videoInfo.user.name}}</div>
+				<div @click="apllyTagFilter(tag)" v-for="tag in tags" class='outlineBtn' :title="tag">{{tag}}</div>
 			</div>
 			<div class='wedeoSideMoreVideosSearchContainer'>
-				<input class='wedeoSideMoreVideosSearchInput' :placeholder="t('MORE_VIDEOS_SEARCH')"/>
-				<div class='wedeoSideMoreVideosSearchBtn'>
+				<input class='wedeoSideMoreVideosSearchInput' @keyup.enter="applyTextFilter" :placeholder="t('MORE_VIDEOS_SEARCH')"/>
+				<div class='wedeoSideMoreVideosSearchBtn' @click="applyTextFilter">
 					<span class="material-icons">search</span>
 				</div>
 			</div>
+			<h3>{{t('MORE_VIDEOS')}}</h3>
+			<div class='wedeoSideMoreVideosList'>
+				<div v-for="video in moreVideos" :key="video.vuid" class='shortHorVideoContainer'>
+					<thumb :videoData="video"/>
+					<div class='shortHorVideoContent'>
+						<div class='shortHorVideoTitle'>{{video.title}}</div>
+					</div>
+				</div>
+			</div>
+			<div class="loadMoreLine">{{t('LOAD_MORE_VIDEOS')}}</div>
     </div>
   `,
   computed: {
 		videoInfo() {
 			return this.$store.state.currentVideoInfo;
+		},
+		moreVideos() {
+			return this.$store.state.moreVideos;
 		},
 		videoCategoryFull() {
 			return t('CAT_' + this.videoInfo.category.toUpperCase() );
@@ -53,10 +57,11 @@ Vue.component( 'wedeoSideMoreVideos', {
 		applyTagFilter(tag) {
 			//stuff
 		},
-		applyTextFilter(tag) {
+		applyTextFilter() {
 			//stuff
 		}
   },
-  mounted() {
-  }
+	created() {
+		this.$store.dispatch('fetchMoreVideos');
+	}
 });

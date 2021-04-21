@@ -1,9 +1,25 @@
 <?php
+
 function dbEsc($string) {
   return mysqli_real_escape_string( db::$link, $string );
 }
 
 function getAllVideos() {
+  $limit = 24;
+
+  $videos_sql = db::$link->query("SELECT * FROM videos");
+  $videos = [];
+
+  while( $video_row = $videos_sql->fetch_object() ) {
+    $videos[] = genVideoJSON( $video_row );
+  }
+
+  return $videos;
+}
+
+function getMoreVideos( $index, $filter ) {
+  $limit = 12;
+
   $videos_sql = db::$link->query("SELECT * FROM videos");
   $videos = [];
 
