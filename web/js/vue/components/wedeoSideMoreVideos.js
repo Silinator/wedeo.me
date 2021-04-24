@@ -20,6 +20,7 @@ Vue.component( 'wedeoSideMoreVideos', {
 					<thumb :videoData="videoData"/>
 					<div class='shortHorVideoContent'>
 						<div class='shortHorVideoTitle'><a :href="videoUrl(videoData)"> {{videoData.title}}</a></div>
+						<h6 class='shortHorVideoUser'><a :href="userUrl(videoData)">{{videoData.user.name}}</a></h6>
 					</div>
 				</div>
 			</div>
@@ -47,6 +48,9 @@ Vue.component( 'wedeoSideMoreVideos', {
   methods: {
 		videoUrl(videoData) {
 			return "watch/" + videoData.vuid;
+		},
+		userUrl(videoData) {
+			return "user/" + videoData.user.uuid;
 		},
     applyCatFilter(cat) {
 	    //stuff
