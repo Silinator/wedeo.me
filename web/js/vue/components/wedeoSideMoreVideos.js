@@ -16,10 +16,10 @@ Vue.component( 'wedeoSideMoreVideos', {
 			</div>
 			<h3>{{t('MORE_VIDEOS')}}</h3>
 			<div class='wedeoSideMoreVideosList'>
-				<div v-for="video in moreVideos" :key="video.vuid" class='shortHorVideoContainer'>
-					<thumb :videoData="video"/>
+				<div v-for="videoData in moreVideos" :key="videoData.vuid" class='shortHorVideoContainer'>
+					<thumb :videoData="videoData"/>
 					<div class='shortHorVideoContent'>
-						<div class='shortHorVideoTitle'>{{video.title}}</div>
+						<div class='shortHorVideoTitle'><a :href="videoUrl(videoData)"> {{videoData.title}}</a></div>
 					</div>
 				</div>
 			</div>
@@ -45,6 +45,9 @@ Vue.component( 'wedeoSideMoreVideos', {
 		}
   },
   methods: {
+		videoUrl(videoData) {
+			return "watch/" + videoData.vuid;
+		},
     applyCatFilter(cat) {
 	    //stuff
     },

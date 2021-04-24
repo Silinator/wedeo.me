@@ -3,7 +3,7 @@ Vue.component( 'wedeoSideInfo', {
     <div class='wedeoSideInfo'>
 			<h2>{{t('PUBLISHED_ON', this.uploadDate)}}</h2>
 			<userPreview :userInfo="videoInfo.user"/>
-      <div class="wedeoSideInfoDescription" v-html="description"></div>
+      <p class="wedeoSideInfoDescription" v-html="description"></p>
       <div class="wedeoSideShortInfo">
         <div class="wedeoSideShortInfoTitle">{{t('CAT_MAIN')}}:</div> <div>{{videoCategoryFull}}</div>
         <div class="wedeoSideShortInfoTitle">{{t('LANG_MAIN')}}:</div> <div>{{videoLanguageFull}}</div>

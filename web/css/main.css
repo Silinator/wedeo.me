@@ -264,8 +264,6 @@ mainContainer.blur {
 
 .allVideosContainer h1 {
   width: 100%;
-  font-weight: normal;
-  font-size: 32px;
   margin-top: 30px;
 }
 
@@ -360,13 +358,6 @@ mainWedeoContainer.large .wedeoSideContainer {
   overflow-x: hidden;
 }
 
-.wedeoSideInfo h2 {
-  font-weight: normal;
-  font-size: 24px;
-  margin-bottom: 5px;
-}
-
-
 /* userPreview */
 .userPreviewContainer {
   display: flex;
@@ -396,16 +387,6 @@ mainWedeoContainer.large .wedeoSideContainer {
 /* description */
 .wedeoSideInfoDescription {
   word-break: break-word;
-}
-
-.wedeoSideInfoDescription a {
-  color: var(--main);
-  text-decoration: none;
-}
-
-.wedeoSideInfoDescription a:hover {
-  color: var(--cyan500);
-  text-decoration: underline;
 }
 
 .wedeoSideShortInfo {
@@ -467,11 +448,6 @@ mainWedeoContainer.large .wedeoSideContainer {
   flex-direction: column;
 }
 
-.wedeoSideMoreVideosList h3 {
-  font-weight: normal;
-  font-size: 18px;
-}
-
 .shortHorVideoContainer {
   display: flex;
   position: relative;
@@ -487,11 +463,16 @@ mainWedeoContainer.large .wedeoSideContainer {
   flex-grow: 1;
 }
 
-.shortHorVideoTitle {
+.shortHorVideoTitle a {
   display: -webkit-box;
   overflow: hidden;
+  color: var(--white);
   text-overflow: ellipsis;
   white-space: normal;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+}
+
+.shortHorVideoUser a {
+  color: var(--gray);
 }
