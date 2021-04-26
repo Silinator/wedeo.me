@@ -63,7 +63,7 @@ const store = new Vuex.Store({
       }
     },
     fetchMoreVideos( { commit, state } ) {
-      if( state.videosLoading === false ) {
+      if( state.moreVideosLoading === false ) {
         commit( 'setMoreVideosLoading', true );
 
         $.getJSON( 'api/getMoreVideos?index=' + state.moreVideosLoadedIndex + "&filter=" + JSON.stringify(state.moreVideosFilter), videos => {
