@@ -986,7 +986,7 @@ class wedeoPlayerClass {
   pause(){ this.Player.pause(); }
   seekBackward(){ this.setTime( this.Player.currentTime() - this.seekTime ); }
   seekForward(){ this.setTime( this.Player.currentTime() + this.seekTime ); }
-  nextVideo(){ if( this.meta.nextVideo != "" ){ goToPage('watch/' + this.meta.nextVideo + ( this.meta.hasOwnProperty('playlistId') && this.meta.playlistId != "" ? '&pl=' + this.meta.playlistId : "" ) ); } }
+  nextVideo(){ if( this.meta.hasOwnProperty('nextVideo') && this.meta.nextVideo != "" ){ goToPage('watch/' + this.meta.nextVideo + ( this.meta.hasOwnProperty('playlistId') && this.meta.playlistId != "" ? '&pl=' + this.meta.playlistId : "" ) ); } }
   previousVideo() {
     if( this.Player.currentTime() > 5 ) {
       this.setTime( 0 );
