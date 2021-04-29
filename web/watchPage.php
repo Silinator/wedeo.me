@@ -65,7 +65,7 @@ if( $withHtml || !$apiRequest ) {
 
     <mainWedeoContainer>
       <wedeoContainer>
-        <video id="wedeo-player" class="wedeo-player video-js" controls></video>
+        <video id="wedeo-player" class="wedeo-player video-js cover" controls></video>
       </wedeoContainer>
 
       <wedeoSideContainer></wedeoSideContainer>
