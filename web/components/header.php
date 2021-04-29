@@ -43,7 +43,7 @@
         <span class="material-icons">menu</span>
       </div>
 
-      <a href="/wedeo.me/web/" class="headerLogo">
+      <a href="/" class="headerLogo">
         <img src="img/icons/logo.svg"/>
       </a>
     </headerLeft>

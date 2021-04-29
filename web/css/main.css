@@ -243,6 +243,7 @@ sideNaviBg.open {
 .naviButton:hover,
 .naviButton:focus {
   background: linear-gradient( 135deg, var(--cyan500A30), var(--mainA30) );
+  text-decoration: none;
 }
 
 .naviButton .material-icons {
