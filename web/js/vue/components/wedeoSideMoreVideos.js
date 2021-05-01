@@ -27,6 +27,13 @@ Vue.component( 'wedeoSideMoreVideos', {
 			<div class="loadMoreLine">{{t('LOAD_MORE_VIDEOS')}}</div>
     </div>
   `,
+	watch: {
+		moreVideos() {
+			this.$nextTick(() => {
+				activateSamePageLinks();
+			});
+		}
+	},
   computed: {
 		videoInfo() {
 			return this.$store.state.currentVideoInfo;
