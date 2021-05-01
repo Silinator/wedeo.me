@@ -832,17 +832,19 @@ class wedeoPlayerClass {
     this.meta = meta;
     const poster = this.URLbase + 'images/thumb/large_img/' + this.meta.vuid + '.jpg';
 
-    this.media = {src: this.getVideoSource()};
     $('#'+this.playerId+' .vjs-load-progress').css( 'width', '0%' );
     $('#'+this.playerId+' .vjs-load-progress div').css( 'width', '0%' );
     $('#'+this.playerId+' .vjs-background').css( 'background-image', "url(" + poster + ")" );
 
-    this.Player.loadMedia(this.media, function() {
-      self.Player.poster(poster);
+    this.Player.src(self.getVideoSource());
+    if(this.meta.hasOwnProperty("startAt")) { this.setTime(this.meta.startAt); }
+
+    this.Player.play();
+
+    this.Player.on('playing', () => {
       self.Player.playbackRate(self.playbackRate);
-      self.Player.volume(self.volume);
-      if(self.muted === true) { self.Player.muted(true); }
-      if(self.meta.hasOwnProperty("startAt")) { self.setTime(self.meta.startAt); }
+      self.Player.poster(poster);
+      self.Player.off('playing')
     });
 
     this.updateSkipButtons();
