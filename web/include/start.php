@@ -3,3 +3,4 @@
   require_once( __DIR__ . '/../lang/lang.php' );
   require_once( __DIR__ . '/dbConnection.php' );
   require_once( __DIR__ . '/../api/sql.php' );
+  require_once( __DIR__ . '/functions.php' );

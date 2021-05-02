@@ -1,9 +1,4 @@
 <?php
-
-function dbEsc($string) {
-  return mysqli_real_escape_string( db::$link, $string );
-}
-
 function getAllVideos() {
   $limit = 24;
 
@@ -43,7 +38,6 @@ function genVideoJSON($video) {
   $video->commentsCount = 0;
   $video->rating = [ 2, 0 ];
   $video->resolutions = json_decode($video->resolutions);
-  $video->ipInfo = json_decode($video->ipInfo);
   $video->description = genDescription($video->description);
   $video->user = (object)[
     "uuid" => "HmSFgY0X3DYX",
@@ -56,28 +50,6 @@ function genVideoJSON($video) {
   }, $video->resolutions);
 
   return $video;
-}
-
-function autolink( $str, $attributes=array() ) {
-  $http_re = array('https' => ' https','http' => ' http');
-  $str = str_replace(array_keys($http_re),array_values($http_re), $str);
-
-  $attrs = '';
-  foreach( $attributes as $attribute => $value ) {
-    $attrs .= " {$attribute}=`{$value}`";
-  }
-
-  $str = ' ' . $str;
-  $str = preg_replace(
-    '`([^"=\'>])(((http|https|ftp)://|www.)[^\s<]+[^\s<\.)])`i',
-    '$1<a href=\"$2\"'.$attrs.'>$2</a>',
-    $str
-  );
-
-  $str = substr($str, 1);
-  $str = preg_replace('`href=\"www`','href="http://www',$str);
-
-  return $str;
 }
 
 function genDescription($string) {
