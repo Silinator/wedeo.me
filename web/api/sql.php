@@ -51,6 +51,6 @@ function genDescription($string) {
   $string = preg_replace( '/<br>/', "\n", $string);
   $string = htmlspecialchars( $string, ENT_QUOTES );
   $string = autolink( $string, array('target'=>'_blank') );
-  $string = preg_replace("/\r\n|\r|\n/", '<br/>', $string);
+  $string = preg_replace("/\r\n|\r|\n/", '<br/>&nbsp;', $string); /* &nbsp; because firefox... */
   return $string;
 }
