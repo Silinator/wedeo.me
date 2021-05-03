@@ -35,8 +35,7 @@ function getVideo($vuid) {
 
 
 function genVideoJSON($video) {
-  $video->commentsCount = 0;
-  $video->rating = [ 2, 0 ];
+  $video->rating = [ intval($video->likes), intval($video->dislikes) ];
   $video->resolutions = json_decode($video->resolutions);
   $video->description = genDescription($video->description);
   $video->user = (object)[
