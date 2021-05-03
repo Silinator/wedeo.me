@@ -24,7 +24,7 @@ Vue.component( 'wedeoSideMoreVideos', {
 					</div>
 				</div>
 			</div>
-			<div class="loadMoreLine">{{t('LOAD_MORE_VIDEOS')}}</div>
+			<div v-if="moreVideosLoading != 'all'" id="loadMoreLine" class="loadMoreLine">{{t('LOAD_MORE_VIDEOS')}}</div>
     </div>
   `,
 	watch: {
@@ -50,6 +50,9 @@ Vue.component( 'wedeoSideMoreVideos', {
 		tags() {
 			let tags = this.videoInfo.tags.split(", ");
 			return tags.filter( tag => { return tag.trim() != ""; });
+		},
+		moreVideosLoading() {
+			return this.$store.state.moreVideosLoading;
 		}
   },
   methods: {
@@ -75,7 +78,14 @@ Vue.component( 'wedeoSideMoreVideos', {
 			//stuff
 		}
   },
-	created() {
-		this.$store.dispatch('fetchMoreVideos');
+	mounted() {
+		const self = this;
+
+		let observer = new IntersectionObserver( function() {
+			if( !self.moreVideosLoading ) { /* to prevent double load */
+				self.$store.dispatch('fetchMoreVideos');
+			}
+		}, {} );
+		observer.observe( document.querySelector('#loadMoreLine') );
 	}
 });

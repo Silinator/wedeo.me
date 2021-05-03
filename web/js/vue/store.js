@@ -52,13 +52,16 @@ const store = new Vuex.Store({
       if( state.videosLoading === false ) {
         commit( 'setVideosLoading', true );
 
-        $.getJSON( 'api/getVideos?index=' + state.videosLoadedIndex, videos => {
+        $.getJSON( 'api/getVideos?index=' + state.videosLoadedIndex, data => {
           commit( 'setVideosLoading', false );
-          commit( 'setVideosLoadedIndex', videos.length );
-          commit( 'addVideos', videos );
+          commit( 'setVideosLoadedIndex', data.videos.length );
+          commit( 'addVideos', data.videos );
 
-          //only for test
-          commit( 'setVideosLoading', 'all' );
+          if( data.max ) {
+            commit( 'setVideosLoading', 'all' );
+          } else {
+            commit( 'setVideosLoading', false );
+          }
         });
       }
     },
@@ -66,13 +69,16 @@ const store = new Vuex.Store({
       if( state.moreVideosLoading === false ) {
         commit( 'setMoreVideosLoading', true );
 
-        $.getJSON( 'api/getMoreVideos?index=' + state.moreVideosLoadedIndex + "&filter=" + JSON.stringify(state.moreVideosFilter), videos => {
+        $.getJSON( 'api/getMoreVideos?index=' + state.moreVideosLoadedIndex + "&filter=" + JSON.stringify(state.moreVideosFilter), data => {
           commit( 'setMoreVideosLoading', false );
-          commit( 'setMoreVideosLoadedIndex', videos.length );
-          commit( 'addMoreVideos', videos );
+          commit( 'setMoreVideosLoadedIndex', data.videos.length );
+          commit( 'addMoreVideos', data.videos );
 
-          //only for test
-          commit( 'setMoreVideosLoading', 'all' );
+          if( data.max ) {
+            commit( 'setMoreVideosLoading', 'all' );
+          } else {
+            commit( 'setMoreVideosLoading', false );
+          }
         });
       }
     }

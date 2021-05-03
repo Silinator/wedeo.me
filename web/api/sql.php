@@ -1,7 +1,5 @@
 <?php
-function getAllVideos() {
-  $limit = 24;
-
+function getAllVideos( $index, $limit ) {
   $videos_sql = db::$link->query("SELECT * FROM videos");
   $videos = [];
 
@@ -12,9 +10,7 @@ function getAllVideos() {
   return $videos;
 }
 
-function getMoreVideos( $index, $filter ) {
-  $limit = 12;
-
+function getMoreVideos( $index, $filter, $limit ) {
   $videos_sql = db::$link->query("SELECT * FROM videos");
   $videos = [];
 
