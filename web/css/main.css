@@ -354,9 +354,8 @@ mainWedeoContainer.large .wedeoSideContainer {
 }
 
 .wedeoSideContent {
-  padding: 15px 10px 15px 0px;
-  overflow-y: auto;
-  overflow-x: hidden;
+  padding-top: 15px;
+  height: calc( 100% - 52px - 2px - 15px );
 }
 
 /* userPreview */
@@ -386,8 +385,22 @@ mainWedeoContainer.large .wedeoSideContainer {
 }
 
 /* description */
+.wedeoSideInfo {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 .wedeoSideInfoDescription {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 0;
+  flex-grow: 1;
+  padding-right: 10px;
+  height: auto;
   word-break: break-word;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .wedeoSideShortInfo {
@@ -406,6 +419,18 @@ mainWedeoContainer.large .wedeoSideContainer {
 
 
 /* more videos */
+.wedeoSideMoreVideos {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.wedeoSideMoreVideosListContainer {
+  padding-right: 10px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
 .wedeoSideMoreVideosSearchContainer {
   position: relative;
   margin-top: 20px;

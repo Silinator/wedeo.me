@@ -15,16 +15,18 @@ Vue.component( 'wedeoSideMoreVideos', {
 				</div>
 			</div>
 			<h3>{{t('MORE_VIDEOS')}}</h3>
-			<div class='wedeoSideMoreVideosList'>
-				<div v-for="videoData in moreVideos" :key="videoData.vuid" class='shortHorVideoContainer'>
-					<thumb :videoData="videoData"/>
-					<div class='shortHorVideoContent'>
-						<div class='shortHorVideoTitle'><a :href="videoUrl(videoData)"> {{videoData.title}}</a></div>
-						<h6 class='shortHorVideoUser'><a :href="userUrl(videoData)">{{videoData.user.name}}</a></h6>
+			<div class='wedeoSideMoreVideosListContainer'>
+				<div class='wedeoSideMoreVideosList'>
+					<div v-for="videoData in moreVideos" :key="videoData.vuid" class='shortHorVideoContainer'>
+						<thumb :videoData="videoData"/>
+						<div class='shortHorVideoContent'>
+							<div class='shortHorVideoTitle'><a :href="videoUrl(videoData)"> {{videoData.title}}</a></div>
+							<h6 class='shortHorVideoUser'><a :href="userUrl(videoData)">{{videoData.user.name}}</a></h6>
+						</div>
 					</div>
 				</div>
+				<div v-if="moreVideosLoading != 'all'" id="loadMoreLine" class="loadMoreLine">{{t('LOAD_MORE_VIDEOS')}}</div>
 			</div>
-			<div v-if="moreVideosLoading != 'all'" id="loadMoreLine" class="loadMoreLine">{{t('LOAD_MORE_VIDEOS')}}</div>
     </div>
   `,
 	watch: {
