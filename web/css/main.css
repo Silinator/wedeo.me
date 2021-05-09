@@ -394,8 +394,6 @@ mainWedeoContainer.large .wedeoSideContainer {
 .wedeoSideInfoDescription {
   display: flex;
   flex-direction: column;
-  flex-basis: 0;
-  flex-grow: 1;
   padding-right: 10px;
   height: auto;
   word-break: break-word;
