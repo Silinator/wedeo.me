@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Erstellungszeit: 15. Mai 2021 um 00:30
+-- Erstellungszeit: 15. Mai 2021 um 01:10
 -- Server-Version: 8.0.23
 -- PHP-Version: 7.4.11
 
@@ -69,7 +69,9 @@ INSERT INTO `videos` (`uvid`, `fileUvid`, `title`, `uuid`, `duration`, `views`, 
 -- Indizes für die Tabelle `videos`
 --
 ALTER TABLE `videos`
-  ADD PRIMARY KEY (`uvid`);
+  ADD PRIMARY KEY (`uvid`),
+  ADD UNIQUE KEY `uvid` (`uvid`),
+  ADD KEY `uuid` (`uuid`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
