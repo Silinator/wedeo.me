@@ -29,13 +29,12 @@ function getVideo($uvid) {
   return $video;
 }
 
-
 function genVideoJSON($video) {
   $video->rating = [ intval($video->likes), intval($video->dislikes) ];
   $video->resolutions = json_decode($video->resolutions);
   $video->description = genDescription($video->description);
   $video->user = (object)[
-    "uuid" => "HmSFgY0X3DYX",
+    "uuid" => $video->uuid,
     "name" => "nsmRecords",
     "subed" => false,
   ];

@@ -17,12 +17,15 @@
 
   /* playlistdata */
   if( isset($_GET['pl']) ) {
-    //if playlist exist
-      $videoData->playlistId = dbEsc($_GET['pl']);
+    $upid = dbEsc($_GET['pl']);
+    $userOrder = false;
+    $playlist = getPlaylist( $upid, $uvid,  );
 
-    //get prev and next video
-      $videoData->previousVideo = "";
-      $videoData->nextVideo = "";
+    if( $playlist != NULL ) {
+      $videoData->playlistId = $playlist->upid;
+      $videoData->previousVideo = $playlist->previousVideo;
+      $videoData->nextVideo = $playlist->nextVideo;
+    }
   }
 
   /* start at */
