@@ -16,8 +16,8 @@
   $json = (object)[
     "htmlTitle" => $htmlTitle,
     "videoData" => (object)[
-      "vuid" => "ZL7CM0Rd",
-      "datavuid" => "JnhdhWTGOaCFMzPPAca0JkDyW",
+      "uvid" => "ZL7CM0Rd",
+      "fileUvid" => "JnhdhWTGOaCFMzPPAca0JkDyW",
       "availableSources" => [ "audio", "240p", "480p", "1080p" ],
       "title" => "Minecraft Server overview",
       "description" => "Musik: Mount Olympus - Approaching Nirvana <br/>https://www.youtube.com/watch?v=fe2s-7IYg-0 <br/>https://www.youtube.com/watch?v=fe2s-7IYg-0",

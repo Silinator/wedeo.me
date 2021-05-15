@@ -1,7 +1,7 @@
 <?php
   require_once( __DIR__ . '/include/start.php' );
 
-  $vuid = dbEsc($_GET['v']);
+  $uvid = dbEsc($_GET['v']);
 
   if( isset( $_POST['json'], $_POST['html'] ) ) {
     $asJson = $_POST['json'] == "true";
@@ -13,7 +13,7 @@
     $apiRequest = false;
   }
 
-  $videoData = getVideo( $vuid );
+  $videoData = getVideo( $uvid );
 
   /* playlistdata */
   if( isset($_GET['pl']) ) {

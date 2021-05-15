@@ -17,7 +17,7 @@ Vue.component( 'wedeoSideMoreVideos', {
 			<h3>{{t('MORE_VIDEOS')}}</h3>
 			<div class='wedeoSideMoreVideosListContainer'>
 				<div class='wedeoSideMoreVideosList'>
-					<div v-for="videoData in moreVideos" :key="videoData.vuid" class='shortHorVideoContainer'>
+					<div v-for="videoData in moreVideos" :key="videoData.uvid" class='shortHorVideoContainer'>
 						<thumb :videoData="videoData"/>
 						<div class='shortHorVideoContent'>
 							<div class='shortHorVideoTitle'><a :href="videoUrl(videoData)"> {{videoData.title}}</a></div>
@@ -59,7 +59,7 @@ Vue.component( 'wedeoSideMoreVideos', {
   },
   methods: {
 		videoUrl(videoData) {
-			return "watch/" + videoData.vuid;
+			return "watch/" + videoData.uvid;
 		},
 		userUrl(videoData) {
 			return "user/" + videoData.user.uuid;

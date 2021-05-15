@@ -21,8 +21,8 @@ function getMoreVideos( $index, $filter, $limit ) {
   return $videos;
 }
 
-function getVideo($vuid) {
-  $videos_sql = db::$link->query("SELECT * FROM videos WHERE vuid = '$vuid'");
+function getVideo($uvid) {
+  $videos_sql = db::$link->query("SELECT * FROM videos WHERE uvid = '$uvid'");
   $video = $videos_sql->fetch_object();
   $video = genVideoJSON( $video );
 

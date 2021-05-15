@@ -10,7 +10,7 @@ Vue.component( 'thumb', {
     }
 	},
   template: `
-    <a :href="videoUrl" :id="thumbId"  :class="thumbClass" :data-vuid="videoData.vuid" @mouseenter="startThumbDiashow" @mouseleave="stopThumbDiashow">
+    <a :href="videoUrl" :id="thumbId"  :class="thumbClass" :data-uvid="videoData.uvid" @mouseenter="startThumbDiashow" @mouseleave="stopThumbDiashow">
       <img :src="thumbUrl"/>
       <div :class="'thumbHoverInfo ' + thumbHoverInfoClass" :style="thumbHoverInfoWidthStyle"></div>
       <div class="thumbInfo">
@@ -37,7 +37,7 @@ Vue.component( 'thumb', {
   	},
 		videoUrl: function() {
       //TODO: add playlist
-			return "watch/" + this.videoData.vuid;
+			return "watch/" + this.videoData.uvid;
   	},
     thumbClass: function() {
       return "thumbHolder " + this.videoData.color;
@@ -49,10 +49,10 @@ Vue.component( 'thumb', {
 			return "width:" + this.thumbHoverInfoWidth + "%;";
 		},
     thumbId: function() {
-      return "thumb" + this.videoData.vuid;
+      return "thumb" + this.videoData.uvid;
     },
     thumbUrl: function() {
-      return this.thumbPreviewUrl ? this.thumbPreviewUrl : this.URLbase + "images/thumb/small_img/" + this.videoData.vuid + ".jpg";
+      return this.thumbPreviewUrl ? this.thumbPreviewUrl : this.URLbase + "images/thumb/small_img/" + this.videoData.uvid + ".jpg";
     },
     rating: function() {
       return this.videoData.rating[0] == 0 ? "0%" : Math.floor( this.videoData.rating[0] / ( this.videoData.rating[0] + this.videoData.rating[1] ) * 100 ) + "%";
@@ -78,7 +78,7 @@ Vue.component( 'thumb', {
     },
     updateThumbDiashow() {
     	this.thumbHoverInfoWidth = 100 / 20 * this.thumbImgNumber;
-      this.thumbPreviewUrl = this.URLbase + "images/thumb/preview/" + this.videoData.vuid + "/" + this.thumbImgNumber + ".jpg";
+      this.thumbPreviewUrl = this.URLbase + "images/thumb/preview/" + this.videoData.uvid + "/" + this.thumbImgNumber + ".jpg";
     },
     stopThumbDiashow() {
       const self = this

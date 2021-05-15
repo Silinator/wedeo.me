@@ -137,7 +137,7 @@ class wedeoPlayerClass {
   }
 
   updateVideoInfo() {
-    const videoUrl = "watch/" + this.meta.vuid;
+    const videoUrl = "watch/" + this.meta.uvid;
     const userUrl = "user/" + this.meta.user.name;
 
     $("#" + this.playerId+ ' .mainVideoPreviewTitle').attr( 'href', videoUrl ).html( this.meta.title ).attr( 'title', this.meta.title );
@@ -649,7 +649,7 @@ class wedeoPlayerClass {
     }
 
     if( getImgPreview ) {
-      $('#'+this.playerId+' .vjs-small-video-preview').css( 'background-image', 'url(' + this.URLbase + 'images/thumb/preview/' + this.meta.vuid + '/pre' + getImgPreview + '.jpg)' );
+      $('#'+this.playerId+' .vjs-small-video-preview').css( 'background-image', 'url(' + this.URLbase + 'images/thumb/preview/' + this.meta.uvid + '/pre' + getImgPreview + '.jpg)' );
       $('#'+this.playerId+' .vjs-small-video-preview').css( 'background-position', imgPos );
     }
   }
@@ -824,13 +824,13 @@ class wedeoPlayerClass {
 
     this.selectedRes = selectedRes;
     const fileType = ( this.selectedRes == "audio" ? ".mp3" : ".mp4" );
-    return this.URLbase + 'videos/' + this.meta.datavuid + '/' + this.selectedRes + fileType;
+    return this.URLbase + 'videos/' + this.meta.fileUvid + '/' + this.selectedRes + fileType;
   }
 
   setVideo( meta ) {
     const self = this;
     this.meta = meta;
-    const poster = this.URLbase + 'images/thumb/large_img/' + this.meta.vuid + '.jpg';
+    const poster = this.URLbase + 'images/thumb/large_img/' + this.meta.uvid + '.jpg';
 
     $('#'+this.playerId+' .vjs-load-progress').css( 'width', '0%' );
     $('#'+this.playerId+' .vjs-load-progress div').css( 'width', '0%' );
@@ -859,7 +859,7 @@ class wedeoPlayerClass {
         title: this.meta.title,
         artist: this.meta.user.name,
         artwork: [
-          { src: this.URLbase + 'images/thumb/small_img/' + this.meta.vuid + '.jpg', sizes: '320x180', type: 'image/png' }
+          { src: this.URLbase + 'images/thumb/small_img/' + this.meta.uvid + '.jpg', sizes: '320x180', type: 'image/png' }
         ]
       });
 
@@ -931,7 +931,7 @@ class wedeoPlayerClass {
       this.Player.muted(true);
       this.Player.pause();
 
-      this.Player.src( this.URLbase + '/videos/' + this.meta.datavuid  + '/' + this.selectedRes + fileType );
+      this.Player.src( this.URLbase + '/videos/' + this.meta.fileUvid  + '/' + this.selectedRes + fileType );
 
       this.Player.currentTime(currentTime);
       this.Player.play();

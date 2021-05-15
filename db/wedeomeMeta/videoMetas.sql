@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Erstellungszeit: 02. Mai 2021 um 17:52
+-- Erstellungszeit: 15. Mai 2021 um 00:31
 -- Server-Version: 8.0.23
 -- PHP-Version: 7.4.11
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `videoMetas` (
-  `vuid` varchar(12) NOT NULL,
+  `uvid` varchar(12) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `ipInfo` json NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -36,7 +36,7 @@ CREATE TABLE `videoMetas` (
 -- Daten für Tabelle `videoMetas`
 --
 
-INSERT INTO `videoMetas` (`vuid`, `ipInfo`) VALUES
+INSERT INTO `videoMetas` (`uvid`, `ipInfo`) VALUES
 ('49lUrQcO', '{\"ip\": \"000.000.000.000\", \"host\": \"xxx.xxx0.xxxxx.xx\"}'),
 ('pTRtfE39', '{\"ip\": \"000.000.000.000\", \"host\": \"xxx.xxx0.xxxxx.xx\"}'),
 ('uq7t73s7', '{\"ip\": \"000.000.000.000\", \"host\": \"xxx.xxx0.xxxxx.xx\"}'),
@@ -50,7 +50,7 @@ INSERT INTO `videoMetas` (`vuid`, `ipInfo`) VALUES
 -- Indizes für die Tabelle `videoMetas`
 --
 ALTER TABLE `videoMetas`
-  ADD PRIMARY KEY (`vuid`);
+  ADD PRIMARY KEY (`uvid`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -8,7 +8,7 @@ Vue.component( 'allVideos', {
     <div class='allVideosContainer'>
 			<h1>{{t('ALL_VIDEOS')}}</h1><br>
 			<div class='allVideosList'>
-      	<thumb v-for="video in videos" :key="video.vuid" :videoData="video"/>
+      	<thumb v-for="video in videos" :key="video.uvid" :videoData="video"/>
 			</div>
     </div>
   `,
