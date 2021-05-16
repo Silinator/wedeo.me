@@ -33,6 +33,7 @@
 class wedeoPlayerClass {
   constructor( playerId ) {
     this.URLbase      = "https://www.we-teve.com/";
+    this.cdnURLbase   = "https://cdn.wedeo.me/";
     this.playerId     = playerId;
     this.selectedRes  = "1080p";
     this.muted        = null;
@@ -824,7 +825,7 @@ class wedeoPlayerClass {
 
     this.selectedRes = selectedRes;
     const fileType = ( this.selectedRes == "audio" ? ".mp3" : ".mp4" );
-    return this.URLbase + 'videos/' + this.meta.fileUvid + '/' + this.selectedRes + fileType;
+    return this.cdnURLbase + 'videos/' + this.meta.fileUvid + '/' + this.selectedRes + fileType;
   }
 
   setVideo( meta ) {
@@ -931,7 +932,7 @@ class wedeoPlayerClass {
       this.Player.muted(true);
       this.Player.pause();
 
-      this.Player.src( this.URLbase + '/videos/' + this.meta.fileUvid  + '/' + this.selectedRes + fileType );
+      this.Player.src( this.cdnURLbase + 'videos/' + this.meta.fileUvid  + '/' + this.selectedRes + fileType );
 
       this.Player.currentTime(currentTime);
       this.Player.play();
