@@ -12,11 +12,11 @@ Vue.component( 'userPreview', {
     </div>
   `,
   computed: {
-    URLbase() {
-      return this.$store.state.URLbase;
+    cdnURLbase() {
+      return this.$store.state.cdnURLbase;
     },
     userImg() {
-      return this.URLbase + "images/avatar/small/" + this.userInfo.uuid + ".jpg";
+      return this.cdnURLbase + "images/user/" + this.userInfo.uuid + "/small.jpg";
     },
     userUrl() {
       return "/user/" + this.userInfo.name;

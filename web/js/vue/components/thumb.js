@@ -32,8 +32,8 @@ Vue.component( 'thumb', {
     </a>
   `,
   computed: {
-    URLbase: function() {
-			return this.$store.state.URLbase;
+    cdnURLbase: function() {
+			return this.$store.state.cdnURLbase;
   	},
 		videoUrl: function() {
       //TODO: add playlist
@@ -52,7 +52,7 @@ Vue.component( 'thumb', {
       return "thumb" + this.videoData.uvid;
     },
     thumbUrl: function() {
-      return this.thumbPreviewUrl ? this.thumbPreviewUrl : this.URLbase + "images/thumb/small_img/" + this.videoData.uvid + ".jpg";
+      return this.thumbPreviewUrl ? this.thumbPreviewUrl : this.cdnURLbase + "images/thumb/" + this.videoData.uvid + "/small.jpg";
     },
     rating: function() {
       return this.videoData.rating[0] == 0 ? "0%" : Math.floor( this.videoData.rating[0] / ( this.videoData.rating[0] + this.videoData.rating[1] ) * 100 ) + "%";
@@ -78,7 +78,7 @@ Vue.component( 'thumb', {
     },
     updateThumbDiashow() {
     	this.thumbHoverInfoWidth = 100 / 20 * this.thumbImgNumber;
-      this.thumbPreviewUrl = this.URLbase + "images/thumb/preview/" + this.videoData.uvid + "/" + this.thumbImgNumber + ".jpg";
+      this.thumbPreviewUrl = this.cdnURLbase + "images/thumb/" + this.videoData.uvid + "/" + this.thumbImgNumber + ".jpg";
     },
     stopThumbDiashow() {
       const self = this

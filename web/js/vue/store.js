@@ -2,7 +2,7 @@ Vue.use( Vuex );
 
 const store = new Vuex.Store({
   state: {
-    URLbase: "https://www.we-teve.com/",
+    cdnURLbase: "https://cdn.wedeo.me/",
     wedeoPlayer: {},
     currentVideoInfo: {},
     videosLoadedIndex: 0,

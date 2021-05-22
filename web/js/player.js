@@ -32,7 +32,6 @@
 
 class wedeoPlayerClass {
   constructor( playerId ) {
-    this.URLbase      = "https://www.we-teve.com/";
     this.cdnURLbase   = "https://cdn.wedeo.me/";
     this.playerId     = playerId;
     this.selectedRes  = "1080p";
@@ -144,7 +143,7 @@ class wedeoPlayerClass {
     $("#" + this.playerId+ ' .mainVideoPreviewTitle').attr( 'href', videoUrl ).html( this.meta.title ).attr( 'title', this.meta.title );
     $("#" + this.playerId+ ' .mainVideoPreviewDescription').html( this.meta.description );
     $("#" + this.playerId+ ' .mainVideoPreviewUser').attr( 'href', userUrl );
-    $("#" + this.playerId+ ' .mainVideoPreviewUserImg').attr( 'src', this.URLbase + 'images/avatar/small/' + this.meta.user.uuid + '.jpg' );
+    $("#" + this.playerId+ ' .mainVideoPreviewUserImg').attr( 'src', this.cdnURLbase + 'images/user/' + this.meta.user.uuid + '/small.jpg' );
     $("#" + this.playerId+ ' .mainVideoPreviewUserName').html( this.meta.user.name );
     $("#" + this.playerId+ ' .mainVideoPreviewLang').html( this.meta.lang );
     $("#" + this.playerId+ ' .mainVideoPreviewRatingText').html( this.meta.rating[0] == 0 ? "0%" : Math.floor( this.meta.rating[0] / ( this.meta.rating[0] + this.meta.rating[1] ) * 100 ) + "%" );
@@ -650,7 +649,7 @@ class wedeoPlayerClass {
     }
 
     if( getImgPreview ) {
-      $('#'+this.playerId+' .vjs-small-video-preview').css( 'background-image', 'url(' + this.URLbase + 'images/thumb/preview/' + this.meta.uvid + '/pre' + getImgPreview + '.jpg)' );
+      $('#'+this.playerId+' .vjs-small-video-preview').css( 'background-image', 'url(' + this.cdnURLbase + 'images/thumb/preview/' + this.meta.uvid + '/pre' + getImgPreview + '.jpg)' );
       $('#'+this.playerId+' .vjs-small-video-preview').css( 'background-position', imgPos );
     }
   }
@@ -831,7 +830,7 @@ class wedeoPlayerClass {
   setVideo( meta ) {
     const self = this;
     this.meta = meta;
-    const poster = this.URLbase + 'images/thumb/large_img/' + this.meta.uvid + '.jpg';
+    const poster = this.cdnURLbase + 'images/thumb/' + this.meta.uvid + '/large.jpg';
 
     $('#'+this.playerId+' .vjs-load-progress').css( 'width', '0%' );
     $('#'+this.playerId+' .vjs-load-progress div').css( 'width', '0%' );
@@ -860,7 +859,7 @@ class wedeoPlayerClass {
         title: this.meta.title,
         artist: this.meta.user.name,
         artwork: [
-          { src: this.URLbase + 'images/thumb/small_img/' + this.meta.uvid + '.jpg', sizes: '320x180', type: 'image/png' }
+          { src: this.cdnURLbase + 'images/thumb/' + this.meta.uvid + '/small.jpg', sizes: '320x180', type: 'image/png' }
         ]
       });
 
