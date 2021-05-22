@@ -649,7 +649,7 @@ class wedeoPlayerClass {
     }
 
     if( getImgPreview ) {
-      $('#'+this.playerId+' .vjs-small-video-preview').css( 'background-image', 'url(' + this.cdnURLbase + 'images/thumb/preview/' + this.meta.uvid + '/pre' + getImgPreview + '.jpg)' );
+      $('#'+this.playerId+' .vjs-small-video-preview').css( 'background-image', 'url(' + this.cdnURLbase + 'images/thumb/' + this.meta.uvid + '/pre' + getImgPreview + '.jpg)' );
       $('#'+this.playerId+' .vjs-small-video-preview').css( 'background-position', imgPos );
     }
   }
