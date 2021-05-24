@@ -14,7 +14,7 @@ Vue.component( 'wedeoSideContainer', {
       </div>
 			<div :class="lineClass" :style="linePosition"></div>
 			<div class='wedeoSideContent'>
-				<wedeoSidePlaylist v-show='activeTab === "playlist"'/>
+				<wedeoSidePlaylist v-if="inPlaylist" v-show='activeTab === "playlist"'/>
 				<wedeoSideComments v-show='activeTab === "comments"'/>
 				<wedeoSideInfo v-show='activeTab === "info"'/>
 				<wedeoSideMoreVideos v-show='activeTab === "moreVideos"'/>
@@ -29,7 +29,7 @@ Vue.component( 'wedeoSideContainer', {
       return this.$store.state.currentVideoInfo;
     },
     inPlaylist() {
-      return this.videoInfo.hasOwnProperty('playlistId') && this.videoInfo.playlistId !== "";
+      return this.videoInfo.hasOwnProperty('playlist') && this.videoInfo.playlist.upid !== "";
     },
     lineClass() {
       return "wedeoSideContainerHeaderLine " + ( this.inPlaylist ? " widthPlaylist" : "" );

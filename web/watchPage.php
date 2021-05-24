@@ -19,10 +19,10 @@
   if( isset($_GET['pl']) ) {
     $upid = dbEsc($_GET['pl']);
     $userOrder = false;
-    $playlist = getPlaylist( $upid, $uvid,  );
+    $playlist = getPlaylist( $upid, $uvid );
 
     if( $playlist != NULL ) {
-      $videoData->playlistId = $playlist->upid;
+      $videoData->playlist = $playlist;
       $videoData->previousVideo = $playlist->previousVideo;
       $videoData->nextVideo = $playlist->nextVideo;
     }

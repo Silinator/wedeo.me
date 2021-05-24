@@ -3,7 +3,7 @@
 
   $limit = 12;
   $index = intval($_GET['index']);
-  $filter = json_encode($_GET['filter']);
+  $filter = json_decode($_GET['filter']);
 
   $videos = getMoreVideos( $index, $filter, $limit );
 

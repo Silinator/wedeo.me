@@ -417,7 +417,8 @@ mainWedeoContainer.large .wedeoSideContainer {
 
 
 /* more videos */
-.wedeoSideMoreVideos {
+.wedeoSideMoreVideos,
+.wedeoSidePlaylist {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -478,6 +479,13 @@ mainWedeoContainer.large .wedeoSideContainer {
   justify-content: flex-start;
   gap: 10px;
   margin-bottom: 10px;
+}
+
+.shortHorVideoNumber {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
 }
 
 .shortHorVideoContent {

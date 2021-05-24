@@ -4,7 +4,7 @@ function getPlaylist($upid, $uvid, $userOrder = false) {
   $playlist = $playlist_sql->fetch_object();
 
   if($playlist) {
-    $allPlaylistVideos = getAllPlaylistVideos($upid, intval($playlist->orderBy));
+    $allPlaylistVideos = getPlaylistVideos($upid, intval($playlist->orderBy));
 
     if($userOrder === "revers") {
       $allPlaylistVideos = array_reverse($allPlaylistVideos);
@@ -13,13 +13,19 @@ function getPlaylist($upid, $uvid, $userOrder = false) {
     }
 
     $currentVideoIndex = array_search($uvid, $allPlaylistVideos);
-    $maxIndex = count($allPlaylistVideos) - 1;
+    if($currentVideoIndex > -1) {
+      $maxIndex = count($allPlaylistVideos) - 1;
 
-    $previousVideo = $currentVideoIndex - 1 < 0 ? $maxIndex : $currentVideoIndex - 1;
-    $nextVideo = $currentVideoIndex + 1 > $maxIndex ? 0 : $currentVideoIndex + 1;
+      $previousVideo = $currentVideoIndex - 1 < 0 ? $maxIndex : $currentVideoIndex - 1;
+      $nextVideo = $currentVideoIndex + 1 > $maxIndex ? 0 : $currentVideoIndex + 1;
 
-    $playlist->previousVideo = $allPlaylistVideos[$previousVideo];
-    $playlist->nextVideo = $allPlaylistVideos[$nextVideo];
+      $playlist->videos = $allPlaylistVideos;
+      $playlist->videoIndex = $currentVideoIndex;
+      $playlist->previousVideo = $allPlaylistVideos[$previousVideo];
+      $playlist->nextVideo = $allPlaylistVideos[$nextVideo];
+    }else{
+      return NULL;
+    }
 
     return $playlist;
   } else {
@@ -28,12 +34,12 @@ function getPlaylist($upid, $uvid, $userOrder = false) {
 
 }
 
-function getAllPlaylistVideos($upid, $orderBy) {
+function getPlaylistVideos($upid, $orderBy, $index = NULL, $limit = NULL) {
   $plVideos = [];
   $videoJoin = "";
 
   switch($orderBy) {
-    case 0: $orderBySql = "ORDER BY pll.position DESC"; break;
+    case 0: $orderBySql = "ORDER BY pll.position ASC"; break;
     case 1: $orderBySql = "ORDER BY pll.added ASC"; break;
     case 2: $orderBySql = "ORDER BY pll.added DESC"; break;
     case 3:

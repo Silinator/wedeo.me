@@ -29,27 +29,14 @@ function getVideo($uvid) {
   return $video;
 }
 
-function genVideoJSON($video) {
-  $video->rating = [ intval($video->likes), intval($video->dislikes) ];
-  $video->resolutions = json_decode($video->resolutions);
-  $video->description = genDescription($video->description);
-  $video->user = (object)[
-    "uuid" => $video->uuid,
-    "name" => "nsmRecords",
-    "subed" => false,
-  ];
+function getVideos($uvids) {
+  $uvids = implode("','", $uvids);
+  $videos_sql = db::$link->query("SELECT * FROM videos WHERE uvid IN ('$uvids') ORDER BY field(uvid, '$uvids') ");
+  $videos = [];
 
-  $video->availableSources = array_map( function($res) {
-    return $res->res;
-  }, $video->resolutions);
+  while( $video_row = $videos_sql->fetch_object() ) {
+    $videos[] = genVideoJSON( $video_row );
+  }
 
-  return $video;
-}
-
-function genDescription($string) {
-  $string = preg_replace( '/<br>/', "\n", $string);
-  $string = htmlspecialchars( $string, ENT_QUOTES );
-  $string = autolink( $string, array('target'=>'_blank') );
-  $string = preg_replace("/\r\n|\r|\n/", '&nbsp;<br/>', $string); /* &nbsp; because firefox... */
-  return $string;
+  return $videos;
 }

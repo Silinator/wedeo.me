@@ -1,5 +1,11 @@
 Vue.component( 'thumb', {
-	props: [ 'videoData', ],
+	props: {
+		videoData: Object,
+		upid: {
+			type: String,
+			default: null
+		},
+	},
 	data: function() {
 		return {
       thumbPreviewUrl: null,
@@ -32,32 +38,32 @@ Vue.component( 'thumb', {
     </a>
   `,
   computed: {
-    cdnURLbase: function() {
+    cdnURLbase() {
 			return this.$store.state.cdnURLbase;
   	},
-		videoUrl: function() {
-      //TODO: add playlist
-			return "watch/" + this.videoData.uvid;
+		videoUrl() {
+			var playlistURL = this.upid != null ? "&pl=" + this.upid : "";
+			return "watch/" + this.videoData.uvid + playlistURL;
   	},
-    thumbClass: function() {
+    thumbClass() {
       return "thumbHolder " + this.videoData.color;
     },
-		thumbHoverInfoClass: function() {
+		thumbHoverInfoClass() {
 			return this.thumbHoverInfoTransitionHidden === true ? "thumbHoverInfoLeave" : "";
 		},
-		thumbHoverInfoWidthStyle: function() {
+		thumbHoverInfoWidthStyle() {
 			return "width:" + this.thumbHoverInfoWidth + "%;";
 		},
-    thumbId: function() {
+    thumbId() {
       return "thumb" + this.videoData.uvid;
     },
-    thumbUrl: function() {
+    thumbUrl() {
       return this.thumbPreviewUrl ? this.thumbPreviewUrl : this.cdnURLbase + "images/thumb/" + this.videoData.uvid + "/small.jpg";
     },
-    rating: function() {
+    rating() {
       return this.videoData.rating[0] == 0 ? "0%" : Math.floor( this.videoData.rating[0] / ( this.videoData.rating[0] + this.videoData.rating[1] ) * 100 ) + "%";
     },
-    duration: function() {
+    duration() {
       return secondsToHms(this.videoData.duration);
     }
   },
