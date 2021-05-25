@@ -29,13 +29,6 @@ Vue.component( 'wedeoSideMoreVideos', {
 			</div>
     </div>
   `,
-	watch: {
-		moreVideos() {
-			this.$nextTick(() => {
-				activateSamePageLinks();
-			});
-		}
-	},
   computed: {
 		videoInfo() {
 			return this.$store.state.currentVideoInfo;

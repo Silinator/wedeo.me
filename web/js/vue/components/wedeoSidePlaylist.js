@@ -24,13 +24,6 @@ Vue.component( 'wedeoSidePlaylist', {
       </div>
     </div>
   `,
-  watch: {
-    morePlaylistVideos() {
-      this.$nextTick(() => {
-        activateSamePageLinks();
-      });
-    }
-  },
   computed: {
     morePlaylistVideos() {
       return this.$store.state.morePlaylistVideos;

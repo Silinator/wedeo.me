@@ -2,14 +2,19 @@ let wedeoPlayer = false;
 let wedeoBgPlayer = false;
 let nextPageIsLoading = false;
 
-function htmlLoaded() {
-  if( window.matchMedia("(pointer: coarse)").matches ) {
-    $(document.body).addClass('touch');
-  }
+$(document).unbind("click").click( "a", function(e) {
+  if(
+    $(this).attr('target') != "_blank" && $(this).attr('load') != 'new' && !nextPageIsLoading
+    && !e.ctrlKey && !e.shiftKey && e.which != 2 && e.button != 4
+  ) {
+    nextPageIsLoading = true;
 
-  activateSamePageNavigation();
-  activateSamePageLinks();
-}
+    const url = $(this).attr('href');
+    goToPage(url);
+
+    return false;
+  }
+});
 
 function activateSamePageNavigation() {
   window.onpopstate = function() {
@@ -18,20 +23,12 @@ function activateSamePageNavigation() {
   }
 }
 
-function activateSamePageLinks() {
-  $('a').unbind("click").click( function(e) {
-    if(
-      $(this).attr('target') != "_blank" && $(this).attr('load') != 'new' && !nextPageIsLoading
-      && !e.ctrlKey && !e.shiftKey && e.which != 2 && e.button != 4
-    ) {
-      nextPageIsLoading = true;
+function htmlLoaded() {
+  if( window.matchMedia("(pointer: coarse)").matches ) {
+    $(document.body).addClass('touch');
+  }
 
-      const url = $(this).attr('href');
-      goToPage(url);
-
-      return false;
-    }
-  });
+  activateSamePageNavigation();
 }
 
 function goToPage( url, fromNavigation = false ) {
@@ -61,7 +58,6 @@ function loadVideoPage( url ) {
     store.commit( 'setCurrentVideoInfo', data.videoData );
 
     activateSamePageNavigation();
-    activateSamePageLinks();
   });
 }
 
@@ -77,7 +73,6 @@ function loadPage( url ) {
     $('mainContainer').html(data.html);
 
     activateSamePageNavigation();
-    activateSamePageLinks();
     pageScripts();
   });
 }
