@@ -2,7 +2,7 @@ let wedeoPlayer = false;
 let wedeoBgPlayer = false;
 let nextPageIsLoading = false;
 
-$(document).unbind("click").click( "a", function(e) {
+$(document).off("click").on("click", "a", function(e) {
   if(
     $(this).attr('target') != "_blank" && $(this).attr('load') != 'new' && !nextPageIsLoading
     && !e.ctrlKey && !e.shiftKey && e.which != 2 && e.button != 4
