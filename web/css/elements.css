@@ -50,7 +50,8 @@ p a:hover {
 }
 
 /* simple btns */
-.outlineBtn {
+.outlineBtn,
+.outlineIconBtn {
   display: inline-block;
   padding: 3px 8px 3px 8px;
   font-size: 16px;
@@ -65,11 +66,26 @@ p a:hover {
 
 .outlineBtn.active,
 .outlineBtn:focus,
-.outlineBtn:hover {
+.outlineBtn:hover,
+.outlineIconBtn.active,
+.outlineIconBtn:focus,
+.outlineIconBtn:hover {
   color: var(--bg-gray);
   background: var(--white);
   cursor: pointer;
 }
+
+/* simple icon btns */
+
+.outlineIconBtn {
+  padding: 3px 4px 0px 4px;
+  line-height: 17px;
+}
+
+.outlineIconBtn .material-icons {
+  font-size: 18px;
+}
+
 
 /* color btns */
 .smallBtn {

@@ -96,3 +96,7 @@ function secondsToHms( d ) {
     return "0:00";
   }
 }
+
+function deepObjCopy(obj) {
+  return JSON.parse(JSON.stringify(obj));
+}

@@ -86,6 +86,13 @@ const store = new Vuex.Store({
         state.playlist.loaded = true;
       });
     },
+    resetMorePlaylistVideos( { commit, state }, startIndex ) {
+      state.morePlaylistVideos = [];
+      state.morePlaylistVideosIndexBefore = startIndex;
+      state.morePlaylistVideosIndexAfter = startIndex;
+      state.morePlaylistVideosBeforeLoading = false;
+      state.morePlaylistVideosAfterLoading = false;
+    },
     fetchMorePlaylistVideosBefore( { commit, state } ) {
       if(state.morePlaylistVideosBeforeLoading === false) {
         state.morePlaylistVideosBeforeLoading = true;

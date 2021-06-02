@@ -2,12 +2,20 @@ Vue.component( 'wedeoSidePlaylist', {
   data: function() {
     return {
       activeTab: "comments",
-      videosBeforeIndex: 2
+      videosBeforeIndex: 2,
+      swtichActive: false,
+      randomActive: false
     }
   },
   template: `
     <div class='wedeoSidePlaylist'>
-			 <h2>{{playlist.title}}</h2>
+      <div class='wedeoSidePlaylistTitle'>
+        <h2>{{playlist.title}}</h2>
+        <div>
+          <div :class="'outlineIconBtn' + (swtichActive ? ' active' : '')" v-on:click="swtichOrder"> <span class="material-icons">swap_vert</span> </div>
+          <div :class="'outlineIconBtn' + (randomActive ? ' active' : '')" v-on:click="randomOrder"> <span class="material-icons">shuffle</span> </div>
+        </div>
+      </div>
       <div class='wedeoSideMoreVideosListContainer'>
         <div v-if="moreBeforeLoading != 'all'" id="loadMoreBeforeLine" class="loadMoreLine">{{t('LOAD_MORE_VIDEOS')}}</div>
         <div class='wedeoSideMoreVideosList'>
@@ -88,6 +96,42 @@ Vue.component( 'wedeoSidePlaylist', {
         num++
         return num;
       }
+    },
+    shuffel(array) {
+      for(var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+      }
+
+      return array;
+    },
+    swtichOrder() {
+      if(this.swtichActive) {
+        this.playlist.videos = deepObjCopy( this.playlist.orgOrder );
+      } else {
+        this.playlist.videos = this.playlist.videos.reverse();
+      }
+
+      this.swtichActive = !this.swtichActive;
+      this.resetMorePlaylistVideos();
+    },
+    randomOrder() {
+      if(this.randomActive) {
+        this.playlist.videos = deepObjCopy( this.playlist.orgOrder );
+      } else {
+        this.playlist.videos = this.shuffel(this.playlist.videos);
+      }
+
+      this.randomActive = !this.randomActive;
+      this.resetMorePlaylistVideos();
+    },
+    resetMorePlaylistVideos() {
+      this.upPlaylistInfo();
+      this.$store.dispatch('resetMorePlaylistVideos', this.startIndex);
+      this.$store.dispatch('fetchMorePlaylistVideosBefore');
+      this.$store.dispatch('fetchMorePlaylistVideosAfter');
     },
     upPlaylistInfo() {
       const videoIndex = this.playlist.videos.indexOf(this.videoInfo.uvid);

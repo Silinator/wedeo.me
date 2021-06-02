@@ -3,6 +3,7 @@
   padding: 0px;
   border: 0px;
   outline: none;
+  overflow-wrap: anywhere;
 }
 
 :root {
@@ -415,6 +416,16 @@ mainWedeoContainer.large .wedeoSideContainer {
   color: var(--silver);
 }
 
+
+/* more playlist videos */
+.wedeoSidePlaylistTitle {
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  column-gap: 10px;
+  margin-bottom: 5px;
+}
 
 /* more videos */
 .wedeoSideMoreVideos,
