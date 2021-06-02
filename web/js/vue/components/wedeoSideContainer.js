@@ -14,13 +14,18 @@ Vue.component( 'wedeoSideContainer', {
       </div>
 			<div :class="lineClass" :style="linePosition"></div>
 			<div class='wedeoSideContent'>
-				<wedeoSidePlaylist v-if="inPlaylist" v-show='activeTab === "playlist"'/>
+				<wedeoSidePlaylist v-if="inPlaylist && playlistLoaded" v-show='activeTab === "playlist"'/>
 				<wedeoSideComments v-show='activeTab === "comments"'/>
 				<wedeoSideInfo v-show='activeTab === "info"'/>
 				<wedeoSideMoreVideos v-show='activeTab === "moreVideos"'/>
 			</div>
     </div>
   `,
+  watch: {
+    videoInfo( data ) {
+      this.fetchPlaylist();
+    }
+  },
   computed: {
 		wedeoPlayer() {
 			return this.$store.state.wedeoPlayer;
@@ -30,6 +35,12 @@ Vue.component( 'wedeoSideContainer', {
     },
     inPlaylist() {
       return this.videoInfo.hasOwnProperty('playlist') && this.videoInfo.playlist.upid !== "";
+    },
+    playlist() {
+      return this.$store.state.playlist;
+    },
+    playlistLoaded() {
+      return this.playlist.loaded ? this.playlist.loaded : false;
     },
     lineClass() {
       return "wedeoSideContainerHeaderLine " + ( this.inPlaylist ? " widthPlaylist" : "" );
@@ -57,7 +68,15 @@ Vue.component( 'wedeoSideContainer', {
     },
     headerBtnClass( tab ) {
       return "wedeoSideContainerHeaderBtn noSel " + ( tab === this.activeTab ? "active" : "" );
+    },
+    fetchPlaylist() {
+      if( this.inPlaylist && this.playlist.upid !== this.videoInfo.playlist.upid ) {
+        this.$store.dispatch('fetchPlaylist', this.videoInfo.playlist.upid);
+      }
     }
+  },
+  created() {
+    this.fetchPlaylist();
   },
   mounted() {
     this.wedeoPlayer.resizeWedeo();

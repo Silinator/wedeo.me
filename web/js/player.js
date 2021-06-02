@@ -483,18 +483,24 @@ class wedeoPlayerClass {
   }
 
   updateSkipButtons() {
+    const self = this;
+
     if( this.meta.hasOwnProperty('previousVideo') && this.meta.previousVideo != "" ) {
+      navigator.mediaSession.setActionHandler('previoustrack', function() { self.previousVideo(); });
       $('#'+this.playerId+' .vjs-big-button-previous-video').css('visibility', 'visible');
       $('#'+this.playerId+' .vjs-previous-control').show();
     } else {
+      navigator.mediaSession.setActionHandler('previoustrack', null );
       $('#'+this.playerId+' .vjs-big-button-previous-video').css('visibility', 'hidden');
       $('#'+this.playerId+' .vjs-previous-control').hide();
     }
 
     if( this.meta.hasOwnProperty('nextVideo') && this.meta.nextVideo != "" ) {
+      navigator.mediaSession.setActionHandler('nexttrack', function() { self.nextVideo(); });
       $('#'+this.playerId+' .vjs-big-button-next-video').css('visibility', 'visible');
       $('#'+this.playerId+' .vjs-next-control').show();
     } else {
+      navigator.mediaSession.setActionHandler('nexttrack', null );
       $('#'+this.playerId+' .vjs-big-button-next-video').css('visibility', 'hidden');
       $('#'+this.playerId+' .vjs-next-control').hide();
     }
@@ -845,7 +851,6 @@ class wedeoPlayerClass {
       self.Player.off('playing')
     });
 
-    this.updateSkipButtons();
     this.updatePlayerSettingsMenu();
     this.updatePlayerTitle();
     this.updatePlayerRating();
@@ -866,20 +871,18 @@ class wedeoPlayerClass {
         navigator.mediaSession.setActionHandler('pause', function() { self.pause(); });
         navigator.mediaSession.setActionHandler('seekbackward', function() { self.seekBackward(); });
         navigator.mediaSession.setActionHandler('seekforward', function() { self.seekForward(); });
-
-        if( this.meta.hasOwnProperty('previousVideo') && this.meta.previousVideo != "" ) {
-          navigator.mediaSession.setActionHandler('previoustrack', function() { self.previousVideo(); });
-        } else {
-          navigator.mediaSession.setActionHandler('previoustrack', null );
-        }
-
-        if( this.meta.hasOwnProperty('nextVideo') && this.meta.nextVideo != "" ) {
-          navigator.mediaSession.setActionHandler('nexttrack', function() { self.nextVideo(); });
-        } else {
-          navigator.mediaSession.setActionHandler('nexttrack', null );
-        }
       }
     }
+  }
+
+  setPreviousVideo(previousVideo) {
+    this.meta.previousVideo = previousVideo;
+    this.updateSkipButtons();
+  }
+
+  setNextVideo(nextVideo) {
+    this.meta.nextVideo = nextVideo;
+    this.updateSkipButtons();
   }
 
   updatePlayerSettingsMenu() {

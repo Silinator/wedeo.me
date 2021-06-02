@@ -7,7 +7,7 @@ Vue.component( 'wedeoSidePlaylist', {
   },
   template: `
     <div class='wedeoSidePlaylist'>
-			<h2>{{videoInfo.playlist.title}}</h2>
+			 <h2>{{playlist.title}}</h2>
       <div class='wedeoSideMoreVideosListContainer'>
         <div v-if="moreBeforeLoading != 'all'" id="loadMoreBeforeLine" class="loadMoreLine">{{t('LOAD_MORE_VIDEOS')}}</div>
         <div class='wedeoSideMoreVideosList'>
@@ -24,6 +24,11 @@ Vue.component( 'wedeoSidePlaylist', {
       </div>
     </div>
   `,
+  watch: {
+    videoInfo() {
+      this.upPlaylistInfo();
+    }
+  },
   computed: {
     morePlaylistVideos() {
       return this.$store.state.morePlaylistVideos;
@@ -40,14 +45,17 @@ Vue.component( 'wedeoSidePlaylist', {
 		limit() {
 			return this.$store.state.morePlaylistVideosLimit;
 		},
-		upid() {
-			return this.videoInfo.playlist.upid;
-		},
+    upid() {
+      return this.videoInfo.playlist.upid;
+    },
+    playlist() {
+      return this.$store.state.playlist;
+    },
     playlistVideos() {
-      return this.videoInfo.playlist.videos;
+      return this.playlist.videos;
     },
     videoIndex() {
-      return this.videoInfo.playlist.videoIndex;
+      return this.playlist.videoIndex;
     },
 		startIndex() {
       if(this.playlistVideos.length <= this.limit || this.videoIndex < this.videosBeforeIndex ) {
@@ -80,12 +88,23 @@ Vue.component( 'wedeoSidePlaylist', {
         num++
         return num;
       }
+    },
+    upPlaylistInfo() {
+      const videoIndex = this.playlist.videos.indexOf(this.videoInfo.uvid);
+      const maxIndex = this.playlist.videos.length - 1;
+      const previousVideoIndex = videoIndex - 1 < 0 ? maxIndex : videoIndex - 1;
+      const nextVideoIndex = videoIndex + 1 > maxIndex ? 0 : videoIndex + 1;
+
+      this.playlist.videoIndex = videoIndex;
+      wedeoPlayer.setPreviousVideo(this.playlist.videos[previousVideoIndex]);
+      wedeoPlayer.setNextVideo(this.playlist.videos[nextVideoIndex]);
     }
   },
   created() {
     this.$store.state.morePlaylistVideosIndexBefore = this.startIndex;
     this.$store.state.morePlaylistVideosIndexAfter = this.startIndex;
     this.$store.dispatch('fetchMorePlaylistVideosAfter');
+    this.upPlaylistInfo();
   },
   mounted() {
     const self = this;

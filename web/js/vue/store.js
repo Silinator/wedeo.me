@@ -4,6 +4,7 @@ const store = new Vuex.Store({
   state: {
     cdnURLbase: "https://cdn.wedeo.me/",
     wedeoPlayer: {},
+    playlist: {},
     currentVideoInfo: {},
     videosLoadedIndex: 0,
     videosLoading: false,
@@ -78,12 +79,19 @@ const store = new Vuex.Store({
         });
       }
     },
+    fetchPlaylist( { commit, state }, upid ) {
+      state.playlist.loaded = false;
+      $.getJSON( 'api/getPlaylistInfos?upid=' + upid + '&uvid=' + state.currentVideoInfo.uvid, data => {
+        state.playlist = data;
+        state.playlist.loaded = true;
+      });
+    },
     fetchMorePlaylistVideosBefore( { commit, state } ) {
       if(state.morePlaylistVideosBeforeLoading === false) {
         state.morePlaylistVideosBeforeLoading = true;
 
-        const playlist = state.currentVideoInfo.playlist.upid;
-        const videos = state.currentVideoInfo.playlist.videos;
+        const playlist = state.playlist.upid;
+        const videos = state.playlist.videos;
         const limit = state.morePlaylistVideosLimit;
         const index = state.morePlaylistVideosIndexBefore - limit < 0 ? 0 : state.morePlaylistVideosIndexBefore - limit;
         const limitMax = index + limit > state.morePlaylistVideosIndexBefore ? state.morePlaylistVideosIndexBefore : index + limit;
@@ -109,8 +117,8 @@ const store = new Vuex.Store({
       if(state.morePlaylistVideosAfterLoading === false) {
         state.morePlaylistVideosAfterLoading = true;
 
-        const playlist = state.currentVideoInfo.playlist.upid;
-        const videos = state.currentVideoInfo.playlist.videos;
+        const playlist = state.playlist.upid;
+        const videos = state.playlist.videos;
         const limit = state.morePlaylistVideosLimit;
         const index = state.morePlaylistVideosIndexAfter;
         const uvids = [];

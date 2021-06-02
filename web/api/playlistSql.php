@@ -14,15 +14,8 @@ function getPlaylist($upid, $uvid, $userOrder = false) {
 
     $currentVideoIndex = array_search($uvid, $allPlaylistVideos);
     if($currentVideoIndex > -1) {
-      $maxIndex = count($allPlaylistVideos) - 1;
-
-      $previousVideo = $currentVideoIndex - 1 < 0 ? $maxIndex : $currentVideoIndex - 1;
-      $nextVideo = $currentVideoIndex + 1 > $maxIndex ? 0 : $currentVideoIndex + 1;
-
       $playlist->videos = $allPlaylistVideos;
       $playlist->videoIndex = $currentVideoIndex;
-      $playlist->previousVideo = $allPlaylistVideos[$previousVideo];
-      $playlist->nextVideo = $allPlaylistVideos[$nextVideo];
     }else{
       return NULL;
     }
