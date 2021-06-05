@@ -158,13 +158,19 @@ Vue.component( 'wedeoSidePlaylist', {
         self.$store.dispatch('fetchMorePlaylistVideosBefore');
       }
     }, {} );
-    observerBefore.observe( document.querySelector('#loadMoreBeforeLine') );
+
+    if( document.querySelector('#loadMoreLine') ) {
+      observerBefore.observe( document.querySelector('#loadMoreBeforeLine') );
+    }
 
     let observerAfter = new IntersectionObserver( function() {
       if( !self.moreAfterLoading ) { /* to prevent double load */
         self.$store.dispatch('fetchMorePlaylistVideosAfter');
       }
     }, {} );
-    observerAfter.observe( document.querySelector('#loadMoreAfterLine') );
+
+    if( document.querySelector('#loadMoreLine') ) {
+      observerAfter.observe( document.querySelector('#loadMoreAfterLine') );
+    }
   }
 });

@@ -81,6 +81,9 @@ Vue.component( 'wedeoSideMoreVideos', {
 				self.$store.dispatch('fetchMoreVideos');
 			}
 		}, {} );
-		observer.observe( document.querySelector('#loadMoreLine') );
+
+		if( document.querySelector('#loadMoreLine') ) {
+			observer.observe( document.querySelector('#loadMoreLine') );
+		}
 	}
 });
