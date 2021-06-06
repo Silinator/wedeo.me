@@ -73,7 +73,16 @@
       <?=$l->t('NAVI_LOGOUT')?>
     </a>
   </sideNavi>
-  <sideNaviBg></sideNaviBg>
+  <sideNaviBg style="display:none;"></sideNaviBg>
+
+  <miniWedeoContainer style="display:none;">
+    <div class="miniWedeoHeader">
+      <div class="miniWedeoHeaderTitle"></div>
+      <div class="miniWedeoHeaderClose"><span class="material-icons">close</span></div>
+    </div>
+    <div class="miniWedeo"></div>
+    <div class="miniWedeoContent"></div>
+  </miniWedeoContainer>
 
   <script type="text/javascript">
     $('.toggleLeftNaviButton').click( function() {
@@ -92,16 +101,21 @@
       const self = this;
 
       $('sideNavi, sideNaviBg').addClass('open');
-      $('mainContainer, header').addClass('blur');
+      $('mainContainer, header, miniWedeoContainer').addClass('blur');
       $('body').addClass('of-hidden');
     }
 
     function closeNavi() {
       $('sideNavi, sideNaviBg').removeClass('open');
-      $('mainContainer, header').removeClass('blur');
+      $('mainContainer, header, miniWedeoContainer').removeClass('blur');
       $('body').removeClass('of-hidden');
     }
 
+    $('.miniWedeoHeaderClose').click( function() {
+      closeMiniplayer();
+    });
+
+    dragMiniPlayer( $(".miniWedeoHeader") );
   </script>
 
 </header>

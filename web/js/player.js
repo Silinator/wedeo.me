@@ -106,6 +106,29 @@ class wedeoPlayerClass {
     this.addVideoInfo();
   }
 
+  moveIntoMiniplayer() {
+    this.type = "mini";
+    $("miniWedeoContainer").show();
+    $("miniWedeoContainer .miniWedeoHeaderTitle").html( this.meta.title );
+    $("miniWedeoContainer .miniWedeo").html( $("mainContainer wedeoContainer") );
+    $("miniWedeoContainer .miniWedeoContent").html( $("mainContainer") );
+    $("header").after("<mainContainer></mainContainer>");
+  }
+
+  backToMiniplayerVideo() {
+    this.type = "default";
+
+    document.title = this.meta.title + " | wedeo.me";
+    $('mainContainer').not('miniWedeoContainer mainContainer').html( $("miniWedeoContainer .miniWedeoContent mainContainer") );
+    $("mainwedeocontainer").prepend( $("miniWedeoContainer .miniWedeo wedeocontainer") );
+
+    if( $("miniWedeoContainer").attr("videoURL") ) { /* when video was changed only in miniplayer this gets the url of current video */
+      window.history.replaceState('currentPage', 'wedeo.me', $("miniWedeoContainer").attr("videoURL")); //changes browser url
+    }
+
+    hideMiniplayer();
+  }
+
   addVideoInfo() {
     $("#" + this.playerId+ ' .vjs-control-bar').append(
       "<div class='mainVideoPreview'>" +
@@ -910,6 +933,10 @@ class wedeoPlayerClass {
   updatePlayerTitle() {
     $('#'+this.playerId+' .vjs-header-title').html(this.meta.title);
     $('#'+this.playerId+' .vjs-bottom-title').html(this.meta.title).attr('title', this.meta.title);
+
+    if(this.type === "mini") {
+      $("miniWedeoContainer .miniWedeoHeaderTitle").html(this.meta.title);
+    }
   }
 
   updatePlayerRating() {

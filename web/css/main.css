@@ -209,7 +209,7 @@ sideNavi {
   filter: none;
   background: var(--bg-gray);
   transition: left 0.2s ease-in-out;
-  z-index: 3;
+  z-index: 4;
 }
 
 sideNavi.open {
@@ -220,16 +220,12 @@ sideNavi headerLeft {
   margin-top: -5px;
 }
 
-sideNaviBg {
-  display: none;
-}
-
 sideNaviBg.open {
   display: flex;
   position: absolute;
   height: 100vh;
   width: 100vw;
-  z-index: 2;
+  z-index: 4;
   background: transparent;
 }
 
@@ -253,7 +249,8 @@ sideNaviBg.open {
 }
 
 /* landing page all videos */
-mainContainer.blur {
+mainContainer.blur,
+miniWedeoContainer.blur {
   display: block;
   filter: brightness(0.4) blur(3px);
 }
@@ -276,6 +273,40 @@ mainContainer.blur {
   margin-bottom: 100px;
 }
 
+/* miniWedeoPlayer*/
+miniWedeoContainer {
+  display: block;
+  position: fixed;
+  width: 320px;
+  z-index: 3;
+  box-shadow: 5px 5px 20px var(--black);
+}
+
+.miniWedeoHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--white);
+  background: linear-gradient( 135deg, var(--cyan500), var(--main) );
+  cursor: move;
+}
+
+.miniWedeoHeaderTitle {
+  padding: 3px 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.miniWedeoHeaderClose {
+  display: flex;
+  padding: 3px;
+  cursor: pointer;
+}
+
+.miniWedeoContent {
+  display: none;
+}
 
 /* watchPage */
 mainWedeoContainer {
