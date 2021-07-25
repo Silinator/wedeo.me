@@ -73,7 +73,7 @@
       <?=$l->t('NAVI_LOGOUT')?>
     </a>
   </sideNavi>
-  <sideNaviBg style="display:none;"></sideNaviBg>
+  <sideNaviBg></sideNaviBg>
 
   <miniWedeoContainer style="display:none;">
     <div class="miniWedeoHeader">
