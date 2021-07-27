@@ -220,6 +220,10 @@ sideNavi headerLeft {
   margin-top: -5px;
 }
 
+sideNaviBg {
+  display: none;
+}
+
 sideNaviBg.open {
   display: flex;
   position: absolute;
