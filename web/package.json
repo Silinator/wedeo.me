@@ -6,7 +6,7 @@
   "dependencies": {
     "jquery": "^3.6.0",
     "moment": "^2.29.1",
-    "video.js": "^7.11.4",
+    "video.js": "^7.14.3",
     "videojs-hotkeys": "^0.2.27",
     "vue": "^2.6.12",
     "vuex": "^3.6.2"
