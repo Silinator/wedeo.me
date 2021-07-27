@@ -11,9 +11,13 @@
     "vue": "^2.6.12",
     "vuex": "^3.6.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "chance": "^1.1.7",
+    "cypress": "^8.0.0"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+	"e2e": "cypress open"
   },
   "author": "Silvan Fux",
   "license": "ISC"
