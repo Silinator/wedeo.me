@@ -1,2 +1,4 @@
 node_modules/
 config/wedeome.ini
+web/css/tailwind.css
+web/css/tailwind.min.css

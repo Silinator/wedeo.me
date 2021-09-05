@@ -41,6 +41,9 @@
 <?php /* moment */ ?>
 <script src="node_modules/moment/min/moment.min.js"></script>
 
+<?php /* tailwind */ ?>
+<link href="css/tailwind.min.css" rel="stylesheet">
+
 <?php /* own */ ?>
 <link href="css/main.css" rel="stylesheet">
 <link href="css/elements.css" rel="stylesheet">
