@@ -181,6 +181,7 @@ p a:hover {
   border-image-slice: 1;
   border-width: 3px 3px 20px 3px;
   border-style: solid;
+  box-sizing: content-box;
 }
 
 .thumbHolder.green:after {
