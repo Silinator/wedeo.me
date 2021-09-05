@@ -6,7 +6,7 @@ Vue.component( 'allVideos', {
 	},
   template: `
     <div class='allVideosContainer'>
-			<h1>{{t('ALL_VIDEOS')}}</h1><br>
+			<h1 class='text-green-200 flex'>{{t('ALL_VIDEOS')}}</h1><br>
 			<div class='allVideosList'>
       	<thumb v-for="video in videos" :key="video.uvid" :videoData="video"/>
 			</div>
