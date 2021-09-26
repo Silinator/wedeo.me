@@ -18,27 +18,27 @@ Vue.component( 'sideNavi', {
 
         <a href="" class="naviButton">
           <span class="material-icons">home</span> <!--weicon-home-->
-          {{t('NAVI_CHANNEL')}}
+          {{this.$store.getters.t('NAVI_CHANNEL')}}
         </a>
         <a href="" class="naviButton">
           <span class="material-icons">star</span> <!--star-->
-          {{t('NAVI_SUBSCRIBERS')}}
+          {{this.$store.getters.t('NAVI_SUBSCRIBERS')}}
         </a>
         <a href="" class="naviButton">
           <span class="material-icons">lightbulb</span> <!--weicon-lightbulb-->
-          {{t('NAVI_RECOMMENDED')}}
+          {{this.$store.getters.t('NAVI_RECOMMENDED')}}
         </a>
         <a href="" class="naviButton">
           <span class="material-icons">movie</span> <!--weicon-videos-->
-          {{t('NAVI_VIDEOS')}}
+          {{this.$store.getters.t('NAVI_VIDEOS')}}
         </a>
         <a href="" class="naviButton">
           <span class="material-icons">settings</span>
-          {{t('NAVI_OPTIONS')}}
+          {{this.$store.getters.t('NAVI_OPTIONS')}}
         </a>
         <a href="" class="naviButton">
           <span class="material-icons">logout</span>
-          {{t('NAVI_LOGOUT')}}
+          {{this.$store.getters.t('NAVI_LOGOUT')}}
         </a>
       </div>
       <div v-on:click="closeNavi" :class="sideNaviBgClass"></div>

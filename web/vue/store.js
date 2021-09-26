@@ -3,7 +3,15 @@ Vue.use( Vuex );
 const store = new Vuex.Store({
   state: {
     cdnURLbase: "https://cdn.wedeo.me/",
+    page: '',
     sideNaviOpen: false,
+    translations: {},
+    selLang: {
+      "lang": "de",
+      "numFor": "de-DE"
+    },
+    selNumFor: '',
+    videoData: {},
     wedeoPlayer: {},
     playlist: {},
     currentVideoInfo: {},
@@ -27,9 +35,26 @@ const store = new Vuex.Store({
     morePlaylistVideosBeforeLoading: false,
     morePlaylistVideosAfterLoading: false
   },
+  getters: {
+    t: (state) => (id, n = null ) => {
+      if( state.translations.hasOwnProperty( id ) && state.translations[id].hasOwnProperty( state.selLang.lang ) ) {
+        str = state.translations[id][state.selLang.lang];
+        return str = str.replace( /\$n/g, n );
+      }
 
+      return id;
+    },
+
+    n: (state) => (num) => {
+      return state.selNumFor !== '' ? state.selNumFor.format(num) : num;
+    }
+  },
   mutations: {
-    setWedeoPlayer( state, player ){
+    setTranslations( state, data ) {
+      state.translations = data;
+      state.selNumFor = new Intl.NumberFormat(state.selLang.numFor);
+    },
+    setWedeoPlayer( state, player ) {
       state.wedeoPlayer = player;
     },
     setCurrentVideoInfo( state, info ) {
@@ -47,12 +72,23 @@ const store = new Vuex.Store({
     addMorePlaylistVideosAfter( state, videos ) {
       state.morePlaylistVideos = state.morePlaylistVideos.concat(videos);
     },
+    setPage( state, page ) {
+      state.page = page;
+    },
+    setVideoData( state, data ) {
+      state.videoData = data;
+    },
     setSideNaviOpen( state, value ) {
       state.sideNaviOpen = value;
     }
   },
 
   actions: {
+    fetchTranslations( { commit, state } ) {
+      $.getJSON( "lang/translations.json", function (data) {
+        commit( 'setTranslations', data );
+      });
+    },
     fetchVideos( { commit, state } ) {
       if( state.videosLoading === false ) {
         state.videosLoading = true;
@@ -78,7 +114,7 @@ const store = new Vuex.Store({
           commit( 'addMoreVideos', data.videos );
 
           if( data.max ) {
-            state.moreVideosLoading = 'all';
+            //state.moreVideosLoading = 'all';
           }
         });
       }

@@ -94,15 +94,6 @@ if( $withHtml || !$apiRequest ) {
           `
         });
       }
-
-      function resizeWedeo() {
-        const max = $( window ).width() - 320 - 30 - 20;
-        let width = $('.wedeoSideContainer').height() / 9 * 16;
-
-        if( width > max ) { width = max; }
-
-        $('.wedeoContainer').width( width );
-      }
     </script>
 <?php
 }

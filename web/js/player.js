@@ -38,9 +38,9 @@ class wedeoPlayerClass {
     this.muted        = null;
     this.volume       = 0.8;
     this.playbackRate = 1;
-    this.fullscreenUi = t('VIDEO_FULLSCREEN_UI_AUTO');
+    this.fullscreenUi = store.getters.t('VIDEO_FULLSCREEN_UI_AUTO');
     this.availablePlaybackRates = [ 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2];
-    this.availableFullscreenOptions = [ t('VIDEO_FULLSCREEN_UI_AUTO'), t('VIDEO_FULLSCREEN_UI_ON'), t('VIDEO_FULLSCREEN_UI_OFF')];
+    this.availableFullscreenOptions = [ store.getters.t('VIDEO_FULLSCREEN_UI_AUTO'), store.getters.t('VIDEO_FULLSCREEN_UI_ON'), store.getters.t('VIDEO_FULLSCREEN_UI_OFF')];
     this.inactivityTimeout = 2000;
     this.seekTime = 10;
 
@@ -152,7 +152,7 @@ class wedeoPlayerClass {
             "<span class='material-icons'>chat_bubble_outline</span>" +
           "</div>" +
         "</div>" +
-        "<a href='' class='bigBtn'>" + t("WATCH_NOW") + "</a>" +
+        "<a href='' class='bigBtn'>" + store.getters.t("WATCH_NOW") + "</a>" +
       "</div>"
     );
   }
@@ -318,23 +318,23 @@ class wedeoPlayerClass {
     $('#'+this.playerId+" .vjs-control-bar").after(
       "<div class='vjs-settings-menu'>" +
         "<div class='vjs-setting vjs-speed-settings'>" +
-          "<div class='vjs-setting-title'>" + t('VIDEO_PLAYBACK_SPEED-TITLE') + "</div>" +
+          "<div class='vjs-setting-title'>" + store.getters.t('VIDEO_PLAYBACK_SPEED-TITLE') + "</div>" +
           "<div class='vjs-setting-value-container'>" +
             "<div class='vjs-setting-value'>" + this.playbackRate + "</div>" +
             "<span class='material-icons'>keyboard_arrow_right</span>" +
           "</div>" +
         "</div>" +
         "<div class='vjs-setting vjs-resolution-settings'>" +
-          "<div class='vjs-setting-title'>" + t('VIDEO_QUALITY-TITLE') + "</div>" +
+          "<div class='vjs-setting-title'>" + store.getters.t('VIDEO_QUALITY-TITLE') + "</div>" +
           "<div class='vjs-setting-value-container'>" +
             "<div class='vjs-setting-value'></div>" +
             "<span class='material-icons'>keyboard_arrow_right</span>" +
           "</div>" +
         "</div>" +
         "<div class='vjs-setting vjs-fullscreen-settings'>" +
-          "<div class='vjs-setting-title'>" + t('VIDEO_FULLSCREEN_UI-TITLE') + "</div>" +
+          "<div class='vjs-setting-title'>" + store.getters.t('VIDEO_FULLSCREEN_UI-TITLE') + "</div>" +
           "<div class='vjs-setting-value-container'>" +
-            "<div class='vjs-setting-value'>" + t('VIDEO_FULLSCREEN_UI_AUTO') + "</div>" +
+            "<div class='vjs-setting-value'>" + store.getters.t('VIDEO_FULLSCREEN_UI_AUTO') + "</div>" +
             "<span class='material-icons'>keyboard_arrow_right</span>" +
           "</div>" +
         "</div>" +
@@ -428,16 +428,16 @@ class wedeoPlayerClass {
             "</div>" +
           "</div>" +
           "<div class='vjs-share-buttons'>" +
-            "<div class='vjs-share-button vjs-button vjs-add-playlist' data-title='" + t('VIDEO_ADD_PLAYLIST') + "'>" +
+            "<div class='vjs-share-button vjs-button vjs-add-playlist' data-title='" + store.getters.t('VIDEO_ADD_PLAYLIST') + "'>" +
               "<span class='material-icons'>playlist_add</span>" +
             "</div>" +
-            "<div class='vjs-share-button vjs-button vjs-recommend' data-title='" + t('VIDEO_RECOMMEND') + "'>" +
+            "<div class='vjs-share-button vjs-button vjs-recommend' data-title='" + store.getters.t('VIDEO_RECOMMEND') + "'>" +
               "<span class='weicon-lightbulb'></span>" +
             "</div>" +
-            "<div class='vjs-share-button vjs-button vjs-share' data-title='" + t('VIDEO_SHARE') + "'>" +
+            "<div class='vjs-share-button vjs-button vjs-share' data-title='" + store.getters.t('VIDEO_SHARE') + "'>" +
               "<span class='weicon-share'></span>" +
             "</div>" +
-            "<div class='vjs-share-button vjs-button vjs-download' data-title='" + t('VIDEO_DOWNLOAD') + "'>" +
+            "<div class='vjs-share-button vjs-button vjs-download' data-title='" + store.getters.t('VIDEO_DOWNLOAD') + "'>" +
               "<span class='weicon-file_download'></span>" +
             "</div>" +
           "</div>" +
@@ -940,8 +940,8 @@ class wedeoPlayerClass {
   }
 
   updatePlayerRating() {
-    $('#'+this.playerId+' .vjs-rating-upvote').attr( 'data-title', t('VIDEO_LIKE') + " (" + n(this.meta.rating[0]) + ")" );
-    $('#'+this.playerId+' .vjs-rating-downvote').attr( 'data-title', t('VIDEO_DISLIKE') + " (" + n(this.meta.rating[1]) + ")" );
+    $('#'+this.playerId+' .vjs-rating-upvote').attr( 'data-title', store.getters.t('VIDEO_LIKE') + " (" + store.getters.n(this.meta.rating[0]) + ")" );
+    $('#'+this.playerId+' .vjs-rating-downvote').attr( 'data-title', store.getters.t('VIDEO_DISLIKE') + " (" + store.getters.n(this.meta.rating[1]) + ")" );
 
     $('#'+this.playerId+' .vjs-rating-percent').html( this.meta.rating[0] == 0 ? "0%" : Math.floor( this.meta.rating[0] / ( this.meta.rating[0] + this.meta.rating[1] ) * 100 ) + "%" );
   }

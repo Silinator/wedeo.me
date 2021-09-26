@@ -49,9 +49,6 @@
 <link href="css/elements.css" rel="stylesheet">
 <script src="js/main.js"></script>
 
-<?php /* language */ ?>
-<script src="lang/lang.js"></script>
-
 <?php /* vue core */ ?>
 <script src="node_modules/vue/dist/vue.min.js"></script>
 <script src="node_modules/vuex/dist/vuex.min.js"></script>

@@ -22,7 +22,7 @@ Vue.component( 'userPreview', {
       return "/user/" + this.userInfo.name;
     },
     subText() {
-      return ( this.userInfo.subed ? '<span class="material-icons">done</span> ' + t('SUBSCRIBED') : t('SUBSCRIBE') );
+      return ( this.userInfo.subed ? '<span class="material-icons">done</span> ' + this.$store.getters.t('SUBSCRIBED') : this.$store.getters.t('SUBSCRIBE') );
     }
   },
   methods: {

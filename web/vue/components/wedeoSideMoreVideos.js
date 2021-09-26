@@ -9,12 +9,12 @@ Vue.component( 'wedeoSideMoreVideos', {
 				<div @click="apllyTagFilter(tag)" v-for="tag in tags" class='outlineBtn' :title="tag">{{tag}}</div>
 			</div>
 			<div class='wedeoSideMoreVideosSearchContainer'>
-				<input class='wedeoSideMoreVideosSearchInput' @keyup.enter="applyTextFilter" :placeholder="t('MORE_VIDEOS_SEARCH')"/>
+				<input class='wedeoSideMoreVideosSearchInput' @keyup.enter="applyTextFilter" :placeholder="this.$store.getters.t('MORE_VIDEOS_SEARCH')"/>
 				<div class='wedeoSideMoreVideosSearchBtn' @click="applyTextFilter">
 					<span class="material-icons">search</span>
 				</div>
 			</div>
-			<h3>{{t('MORE_VIDEOS')}}</h3>
+			<h3>{{this.$store.getters.t('MORE_VIDEOS')}}</h3>
 			<div class='wedeoSideMoreVideosListContainer'>
 				<div class='wedeoSideMoreVideosList'>
 					<div v-for="videoData in moreVideos" :key="videoData.uvid" class='shortHorVideoContainer'>
@@ -25,7 +25,7 @@ Vue.component( 'wedeoSideMoreVideos', {
 						</div>
 					</div>
 				</div>
-				<div v-if="moreVideosLoading != 'all'" id="loadMoreLine" class="loadMoreLine">{{t('LOAD_MORE_VIDEOS')}}</div>
+				<div v-if="moreVideosLoading != 'all'" id="loadMoreLine" class="loadMoreLine">{{this.$store.getters.t('LOAD_MORE_VIDEOS')}}</div>
 			</div>
     </div>
   `,
@@ -37,10 +37,10 @@ Vue.component( 'wedeoSideMoreVideos', {
 			return this.$store.state.moreVideos;
 		},
 		videoCategoryFull() {
-			return t('CAT_' + this.videoInfo.category.toUpperCase() );
+			return this.$store.getters.t('CAT_' + this.videoInfo.category.toUpperCase() );
 		},
 		videoLanguageFull() {
-			return t('LANG_' + this.videoInfo.language.toUpperCase() );
+			return this.$store.getters.t('LANG_' + this.videoInfo.language.toUpperCase() );
 		},
 		tags() {
 			let tags = this.videoInfo.tags.split(", ");

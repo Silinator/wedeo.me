@@ -77,8 +77,5 @@ Vue.component( 'wedeoSideContainer', {
   },
   created() {
     this.fetchPlaylist();
-  },
-  mounted() {
-    this.wedeoPlayer.resizeWedeo();
   }
 });

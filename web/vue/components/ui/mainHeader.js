@@ -16,7 +16,7 @@ Vue.component( 'mainHeader', {
       </div>
 
       <div class='headerCenter'>
-        <input class="headerSearchInput" :placeholder="t('HEADER_SEARCH')"/>
+        <input class="headerSearchInput" :placeholder="this.$store.getters.t('HEADER_SEARCH')"/>
         <div class="mainSearchButton">
           <span class="material-icons">search</span>
         </div>

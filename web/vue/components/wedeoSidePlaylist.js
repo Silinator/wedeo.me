@@ -17,7 +17,7 @@ Vue.component( 'wedeoSidePlaylist', {
         </div>
       </div>
       <div class='wedeoSideMoreVideosListContainer'>
-        <div v-if="moreBeforeLoading != 'all'" id="loadMoreBeforeLine" class="loadMoreLine">{{t('LOAD_MORE_VIDEOS')}}</div>
+        <div v-if="moreBeforeLoading != 'all'" id="loadMoreBeforeLine" class="loadMoreLine">{{this.$store.getters.t('LOAD_MORE_VIDEOS')}}</div>
         <div class='wedeoSideMoreVideosList'>
           <div v-for="videoData in morePlaylistVideos" :key="videoData.uvid" class='shortHorVideoContainer'>
             <div class='shortHorVideoNumber' v-html="getPlaylistVideoNumber(videoData.uvid)"></div>
@@ -28,7 +28,7 @@ Vue.component( 'wedeoSidePlaylist', {
             </div>
           </div>
         </div>
-        <div v-if="moreAfterLoading != 'all'" id="loadMoreAfterLine" class="loadMoreLine">{{t('LOAD_MORE_VIDEOS')}}</div>
+        <div v-if="moreAfterLoading != 'all'" id="loadMoreAfterLine" class="loadMoreLine">{{this.$store.getters.t('LOAD_MORE_VIDEOS')}}</div>
       </div>
     </div>
   `,
