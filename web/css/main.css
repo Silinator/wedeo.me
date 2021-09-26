@@ -81,13 +81,7 @@ body {
 
 
 /* header */
-header {
-  display: flex;
-  justify-content: space-between;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
+.header {
   height: 60px;
   background: linear-gradient( 0deg, transparent, var(--bg-blackA60) );
   border-color: var(--black);
@@ -95,29 +89,29 @@ header {
   z-index: 999999;
 }
 
-header.solid {
+.header.solid {
   background: var(--bg-gray);
   border-bottom: 1px solid var(--black);
 }
 
-header.blur {
+.header.blur {
   background: var(--bg-black);
 }
 
-headerLeft,
-headerCenter,
-headerRight {
+.headerLeft,
+.headerCenter,
+.headerRight {
   display: flex;
   align-items: center;
 }
 
-header.blur headerCenter,
-header.blur headerRight {
+.header.blur .headerCenter,
+.header.blur .headerRight {
   filter: brightness(0.4) blur(3px);
 }
 
-headerLeft,
-headerRight {
+.headerLeft,
+.headerRight {
   padding: 15px;
 }
 
@@ -141,7 +135,7 @@ headerRight {
   height: 35px;
 }
 
-headerCenter {
+.headerCenter {
   position: relative;
   width: calc(70% - 600px);
 }
@@ -198,7 +192,11 @@ headerCenter {
 
 
 /* side navi */
-sideNavi {
+.sideNaviContainer {
+  position: absolute;
+}
+
+.sideNavi {
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -212,19 +210,19 @@ sideNavi {
   z-index: 5;
 }
 
-sideNavi.open {
+.sideNavi.open {
   left: 0;
 }
 
-sideNavi headerLeft {
+.sideNavi .headerLeft {
   margin-top: -5px;
 }
 
-sideNaviBg {
+.sideNaviBg {
   display: none;
 }
 
-sideNaviBg.open {
+.sideNaviBg.open {
   display: flex;
   position: absolute;
   height: 100vh;
@@ -253,8 +251,8 @@ sideNaviBg.open {
 }
 
 /* landing page all videos */
-mainContainer.blur,
-miniWedeoContainer.blur {
+.mainContainer.blur,
+.miniWedeoContainer.blur {
   display: block;
   filter: brightness(0.4) blur(3px);
 }
@@ -278,12 +276,16 @@ miniWedeoContainer.blur {
 }
 
 /* miniWedeoPlayer*/
-miniWedeoContainer {
+.miniWedeoContainer {
   display: block;
   position: fixed;
   width: 320px;
   z-index: 3;
   box-shadow: 5px 5px 20px var(--black);
+}
+
+.miniWedeo .wedeoContainer {
+  width: 100% !important;
 }
 
 .miniWedeoHeader {
@@ -313,7 +315,7 @@ miniWedeoContainer {
 }
 
 /* watchPage */
-mainWedeoContainer {
+.mainWedeoContainer {
   display: flex;
   justify-content: center;
   gap: 20px;
@@ -325,7 +327,7 @@ mainWedeoContainer {
   overflow-x: hidden;
 }
 
-mainWedeoContainer.large {
+.mainWedeoContainer.large {
   height: 100vh;
   width: 100vw;
   margin-top: 0;
@@ -343,7 +345,7 @@ mainWedeoContainer.large {
   height: 100%;
 }
 
-mainWedeoContainer.large .wedeoSideContainer {
+.mainWedeoContainer.large .wedeoSideContainer {
   display: none;
 }
 

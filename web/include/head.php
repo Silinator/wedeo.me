@@ -49,18 +49,20 @@
 <link href="css/elements.css" rel="stylesheet">
 <script src="js/main.js"></script>
 
+<?php /* language */ ?>
+<script src="lang/lang.js"></script>
+
 <?php /* vue core */ ?>
 <script src="node_modules/vue/dist/vue.min.js"></script>
 <script src="node_modules/vuex/dist/vuex.min.js"></script>
 
 <?php /* vue components */ ?>
-<script src="js/vue/store.js"></script>
-<script src="js/vue/components/allVideos.js"></script>
-<script src="js/vue/components/thumb.js"></script>
-<script src="js/vue/components/userPreview.js"></script>
-
-<?php /* language */ ?>
-<script src="lang/lang.js"></script>
+<script src="vue/store.js"></script>
+<script src="vue/components/ui/mainHeader.js"></script>
+<script src="vue/components/ui/sideNavi.js"></script>
+<script src="vue/components/allVideos.js"></script>
+<script src="vue/components/thumb.js"></script>
+<script src="vue/components/userPreview.js"></script>
 
 <?php /* wedeo player */ ?>
 <link href="node_modules/video.js/dist/video-js.min.css" rel="stylesheet">

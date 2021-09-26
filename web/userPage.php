@@ -27,7 +27,7 @@ if( !$asJson ) {
     </head>
     <body>
       <?php require_once("components/header.php"); ?>
-      <mainContainer>
+      <div class='mainContainer'>
 <?php
 }
 
@@ -48,7 +48,7 @@ if( $withHtml || !$apiRequest ) {
 
 if( !$asJson ) {
 ?>
-    </mainContainer>
+    </div>
     <script type="text/javascript">
       function docReady() {
         htmlLoaded();

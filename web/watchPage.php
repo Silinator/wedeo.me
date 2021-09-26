@@ -49,7 +49,7 @@ if( !$asJson ) {
         let videoData;
       </script>
       <?php require_once("components/header.php"); ?>
-      <mainContainer>
+      <div class='mainContainer'>
 <?php
 }
 
@@ -58,19 +58,19 @@ if( $withHtml || !$apiRequest ) {
     ob_start();
   }
 ?>
-    <script src="js/vue/components/wedeoSideContainer.js"></script>
-    <script src="js/vue/components/wedeoSidePlaylist.js"></script>
-    <script src="js/vue/components/wedeoSideComments.js"></script>
-    <script src="js/vue/components/wedeoSideInfo.js"></script>
-    <script src="js/vue/components/wedeoSideMoreVideos.js"></script>
+    <script src="vue/components/wedeoSideContainer.js"></script>
+    <script src="vue/components/wedeoSidePlaylist.js"></script>
+    <script src="vue/components/wedeoSideComments.js"></script>
+    <script src="vue/components/wedeoSideInfo.js"></script>
+    <script src="vue/components/wedeoSideMoreVideos.js"></script>
 
-    <mainWedeoContainer>
-      <wedeoContainer>
+    <div class='mainWedeoContainer'>
+      <div class='wedeoContainer'>
         <video id="wedeo-player" class="wedeo-player video-js cover" controls></video>
-      </wedeoContainer>
+      </div>
 
-      <wedeoSideContainer></wedeoSideContainer>
-    </mainWedeoContainer>
+      <div class='wedeoSideContainer'></div>
+    </div>
 
     <script type="text/javascript">
       videoData = JSON.parse('<?=json_encode($json->videoData)?>');
@@ -87,7 +87,7 @@ if( $withHtml || !$apiRequest ) {
         store.commit( 'setCurrentVideoInfo', videoData );
 
         const mainapp = new Vue({
-          el: 'wedeoSideContainer',
+          el: '.wedeoSideContainer',
           store,
           template: `
             <wedeoSideContainer></wedeoSideContainer>
@@ -101,7 +101,7 @@ if( $withHtml || !$apiRequest ) {
 
         if( width > max ) { width = max; }
 
-        $('wedeoContainer').width( width );
+        $('.wedeoContainer').width( width );
       }
     </script>
 <?php
@@ -109,7 +109,7 @@ if( $withHtml || !$apiRequest ) {
 
 if( !$asJson ) {
 ?>
-    </mainContainer>
+    </div>
     <script type="text/javascript">
       function docReady() {
         htmlLoaded();

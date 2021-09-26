@@ -46,7 +46,7 @@ if( !$asJson ) {
         let videoData;
       </script>
       <?php require_once("components/header.php"); ?>
-      <mainContainer>
+      <div class='mainContainer'>
 <?php
 }
 
@@ -70,9 +70,9 @@ if( $withHtml || !$apiRequest ) {
 
         $(document).scroll(function() {
           if( $(document).scrollTop() > 50 ) {
-            $("header").addClass('solid');
+            $(".header").addClass('solid');
           }else{
-            $("header").removeClass('solid');
+            $(".header").removeClass('solid');
           }
         });
 
@@ -90,9 +90,10 @@ if( $withHtml || !$apiRequest ) {
 
 if( !$asJson ) {
 ?>
-    </mainContainer>
+    </div>
     <script type="text/javascript">
       function docReady() {
+        console.log( 'docReady' );
         htmlLoaded();
         pageScripts();
       }

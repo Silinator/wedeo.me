@@ -33,7 +33,7 @@ function htmlLoaded() {
 }
 
 function goToPage( url, fromNavigation = false ) {
-  closeNavi();
+  //closeNavi();
 
   //add page loading progress
 
@@ -42,7 +42,7 @@ function goToPage( url, fromNavigation = false ) {
   const isMiniWedeoPlayer = ( wedeoPlayer && wedeoPlayer.type === "mini" );
 
   if( isVideoLink && isMiniWedeoPlayer ) {
-    if( !fromNavigation ) {  $("miniWedeoContainer").attr("videoURL", url); }
+    if( !fromNavigation ) {  $(".miniWedeoContainer").attr("videoURL", url); }
   } else {
     if( !fromNavigation ) { window.history.pushState( {page: true}, null, document.location ); } //adds current page as previous page
     window.history.replaceState('currentPage', 'wedeo.me', url); //changes browser url
@@ -86,7 +86,7 @@ function loadPage( url ) {
     nextPageIsLoading = false;
 
     document.title = data.htmlTitle;
-    $('mainContainer').not('miniwedeocontainer mainContainer').html(data.html);
+    $('.mainContainer').not('.miniwedeocontainer .mainContainer').html(data.html);
 
     activateSamePageNavigation();
     pageScripts();
@@ -159,10 +159,10 @@ function closeMiniplayer() {
 }
 
 function hideMiniplayer() {
-  $("miniWedeoContainer").hide();
-  $('miniwedeocontainer .miniWedeoHeaderTitle').html("");
-  $('miniwedeocontainer .miniWedeo').html("");
-  $('miniwedeocontainer .miniWedeoContent').html("");
+  $(".miniWedeoContainer").hide();
+  $('.miniwedeocontainer .miniWedeoHeaderTitle').html("");
+  $('.miniwedeocontainer .miniWedeo').html("");
+  $('.miniwedeocontainer .miniWedeoContent').html("");
 }
 
 function secondsToHms( d ) {

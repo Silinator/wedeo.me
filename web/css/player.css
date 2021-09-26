@@ -1,12 +1,12 @@
-wedeoContainer {
+.wedeoContainer {
   width: 60vw;
 }
 
-mainWedeoContainer.large wedeoContainer {
+.mainWedeoContainer.large .wedeoContainer {
   width: 100% !important;
 }
 
-.touch wedeoContainer {
+.touch .wedeoContainer {
   display: flex;
   width: 100%;
   margin: 0;
@@ -21,7 +21,7 @@ mainWedeoContainer.large wedeoContainer {
   background-color: transparent;
 }
 
-mainWedeoContainer.large .wedeo-player {
+.mainWedeoContainer.large .wedeo-player {
   height: 100%;
   padding-top: 0;
 }
@@ -30,11 +30,11 @@ mainWedeoContainer.large .wedeo-player {
   object-fit: fill;
 }
 
-mainWedeoContainer.large .wedeo-player.cover video {
+.mainWedeoContainer.large .wedeo-player.cover video {
   object-fit: cover;
 }
 
-mainWedeoContainer.large .wedeo-player video {
+.mainWedeoContainer.large .wedeo-player video {
   object-fit: contain;
 }
 
@@ -84,11 +84,11 @@ mainWedeoContainer.large .wedeo-player video {
   pointer-events: none;
 }
 
-mainWedeoContainer.large .wedeo-player .vjs-header {
+.mainWedeoContainer.large .wedeo-player .vjs-header {
   display: none;
 }
 
-mainWedeoContainer.large .wedeo-player.vjs-fullscreen .vjs-header {
+.mainWedeoContainer.large .wedeo-player.vjs-fullscreen .vjs-header {
   display: flex;
 }
 
@@ -380,7 +380,7 @@ mainWedeoContainer.large .wedeo-player.vjs-fullscreen .vjs-header {
   margin-right: auto; /* moves everything after this element to the left site */
 }
 
-mainWedeoContainer.large .wedeo-player.vjs-fullscreen .vjs-bottom-title {
+.mainWedeoContainer.large .wedeo-player.vjs-fullscreen .vjs-bottom-title {
   display: none !important;
 }
 
@@ -389,11 +389,11 @@ mainWedeoContainer.large .wedeo-player.vjs-fullscreen .vjs-bottom-title {
   margin-left: auto; /* moves everything before this element to the right site */
 }
 
-mainWedeoContainer.large .wedeo-player .vjs-custom-control-spacer {
+.mainWedeoContainer.large .wedeo-player .vjs-custom-control-spacer {
   margin-left: unset;
 }
 
-mainWedeoContainer.large .wedeo-player.vjs-fullscreen .vjs-custom-control-spacer {
+.mainWedeoContainer.large .wedeo-player.vjs-fullscreen .vjs-custom-control-spacer {
   margin-left: auto; /* moves everything before this element to the right site */
 }
 

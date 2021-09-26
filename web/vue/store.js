@@ -3,6 +3,7 @@ Vue.use( Vuex );
 const store = new Vuex.Store({
   state: {
     cdnURLbase: "https://cdn.wedeo.me/",
+    sideNaviOpen: false,
     wedeoPlayer: {},
     playlist: {},
     currentVideoInfo: {},
@@ -46,6 +47,9 @@ const store = new Vuex.Store({
     addMorePlaylistVideosAfter( state, videos ) {
       state.morePlaylistVideos = state.morePlaylistVideos.concat(videos);
     },
+    setSideNaviOpen( state, value ) {
+      state.sideNaviOpen = value;
+    }
   },
 
   actions: {

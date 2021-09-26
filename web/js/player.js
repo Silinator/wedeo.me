@@ -108,22 +108,22 @@ class wedeoPlayerClass {
 
   moveIntoMiniplayer() {
     this.type = "mini";
-    $("miniWedeoContainer").show();
-    $("miniWedeoContainer .miniWedeoHeaderTitle").html( this.meta.title );
-    $("miniWedeoContainer .miniWedeo").html( $("mainContainer wedeoContainer") );
-    $("miniWedeoContainer .miniWedeoContent").html( $("mainContainer") );
-    $("header").after("<mainContainer></mainContainer>");
+    $(".miniWedeoContainer").show();
+    $(".miniWedeoContainer .miniWedeoHeaderTitle").html( this.meta.title );
+    $(".miniWedeoContainer .miniWedeo").html( $(".mainContainer .wedeoContainer") );
+    $(".miniWedeoContainer .miniWedeoContent").html( $(".mainContainer") );
+    $(".header").after("<div class='mainContainer'></div>");
   }
 
   backToMiniplayerVideo() {
     this.type = "default";
 
     document.title = this.meta.title + " | wedeo.me";
-    $('mainContainer').not('miniWedeoContainer mainContainer').html( $("miniWedeoContainer .miniWedeoContent mainContainer") );
-    $("mainwedeocontainer").prepend( $("miniWedeoContainer .miniWedeo wedeocontainer") );
+    $('.mainContainer').not('.miniWedeoContainer .mainContainer').html( $(".miniWedeoContainer .miniWedeoContent .mainContainer") );
+    $(".mainwedeocontainer").prepend( $(".miniWedeoContainer .miniWedeo .wedeocontainer") );
 
-    if( $("miniWedeoContainer").attr("videoURL") ) { /* when video was changed only in miniplayer this gets the url of current video */
-      window.history.replaceState('currentPage', 'wedeo.me', $("miniWedeoContainer").attr("videoURL")); //changes browser url
+    if( $(".miniWedeoContainer").attr("videoURL") ) { /* when video was changed only in miniplayer this gets the url of current video */
+      window.history.replaceState('currentPage', 'wedeo.me', $(".miniWedeoContainer").attr("videoURL")); //changes browser url
     }
 
     hideMiniplayer();
@@ -796,8 +796,8 @@ class wedeoPlayerClass {
   }
 
   togglePlayerSize() {
-    if( $('#'+this.playerId).closest('mainWedeoContainer').length > 0 ) {
-      const wedeoContainer = $('#'+this.playerId).closest('mainWedeoContainer');
+    if( $('#'+this.playerId).closest('.mainWedeoContainer').length > 0 ) {
+      const wedeoContainer = $('#'+this.playerId).closest('.mainWedeoContainer');
       if( this.Player.isFullscreen_ ) { this.Player.exitFullscreen(); }
 
       if( wedeoContainer.hasClass('large') ) {
@@ -821,7 +821,7 @@ class wedeoPlayerClass {
 
     if( width > max ) { width = max; }
 
-    $('wedeoContainer').width( width );
+    $('.wedeoContainer').width( width );
   }
 
   getVideoSource() {
@@ -935,7 +935,7 @@ class wedeoPlayerClass {
     $('#'+this.playerId+' .vjs-bottom-title').html(this.meta.title).attr('title', this.meta.title);
 
     if(this.type === "mini") {
-      $("miniWedeoContainer .miniWedeoHeaderTitle").html(this.meta.title);
+      $(".miniWedeoContainer .miniWedeoHeaderTitle").html(this.meta.title);
     }
   }
 
