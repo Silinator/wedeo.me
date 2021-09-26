@@ -4,6 +4,7 @@
   "description": "Online video plattfrom",
   "main": "index.js",
   "dependencies": {
+    "autoprefixer": "^10.3.5",
     "jquery": "^3.6.0",
     "moment": "^2.29.1",
     "video.js": "^7.14.3",
@@ -13,10 +14,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Silinator/wedeo.me"
+    "url": "git+https://github.com/Silinator/wedeo.me.git"
   },
   "devDependencies": {
     "chance": "^1.1.7",
+    "cross-env": "^7.0.3",
+    "cssnano": "^5.0.8",
     "cypress": "^8.0.0",
     "postcss": "^8.3.6",
     "postcss-cli": "^8.3.1",
@@ -28,5 +31,9 @@
     "e2e": "cypress open"
   },
   "author": "Silvan Fux",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Silinator/wedeo.me/issues"
+  },
+  "homepage": "https://github.com/Silinator/wedeo.me#readme"
 }
