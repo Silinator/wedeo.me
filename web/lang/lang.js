@@ -15,8 +15,12 @@ $(document).ready( function() {
 });
 
 function t(id, n = null) {
-  str = translations[id][selLang.lang];
-  return str = str.replace( /\$n/g, n );
+  if( translations.hasOwnProperty( id ) && translations[id].hasOwnProperty( selLang.lang ) ) {
+    str = translations[id][selLang.lang];
+    return str = str.replace( /\$n/g, n );
+  }
+
+  return id;
 }
 
 function n(num) {
