@@ -12,6 +12,7 @@ const store = new Vuex.Store({
     },
     selNumFor: '',
     videoData: {},
+    bgVideoData: {},
     wedeoPlayer: {},
     playlist: {},
     currentVideoInfo: {},
@@ -77,6 +78,9 @@ const store = new Vuex.Store({
     },
     setVideoData( state, data ) {
       state.videoData = data;
+    },
+    setBgVideoData( state, data ) {
+      state.bgVideoData = data;
     },
     setSideNaviOpen( state, value ) {
       state.sideNaviOpen = value;

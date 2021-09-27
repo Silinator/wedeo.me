@@ -58,7 +58,7 @@ Vue.component( 'mainHeader', {
     </div>
   `,
   computed: {
-		sideNaviOpen: function() {
+		sideNaviOpen() {
 			return this.$store.state.sideNaviOpen;
   	},
     blurClass() {
@@ -78,7 +78,6 @@ Vue.component( 'mainHeader', {
       }
     },
     openNavi() {
-      this.sideNaviOpen = true;
       this.$store.commit('setSideNaviOpen', true );
 
       $('.mainContainer').addClass('blur');
@@ -95,6 +94,14 @@ Vue.component( 'mainHeader', {
     }
   },
   mounted() {
+    $(document).scroll(function() {
+      if( $(document).scrollTop() > 50 ) {
+        $(".header").addClass('solid');
+      }else{
+        $(".header").removeClass('solid');
+      }
+    });
+
     dragMiniPlayer( $(".miniWedeoHeader") );
   }
 });
