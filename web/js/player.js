@@ -130,46 +130,13 @@ class wedeoPlayerClass {
   }
 
   addVideoInfo() {
-    $("#" + this.playerId+ ' .vjs-control-bar').append(
-      "<div class='mainVideoPreview'>" +
-        "<a href='' class='mainVideoPreviewTitle'></a>" +
-        "<div class='mainVideoPreviewDescription'></div>" +
-        "<div class='mainVideoPreviewMeta'>" +
-          "<a href='' class='mainVideoPreviewUser'>" +
-            "<img src='' class='mainVideoPreviewUserImg'/>" +
-            "<p class='mainVideoPreviewUserName'></p>" +
-          "</a>" +
-          "<span class='mainVideoPreviewMetaSpacing'> • </span>" +
-          "<div class='mainVideoPreviewLang'></div>" +
-          "<span class='mainVideoPreviewMetaSpacing'></span>" +
-          "<div class='mainVideoPreviewRating'>" +
-            "<div class='mainVideoPreviewRatingText'></div>" +
-            "<span class='material-icons'>thumb_up_off_alt</span>" +
-          "</div>" +
-          "<span class='mainVideoPreviewMetaSpacing'></span>" +
-          "<div class='mainVideoPreviewComments'>" +
-            "<div class='mainVideoPreviewCommentsText'></div>" +
-            "<span class='material-icons'>chat_bubble_outline</span>" +
-          "</div>" +
-        "</div>" +
-        "<a href='' class='bigBtn'>" + store.getters.t("WATCH_NOW") + "</a>" +
-      "</div>"
-    );
-  }
+    $("#" + this.playerId+ ' .vjs-control-bar').append("<div id='shortVideoInfo'></div>");
 
-  updateVideoInfo() {
-    const videoUrl = "watch/" + this.meta.uvid;
-    const userUrl = "user/" + this.meta.user.name;
-
-    $("#" + this.playerId+ ' .mainVideoPreviewTitle').attr( 'href', videoUrl ).html( this.meta.title ).attr( 'title', this.meta.title );
-    $("#" + this.playerId+ ' .mainVideoPreviewDescription').html( this.meta.description );
-    $("#" + this.playerId+ ' .mainVideoPreviewUser').attr( 'href', userUrl );
-    $("#" + this.playerId+ ' .mainVideoPreviewUserImg').attr( 'src', this.cdnURLbase + 'images/user/' + this.meta.user.uuid + '/small.jpg' );
-    $("#" + this.playerId+ ' .mainVideoPreviewUserName').html( this.meta.user.name );
-    $("#" + this.playerId+ ' .mainVideoPreviewLang').html( this.meta.lang );
-    $("#" + this.playerId+ ' .mainVideoPreviewRatingText').html( this.meta.rating[0] == 0 ? "0%" : Math.floor( this.meta.rating[0] / ( this.meta.rating[0] + this.meta.rating[1] ) * 100 ) + "%" );
-    $("#" + this.playerId+ ' .mainVideoPreviewCommentsText').html( this.meta.commentsCount );
-    $("#" + this.playerId+ ' .mainVideoPreview .bigBtn').attr( 'href', videoUrl );
+    const shortVideoInfo = new Vue({
+      el: '#shortVideoInfo',
+      store,
+      template: `<shortVideoInfo/>`
+    });
   }
 
   addHotkeys() {
@@ -877,8 +844,6 @@ class wedeoPlayerClass {
     this.updatePlayerSettingsMenu();
     this.updatePlayerTitle();
     this.updatePlayerRating();
-
-    if( this.playerType == "background" ) { this.updateVideoInfo(); }
 
     if('mediaSession' in navigator) {
       navigator.mediaSession.metadata = new MediaMetadata({

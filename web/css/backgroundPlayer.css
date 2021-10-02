@@ -119,7 +119,7 @@
 }
 
 /* video preview text */
-.wedeo-bg-player .mainVideoPreview {
+.wedeo-bg-player .shortVideoInfo {
   display: flex;
   position: absolute;
   flex-direction: column;
@@ -132,7 +132,7 @@
   z-index: 3;
 }
 
-.wedeo-bg-player .mainVideoPreviewTitle {
+.wedeo-bg-player .shortVideoInfoTitle {
   font-size: 32px;
   line-height: 32px;
   font-weight: 500;
@@ -144,7 +144,7 @@
   text-overflow: ellipsis;
 }
 
-.wedeo-bg-player .mainVideoPreviewDescription {
+.wedeo-bg-player .shortVideoInfoDescription {
   margin-top: 10px;
   margin-bottom: 10px;
   font-size: 24px;
@@ -155,41 +155,41 @@
   overflow: hidden;
 }
 
-.wedeo-bg-player .mainVideoPreviewMeta {
+.wedeo-bg-player .shortVideoInfoMeta {
   display: flex;
   font-size: 24px;
   margin-bottom: 15px;
 }
 
-.wedeo-bg-player .mainVideoPreviewUser {
+.wedeo-bg-player .shortVideoInfoUser {
   display: flex;
   text-decoration: none;
   color: var(--white);
 }
 
-.wedeo-bg-player .mainVideoPreviewUserImg {
+.wedeo-bg-player .shortVideoInfoUserImg {
   width: 24px;
   height: 24px;
   margin-right: 10px;
 }
 
-.wedeo-bg-player .mainVideoPreviewRating,
-.wedeo-bg-player .mainVideoPreviewComments {
+.wedeo-bg-player .shortVideoInfoRating,
+.wedeo-bg-player .shortVideoInfoComments {
   display: flex;
   align-items: center;
 }
 
-.wedeo-bg-player .mainVideoPreviewRatingText,
-.wedeo-bg-player .mainVideoPreviewCommentsText {
+.wedeo-bg-player .shortVideoInfoRatingText,
+.wedeo-bg-player .shortVideoInfoCommentsText {
   margin-right: 5px;
 }
 
-.wedeo-bg-player .mainVideoPreviewMetaSpacing {
+.wedeo-bg-player .shortVideoInfoMetaSpacing {
   font-weight: 300;
   margin-left: 10px;
   margin-right: 10px;
 }
 
-.wedeo-bg-player .mainVideoPreview .bigBtn {
+.wedeo-bg-player .shortVideoInfo .bigBtn {
   align-self: flex-end;
 }
