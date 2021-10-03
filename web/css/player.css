@@ -400,7 +400,7 @@
 
 /* player settings */
 .wedeo-player .vjs-settings-menu {
-  display: none;
+  display: flex;
   flex-direction: column;
   position: absolute;
   right: 10px;
@@ -433,7 +433,7 @@
 }
 
 .wedeo-player .vjs-settings-dropdown {
-  display: none;
+  display: flex;
   width: 200px;
   max-height: calc(100% - 105px);
   flex-direction: column;
@@ -459,7 +459,7 @@
 }
 
 .wedeo-player .vjs-settings-dropdown-options {
-  display: none;
+  display: flex;
   flex-direction: column;
   overflow: auto;
 }

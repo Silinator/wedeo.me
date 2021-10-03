@@ -21,6 +21,17 @@ Vue.component( 'watch', {
     wedeoPlayer.addSizeButton();
     wedeoPlayer.setVideo( this.videoData );
 
+    const settingsMenu = new Vue({
+      el: '#vjs-settings-menu',
+      data() {
+        return {
+          wedeoPlayer: wedeoPlayer
+        }
+      },
+      store,
+      template: `<settingsMenu :wedeoPlayer="wedeoPlayer"/>`
+    });
+
     wedeoPlayer.resizeWedeo();
     window.onresize = function() { wedeoPlayer.resizeWedeo(); };
 
