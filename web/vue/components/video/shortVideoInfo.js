@@ -1,9 +1,4 @@
 Vue.component( 'shortVideoInfo', {
-  data: function() {
-    return {
-      
-    }
-  },
   template: `
     <div class='shortVideoInfo'>
       <a :href="'watch/' + meta.uvid" :title="meta.title" class='shortVideoInfoTitle'>{{meta.title}}</a>
@@ -26,7 +21,7 @@ Vue.component( 'shortVideoInfo', {
           <span class='material-icons'>chat_bubble_outline</span>
         </div>
       </div>
-      <a :href="'watch/' + meta.uvid" class='bigBtn'>{{store.getters.t("WATCH_NOW")}}</a>
+      <a :href="'watch/' + meta.uvid" class='bigBtn'>{{$store.getters.t("WATCH_NOW")}}</a>
     </div>
   `,
   computed: {

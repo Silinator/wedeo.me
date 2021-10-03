@@ -13,5 +13,11 @@ Vue.component( 'index', {
   mounted() {
     wedeoBgPlayer = new wedeoPlayerClass( 'wedeo-bg-player' );
     wedeoBgPlayer.setVideo(this.bgVideoData);
+
+    const shortVideoInfo = new Vue({
+      el: '#shortVideoInfo',
+      store,
+      template: `<shortVideoInfo/>`
+    });
   }
 });
