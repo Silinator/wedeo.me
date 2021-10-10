@@ -20,6 +20,7 @@ if( isset($_GET['t']) && intval($_GET['t']) ) {
 
 $htmlTitle = $videoData->title . " | wedeo.me";
 $json = (object)[
+  "pageType" => "watch",
   "htmlTitle" => $htmlTitle,
   "videoData" => $videoData
 ];

@@ -10,31 +10,32 @@ Vue.component( 'watch', {
   `,
   computed: {
     videoData() {
-      return this.$store.state.videoData;
+      return this.$store.state.mainVideoData;
     }
   },
-  created() {
-    this.$store.commit( 'setCurrentVideoInfo', this.videoData );
-  },
   mounted() {
-    wedeoPlayer = new wedeoPlayerClass( 'wedeo-player' );
-    wedeoPlayer.addSizeButton();
-    wedeoPlayer.setVideo( this.videoData );
+    if( $('.miniWedeo').html() === "" ) {
+      wedeoPlayer = new wedeoPlayerClass( 'wedeo-player' );
+      wedeoPlayer.addSizeButton();
+      wedeoPlayer.setVideo( this.videoData );
+      window.onresize = function() { wedeoPlayer.resizeWedeo(); };
 
-    const settingsMenu = new Vue({
-      el: '#vjs-settings-menu',
-      data() {
-        return {
-          wedeoPlayer: wedeoPlayer
-        }
-      },
-      store,
-      template: `<settingsMenu :wedeoPlayer="wedeoPlayer"/>`
-    });
+      const settingsMenu = new Vue({
+        el: '#vjs-settings-menu',
+        data() {
+          return {
+            wedeoPlayer: wedeoPlayer
+          }
+        },
+        store,
+        template: `<settingsMenu :wedeoPlayer="wedeoPlayer"/>`
+      });
 
-    wedeoPlayer.resizeWedeo();
-    window.onresize = function() { wedeoPlayer.resizeWedeo(); };
-
-    this.$store.commit( 'setWedeoPlayer', wedeoPlayer );
+      wedeoPlayer.resizeWedeo();
+      this.$store.commit( 'setWedeoPlayer', wedeoPlayer );
+    } else {
+      $('.mainContainer .mainWedeoContainer .wedeoContainer').html( $(".miniWedeoContainer .miniWedeo .wedeoContainer") );
+      wedeoPlayer.resizeWedeo();
+    }
   }
 });

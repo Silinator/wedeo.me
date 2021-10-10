@@ -11,11 +11,10 @@ const store = new Vuex.Store({
       "numFor": "de-DE"
     },
     selNumFor: '',
-    videoData: {},
-    bgVideoData: {},
+    mainVideoData: {},
+    secondVideoData: {},
     wedeoPlayer: {},
     playlist: {},
-    currentVideoInfo: {},
     videosLoadedIndex: 0,
     videosLoading: false,
     videos: [],
@@ -58,9 +57,6 @@ const store = new Vuex.Store({
     setWedeoPlayer( state, player ) {
       state.wedeoPlayer = player;
     },
-    setCurrentVideoInfo( state, info ) {
-      state.currentVideoInfo = info;
-    },
     addVideos( state, videos ) {
       state.videos = state.videos.concat(videos);
     },
@@ -76,11 +72,11 @@ const store = new Vuex.Store({
     setPage( state, page ) {
       state.page = page;
     },
-    setVideoData( state, data ) {
-      state.videoData = data;
+    setMainVideoData( state, data ) {
+      state.mainVideoData = data;
     },
-    setBgVideoData( state, data ) {
-      state.bgVideoData = data;
+    setSecondVideoData( state, data ) {
+      state.secondVideoData = data;
     },
     setSideNaviOpen( state, value ) {
       state.sideNaviOpen = value;
@@ -118,14 +114,14 @@ const store = new Vuex.Store({
           commit( 'addMoreVideos', data.videos );
 
           if( data.max ) {
-            //state.moreVideosLoading = 'all';
+            state.moreVideosLoading = 'all';
           }
         });
       }
     },
     fetchPlaylist( { commit, state }, upid ) {
       state.playlist.loaded = false;
-      $.getJSON( 'api/getPlaylistInfos?upid=' + upid + '&uvid=' + state.currentVideoInfo.uvid, data => {
+      $.getJSON( 'api/getPlaylistInfos?upid=' + upid + '&uvid=' + state.mainVideoData.uvid, data => {
         state.playlist = data;
         state.playlist.loaded = true;
       });

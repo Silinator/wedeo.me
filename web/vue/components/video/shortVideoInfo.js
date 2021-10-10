@@ -29,7 +29,7 @@ Vue.component( 'shortVideoInfo', {
 			return this.$store.state.cdnURLbase;
   	},
     meta() {
-			return this.$store.state.bgVideoData;
+			return this.$store.state.secondVideoData;
   	},
     userImg() {
       return this.cdnURLbase + 'images/user/' + this.meta.user.uuid + '/small.jpg';

@@ -6,13 +6,13 @@ Vue.component( 'index', {
   </div>
   `,
   computed: {
-    bgVideoData() {
-      return this.$store.state.bgVideoData;
+    videoData() {
+      return this.$store.state.secondVideoData;
     }
   },
   mounted() {
     wedeoBgPlayer = new wedeoPlayerClass( 'wedeo-bg-player' );
-    wedeoBgPlayer.setVideo(this.bgVideoData);
+    wedeoBgPlayer.setVideo(this.videoData);
 
     const shortVideoInfo = new Vue({
       el: '#shortVideoInfo',

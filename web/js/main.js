@@ -68,12 +68,12 @@ function goToPage( url, fromNavigation = false ) {
 }
 
 function loadVideoPage( url ) {
-  $.post( url, { 'json': true, 'html': false, 'from': document.location.toString() }, function(data) {
+  $.post( url, { 'json': true, 'from': document.location.toString() }, function(data) {
     nextPageIsLoading = false;
 
     document.title = data.htmlTitle;
     wedeoPlayer.setVideo(data.videoData);
-    store.commit( 'setCurrentVideoInfo', data.videoData );
+    store.commit( 'setMainVideoData', data.videoData );
 
     activateSamePageNavigation();
   });
@@ -82,14 +82,19 @@ function loadVideoPage( url ) {
 function loadPage( url ) {
   if( wedeoBgPlayer ) { videojs(wedeoBgPlayer.playerId).dispose(); wedeoBgPlayer = false; }
 
-  $.post( url, { 'json': true, 'html': true, 'from': document.location.toString() }, function(data) {
+  $.post( url, { 'json': true, 'from': document.location.toString() }, function(data) {
     nextPageIsLoading = false;
 
     document.title = data.htmlTitle;
-    $('.mainContainer').not('.miniwedeocontainer .mainContainer').html(data.html);
 
+    if(data.pageType === "index") {
+      store.commit( 'setSecondVideoData', data.videoData );
+    } else {
+      store.commit( 'setMainVideoData', data.videoData );
+    }
+
+    store.commit( 'setPage', data.pageType );
     activateSamePageNavigation();
-    pageScripts();
   });
 }
 

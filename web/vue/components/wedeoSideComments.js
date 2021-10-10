@@ -10,8 +10,8 @@ Vue.component( 'wedeoSideComments', {
     </div>
   `,
   computed: {
-		videoInfo() {
-			return this.$store.state.currentVideoInfo;
+		videoData() {
+			return this.$store.state.mainVideoData;
 		}
   },
   methods: {

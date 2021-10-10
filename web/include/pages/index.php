@@ -3,6 +3,7 @@
 $htmlTitle = "Willkommen | wedeo.me";
 
 $json = (object)[
+  "pageType" => "index",
   "htmlTitle" => $htmlTitle,
   "videoData" => (object)[
     "uvid" => "ZL7CM0Rd",

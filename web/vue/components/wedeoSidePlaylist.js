@@ -33,7 +33,7 @@ Vue.component( 'wedeoSidePlaylist', {
     </div>
   `,
   watch: {
-    videoInfo() {
+    videoData() {
       this.upPlaylistInfo();
     }
   },
@@ -47,14 +47,14 @@ Vue.component( 'wedeoSidePlaylist', {
     moreAfterLoading() {
       return this.$store.state.morePlaylistVideosAfterLoading;
     },
-		videoInfo() {
-			return this.$store.state.currentVideoInfo;
+		videoData() {
+			return this.$store.state.mainVideoData;
 		},
 		limit() {
 			return this.$store.state.morePlaylistVideosLimit;
 		},
     upid() {
-      return this.videoInfo.playlist.upid;
+      return this.videoData.playlist.upid;
     },
     playlist() {
       return this.$store.state.playlist;
@@ -134,7 +134,7 @@ Vue.component( 'wedeoSidePlaylist', {
       this.$store.dispatch('fetchMorePlaylistVideosAfter');
     },
     upPlaylistInfo() {
-      const videoIndex = this.playlist.videos.indexOf(this.videoInfo.uvid);
+      const videoIndex = this.playlist.videos.indexOf(this.videoData.uvid);
       const maxIndex = this.playlist.videos.length - 1;
       const previousVideoIndex = videoIndex - 1 < 0 ? maxIndex : videoIndex - 1;
       const nextVideoIndex = videoIndex + 1 > maxIndex ? 0 : videoIndex + 1;

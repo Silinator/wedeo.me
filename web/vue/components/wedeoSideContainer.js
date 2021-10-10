@@ -22,7 +22,7 @@ Vue.component( 'wedeoSideContainer', {
     </div>
   `,
   watch: {
-    videoInfo( data ) {
+    videoData( data ) {
       this.fetchPlaylist();
     }
   },
@@ -30,11 +30,11 @@ Vue.component( 'wedeoSideContainer', {
 		wedeoPlayer() {
 			return this.$store.state.wedeoPlayer;
 		},
-    videoInfo() {
-      return this.$store.state.currentVideoInfo;
+    videoData() {
+      return this.$store.state.mainVideoData;
     },
     inPlaylist() {
-      return this.videoInfo.hasOwnProperty('playlist') && this.videoInfo.playlist.upid !== "";
+      return this.videoData.hasOwnProperty('playlist') && this.videoData.playlist.upid !== "";
     },
     playlist() {
       return this.$store.state.playlist;
@@ -70,8 +70,8 @@ Vue.component( 'wedeoSideContainer', {
       return "wedeoSideContainerHeaderBtn noSel " + ( tab === this.activeTab ? "active" : "" );
     },
     fetchPlaylist() {
-      if( this.inPlaylist && this.playlist.upid !== this.videoInfo.playlist.upid ) {
-        this.$store.dispatch('fetchPlaylist', this.videoInfo.playlist.upid);
+      if( this.inPlaylist && this.playlist.upid !== this.videoData.playlist.upid ) {
+        this.$store.dispatch('fetchPlaylist', this.videoData.playlist.upid);
       }
     }
   },

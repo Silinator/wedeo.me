@@ -112,16 +112,18 @@ class wedeoPlayerClass {
     $(".miniWedeoContainer").show();
     $(".miniWedeoContainer .miniWedeoHeaderTitle").html( this.meta.title );
     $(".miniWedeoContainer .miniWedeo").html( $(".mainContainer .wedeoContainer") );
-    $(".miniWedeoContainer .miniWedeoContent").html( $(".mainContainer") );
-    $(".header").after("<div class='mainContainer'></div>");
+    //$(".miniWedeoContainer .miniWedeoContent").html( $(".mainContainer") );
+    //$(".header").after("<div class='mainContainer'></div>");
   }
 
   backToMiniplayerVideo() {
     this.type = "default";
 
     document.title = this.meta.title + " | wedeo.me";
-    $('.mainContainer').not('.miniWedeoContainer .mainContainer').html( $(".miniWedeoContainer .miniWedeoContent .mainContainer") );
-    $(".mainwedeocontainer").prepend( $(".miniWedeoContainer .miniWedeo .wedeocontainer") );
+    store.commit( 'setPage', 'watch' );
+
+    //$('.mainContainer').not('.miniWedeoContainer .mainContainer').html( $(".miniWedeoContainer .miniWedeoContent .mainContainer") );
+    //$(".mainwedeocontainer").prepend( $(".miniWedeoContainer .miniWedeo .wedeocontainer") );
 
     if( $(".miniWedeoContainer").attr("videoURL") ) { /* when video was changed only in miniplayer this gets the url of current video */
       window.history.replaceState('currentPage', 'wedeo.me', $(".miniWedeoContainer").attr("videoURL")); //changes browser url

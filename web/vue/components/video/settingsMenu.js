@@ -121,14 +121,14 @@ Vue.component( 'settingsMenu', {
 		cdnURLbase() {
 			return this.$store.state.cdnURLbase;
   	},
-    meta() {
-			return this.$store.state.videoData;
+    videoData() {
+			return this.$store.state.mainVideoData;
   	},
     openMenu() {
       return this.wedeoPlayer.hasOwnProperty('playerSettingsMenuOpen') ? this.wedeoPlayer.playerSettingsMenuOpen : false;
     },
     sources() {
-      return this.meta.hasOwnProperty('availableSources') ? this.meta.availableSources.reverse() : [];
+      return this.videoData.hasOwnProperty('availableSources') ? this.videoData.availableSources.reverse() : [];
     },
     playbackRate() {
       return this.wedeoPlayer.playbackRate;

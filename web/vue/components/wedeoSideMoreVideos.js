@@ -1,11 +1,10 @@
 Vue.component( 'wedeoSideMoreVideos', {
-	props: [ 'Player', 'videoData' ],
   template: `
     <div class='wedeoSideMoreVideos'>
 			<div class='wedeoSideMoreVideosCatContainer'>
-				<div @click="applyCatFilter(videoInfo.category)" class='outlineBtn' :title="videoCategoryFull">{{videoCategoryFull}}</div>
-				<div @click="applyLangFilter(videoInfo.language)" class='outlineBtn' :title="videoLanguageFull">{{videoLanguageFull}}</div>
-				<div @click="applyUserFilter(videoInfo.user.name)" class='outlineBtn' :title="videoInfo.user.name">{{videoInfo.user.name}}</div>
+				<div @click="applyCatFilter(videoData.category)" class='outlineBtn' :title="videoCategoryFull">{{videoCategoryFull}}</div>
+				<div @click="applyLangFilter(videoData.language)" class='outlineBtn' :title="videoLanguageFull">{{videoLanguageFull}}</div>
+				<div @click="applyUserFilter(videoData.user.name)" class='outlineBtn' :title="videoData.user.name">{{videoData.user.name}}</div>
 				<div @click="apllyTagFilter(tag)" v-for="tag in tags" class='outlineBtn' :title="tag">{{tag}}</div>
 			</div>
 			<div class='wedeoSideMoreVideosSearchContainer'>
@@ -30,20 +29,20 @@ Vue.component( 'wedeoSideMoreVideos', {
     </div>
   `,
   computed: {
-		videoInfo() {
-			return this.$store.state.currentVideoInfo;
+		videoData() {
+			return this.$store.state.mainVideoData;
 		},
 		moreVideos() {
 			return this.$store.state.moreVideos;
 		},
 		videoCategoryFull() {
-			return this.$store.getters.t('CAT_' + this.videoInfo.category.toUpperCase() );
+			return this.$store.getters.t('CAT_' + this.videoData.category.toUpperCase() );
 		},
 		videoLanguageFull() {
-			return this.$store.getters.t('LANG_' + this.videoInfo.language.toUpperCase() );
+			return this.$store.getters.t('LANG_' + this.videoData.language.toUpperCase() );
 		},
 		tags() {
-			let tags = this.videoInfo.tags.split(", ");
+			let tags = this.videoData.tags.split(", ");
 			return tags.filter( tag => { return tag.trim() != ""; });
 		},
 		moreVideosLoading() {
