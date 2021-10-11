@@ -23,7 +23,7 @@ Vue.component( 'watch', {
       wedeoPlayer.resizeWedeo();
       this.$store.commit( 'setWedeoPlayer', wedeoPlayer );
     } else {
-      $('.mainContainer .mainWedeoContainer .wedeoContainer').html( $(".miniWedeoContainer .miniWedeo .wedeoContainer") );
+      $('.mainContainer .mainWedeoContainer .wedeoContainer').html( $(".miniWedeoContainer .miniWedeo .wedeoContainer .wedeo-player ") );
       wedeoPlayer.resizeWedeo();
     }
   }
