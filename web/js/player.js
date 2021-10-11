@@ -314,34 +314,14 @@ class wedeoPlayerClass {
 
   addPlayerSidebar() {
     $('#'+this.playerId+' .vjs-control-bar').before(
-      "<div class='vjs-sidebar'>" +
-        "<div class='vjs-sidebar-content'>" +
-          "<div class='vjs-rating'>" +
-            "<div class='vjs-rating-vote vjs-button vjs-rating-upvote' data-title=''>" +
-              "<span class='material-icons'>thumb_up_off_alt</span>" +
-            "</div>" +
-            "<div class='vjs-rating-percent'></div>" +
-            "<div class='vjs-rating-vote vjs-button vjs-rating-downvote' data-title=''>" +
-              "<span class='material-icons'>thumb_down_off_alt</span>" +
-            "</div>" +
-          "</div>" +
-          "<div class='vjs-share-buttons'>" +
-            "<div class='vjs-share-button vjs-button vjs-add-playlist' data-title='" + store.getters.t('VIDEO_ADD_PLAYLIST') + "'>" +
-              "<span class='material-icons'>playlist_add</span>" +
-            "</div>" +
-            "<div class='vjs-share-button vjs-button vjs-recommend' data-title='" + store.getters.t('VIDEO_RECOMMEND') + "'>" +
-              "<span class='weicon-lightbulb'></span>" +
-            "</div>" +
-            "<div class='vjs-share-button vjs-button vjs-share' data-title='" + store.getters.t('VIDEO_SHARE') + "'>" +
-              "<span class='weicon-share'></span>" +
-            "</div>" +
-            "<div class='vjs-share-button vjs-button vjs-download' data-title='" + store.getters.t('VIDEO_DOWNLOAD') + "'>" +
-              "<span class='weicon-file_download'></span>" +
-            "</div>" +
-          "</div>" +
-        "</div>" +
-      "</div>"
+      "<div class='vjs-sidebar'></div>"
     );
+
+    const sidebar = new Vue({
+      el: '#'+this.playerId+' .vjs-sidebar',
+      store,
+      template: `<sidebar/>`,
+    });
   }
 
   addPlayerHeader() {
@@ -698,7 +678,6 @@ class wedeoPlayerClass {
     });
 
     this.updatePlayerTitle();
-    this.updatePlayerRating();
 
     if('mediaSession' in navigator) {
       navigator.mediaSession.metadata = new MediaMetadata({
@@ -735,13 +714,6 @@ class wedeoPlayerClass {
     if(this.type === "mini") {
       $(".miniWedeoContainer .miniWedeoHeaderTitle").html(this.meta.title);
     }
-  }
-
-  updatePlayerRating() {
-    $('#'+this.playerId+' .vjs-rating-upvote').attr( 'data-title', store.getters.t('VIDEO_LIKE') + " (" + store.getters.n(this.meta.rating[0]) + ")" );
-    $('#'+this.playerId+' .vjs-rating-downvote').attr( 'data-title', store.getters.t('VIDEO_DISLIKE') + " (" + store.getters.n(this.meta.rating[1]) + ")" );
-
-    $('#'+this.playerId+' .vjs-rating-percent').html( this.meta.rating[0] == 0 ? "0%" : Math.floor( this.meta.rating[0] / ( this.meta.rating[0] + this.meta.rating[1] ) * 100 ) + "%" );
   }
 
   changeSource( resolution ) {

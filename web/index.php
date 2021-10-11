@@ -38,6 +38,7 @@ if( !$asJson ) {
 
     <script src="vue/components/video/shortVideoInfo.js"></script>
     <script src="vue/components/video/settingsMenu.js"></script>
+    <script src="vue/components/video/sidebar.js"></script>
 
     <script src="vue/components/wedeoSideContainer.js"></script>
     <script src="vue/components/wedeoSidePlaylist.js"></script>
