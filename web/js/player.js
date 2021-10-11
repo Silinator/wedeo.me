@@ -280,8 +280,19 @@ class wedeoPlayerClass {
 
 
     $('#'+this.playerId+" .vjs-control-bar").after(
-      "<div id='vjs-settings-menu'></div>"
+      "<div class='vjs-settings-menu'></div>"
     );
+
+    const settingsMenu = new Vue({
+      el: '#'+this.playerId+' .vjs-settings-menu',
+      store,
+      template: `<settingsMenu :wedeoPlayer="wedeoPlayer"/>`,
+      computed: {
+        wedeoPlayer() {
+          return this.$store.state.wedeoPlayer;
+        }
+      }
+    });
   }
 
   addSizeButton() {
