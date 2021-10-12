@@ -1,4 +1,5 @@
 Vue.component( 'sidebar', {
+  props: [ 'videoData' ],
   template: `
     <div class='vjs-sidebar'>
       <div class='vjs-sidebar-content'>
@@ -29,9 +30,6 @@ Vue.component( 'sidebar', {
     </div>
   `,
   computed: {
-    videoData() {
-      return this.$store.state.mainVideoData;
-    },
     upVoteTitle() {
       return this.$store.getters.t('VIDEO_LIKE') + " (" + this.$store.getters.n(this.videoData.rating[0]) + ")";
     },

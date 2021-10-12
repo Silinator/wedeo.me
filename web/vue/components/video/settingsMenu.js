@@ -1,5 +1,5 @@
 Vue.component( 'settingsMenu', {
-  props: [ 'wedeoPlayer' ],
+  props: [ 'wedeoPlayer', 'videoData' ],
   data() {
     return {
       activeMenu: "",
@@ -120,9 +120,6 @@ Vue.component( 'settingsMenu', {
   computed: {
 		cdnURLbase() {
 			return this.$store.state.cdnURLbase;
-  	},
-    videoData() {
-			return this.$store.state.mainVideoData;
   	},
     openMenu() {
       return this.wedeoPlayer.hasOwnProperty('playerSettingsMenuOpen') ? this.wedeoPlayer.playerSettingsMenuOpen : false;

@@ -313,14 +313,17 @@ class wedeoPlayerClass {
   }
 
   addPlayerSidebar() {
-    $('#'+this.playerId+' .vjs-control-bar').before(
-      "<div class='vjs-sidebar'></div>"
-    );
+    $('#'+this.playerId+' .vjs-control-bar').before("<div class='vjs-sidebar'></div>");
 
     const sidebar = new Vue({
       el: '#'+this.playerId+' .vjs-sidebar',
       store,
-      template: `<sidebar/>`,
+      template: `<sidebar :videoData="videoData"/>`,
+      computed: {
+        videoData() {
+          return this.$store.state.mainVideoData;
+        },
+      }
     });
   }
 
