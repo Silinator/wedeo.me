@@ -71,8 +71,8 @@ class wedeoPlayerClass {
     this.hotkeyTimeout = false;
     this.addHotkeys();
     this.addSettingsMenus();
+    this.addPlayerTitles();
     this.addPlayerVideoPreview();
-    this.addPlayerHeader();
     this.addPlayerSidebar();
     this.addSkipButtons();
     this.addBigPlayerButtons();
@@ -269,8 +269,6 @@ class wedeoPlayerClass {
       "<div class='vjs-control vjs-button vjs-settings-button' tabindex='0'><span class='material-icons'>settings</span></div>"
     );
 
-    $('#'+this.playerId+' .vjs-spacer').before( "<div class='vjs-bottom-title'></div>" );
-
     $('#'+this.playerId+" .vjs-settings-button").click( function() { self.togglePlayerSettingsMenu(); });
 
     $('#'+this.playerId+" .vjs-settings-button").keyup( function( event ) {
@@ -286,11 +284,51 @@ class wedeoPlayerClass {
     const settingsMenu = new Vue({
       el: '#'+this.playerId+' .vjs-settings-menu',
       store,
-      template: `<settingsMenu :wedeoPlayer="wedeoPlayer"/>`,
+      template: `<settingsMenu :wedeoPlayer="wedeoPlayer" :videoData="videoData"/>`,
       computed: {
         wedeoPlayer() {
           return this.$store.state.wedeoPlayer;
+        },
+        videoData() {
+          return this.$store.state.mainVideoData;
+        },
+      }
+    });
+  }
+
+  addPlayerTitles() {
+    $('#'+this.playerId+' .vjs-control-bar').before("<div class='vjs-header'></div>");
+    $('#'+this.playerId+' .vjs-spacer').before( "<div class='vjs-bottom-title'></div>" );
+
+    const topTitle = new Vue({
+      el: '#'+this.playerId+' .vjs-header',
+      data: function() {
+        return {
+          type: "top",
         }
+      },
+      store,
+      template: `<playerTitle :videoData="videoData" :type="type"/>`,
+      computed: {
+        videoData() {
+          return this.$store.state.mainVideoData;
+        },
+      }
+    });
+
+    const bottomTitle = new Vue({
+      el: '#'+this.playerId+' .vjs-bottom-title',
+      data: function() {
+        return {
+          type: "bottom",
+        }
+      },
+      store,
+      template: `<playerTitle :videoData="videoData" :type="type"/>`,
+      computed: {
+        videoData() {
+          return this.$store.state.mainVideoData;
+        },
       }
     });
   }
@@ -325,10 +363,6 @@ class wedeoPlayerClass {
         },
       }
     });
-  }
-
-  addPlayerHeader() {
-    $('#'+this.playerId+' .vjs-control-bar').before("<div class='vjs-header'><div class='vjs-header-title'></div></div>");
   }
 
   addBigPlayerButtons() {
@@ -711,9 +745,6 @@ class wedeoPlayerClass {
   }
 
   updatePlayerTitle() {
-    $('#'+this.playerId+' .vjs-header-title').html(this.meta.title);
-    $('#'+this.playerId+' .vjs-bottom-title').html(this.meta.title).attr('title', this.meta.title);
-
     if(this.type === "mini") {
       $(".miniWedeoContainer .miniWedeoHeaderTitle").html(this.meta.title);
     }
