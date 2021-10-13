@@ -57,7 +57,7 @@ class wedeoPlayerClass {
       autoplay: "any"
     });
 
-    if( $("#" + self.playerId).hasClass("wedeo-bg-player") ) {
+    if( document.getElementById(self.playerId).classList.contains('wedeo-bg-player') ) {
       self.playerType = "background";
       self.createBackgroundPlayer();
     } else {
@@ -92,8 +92,11 @@ class wedeoPlayerClass {
 
   createBackgroundPlayer() {
     const self = this;
-    $("#" + this.playerId).append( "<div class='background-player-mute-btn'></div>" );
-    $("#" + this.playerId + " .background-player-mute-btn").click( function() {
+    const muteBtn = document.createElement('div');
+          muteBtn.classList.add('background-player-mute-btn');
+
+    document.getElementById(self.playerId).append( muteBtn );
+    document.getElementById(self.playerId).addEventListener('click', function() {
       self.Player.muted(!self.Player.muted());
     });
 
@@ -109,11 +112,10 @@ class wedeoPlayerClass {
 
   moveIntoMiniplayer() {
     this.type = "mini";
-    $(".miniWedeoContainer").show();
-    $(".miniWedeoContainer .miniWedeoHeaderTitle").html( this.meta.title );
-    $(".miniWedeoContainer .miniWedeo").html( $(".mainContainer .wedeoContainer") );
-    //$(".miniWedeoContainer .miniWedeoContent").html( $(".mainContainer") );
-    //$(".header").after("<div class='mainContainer'></div>");
+    document.querySelector('.miniWedeoContainer').style.display = 'block';
+    document.querySelector('.miniWedeoContainer .miniWedeoHeaderTitle').innerHTML = this.meta.title;
+    document.querySelector('.miniWedeoContainer .miniWedeo').innerHTML = "";
+    document.querySelector('.miniWedeoContainer .miniWedeo').appendChild( document.querySelector('.mainContainer .wedeoContainer') );
   }
 
   backToMiniplayerVideo() {
@@ -122,18 +124,18 @@ class wedeoPlayerClass {
     document.title = this.meta.title + " | wedeo.me";
     store.commit( 'setPage', 'watch' );
 
-    //$('.mainContainer').not('.miniWedeoContainer .mainContainer').html( $(".miniWedeoContainer .miniWedeoContent .mainContainer") );
-    //$(".mainwedeocontainer").prepend( $(".miniWedeoContainer .miniWedeo .wedeocontainer") );
-
-    if( $(".miniWedeoContainer").attr("videoURL") ) { /* when video was changed only in miniplayer this gets the url of current video */
-      window.history.replaceState('currentPage', 'wedeo.me', $(".miniWedeoContainer").attr("videoURL")); //changes browser url
+    if( document.querySelector('.miniWedeoContainer').hasAttribute("videoURL") ) { /* when video was changed only in miniplayer this gets the url of current video */
+      window.history.replaceState('currentPage', 'wedeo.me', document.querySelector('.miniWedeoContainer').getAttribute('videoURL') ); //changes browser url
     }
 
     hideMiniplayer();
   }
 
   addVideoInfo() {
-    $("#" + this.playerId+ ' .vjs-control-bar').append("<div id='shortVideoInfo'></div>");
+    const info = document.createElement('div');
+    info.id = "shortVideoInfo";
+
+    document.querySelector('#' + this.playerId+ ' .vjs-control-bar').append( info );
   }
 
   addHotkeys() {
@@ -265,23 +267,30 @@ class wedeoPlayerClass {
   addSettingsMenus() {
     const self = this;
 
-    $('#'+this.playerId+" .vjs-custom-control-spacer").html(
-      "<div class='vjs-control vjs-button vjs-settings-button' tabindex='0'><span class='material-icons'>settings</span></div>"
-    );
+    const settingsBtnIcon = document.createElement('span');
+          settingsBtnIcon.className = "material-icons";
+          settingsBtnIcon.innerHTML = "settings"
 
-    $('#'+this.playerId+" .vjs-settings-button").click( function() { self.togglePlayerSettingsMenu(); });
+    const settingsBtn = document.createElement('div');
+          settingsBtn.className = "vjs-control vjs-button vjs-settings-button";
+          settingsBtn.setAttribute('tabindex', '0');
+          settingsBtn.append(settingsBtnIcon);
 
-    $('#'+this.playerId+" .vjs-settings-button").keyup( function( event ) {
+    document.querySelector('#'+this.playerId+' .vjs-custom-control-spacer').append( settingsBtn );
+
+    document.querySelector('#'+this.playerId+' .vjs-settings-button').addEventListener('click', function() { self.togglePlayerSettingsMenu(); });
+
+    document.querySelector('#'+this.playerId+' .vjs-settings-button').addEventListener('keyup', function( event ) {
       if( event.which == 32 || event.which == 13 ) { self.togglePlayerSettingsMenu(true); }
       if( event.which == 27 ) { self.closePlayerSettingsMenu(); }
     });
 
+    const settingsMenu = document.createElement('div');
+          settingsMenu.className = "vjs-settings-menu";
 
-    $('#'+this.playerId+" .vjs-control-bar").after(
-      "<div class='vjs-settings-menu'></div>"
-    );
+    document.querySelector('#'+this.playerId+' .vjs-control-bar').insertAdjacentElement('afterend', settingsMenu );
 
-    const settingsMenu = new Vue({
+    const settingsMenuApp = new Vue({
       el: '#'+this.playerId+' .vjs-settings-menu',
       store,
       template: `<settingsMenu :wedeoPlayer="wedeoPlayer" :videoData="videoData"/>`,
@@ -297,10 +306,17 @@ class wedeoPlayerClass {
   }
 
   addPlayerTitles() {
-    $('#'+this.playerId+' .vjs-control-bar').before("<div class='vjs-header'></div>");
-    $('#'+this.playerId+' .vjs-spacer').before( "<div class='vjs-bottom-title'></div>" );
+    const topTitle = document.createElement('div');
+          topTitle.className = 'vjs-header';
 
-    const topTitle = new Vue({
+    document.querySelector('#'+this.playerId+' .vjs-control-bar').insertAdjacentElement('beforebegin', topTitle);
+
+    const bottomTitle = document.createElement('div');
+          bottomTitle.className = 'vjs-bottom-title';
+
+    document.querySelector('#'+this.playerId+' .vjs-spacer').insertAdjacentElement('beforebegin', bottomTitle);
+
+    const topTitleApp = new Vue({
       el: '#'+this.playerId+' .vjs-header',
       data: function() {
         return {
@@ -316,7 +332,7 @@ class wedeoPlayerClass {
       }
     });
 
-    const bottomTitle = new Vue({
+    const bottomTitleApp = new Vue({
       el: '#'+this.playerId+' .vjs-bottom-title',
       data: function() {
         return {
@@ -336,24 +352,38 @@ class wedeoPlayerClass {
   addSizeButton() {
     const self = this;
 
-    $('#'+this.playerId+" .vjs-settings-button").after(
-      "<div class='vjs-control vjs-button vjs-size-button' tabindex='0'><span class='material-icons'>aspect_ratio</span></div>"
-    );
+    const sizeBtnIcon = document.createElement('span');
+          sizeBtnIcon.className = "material-icons";
+          sizeBtnIcon.innerHTML = "aspect_ratio"
 
-    $('#'+this.playerId).append( "<div class='vjs-background'></div>" );
+    const sizeBtn = document.createElement('div');
+          sizeBtn.setAttribute('tabindex', '0');
+          sizeBtn.className = 'vjs-control vjs-button vjs-size-button';
+          sizeBtn.append( sizeBtnIcon );
 
-    $('#'+this.playerId+" .vjs-size-button").click( function() { self.togglePlayerSize(); });
+    document.querySelector('#'+this.playerId+' .vjs-settings-button').insertAdjacentElement('afterend', sizeBtn);
 
-    $('#'+this.playerId+" .vjs-size-button").keyup( function( event ) {
+
+    const vjsBackground = document.createElement('div');
+          vjsBackground.className = "vjs-background";
+
+    document.querySelector('#'+this.playerId).appendChild( vjsBackground );
+
+    document.querySelector('#'+this.playerId+' .vjs-size-button').addEventListener('click', function() { self.togglePlayerSize(); });
+
+    document.querySelector('#'+this.playerId+' .vjs-size-button').addEventListener('keyup', function( event ) {
       if( event.which == 32 || event.which == 13 ) { self.togglePlayerSize(); }
       if( event.which == 27 ) { self.closePlayerSettingsMenu(); }
     });
   }
 
   addPlayerSidebar() {
-    $('#'+this.playerId+' .vjs-control-bar').before("<div class='vjs-sidebar'></div>");
+    const sidebar = document.createElement('div');
+          sidebar.className = "vjs-sidebar";
 
-    const sidebar = new Vue({
+    document.querySelector('#'+this.playerId+' .vjs-control-bar').insertAdjacentElement('beforebegin', sidebar);
+
+    const sidebarApp = new Vue({
       el: '#'+this.playerId+' .vjs-sidebar',
       store,
       template: `<sidebar :videoData="videoData"/>`,

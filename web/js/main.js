@@ -164,10 +164,8 @@ function closeMiniplayer() {
 }
 
 function hideMiniplayer() {
-  $(".miniWedeoContainer").hide();
-  $('.miniwedeocontainer .miniWedeoHeaderTitle').html("");
-  $('.miniwedeocontainer .miniWedeo').html("");
-  $('.miniwedeocontainer .miniWedeoContent').html("");
+  document.querySelector(".miniWedeoContainer").style.display = 'none';
+  document.querySelector(".miniWedeoHeader .miniWedeoHeaderTitle").innerHTML = '';
 }
 
 function secondsToHms( d ) {

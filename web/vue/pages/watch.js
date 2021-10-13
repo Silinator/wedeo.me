@@ -23,7 +23,8 @@ Vue.component( 'watch', {
       wedeoPlayer.resizeWedeo();
       this.$store.commit( 'setWedeoPlayer', wedeoPlayer );
     } else {
-      $('.mainContainer .mainWedeoContainer .wedeoContainer').html( $(".miniWedeoContainer .miniWedeo .wedeoContainer .wedeo-player ") );
+      document.querySelector(".mainContainer .mainWedeoContainer .wedeoContainer").innerHTML = "";
+      document.querySelector(".mainContainer .mainWedeoContainer .wedeoContainer").appendChild( document.querySelector(".miniWedeoContainer .miniWedeo .wedeoContainer .wedeo-player") );
       wedeoPlayer.resizeWedeo();
     }
   }
