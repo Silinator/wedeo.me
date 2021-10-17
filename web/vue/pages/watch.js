@@ -11,10 +11,13 @@ Vue.component( 'watch', {
   computed: {
     videoData() {
       return this.$store.state.mainVideoData;
+    },
+    wedeoPlayer() {
+      return this.$store.state.wedeoPlayer;
     }
   },
   mounted() {
-    if( $('.miniWedeo').html() === "" ) {
+    if( document.querySelector(' .miniWedeo').innerHTML === "" ) {
       wedeoPlayer = new wedeoPlayerClass( 'wedeo-player' );
       wedeoPlayer.addSizeButton();
       wedeoPlayer.setVideo( this.videoData );
@@ -25,7 +28,8 @@ Vue.component( 'watch', {
     } else {
       document.querySelector(".mainContainer .mainWedeoContainer .wedeoContainer").innerHTML = "";
       document.querySelector(".mainContainer .mainWedeoContainer .wedeoContainer").appendChild( document.querySelector(".miniWedeoContainer .miniWedeo .wedeoContainer .wedeo-player") );
-      wedeoPlayer.resizeWedeo();
+
+      this.wedeoPlayer.resizeWedeo();
     }
   }
 });

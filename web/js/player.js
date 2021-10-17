@@ -544,42 +544,47 @@ class wedeoPlayerClass {
 
   addPlayerVideoPreview() {
     const self = this;
-    $('#'+this.playerId+' .vjs-progress-control').append("<div class='vjs-small-video-preview'></div>");
-    $('#'+this.playerId+' .vjs-progress-control').append("<div class='vjs-small-time-preview'></div>");
+
+    const previewTitle = document.createElement('div');
+          previewTitle.className = "vjs-small-video-preview";
+
+    const previewTime = document.createElement('div');
+          previewTime.className = "vjs-small-time-preview";
+
+    document.querySelector('#'+this.playerId+' .vjs-progress-control').appendChild( previewTitle );
+    document.querySelector('#'+this.playerId+' .vjs-progress-control').appendChild( previewTime );
 
     this.Player.on( 'seeking', function() {
-      if( !$('#'+self.playerId+' .vjs-progress-control').is(":hover") ) {
-        const maxWidth = $('#'+self.playerId+' .vjs-progress-control').width();
+      if( !document.querySelector('#'+self.playerId+' .vjs-progress-control').matches(':hover') ) {
+        const maxWidth = parseFloat(getComputedStyle(document.querySelector('#'+self.playerId+' .vjs-progress-control'), null).width.replace("px", ""));
         const hoverTime = Math.floor( self.Player.currentTime() );
         const hoverPosFromLeft = Math.floor( maxWidth * (hoverTime / self.Player.duration()) );
         self.updatePlayerVideoPreview( hoverTime, hoverPosFromLeft, maxWidth );
       }
     });
 
-    $('#'+this.playerId+' .vjs-progress-control').bind( 'mousemove', function(e) {
-      const offset = $(this).offset();
-      const hoverPosFromLeft = e.pageX - offset.left;
-      const maxWidth = $('#'+self.playerId+' .vjs-progress-control').width();
+    document.querySelector('#'+this.playerId+' .vjs-progress-control').addEventListener("mousemove", function(e) {
+      const hoverPosFromLeft = e.offsetX;
+      const maxWidth = parseFloat(getComputedStyle(document.querySelector('#'+self.playerId+' .vjs-progress-control'), null).width.replace("px", ""));
       const maxTime = self.Player.duration();
       const hoverTime = Math.floor( maxTime / ( maxWidth / hoverPosFromLeft ) );
       self.updatePlayerVideoPreview( hoverTime, hoverPosFromLeft, maxWidth );
     });
 
-    $('#'+this.playerId+' .vjs-progress-control').bind( 'touchmove', function(e) {
-      $('#'+self.playerId+' .vjs-small-video-preview').show();
-      $('#'+self.playerId+' .vjs-small-time-preview').css('display', 'flex');
-      const touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
-      const offset = $(this).offset();
-      const hoverPosFromLeft = touch.pageX - offset.left;
-      const maxWidth = $('#'+self.playerId+' .vjs-progress-control').width();
+    document.querySelector('#'+this.playerId+' .vjs-progress-control').addEventListener("touchmove", function(e) {
+      document.querySelector('#'+self.playerId+' .vjs-small-video-preview').style.display = '';
+      document.querySelector('#'+self.playerId+' .vjs-small-time-preview').style.display = 'flex';
+      const rect = e.target.getBoundingClientRect();
+      const hoverPosFromLeft = e.targetTouches[0].clientX - rect.left;
+      const maxWidth = parseFloat(getComputedStyle(document.querySelector('#'+self.playerId+' .vjs-progress-control'), null).width.replace("px", ""));
       const maxTime = self.Player.duration();
       const hoverTime = Math.floor( maxTime / ( maxWidth / hoverPosFromLeft ) );
       self.updatePlayerVideoPreview( hoverTime, hoverPosFromLeft, maxWidth );
     });
 
-    $('#'+this.playerId+' .vjs-progress-control').bind( 'touchend', function() {
-      $('#'+self.playerId+' .vjs-small-video-preview').hide();
-      $('#'+self.playerId+' .vjs-small-time-preview').hide();
+    document.querySelector('#'+this.playerId+' .vjs-progress-control').addEventListener("touchend", function(e) {
+      document.querySelector('#'+self.playerId+' .vjs-small-video-preview').style.display = 'none';
+      document.querySelector('#'+self.playerId+' .vjs-small-time-preview').style.display = 'none';
     });
   }
 
@@ -587,16 +592,16 @@ class wedeoPlayerClass {
     const hoverImgTime = hoverTime + 4; // the preview is off by about 4s. idk why...
 
     //set img posi
-    const imgSize = $('#'+this.playerId+' .vjs-small-video-preview').width();
+    const imgSize = parseFloat(getComputedStyle(document.querySelector('#'+this.playerId+' .vjs-small-video-preview'), null).width.replace("px", ""));
     const halfImgSize = imgSize / 2;
     let newImgPos = hoverPosFromLeft - halfImgSize;
       if( newImgPos < 0 ){ newImgPos = 0; }
       if( newImgPos + imgSize > maxWidth ){ newImgPos = maxWidth - imgSize; }
 
-    $('#'+this.playerId+' .vjs-small-video-preview').css('left', newImgPos);
+    document.querySelector('#'+this.playerId+' .vjs-small-video-preview').style.left = newImgPos + "px";
 
     //set time posi
-    const timeSize = $('#'+this.playerId+' .vjs-small-time-preview').width() + 8;
+    const timeSize = parseFloat(getComputedStyle(document.querySelector('#'+this.playerId+' .vjs-small-time-preview'), null).width.replace("px", "")) + 8;
     const halfTimeSize = timeSize / 2;
     let newTimePos = hoverPosFromLeft - halfTimeSize;
       const videoPadding = halfImgSize - halfTimeSize;
@@ -604,8 +609,8 @@ class wedeoPlayerClass {
       if( newTimePos + timeSize > maxWidth - videoPadding ){ newTimePos = maxWidth - timeSize - videoPadding; }
 
     const displayTime = secondsToHms(hoverTime);
-    $('#'+this.playerId+' .vjs-small-time-preview').html(displayTime);
-    $('#'+this.playerId+' .vjs-small-time-preview').css('left', newTimePos);
+    document.querySelector('#'+this.playerId+' .vjs-small-time-preview').innerHTML = displayTime;
+    document.querySelector('#'+this.playerId+' .vjs-small-time-preview').style.left = newTimePos + "px";
 
     const getSingleImg = Math.floor( hoverImgTime / 5 / 20 );
     const getImgPreview = getSingleImg + 1;
@@ -621,77 +626,76 @@ class wedeoPlayerClass {
     }
 
     if( getImgPreview ) {
-      $('#'+this.playerId+' .vjs-small-video-preview').css( 'background-image', 'url(' + this.cdnURLbase + 'images/thumb/' + this.meta.uvid + '/pre' + getImgPreview + '.jpg)' );
-      $('#'+this.playerId+' .vjs-small-video-preview').css( 'background-position', imgPos );
+      document.querySelector('#'+this.playerId+' .vjs-small-video-preview').style.backgroundImage = 'url(' + this.cdnURLbase + 'images/thumb/' + this.meta.uvid + '/pre' + getImgPreview + '.jpg)';
+      document.querySelector('#'+this.playerId+' .vjs-small-video-preview').style.backgroundPosition = imgPos;
     }
-  }
-
-  genDropDownOptions( array, active ) {
-    let options = "";
-    for( let i = 0; i < array.length; i++ ) {
-      const opt = array[i];
-      const activeOption = ( active == opt ? "active" : "" );
-
-      options += "<div class='vjs-settings-dropdown-option " + activeOption + "' value='" + opt + "' >" + opt + "</div>";
-    }
-
-    return options;
   }
 
   /* menu events */
   togglePlayerSettingsMenu( key = false ) {
     this.usingKeys = key;
-    this.playerSettingsMenuOpen ? this.closePlayerSettingsMenu() : this.openPlayerSettingsMenu(key);
+    this.playerSettingsMenuOpen ? this.closePlayerSettingsMenu() : this.openPlayerSettingsMenu();
   }
 
-  openPlayerSettingsMenu( key = false ) {
+  openPlayerSettingsMenu() {
     const self = this;
+
     this.playerSettingsMenuOpen = true;
-    $('#'+this.playerId).addClass('vjs-open-menu');
+    document.querySelector('#'+this.playerId).classList.add('vjs-open-menu');
 
-    $(document).unbind('mouseup touchend').bind( 'mouseup touchend', function( e ) {
-        const container = $(".vjs-settings-menu, .vjs-settings-button, .vjs-settings-dropdown");
+    document.removeEventListener('mouseup', closeSettingsMenu);
+    document.removeEventListener('touchend', closeSettingsMenu);
 
-        if( !container.is(e.target) && container.has(e.target).length === 0 ) {
-          self.closePlayerSettingsMenu();
-        }
-    });
+    document.addEventListener('mouseup', closeSettingsMenu);
+    document.addEventListener('touchend', closeSettingsMenu);
+
+    function closeSettingsMenu(event) {
+      const container1 = document.querySelector('.vjs-settings-menu');
+      const container2 = document.querySelector('.vjs-settings-button');
+      const container3 = document.querySelector('.vjs-settings-dropdown');
+  
+      if( !container1.contains(event.target) && !container2.contains(event.target) && !container3.contains(event.target) ) {
+        self.closePlayerSettingsMenu();
+
+        document.removeEventListener('mouseup', closeSettingsMenu );
+        document.removeEventListener('touchend', closeSettingsMenu );
+      }
+    }
   }
 
   closePlayerSettingsMenu() {
     this.playerSettingsMenuOpen = false;
-    $('#'+this.playerId).removeClass('vjs-open-menu');
-
-    $(document).unbind('mouseup touchend');
+    document.querySelector('#'+this.playerId).classList.remove('vjs-open-menu');
   }
 
   togglePlayerSize() {
-    if( $('#'+this.playerId).closest('.mainWedeoContainer').length > 0 ) {
-      const wedeoContainer = $('#'+this.playerId).closest('.mainWedeoContainer');
+    if( document.querySelector('#'+this.playerId).closest('.mainWedeoContainer') ) {
+      const wedeoContainer = document.querySelector('#'+this.playerId).closest('.mainWedeoContainer');
       if( this.Player.isFullscreen_ ) { this.Player.exitFullscreen(); }
 
-      if( wedeoContainer.hasClass('large') ) {
-        $('#'+this.playerId+' .vjs-size-button .material-icons').html('aspect_ratio');
-        wedeoContainer.removeClass('large');
-        $('#'+this.playerId+' .vjs-background').hide();
-        $('#'+this.playerId+' .vjs-bottom-title').hide();
+      if( wedeoContainer.classList.contains('large') ) {
+        document.querySelector('#'+this.playerId+' .vjs-size-button .material-icons').innerHTML = 'aspect_ratio';
+        wedeoContainer.classList.remove('large');
+        document.querySelector('#'+this.playerId+' .vjs-background').style.display = 'none';
+        document.querySelector('#'+this.playerId+' .vjs-bottom-title').style.display = 'none';
         this.resizeWedeo();
       } else {
-        $('#'+this.playerId+' .vjs-size-button .material-icons').html('crop_16_9');
-        wedeoContainer.addClass('large');
-        $('#'+this.playerId+' .vjs-background').show();
-        $('#'+this.playerId+' .vjs-bottom-title').show();
+        document.querySelector('#'+this.playerId+' .vjs-size-button .material-icons').innerHTML = 'crop_16_9';
+        wedeoContainer.classList.add('large');
+        document.querySelector('#'+this.playerId+' .vjs-background').style.display = 'block';
+        document.querySelector('#'+this.playerId+' .vjs-bottom-title').style.display = 'block';
       }
     }
   }
 
   resizeWedeo() {
-    const max = $( window ).width() - 420 - 30 - 20;
-    let width = $('.wedeoSideContainer').height() / 9 * 16;
+    const max = window.innerWidth - 420 - 30 - 20;
+    const height = parseFloat(getComputedStyle(document.querySelector('.wedeoSideContainer'), null).height.replace("px", ""));
+    let width = height / 9 * 16;
 
     if( width > max ) { width = max; }
 
-    $('.wedeoContainer').width( width );
+    document.querySelectorAll('.wedeoContainer').forEach( element => { element.style.width = width + "px" });
   }
 
   getVideoSource() {
@@ -729,9 +733,11 @@ class wedeoPlayerClass {
     this.meta = meta;
     const poster = this.cdnURLbase + 'images/thumb/' + this.meta.uvid + '/large.jpg';
 
-    $('#'+this.playerId+' .vjs-load-progress').css( 'width', '0%' );
-    $('#'+this.playerId+' .vjs-load-progress div').css( 'width', '0%' );
-    $('#'+this.playerId+' .vjs-background').css( 'background-image', "url(" + poster + ")" );
+    document.querySelector('#'+this.playerId+' .vjs-load-progress').style.width = '0%';
+
+    if( document.querySelector('#'+this.playerId+' .vjs-background') ) {
+      document.querySelector('#'+this.playerId+' .vjs-background').style.backgroundImage = 'url(' + poster + ')';
+    }
 
     this.Player.src(self.getVideoSource());
     if(this.meta.hasOwnProperty("startAt")) { this.setTime(this.meta.startAt); }
@@ -776,7 +782,7 @@ class wedeoPlayerClass {
 
   updatePlayerTitle() {
     if(this.type === "mini") {
-      $(".miniWedeoContainer .miniWedeoHeaderTitle").html(this.meta.title);
+      document.querySelector('.miniWedeoContainer .miniWedeoHeaderTitle').innerHTML = this.meta.title;
     }
   }
 

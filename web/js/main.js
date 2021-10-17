@@ -2,19 +2,34 @@ let wedeoPlayer = false;
 let wedeoBgPlayer = false;
 let nextPageIsLoading = false;
 
-$(document).off("click", "a").on("click", "a", function(e) {
+document.removeEventListener( "click", clickOnLink );
+
+document.addEventListener("click", clickOnLink );
+
+function clickOnLink( event ) {
+  const anchorElement = event.path.filter( element => {
+    if( element.tagName ) {
+      if( element.tagName.toLowerCase() == "a" ) {
+          return true;
+      } else {
+        return false;
+      }
+    }
+  })[0];
+
+  const openInNewTab = anchorElement && anchorElement.getAttribute( "target" ) === "_blank" ? true : false;
+  const url = anchorElement ? anchorElement.getAttribute( "href" ) : '';
+
   if(
-    $(this).attr('target') != "_blank" && $(this).attr('load') != 'new' && !nextPageIsLoading
-    && !e.ctrlKey && !e.shiftKey && e.which != 2 && e.button != 4
+    anchorElement && !openInNewTab && !nextPageIsLoading
+    && !event.ctrlKey && !event.shiftKey && event.which != 2 && event.button != 4
   ) {
+    event.preventDefault();
     nextPageIsLoading = true;
 
-    const url = $(this).attr('href');
     goToPage(url);
-
-    return false;
   }
-});
+}
 
 function activateSamePageNavigation() {
   window.onpopstate = function() {
@@ -26,7 +41,7 @@ function activateSamePageNavigation() {
 
 function htmlLoaded() {
   if( window.matchMedia("(pointer: coarse)").matches ) {
-    $(document.body).addClass('touch');
+    document.querySelector('body').classList.add('touch');
   }
 
   activateSamePageNavigation();
@@ -42,7 +57,7 @@ function goToPage( url, fromNavigation = false ) {
   const isMiniWedeoPlayer = ( wedeoPlayer && wedeoPlayer.type === "mini" );
 
   if( isVideoLink && isMiniWedeoPlayer ) {
-    if( !fromNavigation ) {  $(".miniWedeoContainer").attr("videoURL", url); }
+    if( !fromNavigation ) { document.querySelector('.miniWedeoContainer').getAttribute('videoURL', url); }
   } else {
     if( !fromNavigation ) { window.history.pushState( {page: true}, null, document.location ); } //adds current page as previous page
     window.history.replaceState('currentPage', 'wedeo.me', url); //changes browser url

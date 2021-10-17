@@ -256,6 +256,10 @@
   transition: width 0s cubic-bezier(0.48, 0.48, 0.48, 0.48);
 }
 
+.wedeo-player  .vjs-progress-control .vjs-mouse-display {
+  pointer-events: none;
+}
+
 .wedeo-player .vjs-play-progress {
   background: var(--main);
   background: linear-gradient( 135deg, var(--cyan500), var(--main) );
@@ -276,6 +280,7 @@
 
 .wedeo-player:not(.vjs-waiting) .vjs-load-progress,
 .wedeo-player:not(.vjs-waiting) .vjs-load-progress div {
+  pointer-events: none;
   background: var(--silver);
   transition: width 0.5s cubic-bezier(0.48, 0.48, 0.48, 0.48);
 }
@@ -595,6 +600,7 @@
 
 .wedeo-player .vjs-small-time-preview {
   display: none;
+  pointer-events: none;
   position: absolute;
   bottom: 25px;
   color: var(--white);
