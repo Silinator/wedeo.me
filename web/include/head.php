@@ -35,8 +35,11 @@
 <?php /* own icon font */ ?>
 <link rel="stylesheet" href="font/icon-font/style.css"></head>
 
+<?php /* axios */ ?>
+<script src="node_modules/axios/dist/axios.min.js"></script>
+
 <?php /* jQuery */ ?>
-<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<!-- <script src="node_modules/jquery/dist/jquery.min.js"></script> -->
 
 <?php /* moment */ ?>
 <script src="node_modules/moment/min/moment.min.js"></script>
