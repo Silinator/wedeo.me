@@ -80,28 +80,28 @@ Vue.component( 'mainHeader', {
     openNavi() {
       this.$store.commit('setSideNaviOpen', true );
 
-      $('.mainContainer').addClass('blur');
-      $('body').addClass('of-hidden');
+      document.querySelector('.mainContainer').classList.add('blur');
+      document.querySelector('body').classList.add('of-hidden');
     },
     closeNavi() {
       this.$store.commit('setSideNaviOpen', false );
 
-      $('.mainContainer').removeClass('blur');
-      $('body').removeClass('of-hidden');
+      document.querySelector('.mainContainer').classList.remove('blur');
+      document.querySelector('body').classList.remove('of-hidden');
     },
     closeMiniplayer() {
       closeMiniplayer();
     }
   },
   mounted() {
-    $(document).scroll(function() {
-      if( $(document).scrollTop() > 50 ) {
-        $(".header").addClass('solid');
+    document.addEventListener("scroll", function() {
+      if( window.scrollY > 50 ) {
+        document.querySelector('.header').classList.add('solid');
       }else{
-        $(".header").removeClass('solid');
+        document.querySelector('.header').classList.remove('solid');
       }
     });
 
-    dragMiniPlayer( $(".miniWedeoHeader") );
+    dragMiniPlayer( document.querySelector('.miniWedeoHeader') );
   }
 });

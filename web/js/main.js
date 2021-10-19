@@ -116,7 +116,7 @@ function loadPage( url ) {
 
 function dragMiniPlayer(el) {
   let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-  el.mousedown( dragMouseDown );
+  el.addEventListener("mousedown", dragMouseDown );
 
   function dragMouseDown(e) {
     e = e || window.event;
@@ -144,7 +144,7 @@ function dragMiniPlayer(el) {
     const max_pos_top     = window.innerHeight - dragContainer.height();
     const max_pos_left    = window.innerWidth - dragContainer.width() - 5; /* 5 = scrollbar */
 
-    const offsetTop       = dragContainer.offset().top - $(window).scrollTop();
+    const offsetTop       = dragContainer.offset().top - window.scrollY;
     const offsetLeft      = dragContainer.offset().left;
 
     if(offsetTop - pos2 < min_pos_top) {

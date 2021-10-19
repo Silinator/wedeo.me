@@ -396,7 +396,7 @@ class wedeoPlayerClass {
   }
 
   addBigPlayerButtons() {
-    const self = this;
+    /*const self = this;
 
     $('#'+this.playerId+' .vjs-control-bar').before(
       "<div class='vjs-big-buttons'>" +
@@ -428,11 +428,11 @@ class wedeoPlayerClass {
       $('#'+self.playerId+' .vjs-big-button-state-video').removeClass('vjs-big-button-play-video');
       $('#'+self.playerId+' .vjs-big-button-state-video').addClass('vjs-big-button-pause-video');
       $('#'+self.playerId+' .vjs-big-button-state-video .material-icons').html('pause');
-    });
+    });*/
   }
 
   addSkipButtons() {
-    const self = this;
+    /*const self = this;
 
     $('#'+this.playerId+' .vjs-play-control').before(
       "<button class='vjs-previous-control vjs-control vjs-button'>" +
@@ -448,10 +448,11 @@ class wedeoPlayerClass {
 
     $("#" + this.playerId + " .vjs-previous-control").click( function() { self.previousVideo(); });
     $("#" + this.playerId + " .vjs-next-control").click( function() { self.nextVideo(); });
+    */
   }
 
   updateSkipButtons() {
-    const self = this;
+    /*const self = this;
 
     if( this.meta.hasOwnProperty('previousVideo') && this.meta.previousVideo != "" ) {
       navigator.mediaSession.setActionHandler('previoustrack', function() { self.previousVideo(); });
@@ -471,11 +472,11 @@ class wedeoPlayerClass {
       navigator.mediaSession.setActionHandler('nexttrack', null );
       $('#'+this.playerId+' .vjs-big-button-next-video').css('visibility', 'hidden');
       $('#'+this.playerId+' .vjs-next-control').hide();
-    }
+    }*/
   }
 
   addPlayerTouchControls() {
-    if( window.matchMedia("(pointer: coarse)").matches ) {
+    /*if( window.matchMedia("(pointer: coarse)").matches ) {
       const self = this;
       let tappedRewind = false;
       let tappedForward = false;
@@ -539,7 +540,7 @@ class wedeoPlayerClass {
         $('#'+self.playerId+' .vjs-big-button-rewind-video').attr('data-time', "0");
         $('#'+self.playerId+' .vjs-big-button-forward-video').attr('data-time', "0");
       }
-    }
+    }*/
   }
 
   addPlayerVideoPreview() {
