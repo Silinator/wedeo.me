@@ -8,8 +8,8 @@ switch($page) {
   case 'watch': require_once( __DIR__ . '/include/pages/watch.php' ); break;
 }
 
-if( isset( $_POST['json'] ) ) {
-  $asJson = $_POST['json'] == "true";
+if( isset( $_GET['json'] ) ) {
+  $asJson = $_GET['json'] == "true";
 } else {
   $asJson = false;
 }

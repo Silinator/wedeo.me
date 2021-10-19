@@ -85,7 +85,9 @@ const store = new Vuex.Store({
 
   actions: {
     fetchTranslations( { commit, state } ) {
-      $.getJSON( "lang/translations.json", function (data) {
+      axios.get('lang/translations.json')
+      .then(response => response.data)
+      .then(data => {
         commit( 'setTranslations', data );
       });
     },
@@ -93,7 +95,9 @@ const store = new Vuex.Store({
       if( state.videosLoading === false ) {
         state.videosLoading = true;
 
-        $.getJSON( 'api/getVideos?index=' + state.videosLoadedIndex, data => {
+        axios.get('api/getVideos?index=' + state.videosLoadedIndex)
+        .then(response => response.data)
+        .then(data => {
           state.videosLoading = false;
           state.videosLoadedIndex = data.videos.length;
           commit( 'addVideos', data.videos );
@@ -108,7 +112,9 @@ const store = new Vuex.Store({
       if( state.moreVideosLoading === false ) {
         state.moreVideosLoading = true;
 
-        $.getJSON( 'api/getMoreVideos?index=' + state.moreVideosLoadedIndex + "&filter=" + JSON.stringify(state.moreVideosFilter), data => {
+        axios.get( 'api/getMoreVideos?index=' + state.moreVideosLoadedIndex + "&filter=" + JSON.stringify(state.moreVideosFilter) )
+        .then(response => response.data)
+        .then(data => {
           state.moreVideosLoading = false;
           state.moreVideosLoadedIndex += data.videos.length;
           commit( 'addMoreVideos', data.videos );
@@ -121,7 +127,10 @@ const store = new Vuex.Store({
     },
     fetchPlaylist( { commit, state }, upid ) {
       state.playlist.loaded = false;
-      $.getJSON( 'api/getPlaylistInfos?upid=' + upid + '&uvid=' + state.mainVideoData.uvid, data => {
+
+      axios.get( 'api/getPlaylistInfos?upid=' + upid + '&uvid=' + state.mainVideoData.uvid )
+      .then(response => response.data)
+      .then(data => {
         state.playlist = data;
         state.playlist.loaded = true;
       });
@@ -148,7 +157,9 @@ const store = new Vuex.Store({
           uvids.push(videos[i]);
         }
 
-        $.getJSON( 'api/getVideoInfos?uvids=' + JSON.stringify(uvids), data => {
+        axios.get( 'api/getVideoInfos?uvids=' + JSON.stringify(uvids) )
+        .then(response => response.data)
+        .then(data => {
           state.morePlaylistVideosBeforeLoading = false;
 
           state.morePlaylistVideosIndexBefore -= data.videos.length;
@@ -178,7 +189,9 @@ const store = new Vuex.Store({
           }
         }
 
-        $.getJSON( 'api/getVideoInfos?uvids=' + JSON.stringify(uvids), data => {
+        axios.get( 'api/getVideoInfos?uvids=' + JSON.stringify(uvids) )
+        .then(response => response.data)
+        .then(data => {
           state.morePlaylistVideosAfterLoading = false;
 
           state.morePlaylistVideosIndexAfter += data.videos.length;

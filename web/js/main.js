@@ -83,7 +83,9 @@ function goToPage( url, fromNavigation = false ) {
 }
 
 function loadVideoPage( url ) {
-  $.post( url, { 'json': true, 'from': document.location.toString() }, function(data) {
+  axios.get( url, { params : { json: true, from: document.location.toString() } } )
+  .then(response => response.data)
+  .then(data => {
     nextPageIsLoading = false;
 
     document.title = data.htmlTitle;
@@ -97,7 +99,9 @@ function loadVideoPage( url ) {
 function loadPage( url ) {
   if( wedeoBgPlayer ) { videojs(wedeoBgPlayer.playerId).dispose(); wedeoBgPlayer = false; }
 
-  $.post( url, { 'json': true, 'from': document.location.toString() }, function(data) {
+  axios.get( url, { params : { json: true, from: document.location.toString() } } )
+  .then(response => response.data)
+  .then(data => {
     nextPageIsLoading = false;
 
     document.title = data.htmlTitle;
