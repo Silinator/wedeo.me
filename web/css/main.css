@@ -295,6 +295,7 @@ body {
   color: var(--white);
   background: linear-gradient( 135deg, var(--cyan500), var(--main) );
   cursor: move;
+  touch-action: none;
 }
 
 .miniWedeoHeaderTitle {
