@@ -121,56 +121,77 @@ function loadPage( url ) {
 function dragMiniPlayer(el) {
   let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
   el.addEventListener("mousedown", dragMouseDown );
+  el.addEventListener("touchstart", dragMouseDown );
 
   function dragMouseDown(e) {
     e = e || window.event;
-    e.preventDefault();
 
-    pos3 = e.clientX;
-    pos4 = e.clientY;
+    if(e.type === "touchstart") {
+      pos3 = e.touches[0].clientX;
+      pos4 = e.touches[0].clientY;
 
-    document.onmouseup = closeDragElement;
-    document.onmousemove = elementDrag;
+      document.ontouchend = closeDragElement;
+      document.ontouchmove = elementDrag;
+    } else {
+      pos3 = e.clientX;
+      pos4 = e.clientY;
+
+      document.onmouseup = closeDragElement;
+      document.onmousemove = elementDrag;
+    }
   }
 
   function elementDrag(e) {
     e = e || window.event;
-    e.preventDefault();
 
-    pos1 = pos3 - e.clientX;
-    pos2 = pos4 - e.clientY;
-    pos3 = e.clientX;
-    pos4 = e.clientY;
+    if(e.type === "touchmove") {
+      pos1 = pos3 - e.touches[0].clientX;
+      pos2 = pos4 - e.touches[0].clientY;
+      pos3 = e.touches[0].clientX;
+      pos4 = e.touches[0].clientY;
+      scrollbarWidth = 0; 
+    } else {
+      pos1 = pos3 - e.clientX;
+      pos2 = pos4 - e.clientY;
+      pos3 = e.clientX;
+      pos4 = e.clientY;
+      scrollbarWidth = 5; 
+    }
 
-    const dragContainer   = el.parent();
+    const dragContainer   = el.parentNode;
     const min_pos_top     = 0;
     const min_pos_left    = 0;
-    const max_pos_top     = window.innerHeight - dragContainer.height();
-    const max_pos_left    = window.innerWidth - dragContainer.width() - 5; /* 5 = scrollbar */
+    const containerHight  = parseFloat(getComputedStyle(dragContainer, null).height.replace("px", ""));
+    const containerWidth  = parseFloat(getComputedStyle(dragContainer, null).width.replace("px", ""));
+    const max_pos_top     = window.innerHeight - containerHight;
+    const max_pos_left    = window.innerWidth - containerWidth - scrollbarWidth;
 
-    const offsetTop       = dragContainer.offset().top - window.scrollY;
-    const offsetLeft      = dragContainer.offset().left;
+    const offset          = dragContainer.getBoundingClientRect();
+    const offsetTop       = offset.top;
+    const offsetLeft      = offset.left;
 
     if(offsetTop - pos2 < min_pos_top) {
-      dragContainer.css( "top", min_pos_top + "px" );
+      dragContainer.style.top = min_pos_top + "px";
     } else if(offsetTop - pos2 > max_pos_top ) {
-      dragContainer.css( "top", max_pos_top + "px" );
+      dragContainer.style.top = max_pos_top + "px";
     } else {
-      dragContainer.css( "top", (offsetTop - pos2) + "px" );
+      dragContainer.style.top = (offsetTop - pos2) + "px";
     }
 
     if(offsetLeft - pos1 < min_pos_left) {
-      dragContainer.css( "left", min_pos_left + "px" );
+      dragContainer.style.left = min_pos_left + "px";
     } else if(offsetLeft - pos1 > max_pos_left) {
-      dragContainer.css( "left", max_pos_left + "px" );
+      dragContainer.style.left = max_pos_left + "px";
     } else {
-      dragContainer.css( "left", (offsetLeft - pos1) + "px" );
+      dragContainer.style.left = ( offsetLeft - pos1) + "px";
     }
   }
 
   function closeDragElement() {
     document.onmouseup = null;
     document.onmousemove = null;
+    document.ontouchend = null;
+    document.ontouchmove = null;
   }
 }
 
