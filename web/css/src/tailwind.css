@@ -3,3 +3,224 @@
 @tailwind utilities;
 
 
+@layer components {
+
+  /* titles */
+  h1 {
+    @apply font-normal text-3xl mb-1;
+  }
+
+  h2 {
+    @apply font-normal text-2xl mb-1;
+  }
+
+  h3 {
+    @apply font-normal text-lg mb-1;
+  }
+
+  h4 {
+    @apply font-normal text-base mb-0;
+  }
+
+  h6 {
+    @apply font-normal text-sm mb-0 text-gray-800;
+  }
+
+
+  /* basic */
+  .btn,
+  .smallBtn,
+  .bigBtn,
+  .outlineBtn,
+  .material-icons,
+  .noSel {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    @apply select-none;
+  }
+
+
+  /* links */
+  a {
+    @apply no-underline hover:underline focus:underline;
+  }
+
+  p a {
+    @apply text-primary hover:text-cyan-500 focus:text-cyan-500;
+  }
+
+  .btn {
+    @apply flex;
+  }
+
+
+  /* simple btns */
+  .outlineBtn,
+  .outlineIconBtn {
+    @apply inline-block pt-1 pr-2 pb-1 pl-2 text-base
+    border-solid border
+  text-white border-white bg-transparent
+    overflow-hidden overflow-ellipsis
+    transition-colors ease-in-out duration-300
+    focus:text-gray-500 focus:bg-white
+    hover:text-gray-500 hover:bg-white
+    cursor-pointer;
+  }
+
+  .outlineBtn.active,
+  .outlineIconBtn.active {
+    @apply text-gray-500 bg-white;
+  }
+
+
+  /* simple icon btns */
+  .outlineIconBtn {
+    @apply pt-1 pr-1 pb-0 pl-1 leading-4;
+  }
+
+  .outlineIconBtn .material-icons {
+    @apply text-lg;
+  }
+
+
+  /* color btns */
+  .smallBtn {
+    border-image-slice: 1;
+    @apply pt-1 pr-2 pb-1 pl-2 text-sm border border-solid;
+  }
+
+  .smallBtn .material-icons {
+    @apply text-sm mr-1
+  }
+
+  .bigBtn {
+    border-image-slice: 1;
+    @apply pt-2 pr-6 pb-2 pl-6 text-2xl border-solid border-2;
+  }
+
+  .btn,
+  .smallBtn,
+  .bigBtn {
+    border-image-source: linear-gradient( to bottom right, var(--cyan500), var(--main) );
+    @apply inline-flex text-white no-underline bg-gradient-to-br from-cyan-500 to-primary cursor-pointer;
+  }
+
+  .smallBtn:hover,
+  .smallBtn:focus,
+  .smallBtn:focus,
+  .smallBtn:active,
+  .bigBtn:hover,
+  .bigBtn:focus,
+  .bigBtn:focus,
+  .bigBtn:active {
+    background: linear-gradient( 135deg, var(--cyan500), var(--main) ) !important;
+    background-clip: text;
+    text-fill: transparent;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent;
+  }
+
+
+  /* video thumbs */
+  .thumbHolder {
+    height: 155px;
+    width: 276px;
+    @apply flex relative mt-1 mr-1 mb-5 ml-1 bg-gray-900 cursor-pointer;
+  }
+
+  .shortHorVideoContainer .thumbHolder {
+    width: 176px;
+    height: 99px;
+  }
+
+  .thumbHolder img {
+    @apply w-full h-full;
+  }
+
+  .thumbHolder:after {
+    content: '';
+    z-index: -1;
+    border-image-slice: 1;
+    border-width: 4px 4px 20px 4px;
+    box-sizing: content-box;
+    @apply absolute h-full w-full -top-1 right-0 bottom-0 -left-1 border-solid;
+  }
+
+  .thumbHolder.green:after {
+    border-image-source: linear-gradient(60deg, var(--green500) 30%, var(--green700) 70%);
+  }
+
+  .thumbHolder.blue:after {
+    border-image-source: linear-gradient(60deg, var(--blue500) 30%, var(--blue700) 70%);
+  }
+
+  .thumbHolder.orange:after {
+    border-image-source: linear-gradient(60deg, var(--orange500) 30%, var(--orange700) 70%);
+  }
+
+  .thumbHolder.purple:after {
+    border-image-source: linear-gradient(60deg, var(--purple500) 30%, var(--purple700) 70%);
+  }
+
+  .thumbHoverInfo {
+    transition: width 0.45s cubic-bezier(0.48, 0.48, 0.48, 0.48);
+    box-shadow: 0px -3px 10px var(--main-gray);
+    @apply block absolute bottom-0 w-0 h-1 bg-white;
+  }
+
+  .thumbHoverInfoLeave {
+    transition: width 0s;
+  }
+
+  .thumbInfo {
+    text-shadow: 1px 1px 3px #333333;
+    width: calc( 100% - 4px );
+    @apply flex justify-between items-center absolute h-5 ml-1 text-white top-full left-0;
+  }
+
+  .thumbMetaInfo,
+  .thumbTimeInfo {
+    @apply text-sm;
+  }
+
+  .thumbMetaInfo .material-icons {
+    @apply ml-1 text-base;
+  }
+
+  .thumbLanguage,
+  .thumbRating {
+    @apply mr-2;
+  }
+
+  .thumbRating,
+  .thumbComents {
+    @apply inline-flex items-center;
+  }
+
+  .shortHorVideoContainer .thumbComents {
+    @apply hidden;
+  }
+
+
+  /* load more */
+  .loadMoreLine {
+    @apply flex items-center text-center pt-3 pr-0 pb-3 pl-0 text-white cursor-pointer;
+  }
+
+  .loadMoreLine:before,
+  .loadMoreLine:after {
+    content: '';
+    @apply flex-1 border-b border-solid border-white;
+  }
+
+  .loadMoreLine:before {
+    @apply mr-3;
+  }
+
+  .loadMoreLine:after {
+    @apply ml-3;
+  }
+}
