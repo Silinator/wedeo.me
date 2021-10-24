@@ -150,19 +150,19 @@
   }
 
   .thumbHolder.green:after {
-    border-image-source: linear-gradient(60deg, var(--green500) 30%, var(--green700) 70%);
+    border-image-source: linear-gradient(60deg, var(--green500) 30%, var(--green900) 70%);
   }
 
   .thumbHolder.blue:after {
-    border-image-source: linear-gradient(60deg, var(--blue500) 30%, var(--blue700) 70%);
+    border-image-source: linear-gradient(60deg, var(--blue500) 30%, var(--blue900) 70%);
   }
 
   .thumbHolder.orange:after {
-    border-image-source: linear-gradient(60deg, var(--orange500) 30%, var(--orange700) 70%);
+    border-image-source: linear-gradient(60deg, var(--orange500) 30%, var(--orange900) 70%);
   }
 
   .thumbHolder.purple:after {
-    border-image-source: linear-gradient(60deg, var(--purple500) 30%, var(--purple700) 70%);
+    border-image-source: linear-gradient(60deg, var(--purple500) 30%, var(--purple900) 70%);
   }
 
   .thumbHoverInfo {
