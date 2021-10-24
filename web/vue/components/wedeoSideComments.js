@@ -15,12 +15,6 @@ Vue.component( 'wedeoSideComments', {
 		}
   },
   methods: {
-    changeActiveTab( tab ) {
-      this.activeTab = tab;
-    },
-    headerBtnClass( tab ) {
-      return "wedeoSideContainerHeaderBtn noSel " + ( tab == this.activeTab ? "active" : "" );
-    }
   },
   mounted() {
   }

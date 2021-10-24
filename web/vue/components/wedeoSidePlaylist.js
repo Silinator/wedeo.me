@@ -81,12 +81,6 @@ Vue.component( 'wedeoSidePlaylist', {
     userUrl(videoData) {
       return "user/" + videoData.user.uuid;
     },
-    changeActiveTab( tab ) {
-      this.activeTab = tab;
-    },
-    headerBtnClass( tab ) {
-      return "wedeoSideContainerHeaderBtn noSel " + ( tab == this.activeTab ? "active" : "" );
-    },
     getPlaylistVideoNumber(uvid) {
       let num = this.playlistVideos.indexOf(uvid);
 
