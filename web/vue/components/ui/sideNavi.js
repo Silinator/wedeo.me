@@ -6,7 +6,7 @@ Vue.component( 'sideNavi', {
   template: `
     <div class='sideNaviContainer'>
       <div :class="sideNaviClass">
-        <div class='headerLeft'>
+        <div class='flex items-center p-4 -mt-1'>
           <div v-on:click="closeNavi" class="headerButton toggleLeftNaviButton">
             <span class="material-icons">menu</span>
           </div>
@@ -60,7 +60,7 @@ Vue.component( 'sideNavi', {
         return "sideNaviBg open";
       }
 
-      return "sideNaviBg";
+      return "sideNaviBg hidden";
     }
   },
   methods: {
@@ -69,13 +69,13 @@ Vue.component( 'sideNavi', {
       this.$store.commit('setSideNaviOpen', true );
 
       document.querySelector('.mainContainer').classList.add('blur');
-      document.querySelector('body').classList.add('of-hidden');
+      document.querySelector('body').classList.add('overflow-hidden');
     },
     closeNavi() {
       this.$store.commit('setSideNaviOpen', false );
 
       document.querySelector('.mainContainer').classList.remove('blur');
-      document.querySelector('body').classList.remove('of-hidden');
+      document.querySelector('body').classList.remove('overflow-hidden');
     },
     closeMiniplayer() {
       closeMiniplayer();

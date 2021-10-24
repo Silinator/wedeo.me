@@ -21,7 +21,7 @@ if( !$asJson ) {
     <head>
       <?php require_once("include/head.php"); ?>
     </head>
-    <body>
+    <body class="bg-bg text-white">
 
     <?php // just for now, make this better later ?>
     <script>

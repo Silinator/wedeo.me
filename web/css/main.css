@@ -68,8 +68,6 @@
 
 body {
   font-family: 'Open Sans', sans-serif;
-  background-color: var( --bg-black );
-  color: var(--white);
 }
 
 * {
@@ -93,16 +91,10 @@ body {
   background: var(--main-gray);
 }
 
-.of-hidden {
-  overflow: hidden;
-}
-
 
 /* header */
 .header {
-  height: 60px;
   background: linear-gradient( 0deg, transparent, var(--bg-blackA60) );
-  border-color: var(--black);
   transition: background 0.3s ease-in-out, border 0.3s cubic-bezier(1,-0.01, 1,-1.34);
   z-index: 999999;
 }
@@ -116,21 +108,9 @@ body {
   background: var(--bg-black);
 }
 
-.headerLeft,
-.headerCenter,
-.headerRight {
-  display: flex;
-  align-items: center;
-}
-
 .header.blur .headerCenter,
 .header.blur .headerRight {
   filter: brightness(0.4) blur(3px);
-}
-
-.headerLeft,
-.headerRight {
-  padding: 15px;
 }
 
 .headerButton {
@@ -154,7 +134,6 @@ body {
 }
 
 .headerCenter {
-  position: relative;
   width: calc(70% - 600px);
 }
 
@@ -232,14 +211,6 @@ body {
   left: 0;
 }
 
-.sideNavi .headerLeft {
-  margin-top: -5px;
-}
-
-.sideNaviBg {
-  display: none;
-}
-
 .sideNaviBg.open {
   display: flex;
   position: absolute;
@@ -249,24 +220,6 @@ body {
   background: transparent;
 }
 
-.naviButton {
-  display: flex;
-  align-items: center;
-  padding: 10px 20px;
-  text-decoration: none;
-  color: var(--white);
-}
-
-.naviButton:hover,
-.naviButton:focus {
-  background: linear-gradient( 135deg, var(--cyan500A30), var(--mainA30) );
-  text-decoration: none;
-}
-
-.naviButton .material-icons {
-  margin-right: 20px;
-
-}
 
 /* landing page all videos */
 .mainContainer.blur,
@@ -281,25 +234,10 @@ body {
   margin: auto;
 }
 
-.allVideosContainer h1 {
-  width: 100%;
-  margin-top: 30px;
-}
-
-.allVideosList {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  margin-bottom: 100px;
-}
 
 /* miniWedeoPlayer*/
 .miniWedeoContainer {
-  display: block;
-  position: fixed;
-  width: 320px;
   z-index: 3;
-  box-shadow: 5px 5px 20px var(--black);
 }
 
 .miniWedeo .wedeoContainer {
@@ -307,43 +245,14 @@ body {
 }
 
 .miniWedeoHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: var(--white);
   background: linear-gradient( 135deg, var(--cyan500), var(--main) );
-  cursor: move;
   touch-action: none;
-}
-
-.miniWedeoHeaderTitle {
-  padding: 3px 5px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.miniWedeoHeaderClose {
-  display: flex;
-  padding: 3px;
-  cursor: pointer;
-}
-
-.miniWedeoContent {
-  display: none;
 }
 
 /* watchPage */
 .mainWedeoContainer {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
   height: calc( 100vh - 60px - 60px );
   width: calc( 100vw - 30px );
-  max-width: 100%;
-  margin-top: 60px;
-  padding: 15px 15px 45px 15px;
-  overflow-x: hidden;
 }
 
 .mainWedeoContainer.large {
@@ -354,66 +263,24 @@ body {
 }
 
 .wedeoSideContainer {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  min-width: 0;
-  max-width: 500px;
   flex-basis: 0;
   flex-grow: 1;
-  height: 100%;
 }
 
 .mainWedeoContainer.large .wedeoSideContainer {
   display: none;
 }
 
-
-.wedeoSideContainerHeader {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  width: 100%;
-}
-
-.wedeoSideContainerHeaderBtn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 52px;
-  cursor: pointer;
-  opacity: 0.6;
-}
-
-.wedeoSideContainerHeaderBtn.active {
-  opacity: 1;
-}
-
 .wedeoSideContainerHeaderLine {
-  display: block;
-  position: absolute;
   height: 2px;
-  top: 50px;
+  top: 54px;
   width: calc( 100% / 3 );
-  background-color: var(--white);
-  transition: 0.2s ease-in-out;
 }
 
 .wedeoSideContainerHeaderLine.widthPlaylist {
   width: calc( 100% / 4 );
 }
 
-.wedeoSideContainerHeaderBtn .material-icons,
-.wedeoSideContainerHeaderBtn .weicon-info {
-  color: var(--white);
-  font-size: 32px;
-}
-
-.wedeoSideContent {
-  padding-top: 15px;
-  height: calc( 100% - 52px - 2px - 15px );
-}
 
 /* userPreview */
 .userPreviewContainer {

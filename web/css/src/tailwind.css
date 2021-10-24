@@ -223,4 +223,40 @@
   .loadMoreLine:after {
     @apply ml-3;
   }
+
+
+  /* navi */
+  .naviButton {
+    @apply flex items-center pt-3 pr-5 pb-3 pl-5 no-underline text-white;
+  }
+
+  .naviButton:hover,
+  .naviButton:focus {
+    background: linear-gradient( 135deg, var(--cyan500A30), var(--mainA30) );
+    @apply no-underline;
+  }
+
+  .naviButton .material-icons {
+    @apply mr-5;
+  }
+
+
+  /* wedeoSide */
+  .wedeoSideContent {
+    height: calc( 100% - 52px - 2px - 15px );
+    @apply pt-4;
+  }
+
+  .wedeoSideContainerHeaderBtn {
+    @apply flex items-center justify-center w-full h-14 cursor-pointer opacity-60;
+  }
+
+  .wedeoSideContainerHeaderBtn.active {
+    @apply opacity-100;
+  }
+
+  .wedeoSideContainerHeaderBtn .material-icons,
+  .wedeoSideContainerHeaderBtn .weicon-info {
+    @apply text-white text-4xl;
+  }
 }

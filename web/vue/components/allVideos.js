@@ -6,8 +6,8 @@ Vue.component( 'allVideos', {
 	},
   template: `
     <div class='allVideosContainer'>
-			<h1 class='text-green-400 flex'>{{this.$store.getters.t('ALL_VIDEOS')}}</h1><br>
-			<div class='allVideosList'>
+			<h1 class='text-white flex w-full mt-8'>{{this.$store.getters.t('ALL_VIDEOS')}}</h1><br>
+			<div class='flex justify-between w-full mb-24'>
       	<thumb v-for="video in videos" :key="video.uvid" :videoData="video"/>
 			</div>
     </div>

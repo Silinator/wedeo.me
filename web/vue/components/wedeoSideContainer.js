@@ -5,8 +5,8 @@ Vue.component( 'wedeoSideContainer', {
     }
   },
   template: `
-    <div class='wedeoSideContainer'>
-      <div class='wedeoSideContainerHeader'>
+    <div class='wedeoSideContainer flex relative flex-col min-w-0 h-full max-w-lg'>
+      <div class='flex justify-between flex-row w-full'>
         <div v-if="inPlaylist" :class='headerBtnClass("playlist")'@click='changeActiveTab("playlist")'><span class="material-icons">view_list</span></div>
         <div :class='headerBtnClass("comments")' @click='changeActiveTab("comments")'><span class="material-icons">chat_bubble_outline</span></div>
         <div :class='headerBtnClass("info")' @click='changeActiveTab("info")'><span class='weicon-info'></span></div>
@@ -43,7 +43,7 @@ Vue.component( 'wedeoSideContainer', {
       return this.playlist.loaded ? this.playlist.loaded : false;
     },
     lineClass() {
-      return "wedeoSideContainerHeaderLine " + ( this.inPlaylist ? " widthPlaylist" : "" );
+      return "wedeoSideContainerHeaderLine block absolute bg-white transition-all duration-200 ease-in-out " + ( this.inPlaylist ? " widthPlaylist" : "" );
     },
 		linePosition() {
       if( this.inPlaylist ) {

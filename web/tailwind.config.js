@@ -2,14 +2,15 @@ const colors = require('tailwindcss/colors');
 
 module.exports = {
 	purge: [
-		'./**/*.js'
+		'./**/*.js',
+		'./**/*.php',
 	],
 	darkMode: false, // or 'media' or 'class'
 	theme: {
 	  extend: {
       colors: {
         primary: '#007abf',
-        bg: '#222222',
+        bg: '#111111',
         cyan: colors.cyan,
       }
     },
