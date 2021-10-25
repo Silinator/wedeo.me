@@ -8,19 +8,19 @@ Vue.component( 'wedeoSidePlaylist', {
     }
   },
   template: `
-    <div class='wedeoSidePlaylist'>
-      <div class='wedeoSidePlaylistTitle'>
+    <div class='flex flex-col h-full'>
+      <div class='inlineflex justify-start items-center flex-wrap gap-x-2 mb-1'>
         <h2>{{playlist.title}}</h2>
         <div>
           <div :class="'outlineIconBtn' + (swtichActive ? ' active' : '')" v-on:click="swtichOrder"> <span class="material-icons">swap_vert</span> </div>
           <div :class="'outlineIconBtn' + (randomActive ? ' active' : '')" v-on:click="randomOrder"> <span class="material-icons">shuffle</span> </div>
         </div>
       </div>
-      <div class='wedeoSideMoreVideosListContainer'>
+      <div class='pr-2 overflow-x-hidden overflow-y-auto'>
         <div v-if="moreBeforeLoading != 'all'" id="loadMoreBeforeLine" class="loadMoreLine">{{this.$store.getters.t('LOAD_MORE_VIDEOS')}}</div>
-        <div class='wedeoSideMoreVideosList'>
+        <div class='flex flex-col'>
           <div v-for="videoData in morePlaylistVideos" :key="videoData.uvid" class='shortHorVideoContainer'>
-            <div class='shortHorVideoNumber' v-html="getPlaylistVideoNumber(videoData.uvid)"></div>
+            <div class='flex justify-center items-center w-6' v-html="getPlaylistVideoNumber(videoData.uvid)"></div>
             <thumb :videoData="videoData" :upid="upid"/>
             <div class='shortHorVideoContent'>
               <div class='shortHorVideoTitle'><a :href="videoUrl(videoData)"> {{videoData.title}}</a></div>

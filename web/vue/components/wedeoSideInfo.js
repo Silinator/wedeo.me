@@ -1,12 +1,12 @@
 Vue.component( 'wedeoSideInfo', {
   template: `
-    <div class='wedeoSideInfo'>
+    <div class='flex flex-col h-full'>
 			<h2>{{this.$store.getters.t('PUBLISHED_ON', this.uploadDate)}}</h2>
 			<userPreview :userInfo="videoData.user"/>
-      <p class="wedeoSideInfoDescription" v-html="description"></p>
+      <p class="flex flex-col pb-2 h-auto break-words overflow-y-auto overflow-x-hidden" v-html="description"></p>
       <div class="wedeoSideShortInfo">
-        <div class="wedeoSideShortInfoTitle">{{this.$store.getters.t('CAT_MAIN')}}:</div> <div>{{videoCategoryFull}}</div>
-        <div class="wedeoSideShortInfoTitle">{{this.$store.getters.t('LANG_MAIN')}}:</div> <div>{{videoLanguageFull}}</div>
+        <div class="text-gray-300">{{this.$store.getters.t('CAT_MAIN')}}:</div> <div>{{videoCategoryFull}}</div>
+        <div class="text-gray-300">{{this.$store.getters.t('LANG_MAIN')}}:</div> <div>{{videoLanguageFull}}</div>
       </div>
     </div>
   `,

@@ -1,6 +1,6 @@
 Vue.component( 'watch', {
   template: `
-  <div class='mainWedeoContainer flex justify-center gap-5 max-w-full mt-16 pt-4 pr-4 pb-11 pl-4 overflow-x-hidden'>
+  <div class='mainWedeoContainer flex justify-between w-screen gap-5 max-w-full mt-16 pt-4 pr-4 pb-11 pl-4 overflow-x-hidden'>
     <div class='wedeoContainer'>
       <video id="wedeo-player" class="wedeo-player video-js cover" controls></video>
     </div>

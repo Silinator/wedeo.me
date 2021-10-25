@@ -1,12 +1,12 @@
 Vue.component( 'userPreview', {
   props: ['userInfo'],
   template: `
-    <div class='userPreviewContainer'>
+    <div class='flex justify-start gap-2 mb-2'>
       <a :href='userUrl'>
-        <img :src='userImg'/>
+        <img :src='userImg' height="58px" width="58px"/>
       </a>
-      <div class='userPreviewContent'>
-        <a :href='userUrl' class='userName'>{{userInfo.name}}</a>
+      <div class='flex flex-col'>
+        <a :href='userUrl' class='text-base mb-1 text-white no-underline'>{{userInfo.name}}</a>
         <div class='smallBtn subBtn' @click='subscribe' v-html='subText'></div>
       </div>
     </div>

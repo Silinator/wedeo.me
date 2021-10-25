@@ -252,7 +252,6 @@ body {
 /* watchPage */
 .mainWedeoContainer {
   height: calc( 100vh - 60px - 60px );
-  width: calc( 100vw - 30px );
 }
 
 .mainWedeoContainer.large {
@@ -281,164 +280,19 @@ body {
   width: calc( 100% / 4 );
 }
 
-
-/* userPreview */
-.userPreviewContainer {
-  display: flex;
-  justify-content: flex-start;
-  gap: 10px;
-  margin-bottom: 10px;
-}
-
-.userPreviewContainer .userName {
-  font-size: 16px;
-  line-height: 18px;
-  margin-bottom: 3px;
-  color: var(--white);
-  text-decoration: none;
-}
-
-.userPreviewContent {
-  display: flex;
-  flex-direction: column;
-}
-
-.userPreviewContainer img {
-  height: 50px;
-  width: 50px;
-}
-
 /* description */
-.wedeoSideInfo {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.wedeoSideInfoDescription {
-  display: flex;
-  flex-direction: column;
-  padding-right: 10px;
-  height: auto;
-  word-break: break-word;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
 .wedeoSideShortInfo {
   display: grid;
   grid-template-columns: 40% auto;
-  grid-row-gap: 3px;
-  margin-top: 15px;
-  padding-top: 10px;
-  padding-bottom: 5px;
+  grid-row-gap: 4px;
+  margin-top: 16px;
+  padding-top: 8px;
+  padding-bottom: 4px;
   border-top: 1px solid var(--gray);
 }
 
-.wedeoSideShortInfoTitle {
-  color: var(--silver);
-}
-
-
-/* more playlist videos */
-.wedeoSidePlaylistTitle {
-  display: inline-flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-wrap: wrap;
-  column-gap: 10px;
-  margin-bottom: 5px;
-}
-
 /* more videos */
-.wedeoSideMoreVideos,
-.wedeoSidePlaylist {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.wedeoSideMoreVideosListContainer {
-  padding-right: 10px;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-.wedeoSideMoreVideosSearchContainer {
-  position: relative;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-.wedeoSideMoreVideosSearchInput {
-  width: calc(100% - 23px);
-  font-size: 16px;
-  padding: 5px 23px 5px 0;
-  border: none;
-  color: var(--white);
-  border-bottom: 1px solid var(--white);
-  background-color: transparent;
-}
-
-.wedeoSideMoreVideosSearchBtn {
-  display: flex;
-  align-items: center;
-  position: absolute;
-  color: var(--white);
-  top: 0px;
-  right: 0px;
-  height: 26px;
-  cursor: pointer;
-}
-
-.wedeoSideMoreVideosSearchBtn .material-icons {
-  font-size: 18px;
-}
-
-.wedeoSideMoreVideosCatContainer {
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  gap: 5px;
-}
-
-.wedeoSideMoreVideosList {
-  display: flex;
-  flex-direction: column;
-}
-
-.shortHorVideoContainer {
-  display: flex;
-  position: relative;
-  justify-content: flex-start;
-  gap: 10px;
-  margin-bottom: 10px;
-}
-
-.shortHorVideoNumber {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 24px;
-}
-
 .shortHorVideoContent {
-  display: flex;
-  flex-direction: column;
   flex-basis: 0;
   flex-grow: 1;
-}
-
-.shortHorVideoTitle a {
-  display: -webkit-box;
-  overflow: hidden;
-  color: var(--white);
-  text-overflow: ellipsis;
-  white-space: normal;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-}
-
-.shortHorVideoUser a {
-  color: var(--gray);
 }

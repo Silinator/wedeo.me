@@ -125,6 +125,21 @@
 
 
   /* video thumbs */
+  .shortHorVideoContainer {
+    @apply flex relative justify-start gap-2 mb-2;
+  }
+
+  .shortHorVideoTitle a {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    @apply overflow-hidden text-white overflow-ellipsis whitespace-normal;
+  }
+
+  .shortHorVideoUser a {
+    @apply text-gray-300;
+  }
+
   .thumbHolder {
     height: 155px;
     width: 276px;
