@@ -290,7 +290,7 @@ class wedeoPlayerClass {
 
     document.querySelector('#'+this.playerId+' .vjs-control-bar').insertAdjacentElement('afterend', settingsMenu );
 
-    const settingsMenuApp = new Vue({
+    this.settingsMenuApp = new Vue({
       el: '#'+this.playerId+' .vjs-settings-menu',
       store,
       template: `<settingsMenu :wedeoPlayer="wedeoPlayer" :videoData="videoData"/>`,
@@ -316,7 +316,7 @@ class wedeoPlayerClass {
 
     document.querySelector('#'+this.playerId+' .vjs-spacer').insertAdjacentElement('beforebegin', bottomTitle);
 
-    const topTitleApp = new Vue({
+    this.topTitleApp = new Vue({
       el: '#'+this.playerId+' .vjs-header',
       data: function() {
         return {
@@ -332,7 +332,7 @@ class wedeoPlayerClass {
       }
     });
 
-    const bottomTitleApp = new Vue({
+    this.bottomTitleApp = new Vue({
       el: '#'+this.playerId+' .vjs-bottom-title',
       data: function() {
         return {
@@ -383,7 +383,7 @@ class wedeoPlayerClass {
 
     document.querySelector('#'+this.playerId+' .vjs-control-bar').insertAdjacentElement('beforebegin', sidebar);
 
-    const sidebarApp = new Vue({
+    this.sidebarApp = new Vue({
       el: '#'+this.playerId+' .vjs-sidebar',
       store,
       template: `<sidebar :videoData="videoData"/>`,

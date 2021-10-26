@@ -186,6 +186,10 @@ function dragMiniPlayer(el) {
 
 function closeMiniplayer() {
   if(wedeoPlayer !== false) {
+    wedeoPlayer.topTitleApp.$destroy();
+    wedeoPlayer.bottomTitleApp.$destroy();
+    wedeoPlayer.sidebarApp.$destroy();
+    wedeoPlayer.settingsMenuApp.$destroy();
     videojs(wedeoPlayer.playerId).dispose();
     wedeoPlayer = false;
     hideMiniplayer();
