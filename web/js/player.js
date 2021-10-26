@@ -654,7 +654,7 @@ class wedeoPlayerClass {
       const container1 = document.querySelector('.vjs-settings-menu');
       const container2 = document.querySelector('.vjs-settings-button');
       const container3 = document.querySelector('.vjs-settings-dropdown');
-  
+
       if( !container1.contains(event.target) && !container2.contains(event.target) && !container3.contains(event.target) ) {
         self.closePlayerSettingsMenu();
 

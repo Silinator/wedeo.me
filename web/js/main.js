@@ -149,13 +149,13 @@ function dragMiniPlayer(el) {
       pos2 = pos4 - e.touches[0].clientY;
       pos3 = e.touches[0].clientX;
       pos4 = e.touches[0].clientY;
-      scrollbarWidth = 0; 
+      scrollbarWidth = 0;
     } else {
       pos1 = pos3 - e.clientX;
       pos2 = pos4 - e.clientY;
       pos3 = e.clientX;
       pos4 = e.clientY;
-      scrollbarWidth = 5; 
+      scrollbarWidth = 5;
     }
 
     const dragContainer   = el.parentNode;
