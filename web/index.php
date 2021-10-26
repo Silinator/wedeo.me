@@ -53,6 +53,12 @@ if( !$asJson ) {
       store.commit( 'setPage', '<?=$page?>' );
       store.dispatch('fetchTranslations');
 
+      if( window.matchMedia("(pointer: coarse)").matches ) {
+        document.querySelector('body').classList.add('touch');
+      }
+
+      activateSamePageNavigation();
+
       const mainapp = new Vue({
         el: '#mainContainer',
         store,

@@ -39,14 +39,6 @@ function activateSamePageNavigation() {
   }
 }
 
-function htmlLoaded() {
-  if( window.matchMedia("(pointer: coarse)").matches ) {
-    document.querySelector('body').classList.add('touch');
-  }
-
-  activateSamePageNavigation();
-}
-
 function goToPage( url, fromNavigation = false ) {
   //closeNavi();
 
@@ -91,8 +83,6 @@ function loadVideoPage( url ) {
     document.title = data.htmlTitle;
     wedeoPlayer.setVideo(data.videoData);
     store.commit( 'setMainVideoData', data.videoData );
-
-    activateSamePageNavigation();
   });
 }
 
@@ -113,7 +103,6 @@ function loadPage( url ) {
     }
 
     store.commit( 'setPage', data.pageType );
-    activateSamePageNavigation();
   });
 }
 
