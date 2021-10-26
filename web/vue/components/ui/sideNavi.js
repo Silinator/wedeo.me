@@ -76,9 +76,6 @@ Vue.component( 'sideNavi', {
 
       document.querySelector('.mainContainer').classList.remove('blur');
       document.querySelector('body').classList.remove('overflow-hidden');
-    },
-    closeMiniplayer() {
-      closeMiniplayer();
     }
   }
 });
