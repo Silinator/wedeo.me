@@ -49,7 +49,7 @@ function goToPage( url, fromNavigation = false ) {
   const isMiniWedeoPlayer = ( wedeoPlayer && wedeoPlayer.type === "mini" );
 
   if( isVideoLink && isMiniWedeoPlayer ) {
-    if( !fromNavigation ) { document.querySelector('.miniWedeoContainer').getAttribute('videoURL', url); }
+    if( !fromNavigation ) { document.querySelector('.miniWedeoContainer').setAttribute('videoURL', url); }
   } else {
     if( !fromNavigation ) { window.history.pushState( {page: true}, null, document.location ); } //adds current page as previous page
     window.history.replaceState('currentPage', 'wedeo.me', url); //changes browser url

@@ -17,7 +17,7 @@ Vue.component( 'watch', {
     }
   },
   mounted() {
-    if( document.querySelector(' .miniWedeo').innerHTML === "" ) {
+    if( typeof this.wedeoPlayer.type === "undefined" || this.wedeoPlayer.type === "mini" ) {
       wedeoPlayer = new wedeoPlayerClass( 'wedeo-player' );
       wedeoPlayer.addSizeButton();
       wedeoPlayer.setVideo( this.videoData );
