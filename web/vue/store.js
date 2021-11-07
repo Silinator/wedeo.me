@@ -4,6 +4,7 @@ const store = new Vuex.Store({
   state: {
     cdnURLbase: "https://cdn.wedeo.me/",
     page: '',
+    pageLoading: 0,
     sideNaviOpen: false,
     translations: {},
     selLang: {
@@ -80,6 +81,9 @@ const store = new Vuex.Store({
     },
     setSideNaviOpen( state, value ) {
       state.sideNaviOpen = value;
+    },
+    setPageLoading( state, value ) {
+      state.pageLoading = value;
     }
   },
 

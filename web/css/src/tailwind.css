@@ -42,6 +42,9 @@
     @apply select-none;
   }
 
+  .graidient {
+    background: linear-gradient( 135deg, var(--cyan500), var(--main) );
+  }
 
   /* links */
   a {

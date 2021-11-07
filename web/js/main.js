@@ -42,7 +42,7 @@ function activateSamePageNavigation() {
 function goToPage( url, fromNavigation = false ) {
   //closeNavi();
 
-  //add page loading progress
+  store.commit( 'setPageLoading', 70 );
 
   const isVideoLink = ( url.startsWith("watch") || url.startsWith("w") || url.startsWith( new URL(document.baseURI).pathname + "watch/") || url.startsWith( new URL(document.baseURI).pathname + "w/") );
   const isNormalWedeoPlayer = ( wedeoPlayer && wedeoPlayer.type !== "mini" );
@@ -83,6 +83,11 @@ function loadVideoPage( url ) {
     document.title = data.htmlTitle;
     wedeoPlayer.setVideo(data.videoData);
     store.commit( 'setMainVideoData', data.videoData );
+
+    store.commit( 'setPageLoading', 100 );
+    setTimeout( () => {
+      store.commit( 'setPageLoading', 0 );
+    }, 100);
   });
 }
 
@@ -103,6 +108,11 @@ function loadPage( url ) {
     }
 
     store.commit( 'setPage', data.pageType );
+
+    store.commit( 'setPageLoading', 100 );
+    setTimeout( () => {
+      store.commit( 'setPageLoading', 0 );
+    }, 100);
   });
 }
 

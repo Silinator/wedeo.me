@@ -5,6 +5,9 @@ Vue.component( 'mainHeader', {
 	},
   template: `
     <div :class="'header flex justify-between fixed top-0 left-0 w-full h-14 border-black ' + blurClass">
+      <div v-if="pageLoading !== 0" class="flex w-full h-1 absolute top-0 bg-transparent">
+        <div class="flex h-1 graidient" :style="'width:'+pageLoading+'%'"></div>
+      </div>
       <div class='flex items-center p-4'>
         <div v-on:click="toggleSideNavi" class="headerButton toggleLeftNaviButton">
           <span class="material-icons">menu</span>
@@ -59,6 +62,9 @@ Vue.component( 'mainHeader', {
   computed: {
 		sideNaviOpen() {
 			return this.$store.state.sideNaviOpen;
+  	},
+    pageLoading() {
+      return this.$store.state.pageLoading;
   	},
     blurClass() {
       if( this.sideNaviOpen ) {

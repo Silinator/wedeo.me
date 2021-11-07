@@ -124,6 +124,11 @@ class wedeoPlayerClass {
     document.title = this.meta.title + " | wedeo.me";
     store.commit( 'setPage', 'watch' );
 
+    store.commit( 'setPageLoading', 100 );
+    setTimeout( () => {
+      store.commit( 'setPageLoading', 0 );
+    }, 100);
+
     if( document.querySelector('.miniWedeoContainer').hasAttribute("videoURL") ) { /* when video was changed only in miniplayer this gets the url of current video */
       window.history.replaceState('currentPage', 'wedeo.me', document.querySelector('.miniWedeoContainer').getAttribute('videoURL') ); //changes browser url
     }
