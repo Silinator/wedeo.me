@@ -1,4 +1,4 @@
-version: '3'
+version: '3.7'
 
 services:
   app:
@@ -19,7 +19,7 @@ services:
     container_name: webserver
     restart: unless-stopped
     ports:
-      - "8080:80"
+      - "80:80"
     volumes:
       - ./:/var/www/wedeome
       - ./config/nginx/:/etc/nginx/conf.d/

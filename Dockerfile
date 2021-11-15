@@ -4,6 +4,6 @@ WORKDIR /var/www/wedeome
 
 RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
 
-COPY --chown=www:www . /var/www/wedeome
+COPY --chown=root:root . /var/www/wedeome
 
 EXPOSE 9000
