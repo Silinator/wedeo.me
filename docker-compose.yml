@@ -47,9 +47,7 @@ services:
     depends_on:
       - db
     environment:
-      PMA_HOST: db
-      PMA_USER: root
-      PMA_PASSWORD: root
+      - PMA_ARBITRARY=1
     ports:
       - "8081:80"
 
