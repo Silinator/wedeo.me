@@ -332,6 +332,7 @@
 }
 
 .wedeo-player .vjs-volume-level:before,
+.wedeo-player .vjs-volume-control:hover .vjs-volume-tooltip,
 .wedeo-player .vjs-progress-control:hover .vjs-play-progress .vjs-time-tooltip,
 .wedeo-player .vjs-progress-control:hover .vjs-mouse-display .vjs-time-tooltip {
   display: none;
