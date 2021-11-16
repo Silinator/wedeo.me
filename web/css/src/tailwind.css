@@ -261,7 +261,7 @@
 
   /* wedeoSide */
   .wedeoSideContent {
-    height: calc( 100% - 52px - 2px - 15px );
+    height: calc( 100% - 49px );
     @apply pt-4;
   }
 

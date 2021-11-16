@@ -251,7 +251,7 @@ body {
 
 /* watchPage */
 .mainWedeoContainer {
-  height: calc( 100vh - 60px - 60px );
+  height: calc( 100vh - 60px );
 }
 
 .mainWedeoContainer.large {
