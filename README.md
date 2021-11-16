@@ -71,4 +71,9 @@ git clone git@github.com:Silinator/wedeo.me.git
 cd wedeo.me
 ```
 
+Startup docker with docker-compose
+```
+docker-compose up --build -d
+```
+
 Go to step 5 of "wedeo.me web"
