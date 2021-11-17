@@ -104,7 +104,8 @@ class wedeoPlayerClass {
 
     setTimeout(function () {
       self.Player.loop(true);
-      self.Player.volume(0.5);
+      self.Player.volume(0.7);
+      self.Player.muted(true);
     }, 0);
 
     this.addVideoInfo();
