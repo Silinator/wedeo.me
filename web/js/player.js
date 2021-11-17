@@ -71,6 +71,7 @@ class wedeoPlayerClass {
     this.hotkeyTimeout = false;
     this.addHotkeys();
     this.addSettingsMenus();
+    this.addBackButton();
     this.addPlayerTitles();
     this.addPlayerVideoPreview();
     this.addPlayerSidebar();
@@ -130,11 +131,14 @@ class wedeoPlayerClass {
       store.commit( 'setPageLoading', 0 );
     }, 100);
 
-    if( document.querySelector('.miniWedeoContainer').hasAttribute("videoURL") ) { /* when video was changed only in miniplayer this gets the url of current video */
-      window.history.replaceState('currentPage', 'wedeo.me', document.querySelector('.miniWedeoContainer').getAttribute('videoURL') ); //changes browser url
-    }
+    window.history.replaceState('currentPage', 'wedeo.me', 'watch/' + this.meta.uvid ); //changes browser url
 
     hideMiniplayer();
+  }
+
+  goBackToVideoPage() {
+    window.history.pushState( {page: true}, null, document.location );
+    this.backToMiniplayerVideo();
   }
 
   addVideoInfo() {
@@ -343,6 +347,27 @@ class wedeoPlayerClass {
     document.querySelector('#'+this.playerId+' .vjs-size-button').addEventListener('keyup', function( event ) {
       if( event.which == 32 || event.which == 13 ) { self.togglePlayerSize(); }
       if( event.which == 27 ) { self.closePlayerSettingsMenu(); }
+    });
+  }
+
+  addBackButton() {
+    const self = this;
+
+    const backBtnIcon = document.createElement('span');
+          backBtnIcon.className = "material-icons";
+          backBtnIcon.innerHTML = "north_east"
+
+    const backBtn = document.createElement('div');
+          backBtn.setAttribute('tabindex', '0');
+          backBtn.className = 'vjs-control vjs-button vjs-back-button';
+          backBtn.append( backBtnIcon );
+
+    document.querySelector('#'+this.playerId+' .vjs-fullscreen-control').insertAdjacentElement('afterend', backBtn);
+
+    document.querySelector('#'+this.playerId+' .vjs-back-button').addEventListener('click', function() { self.goBackToVideoPage(); });
+
+    document.querySelector('#'+this.playerId+' .vjs-back-button').addEventListener('keyup', function( event ) {
+      if( event.which == 32 || event.which == 13 ) {self.goBackToVideoPage(); }
     });
   }
 

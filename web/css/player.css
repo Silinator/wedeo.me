@@ -615,3 +615,30 @@
 .wedeo-player .vjs-progress-control:active .vjs-small-time-preview {
   display: flex;
 }
+
+.wedeo-player .vjs-back-button {
+  display: none;
+}
+
+
+/* miniWedeo */
+
+.miniWedeo .wedeo-player .vjs-header,
+.miniWedeo .wedeo-player .vjs-volume-control,
+.miniWedeo .wedeo-player .vjs-settings-button,
+.miniWedeo .wedeo-player .vjs-size-button,
+.miniWedeo .wedeo-player .vjs-picture-in-picture-control,
+.miniWedeo .wedeo-player .vjs-fullscreen-control,
+.miniWedeo .wedeo-player.vjs-has-started .vjs-sidebar {
+  display: none;
+}
+
+.miniWedeo .wedeo-player .vjs-back-button {
+  display: flex;
+}
+
+.miniWedeo .wedeo-player .vjs-volume-panel.vjs-volume-panel-horizontal.vjs-hover,
+.miniWedeo .wedeo-player .vjs-volume-panel.vjs-volume-panel-horizontal.vjs-slider-active,
+.miniWedeo .wedeo-player .vjs-volume-panel.vjs-volume-panel-horizontal:active {
+  width: 50px;
+}
