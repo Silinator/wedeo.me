@@ -8,7 +8,7 @@
 6. Run `npm install` to load the the dependencies.
 6. Run `npm run css` to generate the css from tailwind.
 8. Run `cd ../`
-9. Run `docker-compose up` to start your local server with php and nginx.
+9. Run `docker-compose up -d` to start your local server with php and nginx.
 10. Enjoy your local version of wedeo.me at [http://localhost:8080/](http://localhost:8080/)!
 
 # wedeo.me database
