@@ -56,7 +56,7 @@ Vue.component( 'wedeoSideMoreVideos', {
 			return "watch/" + videoData.uvid;
 		},
 		userUrl(videoData) {
-			return "user/" + videoData.user.uuid;
+			return "user/" + videoData.user.name;
 		},
     applyCatFilter(cat) {
 	    //stuff
