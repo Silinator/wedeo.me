@@ -684,13 +684,15 @@ class wedeoPlayerClass {
   }
 
   resizeWedeo() {
-    const max = window.innerWidth - 420 - 30 - 20;
-    const height = parseFloat(getComputedStyle(document.querySelector('.wedeoSideContainer'), null).height.replace("px", ""));
-    let width = height / 9 * 16;
+    if(this.type !== "mini") {
+      const max = window.innerWidth - 420 - 30 - 20;
+      const height = parseFloat(getComputedStyle(document.querySelector('.wedeoSideContainer'), null).height.replace("px", ""));
+      let width = height / 9 * 16;
 
-    if( width > max ) { width = max; }
+      if( width > max ) { width = max; }
 
-    document.querySelectorAll('.wedeoContainer').forEach( element => { element.style.width = width + "px" });
+      document.querySelectorAll('.wedeoContainer').forEach( element => { element.style.width = width + "px" });
+    }
   }
 
   getVideoSource() {
