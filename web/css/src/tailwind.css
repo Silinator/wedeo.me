@@ -271,10 +271,4 @@
   .wedeoSideContainerHeaderBtn .weicon-info {
     @apply text-white text-4xl;
   }
-
-  /* full video list */
-  .fullVideoList {
-    grid-template-columns: repeat(4, 284px);
-    @apply grid gap-y-8 justify-between w-full mb-24;
-  }
 }
