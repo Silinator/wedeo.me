@@ -21,7 +21,9 @@ Vue.component( 'wedeoSidePlaylist', {
         <div class='flex flex-col'>
           <div v-for="videoData in morePlaylistVideos" :key="videoData.uvid" class='shortHorVideoContainer'>
             <div class='flex justify-center items-center w-6' v-html="getPlaylistVideoNumber(videoData.uvid)"></div>
-            <thumb :videoData="videoData" :upid="upid"/>
+            <div class="w-5/12">
+              <thumb :videoData="videoData" :upid="upid"/>
+            </div>
             <div class='shortHorVideoContent'>
               <div class='shortHorVideoTitle'><a :href="videoUrl(videoData)"> {{videoData.title}}</a></div>
               <h6 class='shortHorVideoUser'><a :href="userUrl(videoData)">{{videoData.user.name}}</a></h6>
