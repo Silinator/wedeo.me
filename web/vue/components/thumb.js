@@ -17,7 +17,8 @@ Vue.component( 'thumb', {
 	},
   template: `
     <a :href="videoUrl" :id="thumbId"  :class="thumbClass" :data-uvid="videoData.uvid" @mouseenter="startThumbDiashow" @mouseleave="stopThumbDiashow">
-      <img :src="thumbUrl"/>
+      <img class="hidden sm:block" :src="thumbUrlSmall"/>
+      <img class="sm:hidden" :src="thumbUrlLarge"/>
       <div :class="'thumbHoverInfo ' + thumbHoverInfoClass" :style="thumbHoverInfoWidthStyle"></div>
       <div class="thumbInfo">
         <div class="thumbMetaInfo">
@@ -57,8 +58,11 @@ Vue.component( 'thumb', {
     thumbId() {
       return "thumb" + this.videoData.uvid;
     },
-    thumbUrl() {
+    thumbUrlSmall() {
       return this.thumbPreviewUrl ? this.thumbPreviewUrl : this.cdnURLbase + "images/thumb/" + this.videoData.uvid + "/small.jpg";
+    },
+    thumbUrlLarge() {
+      return this.thumbPreviewUrl ? this.thumbPreviewUrl : this.cdnURLbase + "images/thumb/" + this.videoData.uvid + "/large.jpg";
     },
     rating() {
       return this.videoData.rating[0] == 0 ? "0%" : Math.floor( this.videoData.rating[0] / ( this.videoData.rating[0] + this.videoData.rating[1] ) * 100 ) + "%";

@@ -17,7 +17,9 @@ Vue.component( 'wedeoSideMoreVideos', {
 			<div class='pr-2 overflow-x-hidden overflow-y-auto'>
 				<div class='flex flex-col'>
 					<div v-for="videoData in moreVideos" :key="videoData.uvid" class='shortHorVideoContainer'>
-						<thumb :videoData="videoData"/>
+					  <div class="w-5/12">
+              <thumb :videoData="videoData"/>
+            </div>
 						<div class='shortHorVideoContent flex flex-col'>
 							<div class='shortHorVideoTitle'><a :href="videoUrl(videoData)"> {{videoData.title}}</a></div>
 							<h6 class='shortHorVideoUser'><a :href="userUrl(videoData)">{{videoData.user.name}}</a></h6>

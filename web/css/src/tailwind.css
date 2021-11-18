@@ -144,18 +144,12 @@
   }
 
   .thumbHolder {
-    height: 155px;
-    width: 276px;
-    @apply flex relative mt-1 mr-1 mb-5 ml-1 bg-gray-900 cursor-pointer;
-  }
-
-  .shortHorVideoContainer .thumbHolder {
-    width: 176px;
-    height: 99px;
+    padding-top: 56.25%;
+    @apply flex relative mt-1 mr-1 mb-5 ml-1 h-0 bg-gray-900 cursor-pointer;
   }
 
   .thumbHolder img {
-    @apply w-full h-full;
+    @apply w-full h-full absolute top-0;
   }
 
   .thumbHolder:after {
@@ -195,8 +189,8 @@
 
   .thumbInfo {
     text-shadow: 1px 1px 3px #333333;
-    width: calc( 100% - 4px );
-    @apply flex justify-between items-center absolute h-5 ml-1 text-white top-full left-0;
+    width: calc( 100% - 8px );
+    @apply flex justify-between items-center absolute h-5 ml-1 mr-1 text-white top-full left-0;
   }
 
   .thumbMetaInfo,
