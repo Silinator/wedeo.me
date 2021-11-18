@@ -229,7 +229,6 @@ body {
 }
 
 .allVideosContainer {
-  width: calc( 100% - 600px );
   max-width: 1320px;
   margin: auto;
 }

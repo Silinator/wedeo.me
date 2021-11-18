@@ -55,8 +55,8 @@
 }
 
 .wedeo-bg-player .vjs-control-bar {
-  width: calc( 100% - 600px );
-  max-width: 1320px;
+  width: calc( 100% - 100px );
+  max-width: 1220px;
   margin: auto;
   display: flex;
   height: 50px;
