@@ -140,7 +140,7 @@
   }
 
   .shortHorVideoUser a {
-    @apply text-gray-300;
+    @apply text-gray-400;
   }
 
   .thumbHolder {
