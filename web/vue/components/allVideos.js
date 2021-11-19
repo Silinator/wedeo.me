@@ -5,7 +5,7 @@ Vue.component( 'allVideos', {
 		}
 	},
   template: `
-    <div class='allVideosContainer w-100 sm:pl-12 sm:pr-12'>
+    <div class='allVideosContainer w-100 m-auto sm:pl-12 sm:pr-12'>
 			<h1 class='text-white flex w-full mt-8 pl-4 sm:pl-0 pr-4 sm:pr-0'>{{this.$store.getters.t('ALL_VIDEOS')}}</h1><br>
 			<div class='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-8 sm:justify-between w-full mb-24;'>
         <div v-for="video in videos">

@@ -55,15 +55,23 @@
 }
 
 .wedeo-bg-player .vjs-control-bar {
-  width: calc( 100% - 100px );
-  max-width: 1220px;
+  max-width: 1320px;
   margin: auto;
+  padding-left: 16px;
+  padding-right: 16px;
   display: flex;
   height: 50px;
   align-items: center;
   background: none;
   pointer-events: none;
   opacity: 1 !important;
+}
+
+@media (min-width: 640px) {
+  .wedeo-bg-player .vjs-control-bar {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
 }
 
 .wedeo-bg-player .vjs-volume-panel {
@@ -116,80 +124,4 @@
 .wedeo-bg-player .vjs-fullscreen-control,
 .wedeo-bg-player .vjs-picture-in-picture-control {
   display: none;
-}
-
-/* video preview text */
-.wedeo-bg-player .shortVideoInfo {
-  display: flex;
-  position: absolute;
-  flex-direction: column;
-  padding: 20px;
-  width: calc( 50% - 40px );
-  bottom: 65px;
-  right: 0;
-  background-color: var(--bg-blackA60);
-  pointer-events: all;
-  z-index: 3;
-}
-
-.wedeo-bg-player .shortVideoInfoTitle {
-  font-size: 32px;
-  line-height: 32px;
-  font-weight: 500;
-  max-width: 100%;
-  color: var(--white);
-  text-decoration: underline;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.wedeo-bg-player .shortVideoInfoDescription {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  font-size: 24px;
-  line-height: 27px;
-  color: var(--silver);
-  max-height: 55px;
-  width: 100%;
-  overflow: hidden;
-}
-
-.wedeo-bg-player .shortVideoInfoMeta {
-  display: flex;
-  font-size: 24px;
-  margin-bottom: 15px;
-}
-
-.wedeo-bg-player .shortVideoInfoUser {
-  display: flex;
-  text-decoration: none;
-  color: var(--white);
-}
-
-.wedeo-bg-player .shortVideoInfoUserImg {
-  width: 24px;
-  height: 24px;
-  margin-right: 10px;
-}
-
-.wedeo-bg-player .shortVideoInfoRating,
-.wedeo-bg-player .shortVideoInfoComments {
-  display: flex;
-  align-items: center;
-}
-
-.wedeo-bg-player .shortVideoInfoRatingText,
-.wedeo-bg-player .shortVideoInfoCommentsText {
-  margin-right: 5px;
-}
-
-.wedeo-bg-player .shortVideoInfoMetaSpacing {
-  font-weight: 300;
-  margin-left: 10px;
-  margin-right: 10px;
-}
-
-.wedeo-bg-player .shortVideoInfo .bigBtn {
-  align-self: flex-end;
 }
