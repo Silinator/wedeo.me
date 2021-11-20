@@ -14,7 +14,8 @@ Vue.component( 'mainHeader', {
         </div>
 
         <a href="/" class="headerLogo noSel">
-          <img src="img/icons/logo.svg"/>
+          <img class="hidden sm:block" src="img/icons/logo.svg"/>
+          <img class="sm:hidden" src="img/icons/logo_Short.svg"/>
         </a>
       </div>
 
@@ -29,7 +30,7 @@ Vue.component( 'mainHeader', {
         <div class="headerButton flex md:hidden mobileSearchButton">
           <span class="material-icons">search</span>
         </div>
-        <div class="hidden sm:flex headerButton uploadButton">
+        <div class="headerButton flex uploadButton">
           <span class="material-icons">upload</span>
         </div>
         <div class="headerButton flex bookmarkButton">
