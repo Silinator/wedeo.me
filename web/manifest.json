@@ -3,7 +3,7 @@
 	"name": "wedeo.me",
 	"theme_color": "#111111",
 	"background_color" : "#111111" ,
-	"start_url": "https://www.wedeo.me",
+	"start_url": "/",
 	"dir": "ltr",
 	"display": "standalone",
 	"orientation": "any",

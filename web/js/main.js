@@ -3,8 +3,18 @@ let wedeoBgPlayer = false;
 let nextPageIsLoading = false;
 
 document.removeEventListener( "click", clickOnLink );
-
 document.addEventListener("click", clickOnLink );
+
+function registerServiceWorker() {
+  if('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('serviceWorker.js').then(function(registration) {
+      // Registration was successful
+    }, function(err) {
+      // registration failed :(
+      console.log('ServiceWorker registration failed: ', err);
+    });
+  }
+}
 
 function clickOnLink( event ) {
   const anchorElement = event.path.filter( element => {
