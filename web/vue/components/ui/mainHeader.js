@@ -15,7 +15,7 @@ Vue.component( 'mainHeader', {
 
         <a href="/" class="headerLogo noSel">
           <img class="hidden sm:block" src="img/icons/logo.svg"/>
-          <img class="sm:hidden" src="img/icons/logo_Short.svg"/>
+          <img class="sm:hidden" src="img/icons/logo_short.svg"/>
         </a>
       </div>
 
