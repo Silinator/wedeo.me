@@ -18,7 +18,7 @@ Vue.component( 'mainHeader', {
         </a>
       </div>
 
-      <div class='headerCenter flex items-center relative'>
+      <div class='headerCenter hidden md:flex items-center relative'>
         <input class="headerSearchInput" :placeholder="this.$store.getters.t('HEADER_SEARCH')"/>
         <div class="mainSearchButton">
           <span class="material-icons">search</span>
@@ -26,22 +26,25 @@ Vue.component( 'mainHeader', {
       </div>
 
       <div class='headerRight flex items-center p-4'>
-        <div class="headerButton uploadButton">
+        <div class="headerButton flex md:hidden mobileSearchButton">
+          <span class="material-icons">search</span>
+        </div>
+        <div class="hidden sm:flex headerButton uploadButton">
           <span class="material-icons">upload</span>
         </div>
-        <div class="headerButton bookmarkButton">
+        <div class="headerButton flex bookmarkButton">
           <span class="material-icons">bookmark_border</span>
         </div>
-        <div class="headerButton notificationsButton">
+        <div class="hidden sm:flex headerButton notificationsButton">
           <span class="material-icons">notifications_none</span>
         </div>
-        <div class="headerButton friendsButton">
+        <div class="hidden sm:flex headerButton friendsButton">
           <span class="material-icons">people_outline</span>
         </div>
-        <div class="headerButton levelButton">
+        <div class="hidden sm:flex headerButton levelButton">
           <span class="material-icons">border_outer</span>
         </div>
-        <div class="headerButton userButton">
+        <div class="headerButton flex userButton">
           <img src="img/icons/avatar.png"/>
         </div>
       </div>

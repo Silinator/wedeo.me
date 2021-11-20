@@ -114,7 +114,6 @@ body {
 }
 
 .headerButton {
-  display: flex;
   align-items: center;
   color: var(--white);
   cursor: pointer;
@@ -134,7 +133,8 @@ body {
 }
 
 .headerCenter {
-  width: calc(70% - 600px);
+  width: calc(70% - 400px);
+  max-width: 800px;
 }
 
 .headerSearchInput {
