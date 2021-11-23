@@ -40,6 +40,13 @@ Vue.component( 'sideNavi', {
           <span class="material-icons">logout</span>
           {{this.$store.getters.t('NAVI_LOGOUT')}}
         </a>
+
+        <h3>Playlists:</h3>
+        <a href="/watch/49lUrQcO&pl=H3yS4FJ6691c" class="naviButton">
+          <span class="material-icons">list</span>
+          {{this.$store.getters.t('Test Playlist')}}
+        </a>
+
       </div>
       <div v-on:click="closeNavi" :class="sideNaviBgClass"></div>
     </div>
