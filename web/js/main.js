@@ -35,6 +35,11 @@ function clickOnLink( event ) {
     event.preventDefault();
     nextPageIsLoading = true;
 
+    store.commit('setSideNaviOpen', false );
+
+    document.querySelector('.mainContainer').classList.remove('blur');
+    document.querySelector('body').classList.remove('overflow-hidden');
+
     goToPage(url);
   }
 }
