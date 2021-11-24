@@ -161,21 +161,54 @@
     @apply absolute h-full w-full -top-1 right-0 bottom-0 -left-1 border-solid;
   }
 
-  .thumbHolder.green:after {
-    border-image-source: linear-gradient(60deg, var(--green500) 30%, var(--green900) 70%);
-  }
-
   .thumbHolder.blue:after {
     border-image-source: linear-gradient(60deg, var(--blue500) 30%, var(--blue900) 70%);
+  }
+
+  .thumbHolder.indigo:after {
+    border-image-source: linear-gradient(60deg, var(--indigo500) 30%, var(--indigo900) 70%);
+  }
+
+  .thumbHolder.purple:after {
+    border-image-source: linear-gradient(60deg, var(--purple500) 30%, var(--purple900) 70%);
+  }
+
+  .thumbHolder.red:after {
+    border-image-source: linear-gradient(60deg, var(--red500) 30%, var(--red900) 70%);
   }
 
   .thumbHolder.orange:after {
     border-image-source: linear-gradient(60deg, var(--orange500) 30%, var(--orange900) 70%);
   }
 
-  .thumbHolder.purple:after {
-    border-image-source: linear-gradient(60deg, var(--purple500) 30%, var(--purple900) 70%);
+  .thumbHolder.yellow:after {
+    border-image-source: linear-gradient(60deg, var(--yellow500) 30%, var(--yellow900) 70%);
   }
+
+  .thumbHolder.lime:after {
+    border-image-source: linear-gradient(60deg, var(--lime500) 30%, var(--lime900) 70%);
+  }
+
+  .thumbHolder.green:after {
+    border-image-source: linear-gradient(60deg, var(--green500) 30%, var(--green900) 70%);
+  }
+
+  .thumbHolder.teal:after {
+    border-image-source: linear-gradient(60deg, var(--teal500) 30%, var(--teal900) 70%);
+  }
+
+  .thumbHolder.cyan:after {
+    border-image-source: linear-gradient(60deg, var(--cyan500) 30%, var(--cyan900) 70%);
+  }
+
+  .thumbHolder.black:after {
+    border-image-source: linear-gradient(60deg, var(--gray) 30%, var(--main-gray) 70%);
+  }
+
+  .thumbHolder.white:after {
+    border-image-source: linear-gradient(60deg, var(--white) 30%, var(--light-gray) 70%);
+  }
+
 
   .thumbHoverInfo {
     transition: width 0.45s cubic-bezier(0.48, 0.48, 0.48, 0.48);
