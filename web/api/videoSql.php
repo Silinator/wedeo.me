@@ -1,6 +1,6 @@
 <?php
 function getAllVideos( $index, $limit ) {
-  $videos_sql = db::$link->query("SELECT * FROM videos WHERE status = 'uploaded' ORDER BY publishDate DESC");
+  $videos_sql = db::$link->query("SELECT * FROM videos WHERE status = 'uploaded' AND privacy = 0 ORDER BY publishDate DESC");
   $videos = [];
 
   while( $video_row = $videos_sql->fetch_object() ) {
@@ -11,7 +11,7 @@ function getAllVideos( $index, $limit ) {
 }
 
 function getMoreVideos( $index, $filter, $limit ) {
-  $videos_sql = db::$link->query("SELECT * FROM videos WHERE status = 'uploaded' ORDER BY publishDate DESC LIMIT $index, $limit");
+  $videos_sql = db::$link->query("SELECT * FROM videos WHERE status = 'uploaded' AND privacy = 0 ORDER BY publishDate DESC LIMIT $index, $limit");
   $videos = [];
 
   while( $video_row = $videos_sql->fetch_object() ) {
