@@ -689,9 +689,13 @@ class wedeoPlayerClass {
       const height = parseFloat(getComputedStyle(document.querySelector('.wedeoSideContainer'), null).height.replace("px", ""));
       let width = height / 9 * 16;
 
-      if( width > max ) { width = max; }
+      if( width > max ) { width = max; }if( width > max ) { width = max; }
 
-      document.querySelectorAll('.wedeoContainer').forEach( element => { element.style.width = width + "px" });
+      if( window.innerWidth <= "640" ) {
+        document.querySelectorAll('.wedeoContainer').forEach( element => { element.style.width = "100%" });
+      } else {
+       document.querySelectorAll('.wedeoContainer').forEach( element => { element.style.width = width + "px" });
+      }
     }
   }
 
