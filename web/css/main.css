@@ -257,6 +257,7 @@ body {
 }
 
 .mainWedeoContainer.large {
+  flex-direction: unset;
   height: 100vh;
   width: 100vw;
   margin-top: 0;
