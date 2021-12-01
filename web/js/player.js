@@ -772,7 +772,9 @@ class wedeoPlayerClass {
 
     this.updatePlayerTitle();
 
-    this.updateSkipButtons();
+    if( this.playerType == "default" ) {
+      this.updateSkipButtons();
+    }
 
     if('mediaSession' in navigator) {
       navigator.mediaSession.metadata = new MediaMetadata({
