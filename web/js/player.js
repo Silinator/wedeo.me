@@ -426,47 +426,66 @@ class wedeoPlayerClass {
   }
 
   addSkipButtons() {
-    /*const self = this;
+    const self = this;
 
-    $('#'+this.playerId+' .vjs-play-control').before(
-      "<button class='vjs-previous-control vjs-control vjs-button'>" +
-        "<span class='material-icons'>skip_previous</span>" +
-      "</button>"
-    );
+    const previousBtnIcon = document.createElement('span');
+      previousBtnIcon.className = "material-icons";
+      previousBtnIcon.innerHTML = "skip_previous"
 
-    $('#'+this.playerId+' .vjs-play-control').after(
-      "<button class='vjs-next-control vjs-control vjs-button'>" +
-        "<span class='material-icons'>skip_next</span>" +
-      "</button>"
-    );
+    const previousBtn = document.createElement('div');
+      previousBtn.setAttribute('tabindex', '0');
+      previousBtn.className = 'vjs-control vjs-button vjs-previous-control';
+      previousBtn.append( previousBtnIcon );
 
-    $("#" + this.playerId + " .vjs-previous-control").click( function() { self.previousVideo(); });
-    $("#" + this.playerId + " .vjs-next-control").click( function() { self.nextVideo(); });
-    */
+    document.querySelector('#'+this.playerId+' .vjs-play-control').insertAdjacentElement('beforebegin', previousBtn);
+
+    document.querySelector('#'+this.playerId+' .vjs-previous-control').addEventListener('click', function() { self.previousVideo(); });
+
+    document.querySelector('#'+this.playerId+' .vjs-previous-control').addEventListener('keyup', function( event ) {
+      if( event.which == 32 || event.which == 13 ) { self.previousVideo(); }
+    });
+
+
+    const nextBtnIcon = document.createElement('span');
+      nextBtnIcon.className = "material-icons";
+      nextBtnIcon.innerHTML = "skip_next"
+
+    const nextBtn = document.createElement('div');
+      nextBtn.setAttribute('tabindex', '0');
+      nextBtn.className = 'vjs-control vjs-button vjs-next-control';
+      nextBtn.append( nextBtnIcon );
+
+    document.querySelector('#'+this.playerId+' .vjs-play-control').insertAdjacentElement('afterend', nextBtn);
+
+    document.querySelector('#'+this.playerId+' .vjs-next-control').addEventListener('click', function() { self.nextVideo(); });
+
+    document.querySelector('#'+this.playerId+' .vjs-next-control').addEventListener('keyup', function( event ) {
+      if( event.which == 32 || event.which == 13 ) { self.nextVideo(); }
+    });
   }
 
   updateSkipButtons() {
-    /*const self = this;
+    const self = this;
 
     if( this.meta.hasOwnProperty('previousVideo') && this.meta.previousVideo != "" ) {
       navigator.mediaSession.setActionHandler('previoustrack', function() { self.previousVideo(); });
-      $('#'+this.playerId+' .vjs-big-button-previous-video').css('visibility', 'visible');
-      $('#'+this.playerId+' .vjs-previous-control').show();
+      //$('#'+this.playerId+' .vjs-big-button-previous-video').css('visibility', 'visible');
+      document.querySelector('#'+this.playerId+' .vjs-previous-control').style.display = 'block';
     } else {
       navigator.mediaSession.setActionHandler('previoustrack', null );
-      $('#'+this.playerId+' .vjs-big-button-previous-video').css('visibility', 'hidden');
-      $('#'+this.playerId+' .vjs-previous-control').hide();
+      //$('#'+this.playerId+' .vjs-big-button-previous-video').css('visibility', 'hidden');
+      document.querySelector('#'+this.playerId+' .vjs-previous-control').style.display = 'none';
     }
 
     if( this.meta.hasOwnProperty('nextVideo') && this.meta.nextVideo != "" ) {
       navigator.mediaSession.setActionHandler('nexttrack', function() { self.nextVideo(); });
-      $('#'+this.playerId+' .vjs-big-button-next-video').css('visibility', 'visible');
-      $('#'+this.playerId+' .vjs-next-control').show();
+      //$('#'+this.playerId+' .vjs-big-button-next-video').css('visibility', 'visible');
+      document.querySelector('#'+this.playerId+' .vjs-next-control').style.display = 'block';
     } else {
       navigator.mediaSession.setActionHandler('nexttrack', null );
-      $('#'+this.playerId+' .vjs-big-button-next-video').css('visibility', 'hidden');
-      $('#'+this.playerId+' .vjs-next-control').hide();
-    }*/
+      //$('#'+this.playerId+' .vjs-big-button-next-video').css('visibility', 'hidden');
+      document.querySelector('#'+this.playerId+' .vjs-next-control').style.display = 'none';
+    }
   }
 
   addPlayerTouchControls() {
@@ -752,6 +771,8 @@ class wedeoPlayerClass {
     });
 
     this.updatePlayerTitle();
+
+    this.updateSkipButtons();
 
     if('mediaSession' in navigator) {
       navigator.mediaSession.metadata = new MediaMetadata({
