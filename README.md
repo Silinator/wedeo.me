@@ -36,7 +36,9 @@ apt -y install \
      ca-certificates \
      curl \
      gnupg2 \
-     software-properties-common
+     software-properties-common \
+     nodejs \
+     npm
 curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
 ```
 
